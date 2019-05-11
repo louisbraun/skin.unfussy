@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <zorder>3</zorder>
+    <controls>
+        <control type="group">
+            <top>60</top>
+            <right>0</right>
+            <width>800</width>
+            <include>openclose_slight_right</include>
+            <visible>true</visible>
+            <control type="image">
+                <left>0</left>
+                <top>0</top>
+                <width>800</width>
+                <height>160</height>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="image" id="400">
+                <description>avatar</description>
+                <left>25</left>
+                <top>25</top>
+                <width>110</width>
+                <height>110</height>
+                <aspectratio>stretch</aspectratio>
+            </control>
+            <control type="image">
+                <description>avatar</description>
+                <left>25</left>
+                <top>25</top>
+                <width>110</width>
+                <height>110</height>
+                <aspectratio>stretch</aspectratio>
+                <texture>DefaultIconInfo.png</texture>
+                <visible>String.IsEmpty(Control.GetLabel(400))</visible>
+            </control>
+            <control type="fadelabel" id="401">
+                <description>Line 1 Label</description>
+                <left>150</left>
+                <top>45</top>
+                <width>620</width>
+                <height>40</height>
+                <font>light36</font>
+                <textcolor>white</textcolor>
+                <aligny>center</aligny>
+                <scrollout>false</scrollout>
+                <pauseatend>2000</pauseatend>
+            </control>
+            <control type="fadelabel" id="402">
+                <description>Line 2 Label</description>
+                <left>150</left>
+                <top>85</top>
+                <width>620</width>
+                <height>30</height>
+                <font>light30</font>
+                <textcolor>white</textcolor>
+                <aligny>center</aligny>
+                <scrollout>false</scrollout>
+                <pauseatend>2000</pauseatend>
+            </control>
+        </control>
+    </controls>
+</window>

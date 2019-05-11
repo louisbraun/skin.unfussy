@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">50</defaultcontrol>
+    <views>50</views>
+    <menucontrol>9000</menucontrol>
+    <backgroundcolor>0</backgroundcolor>
+    <onload condition="String.IsEqual(Window(home).Property(startlivetv),true)">Action(PlayPvrTV)</onload>
+    <onload condition="String.IsEqual(Window(home).Property(startlivetv),true)">ReplaceWindow(fullscreenvideo)</onload>
+    <onunload condition="VideoPlayer.Content(livetv)">SetProperty(closeonload,true,home)</onunload>
+    <controls>
+        <include>background</include>
+        <include content="info_header">
+            <param name="title" value="$VAR[BreadcrumbsPVRRecordings]" />
+            <param name="showicon" value="true" />
+            <param name="icon" value="icons/pvr/recording.png" />
+        </include>
+        <include>pvr_recordings_view50</include>
+        <include>media_menu</include>
+        <control type="label" id="29">
+            <font></font>
+            <include>HiddenObject</include>
+        </control>
+        <control type="label" id="30">
+            <font></font>
+            <include>HiddenObject</include>
+        </control>
+    </controls>
+</window>

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1106" type="dialog">
+    <defaultcontrol always="true">200</defaultcontrol>
+    <animation effect="fade" end="100" time="300">WindowOpen</animation>
+    <animation effect="fade" start="100" end="0" time="250">WindowClose</animation>
+    <controls>
+        <include>background</include>
+        <control type="group">
+            <top>20</top>
+            <left>20</left>
+            <right>20</right>
+            <height>602</height>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>!String.IsEmpty(Player.Art(poster))</visible>
+                <left>1</left>
+                <top>1</top>
+                <width>400</width>
+                <height>600</height>
+                <aspectratio>scale</aspectratio>
+                <texture>$INFO[Player.Art(poster)]</texture>
+            </control>
+            <control type="image">
+                <visible>String.IsEmpty(Player.Art(poster))</visible>
+                <left>1</left>
+                <top>100</top>
+                <width>400</width>
+                <height>400</height>
+                <aspectratio>scale</aspectratio>
+                <texture>$INFO[Player.Art(thumb)]</texture>
+            </control>
+            <control type="grouplist">
+                <top>10</top>
+                <left>420</left>
+                <right>680</right>
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <control type="label">
+                    <height>70</height>
+                    <font>regular60</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[VideoPlayer.Title]</label>
+                    <scroll>true</scroll>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(VideoPlayer.Tagline)</visible>
+                    <height>40</height>
+                    <font>regular36</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[VideoPlayer.Tagline]</label>
+                    <scroll>true</scroll>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(VideoPlayer.Genre)</visible>
+                    <height>40</height>
+                    <font>regular36</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[VideoPlayer.Genre]</label>
+                </control>
+            </control>
+            <control type="textbox" id="100">
+                <top>180</top>
+                <left>420</left>
+                <right>680</right>
+                <height>400</height>
+                <font>light30</font>
+                <label>$INFO[VideoPlayer.Plot]</label>
+                <pagecontrol>100001</pagecontrol>
+                <onright>101</onright>
+            </control>
+            <include content="scrollbar">
+                <param name="top">185</param>
+                <param name="left">1220</param>
+                <param name="width">15</param>
+                <param name="height">395</param>
+                <param name="controlled_id">100</param>
+                <param name="onup_id">200</param>
+                <param name="onleft_id">50</param>
+                <param name="onright_id">50</param>
+                <param name="ondown_id">50</param>
+            </include>
+            <control type="group">
+                <left>1280</left>
+                <control type="grouplist">
+                    <top>150</top>
+                    <width>600</width>
+                    <align>left</align>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>5</itemgap>
+                    <control type="label">
+                        <visible>!String.IsEmpty(VideoPlayer.Season)</visible>
+                        <visible>!String.IsEmpty(VideoPlayer.Episode)</visible>
+                        <height>30</height>
+                        <font>regular24</font>
+                        <label>$INFO[VideoPlayer.Season,[COLOR active]$LOCALIZE[36904]:[/COLOR] ,] $INFO[VideoPlayer.Episode,[COLOR active]$LOCALIZE[36906]:[/COLOR] ,]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(VideoPlayer.Director)</visible>
+                        <height>30</height>
+                        <font>regular24</font>
+                        <label>$INFO[VideoPlayer.Director,[COLOR active]$LOCALIZE[20339]:[/COLOR] ,]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(VideoPlayer.Writer)</visible>
+                        <height>30</height>
+                        <font>regular24</font>
+                        <label>$INFO[VideoPlayer.Writer,[COLOR active]$LOCALIZE[20417]:[/COLOR] ,]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(VideoPlayer.RatingAndVotes)</visible>
+                        <height>30</height>
+                        <font>regular24</font>
+                        <label>$INFO[VideoPlayer.RatingAndVotes,[COLOR active]$LOCALIZE[563]:[/COLOR] ,]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(VideoPlayer.Country)</visible>
+                        <height>30</height>
+                        <font>regular24</font>
+                        <label>$INFO[VideoPlayer.Country,[COLOR active]$LOCALIZE[21875]:[/COLOR] ,]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(VideoPlayer.Premiered)</visible>
+                        <height>30</height>
+                        <font>regular24</font>
+                        <label>$INFO[VideoPlayer.Premiered,[COLOR active]$LOCALIZE[20416]:[/COLOR] ,]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(VideoPlayer.Mpaa)</visible>
+                        <height>30</height>
+                        <font>regular24</font>
+                        <label>$INFO[VideoPlayer.Mpaa,[COLOR active]$LOCALIZE[31056]:[/COLOR] ,]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(VideoPlayer.Set)</visible>
+                        <height>30</height>
+                        <font>regular24</font>
+                        <label>$INFO[VideoPlayer.Set,[COLOR active]$LOCALIZE[20457]:[/COLOR] ,]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(VideoPlayer.Tag)</visible>
+                        <height>30</height>
+                        <font>regular24</font>
+                        <label>$INFO[VideoPlayer.Tag,[COLOR active]$LOCALIZE[20459]:[/COLOR] ,]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(VideoPlayer.Status)</visible>
+                        <height>30</height>
+                        <font>regular24</font>
+                        <label>$INFO[VideoPlayer.Status,[COLOR active]$LOCALIZE[126]:[/COLOR] ,]</label>
+                    </control>
+                </control>
+                <control type="group">
+                    <top>490</top>
+                    <control type="image">
+                        <width>40</width>
+                        <height>40</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture>icons/video/audio.png</texture>
+                    </control>
+                    <control type="grouplist">
+                        <top>4</top>
+                        <left>60</left>
+                        <orientation>horizontal</orientation>
+                        <itemgap>5</itemgap>
+                        <control type="image">
+                            <width>32</width>
+                            <height>32</height>
+                            <aspectratio>keep</aspectratio>
+                            <texture fallback="flags/flags/fallback.png">$INFO[VideoPlayer.AudioLanguage,flags/flags/,.png]</texture>
+                        </control>
+                    </control>
+                </control>
+                <control type="group">
+                    <visible>!String.IsEmpty(VideoPlayer.Duration)</visible>
+                    <left>415</left>
+                    <top>480</top>
+                    <control type="image">
+                        <width>176</width>
+                        <height>50</height>
+                        <aspectratio align="right" aligny="center">keep</aspectratio>
+                        <texture colordiffuse="white">flags/time.png</texture>
+                    </control>
+                    <control type="label">
+                        <left>50</left>
+                        <width>126</width>
+                        <height>50</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>bold30</font>
+                        <label>$VAR[DurationVar]</label>
+                    </control>
+                </control>
+                <include content="mediaflags">
+                    <param name="source">VideoPlayer</param>
+                    <param name="top">540</param>
+                    <param name="width">1450</param>
+                    <param name="height">50</param>
+                    <param name="align">left</param>
+                    <param name="iconwidth1">73</param>
+                    <param name="iconwidth2">108</param>
+                    <param name="iconwidth3">130</param>
+                </include>
+            </control>
+        </control>
+        <!-- Buttons -->
+        <control type="grouplist" id="200">
+            <defaultcontrol always="true">300</defaultcontrol>
+            <top>2</top>
+            <right>50</right>
+            <height>100</height>
+            <orientation>horizontal</orientation>
+            <align>right</align>
+            <itemgap>10</itemgap>
+            <onup>50</onup>
+            <ondown condition="Container(100).HasNext | Container(100).HasPrevious">100001</ondown>
+            <ondown condition="!Container(100).HasNext + !Container(100).HasPrevious">50</ondown>
+            <usecontrolcoords>true</usecontrolcoords>
+            <include content="button_round">
+                <param name="id">301</param>
+                <param name="onclick">Back</param>
+                <param name="onclick2"></param>
+                <param name="icon">icons/buttons/close.png</param>
+                <param name="radius">100</param>
+                <param name="iconsize">60</param>
+                <param name="iconoffset">20</param>
+            </include>
+            <include content="button_round">
+                <param name="id">302</param>
+                <param name="visible">System.HasAddon(script.extendedinfo)</param>
+                <param name="onclick" value="Action(close)" />
+                <param name="onclick2" value="SetProperty(custombusy,true,home)" />
+                <param name="onclick3" value="SetProperty(custombusyreason,tmdbmovie,home)" />
+                <param name="onclick4" value="SetProperty(custombusylabel,$INFO[VideoPlayer.Title],home)" />
+                <param name="onclick5" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[VideoPlayer.Title])" />
+                <param name="icon">icons/buttons/tmdb.png</param>
+                <param name="radius">100</param>
+                <param name="iconsize">70</param>
+                <param name="iconoffset">15</param>
+            </include>
+        </control>
+        <control type="label">
+            <top>100</top>
+            <width>400</width>
+            <align>center</align>
+            <textcolor>active</textcolor>
+            <label>$VAR[VideoInfoHelpText]</label>
+            <include>positioning_videoinfo_custom_buttons</include>
+        </control>
+        <include content="actors_header" />
+        <control type="group">
+            <top>640</top>
+            <left>20</left>
+            <width>1880</width>
+            <control type="panel" id="50">
+                <left>250</left>
+                <width>1630</width>
+                <height>420</height>
+                <orientation>horizontal</orientation>
+                <onup condition="!Container(100).HasNext + !Container(100).HasPrevious">200</onup>
+                <onup condition="Container(100).HasNext | Container(100).HasPrevious">100001</onup>
+                <ondown>200</ondown>
+                <itemlayout width="250" height="420">
+                    <include content="actors_list_item"/>
+                </itemlayout>
+                <focusedlayout width="250" height="420">
+                    <include content="actors_list_item">
+                        <param name="active">true</param>
+                    </include>
+                </focusedlayout>
+                <content target="video">$VAR[CastContentpath]</content>
+            </control>
+        </control>
+    </controls>
+</window>

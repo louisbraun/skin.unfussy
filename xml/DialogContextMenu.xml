@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol>996</defaultcontrol>
+    <include>dialogpopup_openclose</include>
+    <controls>
+        <include>background_dialog</include>
+        <include>dialog_contextmenu_decoration</include>
+        <control type="label">
+            <include>headerlabel_dialog</include>
+            <width>510</width>
+            <label>$LOCALIZE[10106]</label>
+        </control>
+        <control type="grouplist" id="996">
+            <description>grouplist for context buttons</description>
+            <left>2</left>
+            <top>80</top>
+            <width>506</width>
+            <height max="778">auto</height>
+            <usecontrolcoords>true</usecontrolcoords>
+            <itemgap>1</itemgap>
+        </control>
+        <control type="button" id="1000">
+            <description>button template</description>
+            <left>0</left>
+            <width>506</width>
+            <height>65</height>
+            <align>center</align>
+            <aligny>center</aligny>
+            <font>regular24</font>
+            <shadowcolor>black</shadowcolor>
+            <texturefocus colordiffuse="activedialog" border="1">colors/white.png</texturefocus>
+            <texturenofocus colordiffuse="background">colors/white.png</texturenofocus>
+        </control>
+    </controls>
+</window>

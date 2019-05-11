@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <include>dialogpopup_openclose</include>
+    <defaultcontrol always="true">9000</defaultcontrol>
+    <onunload condition="!Skin.HasSetting(init_done)">RunScript(script.unfussy.helper,action=check_includes)</onunload>
+    <onunload condition="!Skin.HasSetting(init_done)">RunScript(script.unfussy.helper,action=check_defaultsettings)</onunload>
+    <controls>
+        <control type="group">
+            <centertop>50%</centertop>
+            <centerleft>50%</centerleft>
+            <height>430</height>
+            <width>800</width>
+            <include>background_dialog</include>
+            <include>dialog_confirm_decoration</include>
+            <control type="label" id="1">
+                <include>headerlabel_dialog</include>
+                <scroll>true</scroll>
+                <label/>
+            </control>
+            <control type="textbox" id="9">
+                <left>30</left>
+                <top>110</top>
+                <right>30</right>
+                <height>200</height>
+                <font>light36</font>
+                <align>center</align>
+                <aligny>center</aligny>
+                <label/>
+                <autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+            </control>
+            <control type="progress" id="20">
+                <left>30</left>
+                <top>300</top>
+                <width>740</width>
+                <height>15</height>
+                <info>System.Progressbar</info>
+            </control>
+            <control type="grouplist" id="9000">
+                <orientation>horizontal</orientation>
+                <left>10</left>
+                <top>350</top>
+                <width>780</width>
+                <align>center</align>
+                <itemgap>30</itemgap>
+                <control type="button" id="11">
+                    <width>350</width>
+                    <height>60</height>
+                    <label/>
+                    <font>regular30</font>
+                    <textoffsetx>20</textoffsetx>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <textcolor>white</textcolor>
+                    <focusedcolor>white</focusedcolor>
+                    <shadowcolor>black</shadowcolor>
+                    <texturefocus colordiffuse="activedialog">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="background">colors/white.png</texturenofocus>
+                </control>
+                <control type="button" id="10">
+                    <width>350</width>
+                    <height>60</height>
+                    <label/>
+                    <font>regular30</font>
+                    <textoffsetx>20</textoffsetx>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <textcolor>white</textcolor>
+                    <focusedcolor>white</focusedcolor>
+                    <shadowcolor>black</shadowcolor>
+                    <texturefocus colordiffuse="activedialog">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="background">colors/white.png</texturenofocus>
+                </control>
+            </control>
+        </control>
+    </controls>
+</window>

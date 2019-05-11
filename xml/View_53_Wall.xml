@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="view_53_wall">
+        <control type="group">
+            <include>openclose_slight_left</include>
+            <visible>Control.IsVisible(53)</visible>
+            <control type="panel" id="53">
+                <visible>$EXP[AllowedViewWall]</visible>
+                <top>65</top>
+                <left>20</left>
+                <bottom>20</bottom>
+                <width>1880</width>
+                <height>1000</height>
+                <visible>true</visible>
+                <focusposition>2</focusposition>
+                <viewtype label="Wall">icon</viewtype>
+                <orientation>vertical</orientation>
+                <scrolltime tween="sine" easing="out">500</scrolltime>
+                <pagecontrol>53001</pagecontrol>
+                <onleft>9000</onleft>
+                <onright>53001</onright>
+                <include content="view_53_itemlayout" />
+                <include content="view_53_focusedlayout" />
+            </control>
+            <include content="scrollbar">
+                <param name="controlled_id" value="53" />
+                <param name="onleft_id" value="53" />
+                <param name="onright_id" value="53" />
+                <param name="top" value="70" />
+                <param name="left" value="1900" />
+            </include>
+        </control>
+    </include>
+
+    <include name="view_53_itemlayout">
+        <itemlayout condition="Container.Content(movies) | Container.Content(musicvideos)" width="268" height="435">
+            <include content="view_53_listitem_movies" />
+        </itemlayout>
+        <itemlayout condition="Container.Content(tvshows)" width="940" height="270">
+            <include content="view_53_listitem_tvshows" />
+        </itemlayout>
+        <itemlayout condition="Container.Content(addons)" width="313" height="450">
+            <include content="view_53_listitem_addons" />
+        </itemlayout>
+        <itemlayout condition="Container.Content(artists) | Container.Content(albums)" width="313" height="363">
+            <include content="view_53_listitem_music" />
+        </itemlayout>
+        <itemlayout condition="Container.Content(images)" width="313" height="380">
+            <include content="view_53_listitem_images" />
+        </itemlayout>
+    </include>
+
+    <include name="view_53_focusedlayout">
+        <focusedlayout condition="Container.Content(movies) | Container.Content(musicvideos)" width="268" height="435">
+            <include content="view_53_listitem_movies">
+                <param name="active">true</param>
+            </include>
+        </focusedlayout>
+        <focusedlayout condition="Container.Content(tvshows)" width="940" height="270">
+            <include content="view_53_listitem_tvshows">
+                <param name="active">true</param>
+            </include>
+        </focusedlayout>
+        <focusedlayout condition="Container.Content(addons)" width="313" height="450">
+            <include content="view_53_listitem_addons">
+                <param name="active">true</param>
+            </include>
+        </focusedlayout>
+        <focusedlayout condition="Container.Content(artists) | Container.Content(albums)" width="313" height="363">
+            <include content="view_53_listitem_music">
+                <param name="active">true</param>
+            </include>
+        </focusedlayout>
+        <focusedlayout condition="Container.Content(images)" width="313" height="380">
+            <include content="view_53_listitem_images">
+                <param name="active">true</param>
+            </include>
+        </focusedlayout>
+    </include>
+
+    <include name="view_53_listitem_movies">
+        <param name="active">false</param>
+        <definition>
+            <include content="listitem_background">
+                <param name="active">$PARAM[active]</param>
+                <param name="top">10</param>
+                <param name="width">252</param>
+                <param name="height">425</param>
+            </include>
+            <control type="image">
+                <top>11</top>
+                <left>1</left>
+                <width>250</width>
+                <height>375</height>
+                <aspectratio>scale</aspectratio>
+                <texture background="true">$INFO[ListItem.Art(poster)]</texture>
+            </control>
+            <control type="image">
+                <visible>String.IsEqual(ListItem.Label,..)</visible>
+                <left>10</left>
+                <right>10</right>
+                <aspectratio>keep</aspectratio>
+                <texture background="true">$INFO[ListItem.ActualIcon]</texture>
+            </control>
+            <control type="label">
+                <top>386</top>
+                <left>10</left>
+                <width>230</width>
+                <height>50</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>regular24</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="view_53_listitem_tvshows">
+        <param name="active">false</param>
+        <definition>
+            <include content="listitem_background">
+                <param name="active">$PARAM[active]</param>
+                <param name="top">10</param>
+                <param name="width">932</param>
+                <param name="height">260</param>
+            </include>
+            <control type="image">
+                <top>11</top>
+                <left>1</left>
+                <width>930</width>
+                <height>172</height>
+                <aspectratio>scale</aspectratio>
+                <texture background="true">$INFO[ListItem.Art(banner)]</texture>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(ListItem.Label,..)</visible>
+                <control type="image">
+                    <top>-60</top>
+                    <left>10</left>
+                    <right>10</right>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.ActualIcon]</texture>
+                </control>
+                <control type="label">
+                    <top>190</top>
+                    <left>10</left>
+                    <width>910</width>
+                    <height>50</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light70</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+            <control type="label">
+                <visible>!String.IsEqual(ListItem.Label,..)</visible>
+                <top>190</top>
+                <left>10</left>
+                <width>910</width>
+                <height>70</height>
+                <aligny>center</aligny>
+                <font>light44</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="label">
+                <right>20</right>
+                <bottom>0</bottom>
+                <height>30</height>
+                <align>right</align>
+                <aligny>center</aligny>
+                <font>light24</font>
+                <textcolor>active</textcolor>
+                <label>$INFO[ListItem.Property(TotalSeasons),[COLOR white]$LOCALIZE[33054]:[/COLOR] , / ]$INFO[ListItem.Property(TotalEpisodes),[COLOR white]$LOCALIZE[36907]:[/COLOR] ,]$INFO[ListItem.Property(WatchedEpisodes), / [COLOR white]$LOCALIZE[16102]:[/COLOR] ,]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="view_53_listitem_addons">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <top>10</top>
+                <include content="listitem_background">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="width">302</param>
+                    <param name="height">440</param>
+                </include>
+                <control type="image">
+                    <top>1</top>
+                    <left>1</left>
+                    <width>300</width>
+                    <height>300</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Label,..)</visible>
+                    <left>10</left>
+                    <right>10</right>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.ActualIcon]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(Addon.Status),$LOCALIZE[24023])</visible>
+                    <top>5</top>
+                    <left>258</left>
+                    <width>40</width>
+                    <height>40</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true" colordiffuse="red">icons/buttons/disable.png</texture>
+                </control>
+                <control type="textbox">
+                    <top>305</top>
+                    <left>10</left>
+                    <width>280</width>
+                    <height>70</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="textbox">
+                    <top>380</top>
+                    <left>10</left>
+                    <width>280</width>
+                    <height>60</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular20</font>
+                    <label>$INFO[ListItem.AddonSummary]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="view_53_listitem_music">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <top>10</top>
+                <include content="listitem_background">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="width">302</param>
+                    <param name="height">352</param>
+                </include>
+                <control type="image">
+                    <top>1</top>
+                    <left>1</left>
+                    <width>300</width>
+                    <height>300</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Label,..)</visible>
+                    <left>10</left>
+                    <right>10</right>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.ActualIcon]</texture>
+                </control>
+                <control type="label">
+                    <top>300</top>
+                    <left>10</left>
+                    <width>280</width>
+                    <height>50</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular30</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="view_53_listitem_images">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <top>10</top>
+                <control type="image">
+                    <visible>!$PARAM[active]</visible>
+                    <width>305</width>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="ff202020">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <visible>$PARAM[active]</visible>
+                    <width>305</width>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="ff202020">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <visible>$PARAM[active]</visible>
+                    <top>305</top>
+                    <left>1</left>
+                    <width>303</width>
+                    <height>64</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                </control>
+                <control type="image">
+                    <top>10</top>
+                    <left>5</left>
+                    <width>293</width>
+                    <height>293</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true" fallback="defaultpicture.png">$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="textbox">
+                    <top>300</top>
+                    <left>5</left>
+                    <right>10</right>
+                    <height>70</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+</includes>

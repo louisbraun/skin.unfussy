@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <backgroundcolor>0</backgroundcolor>
+    <defaultcontrol>5001</defaultcontrol>
+    <controls>
+        <include>background</include>
+        <include content="info_header">
+            <param name="title" value="$LOCALIZE[1]" />
+            <param name="showicon" value="true" />
+            <param name="icon" value="icons/mainmenu/pictures.png" />
+        </include>
+        <control type="group">
+            <include>openclose_slight_left</include>
+            <top>80</top>
+            <left>0</left>
+            <width>1280</width>
+            <height>1000</height>
+            <control type="label">
+                <height>80</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>light50</font>
+                <textcolor>active</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="label">
+                <top>80</top>
+                <height>40</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>light36</font>
+                <shadowcolor>black</shadowcolor>
+                <label>$INFO[ListItem.PictureDateTime]</label>
+            </control>
+            <control type="image">
+                <centertop>50%</centertop>
+                <left>19</left>
+                <width>1242</width>
+                <height>699</height>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <centertop>50%</centertop>
+                <left>20</left>
+                <width>1240</width>
+                <height>697</height>
+                <aspectratio>keep</aspectratio>
+                <texture>$INFO[ListItem.FolderPath]</texture>
+            </control>
+        </control>
+        <control type="group">
+            <include>openclose_slight_right</include>
+            <top>80</top>
+            <left>1280</left>
+            <width>620</width>
+            <height>980</height>
+            <control type="image">
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="list" id="5">
+                <top>10</top>
+                <width>610</width>
+                <height>960</height>
+                <orientation>vertical</orientation>
+                <onup>5</onup>
+                <ondown>5</ondown>
+                <pagecontrol>5001</pagecontrol>
+                <itemlayout height="50">
+                    <control type="label">
+                        <left>10</left>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label]</label>
+                        <textcolor>active</textcolor>
+                    </control>
+                    <control type="label">
+                        <right>10</right>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label2]</label>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="50">
+                    <control type="label">
+                        <left>10</left>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label]</label>
+                        <textcolor>active</textcolor>
+                    </control>
+                    <control type="label">
+                        <right>10</right>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label2]</label>
+                    </control>
+                </focusedlayout>
+            </control>
+            <include content="scrollbar">
+                <param name="top">-2</param>
+                <param name="left">625</param>
+                <param name="width">16</param>
+                <param name="height">983</param>
+                <param name="controlled_id">5</param>
+            </include>
+        </control>
+    </controls>
+</window>

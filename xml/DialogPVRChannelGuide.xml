@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <onload>ClearProperty(showdetail)</onload>
+    <defaultcontrol>11</defaultcontrol>
+    <controls>
+        <control type="group">
+            <include>openclose_slight_right</include>
+            <left>1240</left>
+            <width>680</width>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <top>10</top>
+                <width>200</width>
+                <height>80</height>
+                <aspectratio>keep</aspectratio>
+                <texture>$INFO[Player.Icon]</texture>
+            </control>
+            <control type="label">
+                <left>210</left>
+                <height>100</height>
+                <aligny>center</aligny>
+                <font>regular30</font>
+                <textcolor>active</textcolor>
+                <label>$INFO[Container(11).ListItem.StartDate]</label>
+            </control>
+            <control type="fixedlist" id="11">
+                <top>100</top>
+                <onright condition="!String.IsEqual(Window.Property(showdetail),true)">Close</onright>
+                <onright condition="String.IsEqual(Window.Property(showdetail),true)">ClearProperty(showdetail)</onright>
+                <onleft>SetProperty(showdetail,true)</onleft>
+                <onup>11</onup>
+                <ondown>11</ondown>
+                <orientation>vertical</orientation>
+                <movement>4</movement>
+                <focusposition>4</focusposition>
+                <scrolltime tween="cubic" easing="out">400</scrolltime>
+                <itemlayout width="680" height="100">
+                    <include content="pvr_guideosd_item" />
+                </itemlayout>
+                <focusedlayout width="680" height="100">
+                    <include content="pvr_guideosd_item">
+                        <param name="active" value="true" />
+                    </include>
+                </focusedlayout>
+            </control>
+            <control type="image">
+                <top>100</top>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+        </control>
+        <include content="pvr_osd_detail">
+            <param name="left">240</param>
+        </include>
+    </controls>
+</window>

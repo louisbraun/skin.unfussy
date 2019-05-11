@@ -1,0 +1,1550 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1199">
+    <zorder>100</zorder>
+    <visible>!Window.IsVisible(startup)</visible>
+    <controls>
+        <!-- Global debug grid -->
+        <control type="image">
+            <width>$INFO[System.ScreenWidth]</width>
+            <height>$INFO[System.ScreenHeight]</height>
+            <colordiffuse>88ffffff</colordiffuse>
+            <texture>special://skin/extras/debuggrid1080.png</texture>
+            <visible>Skin.HasSetting(DebugGrid)</visible>
+        </control>
+        <!-- Window/Dialog debug -->
+        <control type="grouplist">
+            <left>15</left>
+            <top>80</top>
+            <width>780</width>
+            <height>450</height>
+            <itemgap>12</itemgap>
+            <visible>Skin.HasSetting(DebugInfo)</visible>
+            <!-- Custom Dialogs -->
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>script-NextAired-TVGuide.xml</label>
+                <visible>Window.IsVisible(script-NextAired-TVGuide.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>script-NextAired-TVGuide2.xml</label>
+                <visible>Window.IsVisible(script-NextAired-TVGuide2.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>script-skinshortcuts.xml</label>
+                <visible>Window.IsVisible(script-skinshortcuts.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>script-culrclyrics.xml</label>
+                <visible>Window.IsVisible(script-cu-lrclyrics-main.xml)</visible>
+            </control>
+            <!-- Window labels -->
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>AddonBrowser.xml</label>
+                <visible>Window.IsVisible(AddonBrowser.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>FileManager.xml</label>
+                <visible>Window.IsVisible(FileManager.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>Home.xml</label>
+                <visible>Window.IsVisible(Home.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>LoginScreen.xml</label>
+                <visible>Window.IsVisible(LoginScreen.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyMusicNav.xml</label>
+                <visible>Window.IsVisible(MyMusicNav.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyMusicPlaylist.xml</label>
+                <visible>Window.IsVisible(MyMusicPlaylist.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyMusicPlaylistEditor.xml</label>
+                <visible>Window.IsVisible(MyMusicPlaylistEditor.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyMusicSongs.xml</label>
+                <visible>Window.IsVisible(MyMusicSongs.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyPics.xml</label>
+                <visible>Window.IsVisible(MyPics.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyPlaylist.xml</label>
+                <visible>Window.IsVisible(MyPlaylist.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyPrograms.xml</label>
+                <visible>Window.IsVisible(MyPrograms.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyPVRChannels.xml</label>
+                <visible>Window.IsVisible(MyPVRChannels.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyPVRGuide.xml</label>
+                <visible>Window.IsVisible(MyPVRGuide.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyPVRRecordings.xml</label>
+                <visible>Window.IsVisible(MyPVRRecordings.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyPVRSearch.xml</label>
+                <visible>Window.IsVisible(MyPVRSearch.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyPVRTimers.xml</label>
+                <visible>Window.IsVisible(MyPVRTimers.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyVideoNav.xml</label>
+                <visible>Window.IsVisible(MyVideoNav.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyVideoPlaylist.xml</label>
+                <visible>Window.IsVisible(MyVideoPlaylist.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MyWeather.xml</label>
+                <visible>Window.IsVisible(MyWeather.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>Settings.xml</label>
+                <visible>Window.IsVisible(Settings.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>SettingsCategory.xml</label>
+                <visible>Window.IsVisible(SettingsCategory.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>SettingsProfile.xml</label>
+                <visible>Window.IsVisible(SettingsProfile.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>SkinSettings.xml</label>
+                <visible>Window.IsVisible(SkinSettings.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>VideoFullScreen.xml</label>
+                <visible>Window.IsVisible(VideoFullScreen.xml)</visible>
+            </control>
+            <!-- Dialog labels -->
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogAddonInfo.xml</label>
+                <visible>Window.IsVisible(DialogAddonInfo.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogAddonSettings.xml</label>
+                <visible>Window.IsVisible(DialogAddonSettings.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogAlbumInfo.xml</label>
+                <visible>Window.IsVisible(DialogAlbumInfo.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogBusy.xml</label>
+                <visible>Window.IsVisible(DialogBusy.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogButtonMenu.xml</label>
+                <visible>Window.IsVisible(DialogButtonMenu.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogContentSettings.xml</label>
+                <visible>Window.IsVisible(DialogContentSettings.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogContextMenu.xml</label>
+                <visible>Window.IsVisible(DialogContextMenu.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogExtendedProgressBar.xml</label>
+                <visible>Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogFavourites.xml</label>
+                <visible>Window.IsVisible(DialogFavourites.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogFileStacking.xml</label>
+                <visible>Window.IsVisible(DialogFileStacking.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogFullScreenInfo.xml</label>
+                <visible>Window.IsVisible(DialogFullScreenInfo.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogKaiToast.xml</label>
+                <visible>Window.IsVisible(DialogKaiToast.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogKaraokeSongSelector.xml</label>
+                <visible>Window.IsVisible(DialogKaraokeSongSelector.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogKaraokeSongSelectorLarge.xml</label>
+                <visible>Window.IsVisible(DialogKaraokeSongSelectorLarge.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogKeyboard.xml</label>
+                <visible>Window.IsVisible(DialogKeyboard.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogMediaFilter.xml</label>
+                <visible>Window.IsVisible(DialogMediaFilter.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogMediaSource.xml</label>
+                <visible>Window.IsVisible(DialogMediaSource.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogMuteBug.xml</label>
+                <visible>Window.IsVisible(DialogMuteBug.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogNetworkSetup.xml</label>
+                <visible>Window.IsVisible(DialogNetworkSetup.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogNumeric.xml</label>
+                <visible>Window.IsVisible(DialogNumeric.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogOK.xml</label>
+                <visible>Window.IsVisible(DialogOK.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogPeripheralManager.xml</label>
+                <visible>Window.IsVisible(DialogPeripheralManager.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogPeripheralSettings.xml</label>
+                <visible>Window.IsVisible(DialogPeripheralSettings.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogPictureInfo.xml</label>
+                <visible>Window.IsVisible(DialogPictureInfo.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogProgress.xml</label>
+                <visible>Window.IsVisible(DialogProgress.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogPVRChannelManager.xml</label>
+                <visible>Window.IsVisible(DialogPVRChannelManager.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogPVRChannelsOSD.xml</label>
+                <visible>Window.IsVisible(DialogPVRChannelsOSD.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogPVRGroupManager.xml</label>
+                <visible>Window.IsVisible(DialogPVRGroupManager.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogPVRGuideInfo.xml</label>
+                <visible>Window.IsVisible(DialogPVRGuideInfo.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogPVRGuideOSD.xml</label>
+                <visible>Window.IsVisible(DialogPVRGuideOSD.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogPVRGuideSearch.xml</label>
+                <visible>Window.IsVisible(DialogPVRGuideSearch.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogPVRRecordingInfo.xml</label>
+                <visible>Window.IsVisible(DialogPVRRecordingInfo.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogPVRTimerSettings.xml</label>
+                <visible>Window.IsVisible(DialogPVRTimerSettings.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogSeekbar.xml</label>
+                <visible>Window.IsVisible(DialogSeekbar.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogSelect.xml</label>
+                <visible>Window.IsVisible(DialogSelect.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogSlider.xml</label>
+                <visible>Window.IsVisible(DialogSlider.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogSongInfo.xml</label>
+                <visible>Window.IsVisible(DialogSongInfo.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogSubtitles.xml</label>
+                <visible>Window.IsVisible(DialogSubtitles.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogTextViewer.xml</label>
+                <visible>Window.IsVisible(DialogTextViewer.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogVideoInfo.xml</label>
+                <visible>Window.IsVisible(DialogVideoInfo.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogVolumeBar.xml</label>
+                <visible>Window.IsVisible(DialogVolumeBar.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>DialogYesNo.xml</label>
+                <visible>Window.IsVisible(DialogYesNo.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>FileBrowser.xml</label>
+                <visible>Window.IsVisible(FileBrowser.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>LockSettings.xml</label>
+                <visible>Window.IsVisible(LockSettings.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MusicKaraokeLyrics.xml</label>
+                <visible>Window.IsVisible(MusicKaraokeLyrics.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MusicOSD.xml</label>
+                <visible>Window.IsVisible(MusicOSD.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MusicOverlay.xml</label>
+                <visible>Window.IsVisible(MusicOverlay.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>MusicVisualisation.xml</label>
+                <visible>Window.IsVisible(MusicVisualisation.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>PlayerControls.xml</label>
+                <visible>Window.IsVisible(PlayerControls.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>ProfileSettings.xml</label>
+                <visible>Window.IsVisible(ProfileSettings.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>SettingsScreenCalibration.xml</label>
+                <visible>Window.IsVisible(SettingsScreenCalibration.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>SettingsSystemInfo.xml</label>
+                <visible>Window.IsVisible(SettingsSystemInfo.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>SlideShow.xml</label>
+                <visible>Window.IsVisible(SlideShow.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>SmartPlaylistEditor.xml</label>
+                <visible>Window.IsVisible(SmartPlaylistEditor.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>SmartPlaylistRule.xml</label>
+                <visible>Window.IsVisible(SmartPlaylistRule.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>VideoOSD.xml</label>
+                <visible>Window.IsVisible(VideoOSD.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>VideoOSDBookmarks.xml</label>
+                <visible>Window.IsVisible(VideoOSDBookmarks.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>VideoOSDSettings.xml</label>
+                <visible>Window.IsVisible(VideoOSDSettings.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>VideoOverlay.xml</label>
+                <visible>Window.IsVisible(VideoOverlay.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
+                <label>VisualisationPresetList.xml</label>
+                <visible>Window.IsVisible(VisualisationPresetList.xml)</visible>
+            </control>
+        </control>
+        <!-- Controls debug -->
+        <control type="image">
+            <visible>Skin.HasSetting(DebugInfo)</visible>
+            <right>10</right>
+            <top>10</top>
+            <width>510</width>
+            <height>1060</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+        </control>
+        <control type="grouplist" id="9999">
+            <defaultcontrol always="true">300</defaultcontrol>
+            <right>15</right>
+            <top>10</top>
+            <width>500</width>
+            <height>1060</height>
+            <itemgap>5</itemgap>
+            <orientation>vertical</orientation>
+            <visible>Skin.HasSetting(DebugInfo)</visible>
+            <include content="debugcategory">
+                <param name="category" value="Container" />
+                <param name="visible" value="true" />
+            </include>
+            <include content="debugtextbox">
+                <param name="visible" value="true" />
+                <param name="value1" value="$INFO[Container.Content, [COLOR active][B]Content[/B]:[/COLOR] , [CR]]" />
+                <param name="value2" value="$INFO[Container.FolderPath, [COLOR active][B]FolderPath[/B]:[/COLOR] , [CR]]" />
+                <param name="value3" value="$INFO[Container.FolderName, [COLOR active][B]FolderName[/B]:[/COLOR] , [CR]]" />
+                <param name="value4" value="$INFO[Container.Viewmode, [COLOR active][B]Viewmode[/B]:[/COLOR] , [CR]]" />
+                <param name="value5" value="$INFO[Container.SortMethod, [COLOR active][B]SortMethod[/B]:[/COLOR] , [CR]]" />
+                <param name="value6" value="$INFO[Container.SortOrder, [COLOR active][B]SortOrder[/B]:[/COLOR] , [CR]]" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(files)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(songs)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(artists)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(albums)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(movies)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(tvshows)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(seasons)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(episodes)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(musicvideos)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(genres)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(years)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(actors)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(playlists)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(plugins)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(studios)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(directors)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(sets)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(tags)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(countries)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(roles)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(images)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(Addons)" />
+            </include>
+            <include content="debugbool">
+                <param name="boolvalue" value="Container.Content(LiveTV)" />
+            </include>
+
+            <include content="debugcategory">
+                <param name="category" value="Player (F8)" />
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+            </include>
+            <include content="debugtextbox">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="value1" value="$INFO[Player.FinishTime, [COLOR active][B]FinishTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value2" value="$INFO[Player.Chapter, [COLOR active][B]Chapter[/B]:[/COLOR] , [CR]]" />
+                <param name="value3" value="$INFO[Player.ChapterCount, [COLOR active][B]ChapterCount[/B]:[/COLOR] , [CR]]" />
+                <param name="value4" value="$INFO[Player.Time, [COLOR active][B]Time[/B]:[/COLOR] , [CR]]" />
+                <param name="value5" value="$INFO[Player.TimeRemaining, [COLOR active][B]TimeRemaining[/B]:[/COLOR] , [CR]]" />
+                <param name="value6" value="$INFO[Player.Duration, [COLOR active][B]Duration[/B]:[/COLOR] , [CR]]" />
+                <param name="value7" value="$INFO[Player.SeekTime, [COLOR active][B]SeekTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value8" value="$INFO[Player.SeekOffset, [COLOR active][B]SeekOffset[/B]:[/COLOR] , [CR]]" />
+                <param name="value9" value="$INFO[Player.SeekStepSize, [COLOR active][B]SeekStepSize[/B]:[/COLOR] , [CR]]" />
+                <param name="value10" value="$INFO[Player.ProgressCache, [COLOR active][B]ProgressCache[/B]:[/COLOR] , [CR]]" />
+                <param name="value11" value="$INFO[Player.Folderpath, [COLOR active][B]Folderpath[/B]:[/COLOR] , [CR]]" />
+                <param name="value12" value="$INFO[Player.Filenameandpath, [COLOR active][B]Filenameandpath[/B]:[/COLOR] , [CR]]" />
+                <param name="value13" value="$INFO[Player.StartTime, [COLOR active][B]StartTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value14" value="$INFO[Player.Title, [COLOR active][B]Title[/B]:[/COLOR] , [CR]]" />
+                <param name="value15" value="$INFO[Player.Filename, [COLOR active][B]Filename[/B]:[/COLOR] , [CR]]" />
+                <param name="value16" value="$INFO[Player.Process(AudioBitsPerSample), [COLOR active][B]Process(AudioBitsPerSample)[/B]:[/COLOR] , [CR]]" />
+                <param name="value17" value="$INFO[Player.Process(AudioChannels), [COLOR active][B]Process(AudioChannels)[/B]:[/COLOR] , [CR]]" />
+                <param name="value18" value="$INFO[Player.Process(AudioDecoder), [COLOR active][B]Process(AudioDecoder)[/B]:[/COLOR] , [CR]]" />
+                <param name="value19" value="$INFO[Player.Process(AudioSamplerate), [COLOR active][B]Process(AudioSamplerate)[/B]:[/COLOR] , [CR]]" />
+                <param name="value20" value="$INFO[Player.Process(DeintMethod), [COLOR active][B]Process(DeintMethod)[/B]:[/COLOR] , [CR]]" />
+                <param name="value21" value="$INFO[Player.Process(PixFormat), [COLOR active][B]Process(PixFormat)[/B]:[/COLOR] , [CR]]" />
+                <param name="value22" value="$INFO[Player.Process(VideoDAR), [COLOR active][B]Process(VideoDAR)[/B]:[/COLOR] , [CR]]" />
+                <param name="value23" value="$INFO[Player.Process(VideoFPS), [COLOR active][B]Process(VideoFPS)[/B]:[/COLOR] , [CR]]" />
+                <param name="value24" value="$INFO[Player.Process(VideoHeight), [COLOR active][B]Process(VideoHeight)[/B]:[/COLOR] , [CR]]" />
+                <param name="value25" value="$INFO[Player.Process(VideoDecoder), [COLOR active][B]Process(VideoDecoder)[/B]:[/COLOR] , [CR]]" />
+                <param name="value26" value="$INFO[Player.Process(VideoWidth), [COLOR active][B]Process(VideoWidth)[/B]:[/COLOR] , [CR]]" />
+                <param name="value27" value="$INFO[Player.CacheLevel, [COLOR active][B]CacheLevel[/B]:[/COLOR] , [CR]]" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.HasMedia" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.HasAudio" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.HasDuration" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.HasVideo" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.Passthrough" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.Playing" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.Paused" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.Forwarding" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.Rewinding" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.Caching" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.DisplayAfterSeek" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.Seeking" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.SeekEnabled" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.ShowTime" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.ShowInfo" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.IsInternetStream" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.Muted" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.TempoEnabled" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPlayer)" />
+                <param name="boolvalue" value="Player.IsTempo" />
+            </include>
+
+
+            <include content="debugcategory">
+                <param name="id" value="302" />
+                <param name="category" value="VideoPlayer (F9)" />
+                <param name="visible" value="Skin.HasSetting(DebugInfoVideoPlayer)" />
+            </include>
+            <include content="debugtextbox">
+                <param name="visible" value="Skin.HasSetting(DebugInfoVideoPlayer)" />
+                <param name="value1" value="$INFO[VideoPlayer.Time, [COLOR active][B]Time[/B]:[/COLOR] , [CR]]" />
+                <param name="value2" value="$INFO[VideoPlayer.TimeRemaining, [COLOR active][B]TimeRemaining[/B]:[/COLOR] , [CR]]" />
+                <param name="value3" value="$INFO[VideoPlayer.TimeSpeed, [COLOR active][B]TimeSpeed[/B]:[/COLOR] , [CR]]" />
+                <param name="value4" value="$INFO[VideoPlayer.Duration, [COLOR active][B]Duration[/B]:[/COLOR] , [CR]]" />
+                <param name="value5" value="$INFO[VideoPlayer.Title, [COLOR active][B]Title[/B]:[/COLOR] , [CR]]" />
+                <param name="value6" value="$INFO[VideoPlayer.TVShowTitle, [COLOR active][B]TVShowTitle[/B]:[/COLOR] , [CR]]" />
+                <param name="value7" value="$INFO[VideoPlayer.Season, [COLOR active][B]Season[/B]:[/COLOR] , [CR]]" />
+                <param name="value8" value="$INFO[VideoPlayer.Episode, [COLOR active][B]Episode[/B]:[/COLOR] , [CR]]" />
+                <param name="value9" value="$INFO[VideoPlayer.Genre, [COLOR active][B]Genre[/B]:[/COLOR] , [CR]]" />
+                <param name="value10" value="$INFO[VideoPlayer.Director, [COLOR active][B]Director[/B]:[/COLOR] , [CR]]" />
+                <param name="value11" value="$INFO[VideoPlayer.Country, [COLOR active][B]Country[/B]:[/COLOR] , [CR]]" />
+                <param name="value12" value="$INFO[VideoPlayer.Year, [COLOR active][B]Year[/B]:[/COLOR] , [CR]]" />
+                <param name="value13" value="$INFO[VideoPlayer.Rating, [COLOR active][B]Rating[/B]:[/COLOR] , [CR]]" />
+                <param name="value14" value="$INFO[VideoPlayer.UserRating, [COLOR active][B]UserRating[/B]:[/COLOR] , [CR]]" />
+                <param name="value15" value="$INFO[VideoPlayer.Votes, [COLOR active][B]Votes[/B]:[/COLOR] , [CR]]" />
+                <param name="value16" value="$INFO[VideoPlayer.RatingAndVotes, [COLOR active][B]RatingAndVotes[/B]:[/COLOR] , [CR]]" />
+                <param name="value17" value="$INFO[VideoPlayer.mpaa, [COLOR active][B]mpaa[/B]:[/COLOR] , [CR]]" />
+                <param name="value18" value="$INFO[VideoPlayer.IMDBNumber, [COLOR active][B]IMDBNumber[/B]:[/COLOR] , [CR]]" />
+                <param name="value19" value="$INFO[VideoPlayer.EpisodeName, [COLOR active][B]EpisodeName[/B]:[/COLOR] , [CR]]" />
+                <param name="value20" value="$INFO[VideoPlayer.PlaylistPosition, [COLOR active][B]PlaylistPosition[/B]:[/COLOR] , [CR]]" />
+                <param name="value21" value="$INFO[VideoPlayer.PlaylistLength, [COLOR active][B]PlaylistLength[/B]:[/COLOR] , [CR]]" />
+                <!--
+                <param name="value22" value="$INFO[VideoPlayer.Cast, [COLOR active][B]Cast[/B]:[/COLOR] , [CR]]" />
+                <param name="value23" value="$INFO[VideoPlayer.CastAndRole, [COLOR active][B]CastAndRole[/B]:[/COLOR] , [CR]]" />
+                -->
+                <param name="value24" value="$INFO[VideoPlayer.Album, [COLOR active][B]Album[/B]:[/COLOR] , [CR]]" />
+                <param name="value25" value="$INFO[VideoPlayer.Artist, [COLOR active][B]Artist[/B]:[/COLOR] , [CR]]" />
+                <param name="value26" value="$INFO[VideoPlayer.Studio, [COLOR active][B]Studio[/B]:[/COLOR] , [CR]]" />
+                <param name="value27" value="$INFO[VideoPlayer.Writer, [COLOR active][B]Writer[/B]:[/COLOR] , [CR]]" />
+                <param name="value28" value="$INFO[VideoPlayer.Tagline, [COLOR active][B]Tagline[/B]:[/COLOR] , [CR]]" />
+                <param name="value29" value="$INFO[VideoPlayer.PlotOutline, [COLOR active][B]PlotOutline[/B]:[/COLOR] , [CR]]" />
+                <!--
+                <param name="value30" value="$INFO[VideoPlayer.Plot, [COLOR active][B]Plot[/B]:[/COLOR] , [CR]]" />
+                -->
+                <param name="value31" value="$INFO[VideoPlayer.LastPlayed, [COLOR active][B]LastPlayed[/B]:[/COLOR] , [CR]]" />
+                <param name="value32" value="$INFO[VideoPlayer.PlayCount, [COLOR active][B]PlayCount[/B]:[/COLOR] , [CR]]" />
+                <param name="value33" value="$INFO[VideoPlayer.VideoCodec, [COLOR active][B]VideoCodec[/B]:[/COLOR] , [CR]]" />
+                <param name="value34" value="$INFO[VideoPlayer.VideoResolution, [COLOR active][B]VideoResolution[/B]:[/COLOR] , [CR]]" />
+                <param name="value35" value="$INFO[VideoPlayer.VideoAspect, [COLOR active][B]VideoAspect[/B]:[/COLOR] , [CR]]" />
+                <param name="value36" value="$INFO[VideoPlayer.AudioCodec, [COLOR active][B]AudioCodec[/B]:[/COLOR] , [CR]]" />
+                <param name="value37" value="$INFO[VideoPlayer.AudioChannels, [COLOR active][B]AudioChannels[/B]:[/COLOR] , [CR]]" />
+                <param name="value38" value="$INFO[VideoPlayer.AudioLanguage, [COLOR active][B]AudioLanguage[/B]:[/COLOR] , [CR]]" />
+                <param name="value39" value="$INFO[VideoPlayer.SubtitlesLanguage, [COLOR active][B]SubtitlesLanguage[/B]:[/COLOR] , [CR]]" />
+                <param name="value40" value="$INFO[VideoPlayer.StereoscopicMode, [COLOR active][B]StereoscopicMode[/B]:[/COLOR] , [CR]]" />
+                <param name="value41" value="$INFO[VideoPlayer.EndTime, [COLOR active][B]EndTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value42" value="$INFO[VideoPlayer.NextTitle, [COLOR active][B]NextTitle[/B]:[/COLOR] , [CR]]" />
+                <param name="value43" value="$INFO[VideoPlayer.NextGenre, [COLOR active][B]NextGenre[/B]:[/COLOR] , [CR]]" />
+                <!--
+                <param name="value44" value="$INFO[VideoPlayer.NextPlot, [COLOR active][B]NextPlot[/B]:[/COLOR] , [CR]]" />
+                -->
+                <param name="value45" value="$INFO[VideoPlayer.NextPlotOutline, [COLOR active][B]NextPlotOutline[/B]:[/COLOR] , [CR]]" />
+                <param name="value46" value="$INFO[VideoPlayer.NextStartTime, [COLOR active][B]NextStartTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value47" value="$INFO[VideoPlayer.NextEndTime, [COLOR active][B]NextEndTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value48" value="$INFO[VideoPlayer.NextDuration, [COLOR active][B]NextDuration[/B]:[/COLOR] , [CR]]" />
+                <param name="value49" value="$INFO[VideoPlayer.ChannelName, [COLOR active][B]ChannelName[/B]:[/COLOR] , [CR]]" />
+                <param name="value50" value="$INFO[VideoPlayer.ChannelNumberLabel, [COLOR active][B]ChannelNumberLabel[/B]:[/COLOR] , [CR]]" />
+                <param name="value51" value="$INFO[VideoPlayer.ChannelGroup, [COLOR active][B]ChannelGroup[/B]:[/COLOR] , [CR]]" />
+                <param name="value52" value="$INFO[VideoPlayer.ParentalRating, [COLOR active][B]ParentalRating[/B]:[/COLOR] , [CR]]" />
+                <param name="value53" value="$INFO[VideoPlayer.DBID, [COLOR active][B]DBID[/B]:[/COLOR] , [CR]]" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoVideoPlayer)" />
+                <param name="boolvalue" value="VideoPlayer.Content(movies)" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoVideoPlayer)" />
+                <param name="boolvalue" value="VideoPlayer.Content(episodes)" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoVideoPlayer)" />
+                <param name="boolvalue" value="VideoPlayer.Content(musicvideos)" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoVideoPlayer)" />
+                <param name="boolvalue" value="VideoPlayer.Content(livetv)" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoVideoPlayer)" />
+                <param name="boolvalue" value="VideoPlayer.Content(files)" />
+            </include>
+
+            <include content="debugcategory">
+                <param name="category" value="MusicPlayer (F1)" />
+                <param name="visible" value="Skin.HasSetting(DebugInfoMusicPlayer)" />
+            </include>
+            <include content="debugtextbox">
+                <param name="visible" value="Skin.HasSetting(DebugInfoMusicPlayer)" />
+                <param name="value1" value="$INFO[MusicPlayer.Title, [COLOR active][B]Title[/B]:[/COLOR] , [CR]]" />
+                <param name="value2" value="$INFO[MusicPlayer.Album, [COLOR active][B]Album[/B]:[/COLOR] , [CR]]" />
+                <param name="value3" value="$INFO[MusicPlayer.Property(Album_Mood), [COLOR active][B]Property(Album_Mood)[/B]:[/COLOR] , [CR]]" />
+                <param name="value4" value="$INFO[MusicPlayer.Property(Album_Style), [COLOR active][B]Property(Album_Style)[/B]:[/COLOR] , [CR]]" />
+                <param name="value5" value="$INFO[MusicPlayer.Property(Album_Theme), [COLOR active][B]Property(Album_Theme)[/B]:[/COLOR] , [CR]]" />
+                <param name="value6" value="$INFO[MusicPlayer.Property(Album_Type), [COLOR active][B]Property(Album_Type)[/B]:[/COLOR] , [CR]]" />
+                <param name="value7" value="$INFO[MusicPlayer.Property(Album_Label), [COLOR active][B]Property(Album_Label)[/B]:[/COLOR] , [CR]]" />
+                <param name="value8" value="$INFO[MusicPlayer.Property(Album_Description), [COLOR active][B]Property(Album_Description)[/B]:[/COLOR] , [CR]]" />
+                <param name="value9" value="$INFO[MusicPlayer.Artist, [COLOR active][B]Artist[/B]:[/COLOR] , [CR]]" />
+                <param name="value10" value="$INFO[MusicPlayer.Property(Artist_Born), [COLOR active][B]Property(Artist_Born)[/B]:[/COLOR] , [CR]]" />
+                <param name="value11" value="$INFO[MusicPlayer.Property(Artist_Died), [COLOR active][B]Property(Artist_Died)[/B]:[/COLOR] , [CR]]" />
+                <param name="value12" value="$INFO[MusicPlayer.Property(Artist_Formed), [COLOR active][B]Property(Artist_Formed)[/B]:[/COLOR] , [CR]]" />
+                <param name="value13" value="$INFO[MusicPlayer.Property(Artist_Disbanded), [COLOR active][B]Property(Artist_Disbanded)[/B]:[/COLOR] , [CR]]" />
+                <param name="value14" value="$INFO[MusicPlayer.Property(Artist_YearsActive), [COLOR active][B]Property(Artist_YearsActive)[/B]:[/COLOR] , [CR]]" />
+                <param name="value15" value="$INFO[MusicPlayer.Property(Artist_Instrument), [COLOR active][B]Property(Artist_Instrument)[/B]:[/COLOR] , [CR]]" />
+                <!--
+                <param name="value16" value="$INFO[MusicPlayer.Property(Artist_Description), [COLOR active][B]Property(Artist_Description)[/B]:[/COLOR] , [CR]]" />
+                -->
+                <param name="value17" value="$INFO[MusicPlayer.Property(Artist_Mood), [COLOR active][B]Property(Artist_Mood)[/B]:[/COLOR] , [CR]]" />
+                <param name="value18" value="$INFO[MusicPlayer.Property(Artist_Style), [COLOR active][B]Property(Artist_Style)[/B]:[/COLOR] , [CR]]" />
+                <param name="value19" value="$INFO[MusicPlayer.Property(Artist_Genre), [COLOR active][B]Property(Artist_Genre)[/B]:[/COLOR] , [CR]]" />
+                <param name="value20" value="$INFO[MusicPlayer.Property(Artist_Sortname), [COLOR active][B]Property(Artist_Sortname)[/B]:[/COLOR] , [CR]]" />
+                <param name="value21" value="$INFO[MusicPlayer.Property(Artist_Type), [COLOR active][B]Property(Artist_Type)[/B]:[/COLOR] , [CR]]" />
+                <param name="value22" value="$INFO[MusicPlayer.Property(Artist_Gender), [COLOR active][B]Property(Artist_Gender)[/B]:[/COLOR] , [CR]]" />
+                <param name="value23" value="$INFO[MusicPlayer.Property(Artist_Disambiguation), [COLOR active][B]Property(Artist_Disambiguation)[/B]:[/COLOR] , [CR]]" />
+                <param name="value24" value="$INFO[MusicPlayer.Genre, [COLOR active][B]Genre[/B]:[/COLOR] , [CR]]" />
+                <param name="value25" value="$INFO[MusicPlayer.Lyrics, [COLOR active][B]Lyrics[/B]:[/COLOR] , [CR]]" />
+                <param name="value26" value="$INFO[MusicPlayer.Year, [COLOR active][B]Year[/B]:[/COLOR] , [CR]]" />
+                <param name="value27" value="$INFO[MusicPlayer.Rating, [COLOR active][B]Rating[/B]:[/COLOR] , [CR]]" />
+                <param name="value28" value="$INFO[MusicPlayer.DiscNumber, [COLOR active][B]DiscNumber[/B]:[/COLOR] , [CR]]" />
+                <param name="value29" value="$INFO[MusicPlayer.Comment, [COLOR active][B]Comment[/B]:[/COLOR] , [CR]]" />
+                <param name="value30" value="$INFO[MusicPlayer.Time, [COLOR active][B]Time[/B]:[/COLOR] , [CR]]" />
+                <param name="value31" value="$INFO[MusicPlayer.TimeRemaining, [COLOR active][B]TimeRemaining[/B]:[/COLOR] , [CR]]" />
+                <param name="value32" value="$INFO[MusicPlayer.TimeSpeed, [COLOR active][B]TimeSpeed[/B]:[/COLOR] , [CR]]" />
+                <param name="value33" value="$INFO[MusicPlayer.TrackNumber, [COLOR active][B]TrackNumber[/B]:[/COLOR] , [CR]]" />
+                <param name="value34" value="$INFO[MusicPlayer.Duration, [COLOR active][B]Duration[/B]:[/COLOR] , [CR]]" />
+                <param name="value35" value="$INFO[MusicPlayer.BitRate, [COLOR active][B]BitRate[/B]:[/COLOR] , [CR]]" />
+                <param name="value36" value="$INFO[MusicPlayer.Channels, [COLOR active][B]Channels[/B]:[/COLOR] , [CR]]" />
+                <param name="value37" value="$INFO[MusicPlayer.BitsPerSample, [COLOR active][B]BitsPerSample[/B]:[/COLOR] , [CR]]" />
+                <param name="value38" value="$INFO[MusicPlayer.SampleRate, [COLOR active][B]SampleRate[/B]:[/COLOR] , [CR]]" />
+                <param name="value39" value="$INFO[MusicPlayer.Codec, [COLOR active][B]Codec[/B]:[/COLOR] , [CR]]" />
+                <param name="value40" value="$INFO[MusicPlayer.PlaylistPosition, [COLOR active][B]PlaylistPosition[/B]:[/COLOR] , [CR]]" />
+                <param name="value41" value="$INFO[MusicPlayer.PlaylistLength, [COLOR active][B]PlaylistLength[/B]:[/COLOR] , [CR]]" />
+                <param name="value42" value="$INFO[MusicPlayer.ChannelName, [COLOR active][B]ChannelName[/B]:[/COLOR] , [CR]]" />
+                <param name="value43" value="$INFO[MusicPlayer.ChannelNumberLabel, [COLOR active][B]ChannelNumberLabel[/B]:[/COLOR] , [CR]]" />
+                <param name="value44" value="$INFO[MusicPlayer.ChannelGroup, [COLOR active][B]ChannelGroup[/B]:[/COLOR] , [CR]]" />
+                <param name="value45" value="$INFO[MusicPlayer.Contributors, [COLOR active][B]Contributors[/B]:[/COLOR] , [CR]]" />
+                <param name="value46" value="$INFO[MusicPlayer.ContributorAndRole, [COLOR active][B]ContributorAndRole[/B]:[/COLOR] , [CR]]" />
+                <param name="value47" value="$INFO[MusicPlayer.Mood, [COLOR active][B]Mood[/B]:[/COLOR] , [CR]]" />
+                <!--
+                <param name="value48" value="$INFO[MusicPlayer.Property(Role.Arranger)), [COLOR active][B]Property(Role.Arranger))[/B]:[/COLOR] , [CR]]" />
+                <param name="value49" value="$INFO[MusicPlayer.Property(Role.Composer)), [COLOR active][B]Property(Role.Composer))[/B]:[/COLOR] , [CR]]" />
+                <param name="value50" value="$INFO[MusicPlayer.Property(Role.Conductor)), [COLOR active][B]Property(Role.Conductor))[/B]:[/COLOR] , [CR]]" />
+                <param name="value51" value="$INFO[MusicPlayer.Property(Role.DJMixer)), [COLOR active][B]Property(Role.DJMixer))[/B]:[/COLOR] , [CR]]" />
+                <param name="value52" value="$INFO[MusicPlayer.Property(Role.Engineer)), [COLOR active][B]Property(Role.Engineer))[/B]:[/COLOR] , [CR]]" />
+                <param name="value53" value="$INFO[MusicPlayer.Property(Role.Lyricist)), [COLOR active][B]Property(Role.Lyricist))[/B]:[/COLOR] , [CR]]" />
+                <param name="value54" value="$INFO[MusicPlayer.Property(Role.Mixer)), [COLOR active][B]Property(Role.Mixer))[/B]:[/COLOR] , [CR]]" />
+                <param name="value55" value="$INFO[MusicPlayer.Property(Role.Orchestra)), [COLOR active][B]Property(Role.Orchestra))[/B]:[/COLOR] , [CR]]" />
+                <param name="value56" value="$INFO[MusicPlayer.Property(Role.Producer)), [COLOR active][B]Property(Role.Producer))[/B]:[/COLOR] , [CR]]" />
+                <param name="value57" value="$INFO[MusicPlayer.Property(Role.Remixer)), [COLOR active][B]Property(Role.Remixer))[/B]:[/COLOR] , [CR]]" />
+                -->
+                <param name="value58" value="$INFO[MusicPlayer.UserRating, [COLOR active][B]UserRating[/B]:[/COLOR] , [CR]]" />
+                <param name="value59" value="$INFO[MusicPlayer.DBID, [COLOR active][B]DBID[/B]:[/COLOR] , [CR]]" />
+            </include>
+
+            <include content="debugcategory">
+                <param name="visible" value="Skin.HasSetting(DebugInfoListItem)" />
+                <param name="category" value="ListItem (F10)" />
+            </include>
+            <include content="debugtextbox">
+                <param name="visible" value="Skin.HasSetting(DebugInfoListItem)" />
+                <param name="value1"  value="$INFO[ListItem.Label, [COLOR active][B]Label[/B]:[/COLOR] , [CR]]" />
+                <param name="value2"  value="$INFO[ListItem.Label2, [COLOR active][B]Label2[/B]:[/COLOR] , [CR]]" />
+                <param name="value3"  value="$INFO[ListItem.Title, [COLOR active][B]Title[/B]:[/COLOR] , [CR]]" />
+                <param name="value4"  value="$INFO[ListItem.OriginalTitle, [COLOR active][B]OriginalTitle[/B]:[/COLOR] , [CR]]" />
+                <param name="value5"  value="$INFO[ListItem.SortLetter, [COLOR active][B]SortLetter[/B]:[/COLOR] , [CR]]" />
+                <param name="value6"  value="$INFO[ListItem.TrackNumber, [COLOR active][B]TrackNumber[/B]:[/COLOR] , [CR]]" />
+                <param name="value7"  value="$INFO[ListItem.Artist, [COLOR active][B]Artist[/B]:[/COLOR] , [CR]]" />
+                <param name="value8"  value="$INFO[ListItem.AlbumArtist, [COLOR active][B]AlbumArtist[/B]:[/COLOR] , [CR]]" />
+                <param name="value9"  value="$INFO[ListItem.Property(Artist_Born), [COLOR active][B]Property(Artist_Born)[/B]:[/COLOR] , [CR]]" />
+                <param name="value10"  value="$INFO[ListItem.Property(Artist_Died), [COLOR active][B]Property(Artist_Died)[/B]:[/COLOR] , [CR]]" />
+                <param name="value11"  value="$INFO[ListItem.Property(Artist_Formed), [COLOR active][B]Property(Artist_Formed)[/B]:[/COLOR] , [CR]]" />
+                <param name="value12"  value="$INFO[ListItem.Property(Artist_Disbanded), [COLOR active][B]Property(Artist_Disbanded)[/B]:[/COLOR] , [CR]]" />
+                <param name="value13"  value="$INFO[ListItem.Property(Artist_YearsActive), [COLOR active][B]Property(Artist_YearsActive)[/B]:[/COLOR] , [CR]]" />
+                <param name="value14"  value="$INFO[ListItem.Property(Artist_Instrument), [COLOR active][B]Property(Artist_Instrument)[/B]:[/COLOR] , [CR]]" />
+                <!--
+                <param name="value15"  value="$INFO[ListItem.Property(Artist_Description), [COLOR active][B]Property(Artist_Description)[/B]:[/COLOR] , [CR]]" />
+                -->
+                <param name="value16"  value="$INFO[ListItem.Property(Artist_Mood), [COLOR active][B]Property(Artist_Mood)[/B]:[/COLOR] , [CR]]" />
+                <param name="value17"  value="$INFO[ListItem.Property(Artist_Style), [COLOR active][B]Property(Artist_Style)[/B]:[/COLOR] , [CR]]" />
+                <param name="value18"  value="$INFO[ListItem.Property(Artist_Genre), [COLOR active][B]Property(Artist_Genre)[/B]:[/COLOR] , [CR]]" />
+                <param name="value19"  value="$INFO[ListItem.Property(Artist_Sortname), [COLOR active][B]Property(Artist_Sortname)[/B]:[/COLOR] , [CR]]" />
+                <param name="value20"  value="$INFO[ListItem.Property(Artist_Type), [COLOR active][B]Property(Artist_Type)[/B]:[/COLOR] , [CR]]" />
+                <param name="value21"  value="$INFO[ListItem.Property(Artist_Gender), [COLOR active][B]Property(Artist_Gender)[/B]:[/COLOR] , [CR]]" />
+                <param name="value22"  value="$INFO[ListItem.Property(Artist_Disambiguation), [COLOR active][B]Property(Artist_Disambiguation)[/B]:[/COLOR] , [CR]]" />
+                <param name="value23"  value="$INFO[ListItem.Album, [COLOR active][B]Album[/B]:[/COLOR] , [CR]]" />
+                <param name="value24"  value="$INFO[ListItem.Property(Album_Mood), [COLOR active][B]Property(Album_Mood)[/B]:[/COLOR] , [CR]]" />
+                <param name="value25"  value="$INFO[ListItem.Property(Album_Style), [COLOR active][B]Property(Album_Style)[/B]:[/COLOR] , [CR]]" />
+                <param name="value26"  value="$INFO[ListItem.Property(Album_Theme), [COLOR active][B]Property(Album_Theme)[/B]:[/COLOR] , [CR]]" />
+                <param name="value27"  value="$INFO[ListItem.Property(Album_Type), [COLOR active][B]Property(Album_Type)[/B]:[/COLOR] , [CR]]" />
+                <param name="value28"  value="$INFO[ListItem.Property(Album_Label), [COLOR active][B]Property(Album_Label)[/B]:[/COLOR] , [CR]]" />
+                <param name="value29"  value="$INFO[ListItem.Property(Album_Description), [COLOR active][B]Property(Album_Description)[/B]:[/COLOR] , [CR]]" />
+                <param name="value30"  value="$INFO[ListItem.DiscNumber, [COLOR active][B]DiscNumber[/B]:[/COLOR] , [CR]]" />
+                <param name="value31"  value="$INFO[ListItem.Year, [COLOR active][B]Year[/B]:[/COLOR] , [CR]]" />
+                <param name="value32"  value="$INFO[ListItem.Premiered, [COLOR active][B]Premiered[/B]:[/COLOR] , [CR]]" />
+                <param name="value33"  value="$INFO[ListItem.Genre, [COLOR active][B]Genre[/B]:[/COLOR] , [CR]]" />
+                <param name="value34"  value="$INFO[ListItem.Director, [COLOR active][B]Director[/B]:[/COLOR] , [CR]]" />
+                <param name="value35"  value="$INFO[ListItem.Country, [COLOR active][B]Country[/B]:[/COLOR] , [CR]]" />
+                <param name="value36" value="$INFO[ListItem.Episode, [COLOR active][B]Episode[/B]:[/COLOR] , [CR]]" />
+                <param name="value37" value="$INFO[ListItem.Season, [COLOR active][B]Season[/B]:[/COLOR] , [CR]]" />
+                <param name="value38" value="$INFO[ListItem.TVShowTitle, [COLOR active][B]TVShowTitle[/B]:[/COLOR] , [CR]]" />
+                <param name="value39" value="$INFO[ListItem.Property(TotalSeasons), [COLOR active][B]Property(TotalSeasons)[/B]:[/COLOR] , [CR]]" />
+                <param name="value40" value="$INFO[ListItem.Property(TotalEpisodes), [COLOR active][B]Property(TotalEpisodes)[/B]:[/COLOR] , [CR]]" />
+                <param name="value41" value="$INFO[ListItem.Property(WatchedEpisodes), [COLOR active][B]Property(WatchedEpisodes)[/B]:[/COLOR] , [CR]]" />
+                <param name="value42" value="$INFO[ListItem.Property(UnWatchedEpisodes), [COLOR active][B]Property(UnWatchedEpisodes)[/B]:[/COLOR] , [CR]]" />
+                <param name="value43" value="$INFO[ListItem.Property(NumEpisodes), [COLOR active][B]Property(NumEpisodes)[/B]:[/COLOR] , [CR]]" />
+                <param name="value44" value="$INFO[ListItem.FileName, [COLOR active][B]FileName[/B]:[/COLOR] , [CR]]" />
+                <param name="value45" value="$INFO[ListItem.Path, [COLOR active][B]Path[/B]:[/COLOR] , [CR]]" />
+                <param name="value46" value="$INFO[ListItem.FolderName, [COLOR active][B]FolderName[/B]:[/COLOR] , [CR]]" />
+                <param name="value47" value="$INFO[ListItem.FolderPath, [COLOR active][B]FolderPath[/B]:[/COLOR] , [CR]]" />
+                <param name="value48" value="$INFO[ListItem.FileNameAndPath, [COLOR active][B]FileNameAndPath[/B]:[/COLOR] , [CR]]" />
+                <param name="value49" value="$INFO[ListItem.FileExtension, [COLOR active][B]FileExtension[/B]:[/COLOR] , [CR]]" />
+                <param name="value50" value="$INFO[ListItem.Date, [COLOR active][B]Date[/B]:[/COLOR] , [CR]]" />
+                <param name="value51" value="$INFO[ListItem.DateAdded, [COLOR active][B]DateAdded[/B]:[/COLOR] , [CR]]" />
+                <param name="value52" value="$INFO[ListItem.Size, [COLOR active][B]Size[/B]:[/COLOR] , [CR]]" />
+                <param name="value53" value="$INFO[ListItem.Rating, [COLOR active][B]Rating[/B]:[/COLOR] , [CR]]" />
+                <param name="value54" value="$INFO[ListItem.Set, [COLOR active][B]Set[/B]:[/COLOR] , [CR]]" />
+                <param name="value55" value="$INFO[ListItem.SetId, [COLOR active][B]SetId[/B]:[/COLOR] , [CR]]" />
+                <param name="value56" value="$INFO[ListItem.UserRating, [COLOR active][B]UserRating[/B]:[/COLOR] , [CR]]" />
+                <param name="value57" value="$INFO[ListItem.Votes, [COLOR active][B]Votes[/B]:[/COLOR] , [CR]]" />
+                <param name="value58" value="$INFO[ListItem.RatingAndVotes, [COLOR active][B]RatingAndVotes[/B]:[/COLOR] , [CR]]" />
+                <param name="value59" value="$INFO[ListItem.Mpaa, [COLOR active][B]Mpaa[/B]:[/COLOR] , [CR]]" />
+                <param name="value60" value="$INFO[ListItem.ProgramCount, [COLOR active][B]ProgramCount[/B]:[/COLOR] , [CR]]" />
+                <param name="value61" value="$INFO[ListItem.Duration, [COLOR active][B]Duration[/B]:[/COLOR] , [CR]]" />
+                <param name="value62" value="$INFO[ListItem.DBTYPE, [COLOR active][B]DBTYPE[/B]:[/COLOR] , [CR]]" />
+                <param name="value63" value="$INFO[ListItem.DBID, [COLOR active][B]DBID[/B]:[/COLOR] , [CR]]" />
+                <param name="value64" value="$INFO[ListItem.Cast, [COLOR active][B]Cast[/B]:[/COLOR] , [CR]]" />
+                <param name="value65" value="$INFO[ListItem.CastAndRole, [COLOR active][B]CastAndRole[/B]:[/COLOR] , [CR]]" />
+                <param name="value66" value="$INFO[ListItem.Studio, [COLOR active][B]Studio[/B]:[/COLOR] , [CR]]" />
+                <param name="value67" value="$INFO[ListItem.Top250, [COLOR active][B]Top250[/B]:[/COLOR] , [CR]]" />
+                <param name="value68" value="$INFO[ListItem.Trailer, [COLOR active][B]Trailer[/B]:[/COLOR] , [CR]]" />
+                <param name="value69" value="$INFO[ListItem.Writer, [COLOR active][B]Writer[/B]:[/COLOR] , [CR]]" />
+                <param name="value70" value="$INFO[ListItem.Tagline, [COLOR active][B]Tagline[/B]:[/COLOR] , [CR]]" />
+                <param name="value71" value="$INFO[ListItem.PlotOutline, [COLOR active][B]PlotOutline[/B]:[/COLOR] , [CR]]" />
+                <param name="value72" value="$INFO[ListItem.IMDBNumber, [COLOR active][B]IMDBNumber[/B]:[/COLOR] , [CR]]" />
+                <param name="value73" value="$INFO[ListItem.EpisodeName, [COLOR active][B]EpisodeName[/B]:[/COLOR] , [CR]]" />
+                <param name="value74" value="$INFO[ListItem.PercentPlayed, [COLOR active][B]PercentPlayed[/B]:[/COLOR] , [CR]]" />
+                <param name="value75" value="$INFO[ListItem.LastPlayed, [COLOR active][B]LastPlayed[/B]:[/COLOR] , [CR]]" />
+                <param name="value76" value="$INFO[ListItem.PlayCount, [COLOR active][B]PlayCount[/B]:[/COLOR] , [CR]]" />
+                <param name="value77" value="$INFO[ListItem.Overlay, [COLOR active][B]Overlay[/B]:[/COLOR] , [CR]]" />
+                <param name="value78" value="$INFO[ListItem.VideoCodec, [COLOR active][B]VideoCodec[/B]:[/COLOR] , [CR]]" />
+                <param name="value79" value="$INFO[ListItem.VideoResolution, [COLOR active][B]VideoResolution[/B]:[/COLOR] , [CR]]" />
+                <param name="value80" value="$INFO[ListItem.VideoAspect, [COLOR active][B]VideoAspect[/B]:[/COLOR] , [CR]]" />
+                <param name="value81" value="$INFO[ListItem.AudioCodec, [COLOR active][B]AudioCodec[/B]:[/COLOR] , [CR]]" />
+                <param name="value82" value="$INFO[ListItem.AudioChannels, [COLOR active][B]AudioChannels[/B]:[/COLOR] , [CR]]" />
+                <param name="value83" value="$INFO[ListItem.AudioLanguage, [COLOR active][B]AudioLanguage[/B]:[/COLOR] , [CR]]" />
+                <param name="value84" value="$INFO[ListItem.SubtitleLanguage, [COLOR active][B]SubtitleLanguage[/B]:[/COLOR] , [CR]]" />
+                <param name="value85" value="$INFO[ListItem.StartTime, [COLOR active][B]StartTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value86" value="$INFO[ListItem.EndTime, [COLOR active][B]EndTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value87" value="$INFO[ListItem.StartDate, [COLOR active][B]StartDate[/B]:[/COLOR] , [CR]]" />
+                <param name="value88" value="$INFO[ListItem.EndDate, [COLOR active][B]EndDate[/B]:[/COLOR] , [CR]]" />
+                <param name="value89" value="$INFO[ListItem.NextTitle, [COLOR active][B]NextTitle[/B]:[/COLOR] , [CR]]" />
+                <param name="value90" value="$INFO[ListItem.NextGenre, [COLOR active][B]NextGenre[/B]:[/COLOR] , [CR]]" />
+                <param name="value91" value="$INFO[ListItem.NextPlotOutline, [COLOR active][B]NextPlotOutline[/B]:[/COLOR] , [CR]]" />
+                <param name="value92" value="$INFO[ListItem.NextStartTime, [COLOR active][B]NextStartTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value93" value="$INFO[ListItem.NextEndTime, [COLOR active][B]NextEndTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value94" value="$INFO[ListItem.NextStartDate, [COLOR active][B]NextStartDate[/B]:[/COLOR] , [CR]]" />
+                <param name="value95" value="$INFO[ListItem.NextEndDate, [COLOR active][B]NextEndDate[/B]:[/COLOR] , [CR]]" />
+                <param name="value96" value="$INFO[ListItem.NextDuration, [COLOR active][B]NextDuration[/B]:[/COLOR] , [CR]]" />
+                <param name="value97" value="$INFO[ListItem.ChannelName, [COLOR active][B]ChannelName[/B]:[/COLOR] , [CR]]" />
+                <param name="value98" value="$INFO[ListItem.ChannelNumberLabel, [COLOR active][B]ChannelNumberLabel[/B]:[/COLOR] , [CR]]" />
+                <param name="value99" value="$INFO[ListItem.Progress, [COLOR active][B]Progress[/B]:[/COLOR] , [CR]]" />
+                <param name="value100" value="$INFO[ListItem.Comment, [COLOR active][B]Comment[/B]:[/COLOR] , [CR]]" />
+                <param name="value101" value="$INFO[ListItem.AddonName, [COLOR active][B]AddonName[/B]:[/COLOR] , [CR]]" />
+                <param name="value102" value="$INFO[ListItem.AddonVersion, [COLOR active][B]AddonVersion[/B]:[/COLOR] , [CR]]" />
+                <param name="value103" value="$INFO[ListItem.AddonSummary, [COLOR active][B]AddonSummary[/B]:[/COLOR] , [CR]]" />
+                <param name="value104" value="$INFO[ListItem.AddonDescription, [COLOR active][B]AddonDescription[/B]:[/COLOR] , [CR]]" />
+                <param name="value105" value="$INFO[ListItem.AddonType, [COLOR active][B]AddonType[/B]:[/COLOR] , [CR]]" />
+                <param name="value106" value="$INFO[ListItem.AddonCreator, [COLOR active][B]AddonCreator[/B]:[/COLOR] , [CR]]" />
+                <param name="value107" value="$INFO[ListItem.AddonDisclaimer, [COLOR active][B]AddonDisclaimer[/B]:[/COLOR] , [CR]]" />
+                <param name="value108" value="$INFO[ListItem.AddonBroken, [COLOR active][B]AddonBroken[/B]:[/COLOR] , [CR]]" />
+                <param name="value109" value="$INFO[ListItem.Property(Addon.Changelog), [COLOR active][B]Property(Addon.Changelog)[/B]:[/COLOR] , [CR]]" />
+                <param name="value110" value="$INFO[ListItem.Property(Addon.ID), [COLOR active][B]Property(Addon.ID)[/B]:[/COLOR] , [CR]]" />
+                <param name="value111" value="$INFO[ListItem.Property(Addon.Status), [COLOR active][B]Property(Addon.Status)[/B]:[/COLOR] , [CR]]" />
+                <param name="value112" value="$INFO[ListItem.Property(Addon.Path), [COLOR active][B]Property(Addon.Path)[/B]:[/COLOR] , [CR]]" />
+            </include>
+            <include content="debugcategory">
+                <param name="visible" value="Skin.HasSetting(DebugInfoArtwork)" />
+                <param name="category" value="Artwork (F11)" />
+            </include>
+            <include content="debugtextbox">
+                <param name="visible" value="Skin.HasSetting(DebugInfoArtwork)" />
+                <param name="value1"  value="$INFO[Container.Art(tvshow.fanart), [COLOR active][B]Container.Art(tvshow.fanart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value2"  value="$INFO[Container.Art(season.poster), [COLOR active][B]Container.Art(season.poster)[/B]:[/COLOR] , [CR]]" />
+                <param name="value3"  value="$INFO[Container.Art(artist.fanart), [COLOR active][B]Container.Art(artist.fanart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value4"  value="$INFO[Container.Art(artist.thumb), [COLOR active][B]Container.Art(artist.thumb)[/B]:[/COLOR] , [CR]]" />
+                <param name="value5"  value="$INFO[Fanart.Image, [COLOR active][B]Fanart.Image[/B]:[/COLOR] , [CR]]" />
+                <param name="value6"  value="$INFO[ListItem.Icon, [COLOR active][B]ListItem.Icon[/B]:[/COLOR] , [CR]]" />
+                <param name="value7"  value="$INFO[ListItem.ActualIcon, [COLOR active][B]ListItem.ActualIcon[/B]:[/COLOR] , [CR]]" />
+                <param name="value8"  value="$INFO[ListItem.Thumb, [COLOR active][B]ListItem.Thumb[/B]:[/COLOR] , [CR]]" />
+                <param name="value9"  value="$INFO[ListItem.Art(thumb), [COLOR active][B]ListItem.Art(thumb)[/B]:[/COLOR] , [CR]]" />
+                <param name="value10"  value="$INFO[ListItem.Art(clearart), [COLOR active][B]ListItem.Art(clearart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value11" value="$INFO[ListItem.Art(clearlogo), [COLOR active][B]ListItem.Art(clearlogo)[/B]:[/COLOR] , [CR]]" />
+                <param name="value12" value="$INFO[ListItem.Art(landscape), [COLOR active][B]ListItem.Art(landscape)[/B]:[/COLOR] , [CR]]" />
+                <param name="value13" value="$INFO[ListItem.Art(poster), [COLOR active][B]ListItem.Art(poster)[/B]:[/COLOR] , [CR]]" />
+                <param name="value14" value="$INFO[ListItem.Art(banner), [COLOR active][B]ListItem.Art(banner)[/B]:[/COLOR] , [CR]]" />
+                <param name="value15" value="$INFO[ListItem.Art(fanart), [COLOR active][B]ListItem.Art(fanart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value16" value="$INFO[ListItem.Art(set.fanart), [COLOR active][B]ListItem.Art(set.fanart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value17" value="$INFO[ListItem.Art(landscape), [COLOR active][B]ListItem.Art(landscape)[/B]:[/COLOR] , [CR]]" />
+                <param name="value18" value="$INFO[ListItem.Art(tvshow.poster), [COLOR active][B]ListItem.Art(tvshow.poster)[/B]:[/COLOR] , [CR]]" />
+                <param name="value19" value="$INFO[ListItem.Art(tvshow.banner), [COLOR active][B]ListItem.Art(tvshow.banner)[/B]:[/COLOR] , [CR]]" />
+                <param name="value20" value="$INFO[ListItem.Art(tvshow.clearlogo), [COLOR active][B]ListItem.Art(tvshow.clearlogo)[/B]:[/COLOR] , [CR]]" />
+                <param name="value21" value="$INFO[ListItem.Art(tvshow.landscape), [COLOR active][B]ListItem.Art(tvshow.landscape)[/B]:[/COLOR] , [CR]]" />
+                <param name="value22" value="$INFO[ListItem.Art(tvshow.clearart), [COLOR active][B]ListItem.Art(tvshow.clearart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value23" value="$INFO[ListItem.Art(season.poster), [COLOR active][B]ListItem.Art(season.poster)[/B]:[/COLOR] , [CR]]" />
+                <param name="value24" value="$INFO[ListItem.Art(season.banner), [COLOR active][B]ListItem.Art(season.banner)[/B]:[/COLOR] , [CR]]" />
+                <param name="value25" value="$INFO[ListItem.Art(season.fanart), [COLOR active][B]ListItem.Art(season.fanart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value26" value="$INFO[ListItem.Art(artist.thumb), [COLOR active][B]ListItem.Art(artist.thumb)[/B]:[/COLOR] , [CR]]" />
+                <param name="value27" value="$INFO[ListItem.Art(artist.fanart), [COLOR active][B]ListItem.Art(artist.fanart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value28" value="$INFO[ListItem.Art(album.thumb), [COLOR active][B]ListItem.Art(album.thumb)[/B]:[/COLOR] , [CR]]" />
+                <param name="value29" value="$INFO[ListItem.Art(album.discart), [COLOR active][B]ListItem.Art(album.discart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value30" value="$INFO[ListItem.Overlay, [COLOR active][B]ListItem.Overlay[/B]:[/COLOR] , [CR]]" />
+                <param name="value31" value="$INFO[ListItem.EPGEventIcon, [COLOR active][B]ListItem.EPGEventIcon[/B]:[/COLOR] , [CR]]" />
+                <param name="value32" value="$INFO[MusicPlayer.Cover, [COLOR active][B]MusicPlayer.Cover[/B]:[/COLOR] , [CR]]" />
+                <param name="value33" value="$INFO[Player.Icon, [COLOR active][B]Player.Icon[/B]:[/COLOR] , [CR]]" />
+                <param name="value34" value="$INFO[Player.Art(fanart), [COLOR active][B]Player.Art(fanart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value35" value="$INFO[Player.Art(thumb), [COLOR active][B]Player.Art(thumb)[/B]:[/COLOR] , [CR]]" />
+                <param name="value36" value="$INFO[Player.Art(poster), [COLOR active][B]Player.Art(poster)[/B]:[/COLOR] , [CR]]" />
+                <param name="value37" value="$INFO[Player.Art(clearlogo), [COLOR active][B]Player.Art(clearlogo)[/B]:[/COLOR] , [CR]]" />
+                <param name="value38" value="$INFO[Player.Art(clearart), [COLOR active][B]Player.Art(clearart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value39" value="$INFO[Player.Art(landscape), [COLOR active][B]Player.Art(landscape)[/B]:[/COLOR] , [CR]]" />
+                <param name="value40" value="$INFO[Player.Art(tvshow.poster), [COLOR active][B]Player.Art(tvshow.poster)[/B]:[/COLOR] , [CR]]" />
+                <param name="value41" value="$INFO[Player.Art(tvshow.banner), [COLOR active][B]Player.Art(tvshow.banner)[/B]:[/COLOR] , [CR]]" />
+                <param name="value42" value="$INFO[Player.Art(tvshow.landscape), [COLOR active][B]Player.Art(tvshow.landscape)[/B]:[/COLOR] , [CR]]" />
+                <param name="value43" value="$INFO[Player.Art(tvshow.clearart), [COLOR active][B]Player.Art(tvshow.clearart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value44" value="$INFO[Player.Art(tvshow.clearlogo), [COLOR active][B]Player.Art(tvshow.clearlogo)[/B]:[/COLOR] , [CR]]" />
+                <param name="value45" value="$INFO[Player.Art(artist.thumb), [COLOR active][B]Player.Art(artist.thumb)[/B]:[/COLOR] , [CR]]" />
+                <param name="value46" value="$INFO[Player.Art(artist.fanart), [COLOR active][B]Player.Art(artist.fanart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value47" value="$INFO[Player.Art(album.thumb), [COLOR active][B]Player.Art(album.thumb)[/B]:[/COLOR] , [CR]]" />
+                <param name="value48" value="$INFO[Player.Art(discart), [COLOR active][B]Player.Art(discart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value49" value="$INFO[Player.Art(album.discart), [COLOR active][B]Player.Art(album.discart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value51" value="$INFO[Pvr.EPGEventIcon, [COLOR active][B]Pvr.EPGEventIcon[/B]:[/COLOR] , [CR]]" />                
+            </include>
+            <include content="debugcategory">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPVR)" />
+                <param name="category" value="PVR (F12)" />
+            </include>
+            <include content="debugtextbox">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPVR)" />
+                <param name="value1"   value="$INFO[PVR.NowRecordingTitle, [COLOR active][B]NowRecordingTitle[/B]:[/COLOR] , [CR]]" />
+                <param name="value2"   value="$INFO[PVR.NowRecordingDateTime, [COLOR active][B]NowRecordingDateTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value3"   value="$INFO[PVR.NowRecordingChannel, [COLOR active][B]NowRecordingChannel[/B]:[/COLOR] , [CR]]" />
+                <param name="value4"   value="$INFO[PVR.NextRecordingTitle, [COLOR active][B]NextRecordingTitle[/B]:[/COLOR] , [CR]]" />
+                <param name="value5"   value="$INFO[PVR.NextRecordingDateTime, [COLOR active][B]NextRecordingDateTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value6"   value="$INFO[PVR.NextRecordingChannel, [COLOR active][B]NextRecordingChannel[/B]:[/COLOR] , [CR]]" />
+                <param name="value7"   value="$INFO[PVR.BackendName, [COLOR active][B]BackendName[/B]:[/COLOR] , [CR]]" />
+                <param name="value8"   value="$INFO[PVR.BackendVersion, [COLOR active][B]BackendVersion[/B]:[/COLOR] , [CR]]" />
+                <param name="value9"   value="$INFO[PVR.BackendHost, [COLOR active][B]BackendHost[/B]:[/COLOR] , [CR]]" />
+                <param name="value10"  value="$INFO[PVR.BackendDiskSpace, [COLOR active][B]BackendDiskSpace[/B]:[/COLOR] , [CR]]" />
+                <param name="value11"  value="$INFO[PVR.BackendChannels, [COLOR active][B]BackendChannels[/B]:[/COLOR] , [CR]]" />
+                <param name="value12"  value="$INFO[PVR.BackendTimers, [COLOR active][B]BackendTimers[/B]:[/COLOR] , [CR]]" />
+                <param name="value13"  value="$INFO[PVR.BackendRecordings, [COLOR active][B]BackendRecordings[/B]:[/COLOR] , [CR]]" />
+                <param name="value14"  value="$INFO[PVR.BackendNumber, [COLOR active][B]BackendNumber[/B]:[/COLOR] , [CR]]" />
+                <param name="value15"  value="$INFO[PVR.TotalDiscSpace, [COLOR active][B]TotalDiscSpace[/B]:[/COLOR] , [CR]]" />
+                <param name="value16"  value="$INFO[PVR.NextTimer, [COLOR active][B]NextTimer[/B]:[/COLOR] , [CR]]" />
+                <param name="value17"  value="$INFO[PVR.EpgEventDuration, [COLOR active][B]EpgEventDuration[/B]:[/COLOR] , [CR]]" />
+                <param name="value18"  value="$INFO[PVR.EpgEventElapsedTime, [COLOR active][B]EpgEventElapsedTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value19"  value="$INFO[PVR.EpgEventRemainingTime, [COLOR active][B]EpgEventRemainingTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value20"  value="$INFO[PVR.EpgEventFinishTime, [COLOR active][B]EpgEventFinishTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value21"  value="$INFO[PVR.EpgEventSeekTime, [COLOR active][B]EpgEventSeekTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value22"  value="$INFO[PVR.EpgEventProgress, [COLOR active][B]EpgEventProgress[/B]:[/COLOR] , [CR]]" />
+                <param name="value23"  value="$INFO[PVR.TimeShiftStart, [COLOR active][B]TimeShiftStart[/B]:[/COLOR] , [CR]]" />
+                <param name="value24"  value="$INFO[PVR.TimeShiftEnd, [COLOR active][B]TimeShiftEnd[/B]:[/COLOR] , [CR]]" />
+                <param name="value25"  value="$INFO[PVR.TimeShiftCur, [COLOR active][B]TimeShiftCur[/B]:[/COLOR] , [CR]]" />
+                <param name="value26"  value="$INFO[PVR.TimeShiftOffset, [COLOR active][B]TimeShiftOffset[/B]:[/COLOR] , [CR]]" />
+                <param name="value27"  value="$INFO[PVR.TimeShiftProgress, [COLOR active][B]TimeShiftProgress[/B]:[/COLOR] , [CR]]" />
+                <param name="value28"  value="$INFO[PVR.ActStreamClient, [COLOR active][B]ActStreamClient[/B]:[/COLOR] , [CR]]" />
+                <param name="value29"  value="$INFO[PVR.ActStreamDevice, [COLOR active][B]ActStreamDevice[/B]:[/COLOR] , [CR]]" />
+                <param name="value30"  value="$INFO[PVR.ActStreamStatus, [COLOR active][B]ActStreamStatus[/B]:[/COLOR] , [CR]]" />
+                <param name="value31"  value="$INFO[PVR.ActStreamSignal, [COLOR active][B]ActStreamSignal[/B]:[/COLOR] , [CR]]" />
+                <param name="value32"  value="$INFO[PVR.ActStreamSnr, [COLOR active][B]ActStreamSnr[/B]:[/COLOR] , [CR]]" />
+                <param name="value33"  value="$INFO[PVR.ActStreamBer, [COLOR active][B]ActStreamBer[/B]:[/COLOR] , [CR]]" />
+                <param name="value34"  value="$INFO[PVR.ActStreamUnc, [COLOR active][B]ActStreamUnc[/B]:[/COLOR] , [CR]]" />
+                <param name="value35"  value="$INFO[PVR.ActStreamVideoBitRate, [COLOR active][B]ActStreamVideoBitRate[/B]:[/COLOR] , [CR]]" />
+                <param name="value36"  value="$INFO[PVR.ActStreamAudioBitRate, [COLOR active][B]ActStreamAudioBitRate[/B]:[/COLOR] , [CR]]" />
+                <param name="value37"  value="$INFO[PVR.ActStreamDolbyBitRate, [COLOR active][B]ActStreamDolbyBitRate[/B]:[/COLOR] , [CR]]" />
+                <param name="value38"  value="$INFO[PVR.ActStreamProgrSignal, [COLOR active][B]ActStreamProgrSignal[/B]:[/COLOR] , [CR]]" />
+                <param name="value39"  value="$INFO[PVR.ActStreamProgrSnr, [COLOR active][B]ActStreamProgrSnr[/B]:[/COLOR] , [CR]]" />
+                <param name="value40"  value="$INFO[PVR.ActStreamEncryptionName, [COLOR active][B]ActStreamEncryptionName[/B]:[/COLOR] , [CR]]" />
+                <param name="value41"  value="$INFO[PVR.TVNowRecordingTitle, [COLOR active][B]TVNowRecordingTitle[/B]:[/COLOR] , [CR]]" />
+                <param name="value42"  value="$INFO[PVR.TVNowRecordingDateTime, [COLOR active][B]TVNowRecordingDateTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value43"  value="$INFO[PVR.TVNowRecordingChannel, [COLOR active][B]TVNowRecordingChannel[/B]:[/COLOR] , [CR]]" />
+                <param name="value44"  value="$INFO[PVR.TVNowRecordingChannelIcon, [COLOR active][B]TVNowRecordingChannelIcon[/B]:[/COLOR] , [CR]]" />
+                <param name="value45"  value="$INFO[PVR.TVNextRecordingTitle, [COLOR active][B]TVNextRecordingTitle[/B]:[/COLOR] , [CR]]" />
+                <param name="value46"  value="$INFO[PVR.TVNextRecordingDateTime, [COLOR active][B]TVNextRecordingDateTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value47"  value="$INFO[PVR.TVNextRecordingChannel, [COLOR active][B]TVNextRecordingChannel[/B]:[/COLOR] , [CR]]" />
+                <param name="value48"  value="$INFO[PVR.TVNextRecordingChannelIcon, [COLOR active][B]TVNextRecordingChannelIcon[/B]:[/COLOR] , [CR]]" />
+                <param name="value49"  value="$INFO[PVR.ChannelNumberInput, [COLOR active][B]ChannelNumberInput[/B]:[/COLOR] , [CR]]" />
+                <param name="value50"  value="$INFO[PVR.TimeshiftProgressDuration, [COLOR active][B]TimeshiftProgressDuration[/B]:[/COLOR] , [CR]]" />
+                <param name="value51"  value="$INFO[PVR.TimeshiftProgressDuration, [COLOR active][B]TimeshiftProgressDuration[/B]:[/COLOR] , [CR]]" />
+                <param name="value52"  value="$INFO[PVR.TimeshiftProgressStartTime, [COLOR active][B]TimeshiftProgressStartTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value53"  value="$INFO[PVR.TimeshiftProgressStartTime, [COLOR active][B]TimeshiftProgressStartTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value54"  value="$INFO[PVR.TimeshiftProgressEndTime, [COLOR active][B]TimeshiftProgressEndTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value55"  value="$INFO[PVR.TimeshiftProgressEndTime, [COLOR active][B]TimeshiftProgressEndTime[/B]:[/COLOR] , [CR]]" />
+                <param name="value56"  value="$INFO[PVR.TimeshiftProgressPlayPos, [COLOR active][B]TimeshiftProgressPlayPos[/B]:[/COLOR] , [CR]]" />
+                <param name="value57"  value="$INFO[PVR.TimeshiftProgressEpgStart, [COLOR active][B]TimeshiftProgressEpgStart[/B]:[/COLOR] , [CR]]" />
+                <param name="value58"  value="$INFO[PVR.TimeshiftProgressEpgEnd, [COLOR active][B]TimeshiftProgressEpgEnd[/B]:[/COLOR] , [CR]]" />
+                <param name="value59"  value="$INFO[PVR.TimeshiftProgressBufferStart, [COLOR active][B]TimeshiftProgressBufferStart[/B]:[/COLOR] , [CR]]" />
+                <param name="value60"  value="$INFO[PVR.TimeshiftProgressBufferEnd, [COLOR active][B]TimeshiftProgressBufferEnd[/B]:[/COLOR] , [CR]]" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPVR)" />
+                <param name="boolvalue" value="Pvr.IsPlayingTv" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPVR)" />
+                <param name="boolvalue" value="Pvr.IsPlayingRecording" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPVR)" />
+                <param name="boolvalue" value="Pvr.IsRecording" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPVR)" />
+                <param name="boolvalue" value="Pvr.IsTimeShift" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPVR)" />
+                <param name="boolvalue" value="Pvr.HasTimer" />
+            </include>
+            <include content="debugbool">
+                <param name="visible" value="Skin.HasSetting(DebugInfoPVR)" />
+                <param name="boolvalue" value="Pvr.HasTVTimer" />
+            </include>
+        </control>
+    </controls>
+</window>

@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+<!-- Menu List Item -->
+    <include name="skinhelper_menu_listitem">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <visible>$PARAM[active]</visible>
+                <control type="image">
+                    <visible>Control.HasFocus(100)</visible>
+                    <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <visible>!Control.HasFocus(100)</visible>
+                    <texture colordiffuse="background">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="activedialog">colors/white.png</bordertexture>
+                    <bordersize>3</bordersize>
+                </control>
+            </control>
+            <control type="group">
+                <visible>!$PARAM[active]</visible>
+                <control type="image">
+                    <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                    <bordertexture colordiffuse="FF1E1E1E">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(ListItem.Property(is_visible),true)</visible>
+                <control type="image">
+                    <top>3</top>
+                    <left>3</left>
+                    <width>74</width>
+                    <height>74</height>
+                    <texture colordiffuse="white">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="label">
+                    <left>80</left>
+                    <width>300</width>
+                    <aligny>center</aligny>
+                    <font>regular36</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+            <control type="group">
+                <visible>!String.IsEqual(ListItem.Property(is_visible),true)</visible>
+                <control type="image">
+                    <top>3</top>
+                    <left>3</left>
+                    <width>74</width>
+                    <height>74</height>
+                    <texture colordiffuse="border">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="label">
+                    <left>80</left>
+                    <width>300</width>
+                    <aligny>center</aligny>
+                    <font>regular36</font>
+                    <textcolor>border</textcolor>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(ListItem.Property(has_submenu),true)</visible>
+                <top>20</top>
+                <right>10</right>
+                <width>40</width>
+                <height>40</height>
+                <control type="image">
+                    <visible>!String.IsEqual(ListItem.Property(show_submenu),true)</visible>
+                    <animation effect="rotate" start="-90" end="0" center="auto" time="200" condition="true">Visible</animation>
+                    <texture colordiffuse="white">icons/buttons/play.png</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(show_submenu),true)</visible>
+                    <animation effect="rotate" start="0" end="-90" center="auto" time="200" condition="true">Visible</animation>
+                    <texture colordiffuse="white">icons/buttons/play.png</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+<!-- SubMenu List Item -->
+    <include name="skinhelper_submenu_listitem">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <height>60</height>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="FF1E1E1E">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="group">
+                <visible>$PARAM[active]</visible>
+                <control type="image">
+                    <visible>Control.HasFocus(110)</visible>
+                    <height>60</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <visible>!Control.HasFocus(110)</visible>
+                    <height>60</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture colordiffuse="background">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="activedialog">colors/white.png</bordertexture>
+                    <bordersize>3</bordersize>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(ListItem.Property(is_visible),true)</visible>
+                <control type="image">
+                    <top>2</top>
+                    <left>2</left>
+                    <width>56</width>
+                    <height>56</height>
+                    <texture colordiffuse="white">$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <left>60</left>
+                    <width>230</width>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+            <control type="group">
+                <visible>!String.IsEqual(ListItem.Property(is_visible),true)</visible>
+                <control type="image">
+                    <top>2</top>
+                    <left>2</left>
+                    <width>56</width>
+                    <height>56</height>
+                    <texture colordiffuse="border">$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEqual(ListItem.Property(is_visible),true)</visible>
+                    <left>60</left>
+                    <width>230</width>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <textcolor>border</textcolor>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+<!-- Widget List Item -->
+    <include name="skinhelper_widgets_listitem">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <visible>Control.HasFocus(100)</visible>
+                <top>0</top>
+                <height>150</height>
+                <texture colordiffuse="background">colors/white.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>3</bordersize>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <visible>!Control.HasFocus(100)</visible>
+                <top>0</top>
+                <height>150</height>
+                <texture colordiffuse="background">colors/white.png</texture>
+                <bordertexture colordiffuse="activedialog">colors/white.png</bordertexture>
+                <bordersize>3</bordersize>
+            </control>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <top>0</top>
+                <height>150</height>
+                <texture colordiffuse="background">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="label">
+                <visible>$PARAM[active]</visible>
+                <left>20</left>
+                <width>660</width>
+                <height>40</height>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <font>regular30</font>
+                <label>$INFO[ListItem.Label] $INFO[ListItem.Property(limit),(,)]</label>
+            </control>
+            <control type="label">
+                <visible>!$PARAM[active]</visible>
+                <left>20</left>
+                <width>660</width>
+                <height>40</height>
+                <aligny>center</aligny>
+                <font>regular30</font>
+                <label>$INFO[ListItem.Label] $INFO[ListItem.Property(limit),(,)]</label>
+            </control>
+            <control type="label">
+                <visible>String.IsEqual(ListItem.Property(is_visible),true)</visible>
+                <right>20</right>
+                <width>660</width>
+                <height>40</height>
+                <align>right</align>
+                <aligny>center</aligny>
+                <font>regular24</font>
+                <label>$INFO[ListItem.Property(category)]</label>
+            </control>
+            <control type="label">
+                <visible>!String.IsEqual(ListItem.Property(is_visible),true)</visible>
+                <right>20</right>
+                <width>660</width>
+                <height>40</height>
+                <align>right</align>
+                <aligny>center</aligny>
+                <font>regular24</font>
+                <textcolor>border</textcolor>
+                <label>$INFO[ListItem.Property(category)]</label>
+            </control>
+            <include content="layout_square">
+                <param name="active">$PARAM[active]</param>
+            </include>
+            <include content="layout_portrait">
+                <param name="active">$PARAM[active]</param>
+            </include>
+            <include content="layout_landscape">
+                <param name="active">$PARAM[active]</param>
+            </include>
+        </definition>    
+    </include>
+
+
+    <include name="layout_square">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <visible>String.IsEqual(ListItem.Property(layout),square)</visible>
+                <top>60</top>
+                <left>40</left>
+                <width>620</width>
+                <height>60</height>
+                <control type="image">
+                    <visible>$PARAM[active]</visible>
+                    <visible>Control.HasFocus(100)</visible>
+                    <width>60</width>
+                    <height>60</height>
+                    <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <visible>!$PARAM[active] | !Control.HasFocus(100)</visible>
+                    <width>60</width>
+                    <height>60</height>
+                    <texture colordiffuse="backgrounddark">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <top>10</top>
+                    <left>10</left>
+                    <width>50</width>
+                    <height>50</height>
+                    <texture colordiffuse="white">$INFO[ListItem.Icon]</texture>
+                </control>
+                <include content="layout_item">
+                    <param name="left">70</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">130</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">190</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">250</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">310</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">370</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">430</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">490</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">550</param>
+                </include>
+                <include content="layout_description">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="top1">0</param>
+                    <param name="top2">30</param>
+                </include>
+            </control>
+        </definition>    
+    </include>
+    
+    <include name="layout_landscape">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <visible>String.IsEqual(ListItem.Property(layout),landscape)</visible>
+                <top>60</top>
+                <left>40</left>
+                <width>620</width>
+                <height>60</height>
+                <control type="image">
+                    <visible>$PARAM[active]</visible>
+                    <visible>Control.HasFocus(100)</visible>
+                    <width>60</width>
+                    <height>60</height>
+                    <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <visible>!$PARAM[active] | !Control.HasFocus(100)</visible>
+                    <width>60</width>
+                    <height>60</height>
+                    <texture colordiffuse="backgrounddark">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <top>10</top>
+                    <left>10</left>
+                    <width>50</width>
+                    <height>50</height>
+                    <texture colordiffuse="white">$INFO[ListItem.Icon]</texture>
+                </control>
+                <include content="layout_item">
+                    <param name="left">70</param>
+                    <param name="width">90</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">160</param>
+                    <param name="width">90</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">250</param>
+                    <param name="width">90</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">340</param>
+                    <param name="width">90</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">430</param>
+                    <param name="width">90</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">520</param>
+                    <param name="width">90</param>
+                </include>
+                <include content="layout_description">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="top1">0</param>
+                    <param name="top2">30</param>
+                </include>
+            </control>
+        </definition>    
+    </include>
+
+    <include name="layout_portrait">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <visible>String.IsEqual(ListItem.Property(layout),portrait)</visible>
+                <top>50</top>
+                <left>40</left>
+                <width>620</width>
+                <height>90</height>
+                <control type="image">
+                    <visible>$PARAM[active]</visible>
+                    <visible>Control.HasFocus(100)</visible>
+                    <width>60</width>
+                    <height>90</height>
+                    <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <visible>!$PARAM[active] | !Control.HasFocus(100)</visible>
+                    <width>60</width>
+                    <height>90</height>
+                    <texture colordiffuse="backgrounddark">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <top>20</top>
+                    <left>10</left>
+                    <width>50</width>
+                    <height>50</height>
+                    <texture colordiffuse="white">$INFO[ListItem.Icon]</texture>
+                </control>
+                <include content="layout_item">
+                    <param name="left">70</param>
+                    <param name="height">90</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">130</param>
+                    <param name="height">90</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">190</param>
+                    <param name="height">90</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">250</param>
+                    <param name="height">90</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">310</param>
+                    <param name="height">90</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">370</param>
+                    <param name="height">90</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">430</param>
+                    <param name="height">90</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">490</param>
+                    <param name="height">90</param>
+                </include>
+                <include content="layout_item">
+                    <param name="left">550</param>
+                    <param name="height">90</param>
+                </include>
+                <include content="layout_description">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="top1">15</param>
+                    <param name="top2">45</param>
+                </include>
+            </control>
+        </definition>    
+    </include>
+
+    <include name="layout_item">
+        <param name="left">0</param>
+        <param name="width">60</param>
+        <param name="height">60</param>
+        <definition>
+            <control type="image">
+                <left>$PARAM[left]</left>
+                <width>$PARAM[width]</width>
+                <height>$PARAM[height]</height>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+        </definition>    
+    </include>
+
+    <include name="layout_description">
+        <param name="active">false</param>
+        <param name="top1">0</param>
+        <param name="top2">0</param>
+        <definition>
+            <control type="group">
+                <visible>!$PARAM[active]</visible>
+                <control type="label">
+                    <top>$PARAM[top1]</top>
+                    <left>100</left>
+                    <width>450</width>
+                    <height>30</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular20</font>
+                    <label>$INFO[ListItem.Property(desc)]</label>
+                </control>
+                <control type="label">
+                    <top>$PARAM[top2]</top>
+                    <left>100</left>
+                    <width>450</width>
+                    <height>30</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular20</font>
+                    <label>$INFO[ListItem.Property(styledesc)] ($INFO[ListItem.Property(size)])</label>
+                </control>
+            </control>
+            <control type="group">
+                <visible>$PARAM[active]</visible>
+                <control type="label">
+                    <top>$PARAM[top1]</top>
+                    <left>100</left>
+                    <width>450</width>
+                    <height>30</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular20</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[ListItem.Property(desc)]</label>
+                </control>
+                <control type="label">
+                    <top>$PARAM[top2]</top>
+                    <left>100</left>
+                    <width>450</width>
+                    <height>30</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular20</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[ListItem.Property(styledesc)] ($INFO[ListItem.Property(size)])</label>
+                </control>
+            </control>
+        </definition>    
+    </include>
+
+    <include name="skinhelper_next_prev_arrows">
+        <param name="width">400</param>
+        <definition>
+            <control type="image">
+                <visible>Container(100).HasNext</visible>
+                <left>20</left>
+                <top>1010</top>
+                <width>$PARAM[width]</width>
+                <height>30</height>
+                <aspectratio>keep</aspectratio>
+                <texture colordiffuse="active">icons/arrowdown.png</texture>
+            </control>
+            <control type="image">
+                <visible>Container(100).HasPrevious</visible>
+                <left>02</left>
+                <top>80</top>
+                <width>$PARAM[width]</width>
+                <height>30</height>
+                <aspectratio>keep</aspectratio>
+                <texture colordiffuse="active">icons/arrowup.png</texture>
+            </control>
+        </definition>
+    </include>
+
+    <include name="skinhelper_decoration_detail">
+        <param name="active">false</param>
+        <param name="top_line1">200</param>
+        <param name="top_line2">600</param>
+        <definition>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>3</bordersize>
+            </control>
+            <control type="image">
+                <top>$PARAM[top_line1]</top>
+                <left>10</left>
+                <right>10</right>
+                <height>1</height>
+                <texture colordiffuse="activedialog">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <top>$PARAM[top_line2]</top>
+                <left>10</left>
+                <right>10</right>
+                <height>1</height>
+                <texture colordiffuse="activedialog">colors/white.png</texture>
+            </control>
+        </definition>
+    </include>
+
+    <include name="skinhelper_detail_buttons">
+        <param name="is_menu">true</param>
+        <definition>
+            <control type="radiobutton" id="201">
+                <height>80</height>                    
+                <width>80</width>
+                <texturefocus colordiffuse="activedialog">buttons/button_round.png</texturefocus>
+                <texturenofocus colordiffuse="background">buttons/button_round.png</texturenofocus>
+                <textureradioonfocus colordiffuse="white">icons/arrowup.png</textureradioonfocus>
+                <textureradioonnofocus colordiffuse="white">icons/arrowup.png</textureradioonnofocus>
+                <textureradioofffocus colordiffuse="white">icons/arrowup.png</textureradioofffocus>
+                <textureradiooffnofocus colordiffuse="white">icons/arrowup.png</textureradiooffnofocus>
+                <radiowidth>50</radiowidth>
+                <radioheight>50</radioheight>
+                <radioposx>15</radioposx>
+                <radioposy>10</radioposy>
+            </control>
+            <control type="radiobutton" id="203">
+                <width>80</width>
+                <height>80</height>
+                <texturefocus colordiffuse="activedialog">buttons/button_round.png</texturefocus>
+                <texturenofocus colordiffuse="background">buttons/button_round.png</texturenofocus>
+                <textureradioonfocus colordiffuse="white">icons/arrowdown.png</textureradioonfocus>
+                <textureradioonnofocus colordiffuse="white">icons/arrowdown.png</textureradioonnofocus>
+                <textureradioofffocus colordiffuse="white">icons/arrowdown.png</textureradioofffocus>
+                <textureradiooffnofocus colordiffuse="white">icons/arrowdown.png</textureradiooffnofocus>
+                <radiowidth>50</radiowidth>
+                <radioheight>50</radioheight>
+                <radioposx>15</radioposx>
+                <radioposy>20</radioposy>
+            </control>
+            <control type="radiobutton" id="221">
+                <left>20</left>
+                <width>80</width>
+                <height>80</height>
+                <texturefocus colordiffuse="activedialog">buttons/button_round.png</texturefocus>
+                <texturenofocus colordiffuse="background">buttons/button_round.png</texturenofocus>
+                <textureradioonfocus colordiffuse="white">icons/buttons/new.png</textureradioonfocus>
+                <textureradioonnofocus colordiffuse="white">icons/buttons/new.png</textureradioonnofocus>
+                <textureradioofffocus colordiffuse="white">icons/buttons/new.png</textureradioofffocus>
+                <textureradiooffnofocus colordiffuse="white">icons/buttons/new.png</textureradiooffnofocus>
+                <radiowidth>50</radiowidth>
+                <radioheight>50</radioheight>
+                <radioposx>15</radioposx>
+                <radioposy>15</radioposy>
+            </control>
+            <control type="radiobutton" id="222">
+                <visible>$PARAM[is_menu]</visible>
+                <width>80</width>
+                <height>80</height>
+                <texturefocus colordiffuse="activedialog">buttons/button_round.png</texturefocus>
+                <texturenofocus colordiffuse="background">buttons/button_round.png</texturenofocus>
+                <textureradioonfocus colordiffuse="white">icons/buttons/new.png</textureradioonfocus>
+                <textureradioonnofocus colordiffuse="white">icons/buttons/new.png</textureradioonnofocus>
+                <textureradioofffocus colordiffuse="white">icons/buttons/new.png</textureradioofffocus>
+                <textureradiooffnofocus colordiffuse="white">icons/buttons/new.png</textureradiooffnofocus>
+                <radiowidth>50</radiowidth>
+                <radioheight>50</radioheight>
+                <radioposx>15</radioposx>
+                <radioposy>15</radioposy>
+            </control>
+            <control type="radiobutton" id="223">
+                <width>80</width>
+                <height>80</height>
+                <texturefocus colordiffuse="activedialog">buttons/button_round.png</texturefocus>
+                <texturenofocus colordiffuse="background">buttons/button_round.png</texturenofocus>
+                <textureradioonfocus colordiffuse="white">icons/buttons/delete.png</textureradioonfocus>
+                <textureradioonnofocus colordiffuse="white">icons/buttons/delete.png</textureradioonnofocus>
+                <textureradioofffocus colordiffuse="white">icons/buttons/delete.png</textureradioofffocus>
+                <textureradiooffnofocus colordiffuse="white">icons/buttons/delete.png</textureradiooffnofocus>
+                <radiowidth>50</radiowidth>
+                <radioheight>50</radioheight>
+                <radioposx>15</radioposx>
+                <radioposy>15</radioposy>
+            </control>
+            <control type="radiobutton" id="224">
+                <width>80</width>
+                <height>80</height>
+                <texturefocus colordiffuse="activedialog">buttons/button_round.png</texturefocus>
+                <texturenofocus colordiffuse="background">buttons/button_round.png</texturenofocus>
+                <textureradioonfocus colordiffuse="white">icons/keyboard/backspace.png</textureradioonfocus>
+                <textureradioonnofocus colordiffuse="white">icons/keyboard/backspace.png</textureradioonnofocus>
+                <textureradioofffocus colordiffuse="white">icons/keyboard/backspace.png</textureradioofffocus>
+                <textureradiooffnofocus colordiffuse="white">icons/keyboard/backspace.png</textureradiooffnofocus>
+                <radiowidth>50</radiowidth>
+                <radioheight>50</radioheight>
+                <radioposx>13</radioposx>
+                <radioposy>15</radioposy>
+            </control>
+        </definition>
+    </include>
+
+    <include name="skinhelper_detail_menu_buttonhelp">
+        <control type="label">
+            <visible>Control.HasFocus(201)</visible>
+            <visible>Control.IsVisible(222)</visible>
+            <left>90</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30020]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(201)</visible>
+            <visible>!Control.IsVisible(222)</visible>
+            <left>130</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30020]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(203)</visible>
+            <visible>Control.IsVisible(222)</visible>
+            <left>170</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30021]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(203)</visible>
+            <visible>!Control.IsVisible(222)</visible>
+            <left>220</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30021]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(221)</visible>
+            <visible>Control.IsVisible(222)</visible>
+            <left>280</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30022]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(221)</visible>
+            <visible>!Control.IsVisible(222)</visible>
+            <left>330</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30022]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(222)</visible>
+            <left>390</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30023]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(223)</visible>
+            <visible>Control.IsVisible(222)</visible>
+            <left>460</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30024]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(223)</visible>
+            <visible>!Control.IsVisible(222)</visible>
+            <left>420</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30024]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(224)</visible>
+            <visible>Control.IsVisible(222)</visible>
+            <left>560</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30025]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(224)</visible>
+            <visible>!Control.IsVisible(222)</visible>
+            <left>510</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30025]</label>
+        </control>
+    </include>
+
+    <include name="skinhelper_detail_widgets_buttonhelp">
+        <control type="label">
+            <visible>Control.HasFocus(201)</visible>
+            <left>130</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30020]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(203)</visible>
+            <left>220</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30021]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(221)</visible>
+            <left>330</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30026]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(223)</visible>
+            <left>420</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30027]</label>
+        </control>
+        <control type="label">
+            <visible>Control.HasFocus(224)</visible>
+            <left>510</left>
+            <top>155</top>
+            <width>500</width>
+            <align>center</align>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+            <label>$ADDON[script.unfussy.helper 30025]</label>
+        </control>
+    </include>
+
+    <include name="skinhelper_widgets_addonlist">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <texture colordiffuse="background">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <left>1</left>
+                <top>80</top>
+                <width>148</width>
+                <height>49</height>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            </control>
+            <control type="group">
+                <visible>$PARAM[active]</visible>
+                <visible>Control.HasFocus(705) | Control.HasFocus(707) | Control.HasFocus(708)</visible>
+                <control type="image">
+                    <height>2</height>
+                    <texture colordiffuse="active">colors/white.png</texture>
+                </control>
+                <control type="image">
+                    <width>2</width>
+                    <texture colordiffuse="active">colors/white.png</texture>
+                </control>
+                <control type="image">
+                    <left>148</left>
+                    <width>2</width>
+                    <texture colordiffuse="active">colors/white.png</texture>
+                </control>
+                <control type="image">
+                    <top>80</top>
+                    <height>50</height>
+                    <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                    <bordersize>2</bordersize>
+                </control>
+            </control>
+            <control type="image">
+                <top>5</top>
+                <left>40</left>
+                <width>70</width>
+                <height>70</height>
+                <aspectratio>scale</aspectratio>
+                <texture>$INFO[ListItem.Thumb]</texture>
+            </control>
+            <control type="textbox">
+                <top>75</top>
+                <height>60</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>regular18</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </definition>
+    </include>
+</includes>
+

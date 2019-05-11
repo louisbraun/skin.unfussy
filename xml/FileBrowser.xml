@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">450</defaultcontrol>
+    <include>dialogpopup_openclose</include>
+    <controls>
+        <control type="group">
+            <centerleft>50%</centerleft>
+            <centertop>50%</centertop>
+            <width>1300</width>
+            <height>850</height>
+            <include>dialog_filebrowser_decoration</include>
+            <control type="label" id="411">
+                <left>20</left>
+                <right>10</right>
+                <include>headerlabel_dialog</include>
+            </control>
+            <control type="grouplist" id="9000">
+                <left>990</left>
+                <top>100</top>
+                <width>400</width>
+                <height>400</height>
+                <itemgap>5</itemgap>
+                <orientation>vertical</orientation>
+                <onleft>450</onleft>
+                <onright>450</onright>
+                <onup>9000</onup>
+                <ondown>9000</ondown>
+                <include content="dialog_button">
+                    <param name="id" value="413" />
+                    <param name="label" value="$LOCALIZE[186]" />
+                </include>
+                <include content="dialog_button">
+                    <param name="id" value="414" />
+                    <param name="label" value="$LOCALIZE[222]" />
+                </include>
+                <include content="dialog_button">
+                    <param name="id" value="415" />
+                    <param name="label" value="$LOCALIZE[119]" />
+                    <param name="visible" value="Control.IsEnabled(415)" />
+                </include>
+                <include content="dialog_button">
+                    <param name="id" value="416" />
+                    <param name="label" value="$LOCALIZE[749]" />
+                    <param name="visible" value="Control.IsEnabled(416)" />
+                </include>
+            </control>
+            <control type="image">
+                <left>1000</left>
+                <top>560</top>
+                <width>260</width>
+                <height>230</height>
+                <aspectratio align="center" aligny="center">keep</aspectratio>
+                <texture background="true">$INFO[ListItem.Icon]</texture>
+            </control>
+            <control type="panel" id="450">
+                <left>20</left>
+                <top>100</top>
+                <width>940</width>
+                <height>700</height>
+                <onleft>9000</onleft>
+                <onright>60</onright>
+                <onup>450</onup>
+                <ondown>450</ondown>
+                <pagecontrol>60</pagecontrol>
+                <scrolltime>200</scrolltime>
+                <itemlayout height="70">
+                    <include content="dialog_filebrowser_listitem" />
+                </itemlayout>
+                <focusedlayout height="70">
+                    <include content="dialog_filebrowser_listitem">
+                        <param name="active">true</param>
+                    </include>
+                </focusedlayout>
+            </control>
+            <control type="panel" id="451">
+                <left>20</left>
+                <top>100</top>
+                <width>940</width>
+                <height>700</height>
+                <onleft>9000</onleft>
+                <onright>60</onright>
+                <onup>451</onup>
+                <ondown>451</ondown>
+                <pagecontrol>60</pagecontrol>
+                <scrolltime>200</scrolltime>
+                <itemlayout height="70" width="940">
+                    <include content="dialog_filebrowser_listitem">
+                        <param name="list_id">451</param>
+                    </include>
+                </itemlayout>
+                <focusedlayout height="70" width="940">
+                    <include content="dialog_filebrowser_listitem">
+                        <param name="list_id">451</param>
+                        <param name="active">true</param>
+                    </include>
+                </focusedlayout>
+            </control>
+            <control type="scrollbar" id="60">
+                <left>970</left>
+                <top>80</top>
+                <width>12</width>
+                <height>730</height>
+                <onleft>450</onleft>
+                <onright>9000</onright>
+                <orientation>vertical</orientation>
+            </control>
+            <control type="label" id="412">
+                <description>Path label</description>
+                <left>25</left>
+                <bottom>10</bottom>
+                <width>595</width>
+                <height>30</height>
+                <haspath>true</haspath>
+                <aligny>bottom</aligny>
+            </control>
+            <control type="label">
+                <left>0</left>
+                <bottom>10</bottom>
+                <width>1270</width>
+                <height>30</height>
+                <align>right</align>
+                <aligny>bottom</aligny>
+                <textcolor>grey</textcolor>
+                <label>$VAR[FileBrowserSelectLabel]</label>
+            </control>
+        </control>
+        <include content="UpDownArrows">
+            <param name="container_id" value="450" />
+            <param name="posx" value="830" />
+            <param name="up_posy" value="50" />
+            <param name="down_posy" value="980" />
+            <param name="visible" value="!System.HasActiveModalDialog" />
+        </include>
+    </controls>
+</window>

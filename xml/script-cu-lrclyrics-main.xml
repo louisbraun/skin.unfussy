@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<animation type="WindowOpen" reversible="false">
+		<effect type="zoom" start="80" end="100" center="960,540" delay="160" tween="back" time="240" />
+		<effect type="fade" delay="160" end="100" time="240" />
+	</animation>
+	<animation type="WindowClose" reversible="false">
+		<effect type="zoom" start="100" end="80" center="960,540" easing="in" tween="back" time="240" />
+		<effect type="fade" start="100" end="0" time="240" />
+	</animation>
+	<depth>0.50</depth>
+	<coordinates>
+		<left>1000</left>
+		<top>0</top>
+	</coordinates>
+	<controls>
+		<control type="image">
+			<description>background image</description>
+			<left>0</left>
+			<top>0</top>
+			<width>920</width>
+			<height>300</height>
+			<texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+		</control>
+		<!-- ** Required ** Do not change <id> or <type> (Lyrics, will autoscroll if lrc based lyrics are shown) -->
+		<control type="list" id="110">
+			<left>10</left>
+			<top>50</top>
+			<width>900</width>
+			<height>210</height>
+			<scrolltime>200</scrolltime>
+			<itemlayout height="40">
+				<control type="label">
+					<left>0</left>
+					<top>0</top>
+					<width>900</width>
+					<height>30</height>
+					<aligny>center</aligny>
+					<align>center</align>
+					<font>regular24</font>
+					<shadowcolor>FF666666</shadowcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout height="60">
+				<control type="label">
+					<left>0</left>
+					<top>0</top>
+					<width>900</width>
+					<height>60</height>
+					<aligny>center</aligny>
+					<align>center</align>
+					<textcolor>active</textcolor>
+					<shadowcolor>FF666666</shadowcolor>
+					<font>bold36</font>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</focusedlayout>
+		</control>
+		<!-- ** Required ** Do not change <id> or <type> (Lyrics Chooser, if multiple lyrics are available) -->
+		<control type="list" id="120">
+			<left>10</left>
+			<top>110</top>
+			<width>1300</width>
+			<height>600</height>
+			<onleft>121</onleft>
+			<onright>121</onright>
+			<onup>120</onup>
+			<ondown>120</ondown>
+			<pagecontrol>121</pagecontrol>
+			<scrolltime>200</scrolltime>
+			<animation effect="slide" start="0,0" end="20,0" time="0" condition="!Control.IsVisible(121)">Conditional</animation>
+			<itemlayout height="40">
+				<control type="label">
+					<left>10</left>
+					<top>0</top>
+					<width>530</width>
+					<height>40</height>
+					<aligny>center</aligny>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</itemlayout>
+			<focusedlayout height="40">
+				<control type="label">
+					<left>10</left>
+					<top>0</top>
+					<width>530</width>
+					<height>40</height>
+					<aligny>center</aligny>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>FF12B2E7</textcolor>
+				</control>
+			</focusedlayout>
+		</control>
+		<!-- ** Required ** Do not change <id> or <type> (name of the used scraper and optionally the number of found lyrics) -->
+		<control type="label" id="200">
+			<description>Scraper label</description>
+			<visible>false</visible>
+		</control>
+	</controls>
+</window>

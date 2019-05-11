@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">50</defaultcontrol>
+    <backgroundcolor>0</backgroundcolor>
+    <views>50</views>
+    <controls>
+        <include>background</include>
+        <include content="info_header" condition="Window.IsActive(videoplaylist)">
+            <param name="title" value="$LOCALIZE[31076]" />
+            <param name="showicon" value="true" />
+            <param name="icon" value="icons/mainmenu/movies.png" />
+        </include>
+        <include content="info_header" condition="Window.IsActive(musicplaylist)">
+            <param name="title" value="$LOCALIZE[31077]" />
+            <param name="showicon" value="true" />
+            <param name="icon" value="icons/mainmenu/music.png" />
+        </include>
+        <control type="group">
+            <include>openclose_slight_left</include>
+            <top>80</top>
+            <left>20</left>
+            <width>400</width>
+            <height>880</height>
+            <control type="image">
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="label">
+                <left>20</left>
+                <right>20</right>
+                <height>50</height>
+                <aligny>center</aligny>
+                <font>light30</font>
+                <textcolor>active</textcolor>
+                <label>$LOCALIZE[180]: [COLOR white]$INFO[Container.TotalTime][/COLOR]</label>
+            </control>
+            <control type="label">
+                <top>50</top>
+                <height>50</height>
+                <left>20</left>
+                <right>20</right>
+                <aligny>center</aligny>
+                <font>light30</font>
+                <textcolor>active</textcolor>
+                <label>$VAR[PlaylistTrackCount]</label>
+            </control>
+            <control type="grouplist" id="700">
+                <orientation>vertical</orientation>
+                <itemgap>0</itemgap>
+                <left>1</left>
+                <top>250</top>
+                <width>398</width>
+                <onup>800</onup>
+                <ondown>800</ondown>
+                <onleft>50</onleft>
+                <onright>50</onright>
+                <control type="radiobutton" id="20">
+                    <height>80</height>
+                    <align>left</align>
+                    <radioposx>300</radioposx>
+                    <textoffsetx>20</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                    <font>light36</font>
+                    <label>$LOCALIZE[191]</label>
+                </control>
+                <control type="button" id="26">
+                    <height>80</height>
+                    <align>left</align>
+                    <font>light36</font>
+                    <textoffsetx>20</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                </control>
+                <control type="button" id="21">
+                    <height>80</height>
+                    <align>left</align>
+                    <font>light36</font>
+                    <textoffsetx>20</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                    <label>$LOCALIZE[190]</label>
+                </control>
+                <control type="button" id="22">
+                    <height>80</height>
+                    <align>left</align>
+                    <font>light36</font>
+                    <textoffsetx>20</textoffsetx>
+                    <textoffsety>35</textoffsety>
+                    <label>$LOCALIZE[192]</label>
+                </control>
+            </control>
+            <control type="grouplist" id="800">
+                <visible>Player.HasMedia</visible>
+                <orientation>horizontal</orientation>
+                <itemgap>5</itemgap>
+                <align>center</align>
+                <left>1</left>
+                <top>840</top>
+                <width>398</width>
+                <height>100</height>
+                <onup>700</onup>
+                <ondown>700</ondown>
+                <onleft>50</onleft>
+                <onright>50</onright>
+                <include content="button_round">
+                    <param name="id" value="801" />
+                    <param name="onclick" value="PlayerControl(Previous)" />
+                    <param name="icon" value="icons/buttons/previous.png" />
+                    <param name="useanimations" value="true" />
+                </include>
+                <control type="radiobutton" id="802">
+                    <width>70</width>
+                    <height>70</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <textureradioonfocus colordiffuse="white">icons/buttons/play.png</textureradioonfocus>
+                    <textureradioonnofocus colordiffuse="white">icons/buttons/play.png</textureradioonnofocus>
+                    <textureradioofffocus colordiffuse="white">icons/buttons/pause.png</textureradioofffocus>
+                    <textureradiooffnofocus colordiffuse="white">icons/buttons/pause.png</textureradiooffnofocus>
+                    <texturefocus colordiffuse="active">buttons/button_round_3d.png</texturefocus>
+                    <texturenofocus colordiffuse="ff303030">buttons/button_round_3d.png</texturenofocus>
+                    <radiowidth>40</radiowidth>
+                    <radioheight>40</radioheight>
+                    <radioposx>15</radioposx>
+                    <radioposy>15</radioposy>
+                    <selected>Player.Paused</selected>
+                    <onclick>PlayerControl(Play)</onclick>
+                    <animation type="Focus">
+                        <effect type="zoom" end="120" time="150" tween="sine" easing="out" center="auto" />
+                        <effect type="slide" start="0,0" end="0,10" time="150" tween="sine" easing="out" />
+                    </animation>
+                    <animation type="Unfocus">
+                        <effect type="zoom" end="95" time="150" tween="sine" easing="out" center="auto" />
+                        <effect type="slide" start="0,10" end="0,0" time="150" tween="sine" easing="out" />
+                    </animation>
+                </control>
+                <include content="button_round">
+                    <param name="id" value="803" />
+                    <param name="onclick" value="PlayerControl(Next)" />
+                    <param name="icon" value="icons/buttons/next.png" />
+                    <param name="useanimations" value="true" />
+                </include>
+                <include content="button_round">
+                    <param name="id" value="804" />
+                    <param name="onclick" value="Fullscreen" />
+                    <param name="icon" value="icons/buttons/fullscreen.png" />
+                    <param name="useanimations" value="true" />
+                </include>                
+            </control>
+        </control>
+        <control type="group">
+            <include>openclose_slight_left</include>
+            <top>80</top>
+            <left>430</left>
+            <width>800</width>
+            <height>980</height>
+            <control type="image">
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="fixedlist" id="50">
+                <scrolltime tween="cubic" easing="out">500</scrolltime>
+                <orientation>vertical</orientation>
+                <onleft>700</onleft>
+                <onright>60</onright>
+                <movement>5</movement>
+                <focusposition>6</focusposition>
+                <onup>50</onup>
+                <ondown>50</ondown>
+                <pagecontrol>60</pagecontrol>
+                <viewtype label="List">list</viewtype>
+                <preloaditems>1</preloaditems>
+                <focusedlayout height="60">
+                    <control type="image">
+                        <aspectratio>stretch</aspectratio>
+                        <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                        <bodertexture colordiffuse="active">colors/white.png</bodertexture>
+                        <bordersize>1</bordersize>
+                        <visible>Control.HasFocus(50)</visible>
+                    </control>
+                    <control type="label">
+                        <left>30</left>
+                        <right>30</right>
+                        <aligny>center</aligny>
+                        <font>light30</font>
+                        <label>$VAR[PlaylistLabelVar]</label>
+                    </control>
+                    <control type="label">
+                        <left>30</left>
+                        <right>30</right>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <font>light30</font>
+                        <label>$VAR[PlaylistLabel2Var]</label>
+                    </control>
+                </focusedlayout>
+                <itemlayout height="60">
+                    <control type="label">
+                        <left>30</left>
+                        <right>30</right>
+                        <aligny>center</aligny>
+                        <font>light30</font>
+                        <label>$VAR[PlaylistLabelVar]</label>
+                    </control>
+                    <control type="label">
+                        <left>30</left>
+                        <right>30</right>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <font>light30</font>
+                        <label>$VAR[PlaylistLabel2Var]</label>
+                    </control>
+                </itemlayout>
+            </control>
+        </control>
+        <control type="group">
+            <include>openclose_slight_right</include>
+            <top>80</top>
+            <left>1240</left>
+            <width>660</width>
+            <height>980</height>
+            <control type="image">
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="group">
+                <visible>Window.IsActive(musicplaylist)</visible>
+                <control type="image">
+                    <visible>!String.IsEmpty(ListItem.Art(artist.clearlogo))</visible>
+                    <left>10</left>
+                    <top>10</top>
+                    <width>640</width>
+                    <height>240</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Art(artist.clearlogo)]</texture>
+                </control>
+                <control type="textbox">
+                    <visible>String.IsEmpty(ListItem.Art(artist.clearlogo))</visible>
+                    <left>10</left>
+                    <top>10</top>
+                    <width>640</width>
+                    <height>240</height>
+                    <font>light50</font>
+                    <textcolor>active</textcolor>
+                    <align>center</align>
+                    <aligny>center</aligny>                    
+                    <label>$INFO[ListItem.Artist]</label>
+                </control>
+                <control type="group">
+                    <visible>!String.IsEmpty(ListItem.Art(album.discart))</visible>
+                    <control type="image">
+                        <left>80</left>
+                        <bottom>220</bottom>
+                        <width>500</width>
+                        <height>500</height>
+                        <texture>$INFO[ListItem.Art(album.discart)]</texture>
+                    </control>
+                    <control type="image">
+                        <left>80</left>
+                        <bottom>10</bottom>
+                        <width>500</width>
+                        <height>500</height>
+                        <texture fallback="defaultmusicalbums.png">$INFO[ListItem.Art(album.thumb)]</texture>
+                    </control>
+                </control>
+                <control type="group">
+                    <visible>String.IsEmpty(ListItem.Art(album.discart))</visible>
+                    <control type="image">
+                        <left>80</left>
+                        <bottom>100</bottom>
+                        <width>500</width>
+                        <height>500</height>
+                        <texture fallback="defaultmusicalbums.png">$INFO[ListItem.Art(album.thumb)]</texture>
+                    </control>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Window.IsActive(videoplaylist)</visible>
+                <control type="image">
+                    <left>10</left>
+                    <top>10</top>
+                    <width>640</width>
+                    <height>960</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Art(poster)]</texture>
+                </control>
+            </control>
+        </control>
+    </controls>
+</window>

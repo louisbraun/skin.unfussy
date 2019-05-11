@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window id="1103" type="dialog">
+    <animation effect="fade" end="100" time="500">WindowOpen</animation>
+    <animation effect="fade" start="100" end="0" time="240">WindowClose</animation>
+    <visible>String.IsEqual(Window(home).Property(custombusy),true)</visible>
+    <onload>AlarmClock(custombusy_timer,ClearProperty(custombusy,home),00:20,silent)</onload>
+    <onunload>CancelAlarm(custombusy_timer,silent)</onunload>
+    <controls>
+        <control type="image">
+            <visible>!String.IsEmpty(ListItem.Art(fanart))</visible>
+            <width>$INFO[System.ScreenWidth]</width>
+            <height>$INFO[System.ScreenHeight]</height>
+            <aspectratio>scale</aspectratio>
+            <texture>$INFO[ListItem.Art(fanart)]</texture>
+        </control>
+        <include>background_dialog</include>
+        <control type="group">
+            <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+            <control type="image">
+                <centerleft>50%</centerleft>
+                <centertop>50%</centertop>
+                <width>100</width>
+                <height>100</height>
+                <visible>true</visible>
+                <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                <texture colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+            </control>
+            <control type="image">
+                <centerleft>50%</centerleft>
+                <centertop>50%</centertop>
+                <width>70</width>
+                <height>70</height>
+                <visible>true</visible>
+                <animation effect="rotate" end="360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                <texture flipx="true" colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+            </control>
+        </control>
+        <control type="group">
+            <visible>String.IsEqual(Window(home).Property(custombusyreason),youtube)</visible>
+            <control type="image">
+                <centerleft>50%</centerleft>
+                <top>5%</top>
+                <width>350</width>
+                <height>350</height>
+                <aspectratio>keep</aspectratio>
+                <texture>youtube-logo.png</texture>
+            </control>
+            <control type="label">
+                <top>55%</top>
+                <align>center</align>
+                <font>light70</font>
+                <label>$LOCALIZE[31020]</label>
+            </control>
+            <control type="label">
+                <top>63%</top>
+                <align>center</align>
+                <textcolor>active</textcolor>
+                <font>light70</font>
+                <label>"$INFO[Window(home).Property(custombusylabel)]"</label>
+            </control>
+        </control>
+        <control type="group">
+            <visible>String.IsEqual(Window(home).Property(custombusyreason),trailer)</visible>
+            <control type="image">
+                <centerleft>50%</centerleft>
+                <top>5%</top>
+                <width>350</width>
+                <height>350</height>
+                <aspectratio>keep</aspectratio>
+                <texture>youtube-logo.png</texture>
+            </control>
+            <control type="label">
+                <top>55%</top>
+                <align>center</align>
+                <font>light70</font>
+                <label>$LOCALIZE[31055]</label>
+            </control>
+            <control type="label">
+                <top>63%</top>
+                <align>center</align>
+                <textcolor>active</textcolor>
+                <font>light70</font>
+                <label>"$INFO[Window(home).Property(custombusylabel)]"</label>
+            </control>
+        </control>
+        <control type="group">
+            <visible>String.IsEqual(Window(home).Property(custombusyreason),tmdbtvshow)</visible>
+            <control type="image">
+                <centerleft>50%</centerleft>
+                <top>10%</top>
+                <width>600</width>
+                <height>237</height>
+                <aspectratio>keep</aspectratio>
+                <texture>moviedb.png</texture>
+            </control>
+            <control type="label">
+                <top>55%</top>
+                <align>center</align>
+                <font>light70</font>
+                <label>$LOCALIZE[31021]</label>
+            </control>
+            <control type="label">
+                <top>63%</top>
+                <align>center</align>
+                <textcolor>active</textcolor>
+                <font>light70</font>
+                <label>"$INFO[Window(home).Property(custombusylabel)]"</label>
+            </control>
+        </control>
+        <control type="group">
+            <visible>String.IsEqual(Window(home).Property(custombusyreason),tmdbmovie)</visible>
+            <control type="image">
+                <centerleft>50%</centerleft>
+                <top>10%</top>
+                <width>600</width>
+                <height>237</height>
+                <aspectratio>keep</aspectratio>
+                <texture>moviedb.png</texture>
+            </control>
+            <control type="label">
+                <top>55%</top>
+                <align>center</align>
+                <font>light70</font>
+                <label>$LOCALIZE[31022]</label>
+            </control>
+            <control type="label">
+                <top>63%</top>
+                <align>center</align>
+                <textcolor>active</textcolor>
+                <font>light70</font>
+                <label>"$INFO[Window(home).Property(custombusylabel)]"</label>
+            </control>
+        </control>
+        <control type="group">
+            <visible>String.IsEqual(Window(home).Property(custombusyreason),checkincludes)</visible>
+            <control type="label">
+                <top>63%</top>
+                <align>center</align>
+                <textcolor>active</textcolor>
+                <font>light70</font>
+                <label>Creating menu and widgets...</label>
+            </control>
+        </control>
+    </controls>
+</window>

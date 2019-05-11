@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <onload>ClearProperty(closeonload,home)</onload>
+    <onload>ClearProperty(startlivetv,home)</onload>
+    <onload>ClearProperty(custombusy,home)</onload>
+    <onload>ClearProperty(custombusyreason,home)</onload>
+    <onload>ClearProperty(custombusylabel,home)</onload>
+    <onunload condition="!Player.HasVideo + String.StartsWith(Player.Folderpath,pvr://recordings) + Skin.HasSetting(start_live_tv)">SetProperty(startlivetv,true,home)</onunload>
+    <controls>
+        <control type="group" id="0">
+            <control type="label" id="10">
+                <left>45</left>
+                <top>15</top>
+                <width>1770</width>
+                <height>100</height>
+                <label/>
+                <font>regular24</font>
+                <shadowcolor>black</shadowcolor>
+            </control>
+            <control type="label" id="11">
+                <left>45</left>
+                <top>45</top>
+                <width>1770</width>
+                <height>100</height>
+                <label/>
+                <font>regular24</font>
+                <shadowcolor>black</shadowcolor>
+            </control>
+            <control type="label" id="12">
+                <left>45</left>
+                <top>75</top>
+                <width>1770</width>
+                <height>100</height>
+                <label/>
+                <font>regular24</font>
+                <shadowcolor>black</shadowcolor>
+            </control>
+        </control>
+        <control type="group" id="1">
+            <visible>Player.Caching + ![Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding | Player.ShowInfo | Window.IsActive(fullscreeninfo) | Window.IsActive(musicosd) | Window.IsActive(playerprocessinfo) | !String.IsEmpty(Player.SeekNumeric) | !String.IsEmpty(PVR.ChannelNumberInput)]</visible>
+            <centerleft>50%</centerleft>
+            <centertop>50%</centertop>
+            <width>350</width>
+            <height>70</height>
+            <control type="image" id="1">
+                <centerleft>50%</centerleft>
+                <centertop>50%</centertop>
+                <width>350</width>
+                <height>70</height>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="progress" id="1">
+                <centerleft>50%</centerleft>
+                <top>39</top>
+                <width>320</width>
+                <height>16</height>
+                <info>Player.CacheLevel</info>
+            </control>
+            <control type="label" id="1">
+                <label>$INFO[Player.CacheLevel]%</label>
+                <centerleft>50%</centerleft>
+                <top>13</top>
+                <width>320</width>
+                <height>20</height>
+                <aligny>center</aligny>
+                <align>right</align>
+                <font>regular18</font>
+            </control>        
+            <control type="label" id="2">
+                <label>$LOCALIZE[15107]</label>
+                <centerleft>50%</centerleft>
+                <top>13</top>
+                <width>320</width>
+                <height>20</height>
+                <aligny>center</aligny>
+                <align>left</align>
+                <font>light18</font>
+            </control>
+        </control>
+    </controls>
+</window>

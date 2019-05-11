@@ -1,0 +1,1088 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+<!-- Widget Grouplist Container -->
+    <include name="widgets_mainmenu">
+        <control type="grouplist" id="9002">
+            <visible>!Player.HasVideo | !Skin.HasSetting(hide_widgets)</visible>
+            <left>10</left>
+            <right>10</right>
+            <top>90</top>
+            <bottom>30</bottom>
+            <scrolltime tween="cubic" easing="out">500</scrolltime>
+            <itemgap>0</itemgap>
+            <onup>9001</onup>
+            <usecontrolcoords>true</usecontrolcoords>
+            <defaultcontrol>10</defaultcontrol>
+            <include>home_widget_content</include>
+        </control>
+        <control type="group">
+            <visible>ControlGroup(9002).HasFocus</visible>
+            <control type="image">
+                <visible>Container(9002).HasPrevious</visible>
+                <animation effect="zoom" start="100,0" end="100,100" center="auto" time="200" delay="10">VisibleChange</animation>
+                <left>0</left>
+                <top>65</top>
+                <width>1920</width>
+                <height>20</height>
+                <aspectratio>keep</aspectratio>
+                <texture colordiffuse="active">icons/arrowup.png</texture>
+            </control>
+            <control type="image">
+                <visible>Container(9002).HasNext</visible>
+                <animation effect="zoom" start="100,0" end="100,100" center="auto" time="200" delay="10">VisibleChange</animation>
+                <left>0</left>
+                <top>1055</top>
+                <width>1920</width>
+                <height>20</height>
+                <aspectratio>keep</aspectratio>
+                <texture colordiffuse="active">icons/arrowdown.png</texture>
+            </control>
+        </control>
+    </include>
+
+<!-- Widget -->
+    <include name="widget_mainmenu">
+        <param name="id"></param>
+        <param name="visible">true</param>
+        <param name="header"></param>
+        <param name="type">movies</param>
+        <param name="height">250</param>
+        <param name="itemwidth">260</param>
+        <param name="path"></param>
+        <param name="static_content">false</param>
+        <param name="target">video</param>
+        <param name="sortby"></param>
+        <param name="sortorder">ascending</param>
+        <param name="onclick"></param>
+        <param name="useonclick">false</param>
+        <param name="limit"></param>
+        <definition>
+            <include content="widget_header_mainmenu">
+                <param name="id">$PARAM[id]</param>
+                <param name="visible">$PARAM[visible]</param>
+                <param name="header">$PARAM[header]</param>
+                <param name="height">$PARAM[height]</param>
+            </include>
+            <control type="panel" id="$PARAM[id]">
+                <visible>$PARAM[visible]</visible>
+                <visible>Container($PARAM[id]).IsUpdating | Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
+                <top>0</top>
+                <left>300</left>
+                <right>40</right>
+                <height>$PARAM[height]</height>
+                <onleft>9001</onleft>
+                <onfocus>SetProperty(active_channel, $PARAM[id])</onfocus>
+                <onunfocus>SetProperty(active_channel, 0)</onunfocus>
+                <orientation>horizontal</orientation>
+                <scrolltime tween="sine" easing="out">200</scrolltime>
+                <itemlayout width="$PARAM[itemwidth]" height="$PARAM[height]">
+                    <include content="widget_item_$PARAM[type]" />
+                </itemlayout>
+                <focusedlayout width="$PARAM[itemwidth]" height="$PARAM[height]">
+                    <include content="widget_item_$PARAM[type]">
+                        <param name="active">true</param>
+                    </include>
+                </focusedlayout>
+                <include condition="$PARAM[static_content]">$PARAM[path]</include>
+                <include condition="!$PARAM[static_content]" content="content_dynamic">
+                    <param name="path">$PARAM[path]</param>
+                    <param name="target">$PARAM[target]</param>
+                    <param name="sortby">$PARAM[sortby]</param>
+                    <param name="sortorder">$PARAM[sortorder]</param>
+                    <param name="limit">$PARAM[limit]</param>
+                </include>
+                <onclick condition="$PARAM[useonclick]">$PARAM[onclick]</onclick>
+            </control>
+        </definition>
+    </include>
+
+    <include name="content_dynamic">
+        <param name="path"></param>
+        <param name="target"></param>
+        <param name="sortby"></param>
+        <param name="sortorder"></param>
+        <param name="limit"></param>
+        <definition>
+            <content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[target]" limit="$PARAM[limit]">$PARAM[path]</content>
+        </definition>
+    </include>
+
+<!-- Widget Header -->
+    <include name="widget_header_mainmenu">
+        <param name="id"></param>
+        <param name="visible">true</param>
+        <param name="header"></param>
+        <param name="height">250</param>
+        <definition>
+            <control type="group" id="$PARAM[id]666">
+                <visible>Container($PARAM[id]).IsUpdating | Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
+                <visible>$PARAM[visible]</visible>
+                <top>10</top>
+                <control type="group">
+                    <visible>String.IsEqual(Window(Home).Property(active_channel), $PARAM[id])</visible>
+                    <control type="image">
+                        <description>left scroll arrow</description>
+                        <visible>Container($PARAM[id]).HasPrevious</visible>
+                        <left>7</left>
+                        <width>20</width>
+                        <height>$PARAM[height]</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture colordiffuse="active">icons/arrowleft.png</texture>
+                        <animation effect="zoom" start="0,100" end="100,100" center="auto" time="200" delay="10">VisibleChange</animation>
+                    </control>
+                    <control type="image">
+                        <description>right scroll arrow</description>
+                        <visible>Container($PARAM[id]).HasNext</visible>
+                        <right>7</right>
+                        <width>20</width>
+                        <height>$PARAM[height]</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture colordiffuse="active">icons/arrowright.png</texture>
+                        <animation effect="zoom" start="0,100" end="100,100" center="auto" time="200" delay="10">VisibleChange</animation>
+                    </control>
+                    <control type="image">
+                        <description>background</description>
+                        <left>40</left>
+                        <top>0</top>
+                        <width>250</width>
+                        <height>$PARAM[height]</height>
+                        <texture colordiffuse="backgrounddark">backgrounds/overlay_background.png</texture>
+                        <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                        <bordersize>3</bordersize>
+                    </control>
+                    <control type="textbox">
+                        <left>50</left>
+                        <top>0</top>
+                        <width>230</width>
+                        <height>$PARAM[height]</height>
+                        <font>light36</font>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <textcolor>active</textcolor>
+                        <label>$PARAM[header]</label>
+                    </control>
+                    <control type="label">
+                        <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
+                        <top>5</top>
+                        <left>40</left>
+                        <width>240</width>
+                        <align>right</align>
+                        <font>bold16</font>
+                        <textcolor>active</textcolor>
+                        <label>$INFO[Container($PARAM[id]).CurrentItem]/$INFO[Container($PARAM[id]).NumItems]</label>
+                    </control>
+                </control>
+                <control type="group">
+                    <visible>!String.IsEqual(Window(Home).Property(active_channel), $PARAM[id])</visible>
+                    <control type="image">
+                        <description>background</description>
+                        <left>40</left>
+                        <top>0</top>
+                        <width>250</width>
+                        <height>$PARAM[height]</height>
+                        <texture colordiffuse="backgrounddark">backgrounds/overlay_background.png</texture>
+                        <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                        <bordersize>1</bordersize>
+                    </control>
+                    <control type="textbox">
+                        <left>50</left>
+                        <top>0</top>
+                        <width>230</width>
+                        <height>$PARAM[height]</height>
+                        <font>light36</font>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <label>$PARAM[header]</label>
+                    </control>
+                    <control type="label">
+                        <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
+                        <top>5</top>
+                        <left>40</left>
+                        <width>240</width>
+                        <align>right</align>
+                        <font>bold16</font>
+                        <label>$INFO[Container($PARAM[id]).NumItems]</label>
+                    </control>
+                </control>
+                <control type="group">
+                    <visible>Container($PARAM[id]).IsUpdating + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
+                    <animation effect="fade" time="320" delay="400">Visible</animation>
+                    <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+                    <control type="image">
+                        <top>60</top>
+                        <left>950</left>
+                        <width>100</width>
+                        <height>100</height>
+                        <visible>true</visible>
+                        <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                        <texture colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                    </control>
+                    <control type="image">
+                        <top>75</top>
+                        <left>965</left>
+                        <width>70</width>
+                        <height>70</height>
+                        <visible>true</visible>
+                        <animation effect="rotate" end="360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                        <texture flipx="true" colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                    </control>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+<!-- Widget LiveTV -->
+    <include name="widget_item_livetv_small">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="heightactive">70</param>
+                </include>
+                <control type="image">
+                    <left>10</left>
+                    <top>10</top>
+                    <width>230</width>
+                    <height>170</height>
+                    <aspectratio aligny="center" align="center">keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="group">
+                    <top>180</top>
+                    <left>10</left>
+                    <right>10</right>
+                    <control type="label">
+                        <height>25</height>
+                        <font>light18</font>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.StartTime(hh:mm)]</label>
+                    </control>
+                    <control type="label">
+                        <height>25</height>
+                        <font>light18</font>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.EndTime(hh:mm)]</label>
+                    </control>
+                    <control type="progress">
+                        <visible>!$PARAM[active]</visible>
+                        <top>25</top>
+                        <height>10</height>
+                        <texturebg border="3">progress/texturebg_border_white.png</texturebg>
+                        <midtexture colordiffuse="active" border="5,3,5,3">progress/texturebg_white.png</midtexture>
+                        <visible>ListItem.HasEpg</visible>
+                        <info>ListItem.Progress</info>
+                    </control>
+                    <control type="progress">
+                        <visible>$PARAM[active]</visible>
+                        <top>25</top>
+                        <height>10</height>
+                        <texturebg border="3">progress/texturebg_border_white.png</texturebg>
+                        <midtexture colordiffuse="backgrounddark" border="5,3,5,3">progress/texturebg_white.png</midtexture>
+                        <visible>ListItem.HasEpg</visible>
+                        <info>ListItem.Progress</info>
+                    </control>
+                </control>
+                <control type="label">
+                    <top>210</top>
+                    <left>10</left>
+                    <right>10</right>
+                    <height>45</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Title]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/play" />
+                    <param name="showduration" value="false" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_livetv_large">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="heightactive">74</param>
+                </include>
+                <control type="image">
+                    <top>1</top>
+                    <left>1</left>
+                    <width>248</width>
+                    <height>349</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.EPGEventIcon]</texture>
+                </control>
+                <control type="image">
+                    <left>10</left>
+                    <top>350</top>
+                    <width>100</width>
+                    <height>50</height>
+                    <aspectratio aligny="center" align="left">keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="group">
+                    <top>355</top>
+                    <left>110</left>
+                    <right>20</right>
+                    <control type="label">
+                        <height>25</height>
+                        <font>light18</font>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.StartTime(hh:mm)]</label>
+                    </control>
+                    <control type="label">
+                        <height>25</height>
+                        <font>light18</font>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.EndTime(hh:mm)]</label>
+                    </control>
+                    <control type="progress">
+                        <visible>!$PARAM[active]</visible>
+                        <top>25</top>
+                        <height>10</height>
+                        <texturebg border="3">progress/texturebg_border_white.png</texturebg>
+                        <midtexture colordiffuse="active" border="5,3,5,3">progress/texturebg_white.png</midtexture>
+                        <visible>ListItem.HasEpg</visible>
+                        <info>ListItem.Progress</info>
+                    </control>
+                    <control type="progress">
+                        <visible>$PARAM[active]</visible>
+                        <top>25</top>
+                        <height>10</height>
+                        <texturebg border="3">progress/texturebg_border_white.png</texturebg>
+                        <midtexture colordiffuse="backgrounddark" border="5,3,5,3">progress/texturebg_white.png</midtexture>
+                        <visible>ListItem.HasEpg</visible>
+                        <info>ListItem.Progress</info>
+                    </control>
+                </control>
+                <control type="label">
+                    <top>385</top>
+                    <left>10</left>
+                    <right>10</right>
+                    <height>45</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Title]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/play" />
+                    <param name="showduration" value="false" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_recordings_small">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="heightactive">70</param>
+                </include>
+                <control type="image">
+                    <left>10</left>
+                    <top>10</top>
+                    <width>230</width>
+                    <height>170</height>
+                    <aspectratio aligny="center" align="center">keep</aspectratio>
+                    <texture>$INFO[ListItem.ActualIcon]</texture>
+                </control>
+                <control type="group">
+                    <top>185</top>
+                    <left>10</left>
+                    <right>10</right>
+                    <control type="label">
+                        <height>30</height>
+                        <font>regular30</font>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Title]</label>
+                    </control>
+                    <control type="label">
+                        <top>22</top>
+                        <height>45</height>
+                        <font>regular24</font>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <label>$VAR[PVRRecEpisodeName]</label>
+                    </control>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/play" />
+                    <param name="showduration" value="false" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_recordings_large">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="heightactive">74</param>
+                </include>
+                <control type="image">
+                    <top>1</top>
+                    <left>1</left>
+                    <width>248</width>
+                    <height>349</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="group">
+                    <top>360</top>
+                    <left>10</left>
+                    <right>10</right>
+                    <control type="label">
+                        <height>30</height>
+                        <font>regular30</font>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Title]</label>
+                    </control>
+                    <control type="label">
+                        <top>22</top>
+                        <height>45</height>
+                        <font>regular24</font>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <label>$VAR[PVRRecEpisodeName]</label>
+                    </control>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/play" />
+                    <param name="showduration" value="false" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_tv_runningat_small">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="heightactive">70</param>
+                </include>
+                <control type="image">
+                    <left>10</left>
+                    <top>0</top>
+                    <width>230</width>
+                    <height>160</height>
+                    <aspectratio aligny="center" align="center">keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(state),disabled)</visible>
+                    <left>10</left>
+                    <top>10</top>
+                    <width>50</width>
+                    <height>50</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture colordiffuse="red">icons/buttons/disable.png</texture>
+                </control>
+                <control type="label">
+                    <top>150</top>
+                    <left>10</left>
+                    <right>10</right>
+                    <height>30</height>
+                    <font>light24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Property(date)]: [COLOR active]$INFO[ListItem.Property(starttime)] - $INFO[ListItem.Property(endtime)][/COLOR]</label>
+                </control>
+                <control type="textbox">
+                    <visible>!String.IsEqual(ListItem.Property(state),disabled)</visible>
+                    <autoscroll delay="2000" time="1000" repeat="3000">$PARAM[active]</autoscroll>
+                    <top>175</top>
+                    <left>10</left>
+                    <right>10</right>
+                    <height>80</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Title]</label>
+                </control>
+                <control type="textbox">
+                    <visible>String.IsEqual(ListItem.Property(state),disabled)</visible>
+                    <autoscroll delay="2000" time="1000" repeat="3000">$PARAM[active]</autoscroll>
+                    <top>175</top>
+                    <left>10</left>
+                    <right>10</right>
+                    <height>80</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <textcolor>border</textcolor>
+                    <label>$INFO[ListItem.Title]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/info" />
+                    <param name="showduration" value="false" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_tvtimer_small">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="heightactive">70</param>
+                </include>
+                <control type="image">
+                    <left>10</left>
+                    <top>10</top>
+                    <width>230</width>
+                    <height>170</height>
+                    <aspectratio aligny="center" align="center">keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="group">
+                    <top>180</top>
+                    <left>10</left>
+                    <right>10</right>
+                    <control type="label">
+                        <height>25</height>
+                        <font>light18</font>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.StartTime(hh:mm)]</label>
+                    </control>
+                    <control type="label">
+                        <height>25</height>
+                        <font>light18</font>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.EndTime(hh:mm)]</label>
+                    </control>
+                    <control type="progress">
+                        <visible>!$PARAM[active]</visible>
+                        <top>25</top>
+                        <height>10</height>
+                        <texturebg border="3">progress/texturebg_border_white.png</texturebg>
+                        <midtexture colordiffuse="active" border="5,3,5,3">progress/texturebg_white.png</midtexture>
+                        <visible>ListItem.HasEpg</visible>
+                        <info>ListItem.Progress</info>
+                    </control>
+                    <control type="progress">
+                        <visible>$PARAM[active]</visible>
+                        <top>25</top>
+                        <height>10</height>
+                        <texturebg border="3">progress/texturebg_border_white.png</texturebg>
+                        <midtexture colordiffuse="backgrounddark" border="5,3,5,3">progress/texturebg_white.png</midtexture>
+                        <visible>ListItem.HasEpg</visible>
+                        <info>ListItem.Progress</info>
+                    </control>
+                </control>
+                <control type="label">
+                    <top>210</top>
+                    <left>10</left>
+                    <right>10</right>
+                    <height>45</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Title]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/play" />
+                    <param name="showduration" value="false" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_tvtimer_large">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="heightactive">74</param>
+                </include>
+                <control type="image">
+                    <top>1</top>
+                    <left>1</left>
+                    <width>248</width>
+                    <height>349</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.EPGEventIcon]</texture>
+                </control>
+                <control type="image">
+                    <left>10</left>
+                    <top>350</top>
+                    <width>100</width>
+                    <height>50</height>
+                    <aspectratio aligny="center" align="left">keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="group">
+                    <top>355</top>
+                    <left>110</left>
+                    <right>20</right>
+                    <control type="label">
+                        <height>25</height>
+                        <font>light18</font>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.StartTime(hh:mm)]</label>
+                    </control>
+                    <control type="label">
+                        <height>25</height>
+                        <font>light18</font>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.EndTime(hh:mm)]</label>
+                    </control>
+                    <control type="progress">
+                        <visible>!$PARAM[active]</visible>
+                        <top>25</top>
+                        <height>10</height>
+                        <texturebg border="3">progress/texturebg_border_white.png</texturebg>
+                        <midtexture colordiffuse="active" border="5,3,5,3">progress/texturebg_white.png</midtexture>
+                        <visible>ListItem.HasEpg</visible>
+                        <info>ListItem.Progress</info>
+                    </control>
+                    <control type="progress">
+                        <visible>$PARAM[active]</visible>
+                        <top>25</top>
+                        <height>10</height>
+                        <texturebg border="3">progress/texturebg_border_white.png</texturebg>
+                        <midtexture colordiffuse="backgrounddark" border="5,3,5,3">progress/texturebg_white.png</midtexture>
+                        <visible>ListItem.HasEpg</visible>
+                        <info>ListItem.Progress</info>
+                    </control>
+                </control>
+                <control type="label">
+                    <top>385</top>
+                    <left>10</left>
+                    <right>10</right>
+                    <height>45</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label] $INFO[ListItem.Title]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_movies">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                </include>
+                <control type="image">
+                    <left>1</left>
+                    <top>1</top>
+                    <width>248</width>
+                    <height>373</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Art(poster)]</texture>
+                </control>
+                <control type="label">
+                    <top>372</top>
+                    <left>10</left>
+                    <width>230</width>
+                    <height>50</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/play" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_episode">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>531</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                </include>
+                <control type="image">
+                    <top>1</top>
+                    <left>1</left>
+                    <width>173</width>
+                    <height>248</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Art(tvshow.poster)]</texture>
+                </control>
+                <control type="image">
+                    <top>1</top>
+                    <left>174</left>
+                    <width>356</width>
+                    <height>198</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="label">
+                    <top>200</top>
+                    <left>185</left>
+                    <width>335</width>
+                    <height>25</height>
+                    <font>regular20</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.TVShowTitle]</label>
+                </control>
+                <control type="label">
+                    <top>225</top>
+                    <left>185</left>
+                    <width>335</width>
+                    <height>25</height>
+                    <font>regular20</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/play" />
+                    <param name="showduration" value="false" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_favorites">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                </include>
+                <control type="image">
+                    <top>20</top>
+                    <left>45</left>
+                    <width>160</width>
+                    <height>160</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <top>200</top>
+                    <left>10</left>
+                    <width>230</width>
+                    <height>50</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/play" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_gto">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>356</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                </include>
+                <control type="image">
+                    <top>1</top>
+                    <left>1</left>
+                    <right>1</right>
+                    <height>199</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <top>200</top>
+                    <left>110</left>
+                    <width>236</width>
+                    <height>25</height>
+                    <font>regular20</font>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Property(StartTime)] - $INFO[ListItem.Property(EndTime)]</label>
+                </control>
+                <control type="label">
+                    <top>225</top>
+                    <left>110</left>
+                    <width>236</width>
+                    <height>25</height>
+                    <font>regular20</font>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="image">
+                    <left>10</left>
+                    <top>200</top>
+                    <width>100</width>
+                    <height>50</height>
+                    <aspectratio aligny="center" align="left">keep</aspectratio>
+                    <texture>$INFO[ListItem.Art(logo)]</texture>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/info" />
+                    <param name="showduration" value="false" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_musicsongs">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                </include>
+                <control type="image">
+                    <top>1</top>
+                    <left>1</left>
+                    <width>248</width>
+                    <height>248</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <top>250</top>
+                    <left>10</left>
+                    <width>230</width>
+                    <height>20</height>
+                    <font>regular20</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Artist] - $INFO[ListItem.Album]</label>
+                </control>
+                <control type="label">
+                    <top>270</top>
+                    <left>10</left>
+                    <width>230</width>
+                    <height>30</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.TrackNumber]. $INFO[ListItem.Title]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/play" />
+                    <param name="showduration" value="false" />
+                    <param name="showdurationmin" value="true" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_musicalbums">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                </include>
+                <control type="image">
+                    <top>1</top>
+                    <left>1</left>
+                    <width>248</width>
+                    <height>248</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <top>250</top>
+                    <left>10</left>
+                    <width>230</width>
+                    <height>20</height>
+                    <font>regular20</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Artist]</label>
+                </control>
+                <control type="label">
+                    <top>270</top>
+                    <left>10</left>
+                    <width>230</width>
+                    <height>30</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="folder" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_musicartists">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                </include>
+                <control type="image">
+                    <top>1</top>
+                    <left>1</left>
+                    <width>248</width>
+                    <height>248</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <top>250</top>
+                    <left>10</left>
+                    <width>230</width>
+                    <height>30</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Artist]</label>
+                </control>
+                <control type="label">
+                    <top>275</top>
+                    <left>10</left>
+                    <width>230</width>
+                    <height>20</height>
+                    <font>regular20</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Genre]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="folder" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_back">
+        <param name="active">false</param>
+        <param name="heightactive">50</param>
+        <definition>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <texture colordiffuse="backgrounddark">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <texture colordiffuse="backgrounddark">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <bottom>1</bottom>
+                <left>1</left>
+                <right>1</right>
+                <height>$PARAM[heightactive]</height>
+                <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_action">
+        <param name="active">false</param>
+        <param name="icon"></param>
+        <param name="showduration">true</param>
+        <param name="showdurationmin">false</param>
+        <definition>
+            <control type="group">
+                <visible>$PARAM[active]</visible>
+                <top>5</top>
+                <control type="image">
+                    <right>5</right>
+                    <width>60</width>
+                    <height>60</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture colordiffuse="active">buttons/button_round_3d.png</texture>
+                </control>
+                <control type="image">
+                    <right>5</right>
+                    <width>60</width>
+                    <height>60</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture colordiffuse="white">icons/$PARAM[icon].png</texture>
+                </control>
+                <control type="label">
+                    <visible>$PARAM[showduration]</visible>
+                    <top>0</top>
+                    <left>5</left>
+                    <height>20</height>
+                    <align>left</align>
+                    <alignv>center</alignv>
+                    <font>bold16</font>
+                    <textcolor>active</textcolor>
+                    <shadowcolor>black</shadowcolor>
+                    <label>$INFO[ListItem.Duration(hh:mm)]</label>
+                </control>
+                <control type="label">
+                    <visible>$PARAM[showdurationmin]</visible>
+                    <top>0</top>
+                    <left>5</left>
+                    <height>20</height>
+                    <align>left</align>
+                    <alignv>center</alignv>
+                    <font>bold16</font>
+                    <textcolor>active</textcolor>
+                    <shadowcolor>black</shadowcolor>
+                    <label>$INFO[ListItem.Duration(mm:ss)]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+</includes>

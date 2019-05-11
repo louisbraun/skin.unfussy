@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog">
+    <defaultcontrol always="true">100001</defaultcontrol>
+    <animation effect="fade" end="100" time="300">WindowOpen</animation>
+    <animation effect="fade" start="100" end="0" time="250">WindowClose</animation>
+    <controls>
+        <include>background</include>
+        <control type="image">
+            <top>50</top>
+            <left>10</left>
+            <width>1260</width>
+            <height>709</height>
+            <aspectratio>scale</aspectratio>
+            <texture>$INFO[ListItem.Art(fanart)]</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <top>620</top>
+            <left>800</left>
+            <width>450</width>
+            <height>450</height>
+            <aspectratio>scale</aspectratio>
+            <texture>$INFO[ListItem.Art(thumb)]</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="group">
+            <top>20</top>
+            <left>1280</left>
+            <width>620</width>
+            <height>1040</height>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <top>10</top>
+                <left>10</left>
+                <width>600</width>
+                <height>200</height>
+                <aspectratio>keep</aspectratio>
+                <texture>$INFO[ListItem.Art(clearlogo)]</texture>
+            </control>
+            <control type="textbox">
+                <visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
+                <top>10</top>
+                <left>10</left>
+                <width>600</width>
+                <height>200</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>light50</font>
+                <textcolor>active</textcolor>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="grouplist">
+                <top>210</top>
+                <left>20</left>
+                <right>20</right>
+                <height>160</height>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.Genre)</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Genre,[COLOR active]$LOCALIZE[515]: [/COLOR]]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.Property(Artist_Formed))</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Property(Artist_Formed),[COLOR active]$LOCALIZE[21894]: [/COLOR]]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.Property(Artist_YearsActive))</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Property(Artist_YearsActive),[COLOR active]$LOCALIZE[21898]: [/COLOR]]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.Property(Artist_Mood))</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Property(Artist_Mood),[COLOR active]$LOCALIZE[31057]: [/COLOR]]</label>
+                </control>
+            </control>
+            <control type="textbox" id="100">
+                <visible>!String.IsEmpty(ListItem.Property(Artist_Description))</visible>
+                <top>400</top>
+                <left>20</left>
+                <right>50</right>
+                <height>620</height>
+                <font>regular24</font>
+                <pagecontrol>100001</pagecontrol>
+                <label>$INFO[ListItem.Property(Artist_Description)]</label>
+            </control>
+            <include content="scrollbar">
+                <param name="controlled_id" value="100" />
+                <param name="onleft_id" value="100" />
+                <param name="onright_id" value="100" />
+                <param name="left" value="600" />
+                <param name="top" value="400" />
+                <param name="height" value="620" />
+            </include>
+            <control type="textbox" id="200">
+                <visible>!String.IsEmpty(ListItem.Property(Album_Description))</visible>
+                <top>400</top>
+                <left>20</left>
+                <right>50</right>
+                <height>620</height>
+                <font>regular24</font>
+                <pagecontrol>200001</pagecontrol>
+                <label>$INFO[ListItem.Property(Album_Description)]</label>
+            </control>
+            <include content="scrollbar">
+                <param name="visible" value="!String.IsEmpty(ListItem.Property(Album_Description))" />
+                <param name="controlled_id" value="200" />
+                <param name="onleft_id" value="200" />
+                <param name="onright_id" value="200" />
+                <param name="left" value="600" />
+                <param name="top" value="400" />
+                <param name="height" value="620" />
+            </include>
+        </control>
+    </controls>
+</window>

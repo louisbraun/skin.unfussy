@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+    <include name="position_submenu">
+        <animation effect="slide" end="0,105" time="0" condition="Container(9000).Position(0)">Conditional</animation>
+        <animation effect="slide" end="0,185" time="0" condition="Container(9000).Position(1)">Conditional</animation>
+        <animation effect="slide" end="0,265" time="0" condition="Container(9000).Position(2)">Conditional</animation>
+        <animation effect="slide" end="0,343" time="0" condition="Container(9000).Position(3)">Conditional</animation>
+        <animation effect="slide" end="0,425" time="0" condition="Container(9000).Position(4)">Conditional</animation>
+        <animation effect="slide" end="0,505" time="0" condition="Container(9000).Position(5)">Conditional</animation>
+        <animation effect="slide" end="0,585" time="0" condition="Container(9000).Position(6)">Conditional</animation>
+        <animation effect="slide" end="0,665" time="0" condition="Container(9000).Position(7)">Conditional</animation>
+    </include>
+
+    <include name="openclose_homemenu">
+        <animation type="VisibleChange">
+            <effect type="fade" start="0" end="100" time="200" tween="sine" easing="out" />
+            <effect type="zoom" start="50,50" end="100,100" time="200" tween="sine" easing="out" />
+        </animation>
+    </include>
+
+    <include name="openclose_fade_slight_right">
+        <animation type="WindowOpen">
+            <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="320" end="0" time="200" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowClose">
+            <effect type="fade" start="100" end="0" time="200" tween="sine" easing="out" />
+            <effect type="slide" start="0" end="320" time="300" tween="cubic" easing="out" />
+        </animation>
+    </include>
+
+    <include name="openclose_slight_left">
+        <animation type="WindowOpen">
+            <effect type="slide" start="-320" end="0" time="300" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowClose">
+            <effect type="slide" start="0" end="-320" time="300" tween="cubic" easing="out" />
+        </animation>
+    </include>
+
+    <include name="close_slight_left">
+        <animation type="WindowClose">
+            <effect type="slide" start="0" end="-320" time="300" tween="cubic" easing="out" />
+        </animation>
+    </include>
+
+    <include name="openclose_slight_right">
+        <animation type="WindowOpen">
+            <effect type="slide" start="320" end="0" time="300" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowClose">
+            <effect type="slide" start="0" end="320" time="300" tween="cubic" easing="out" />
+        </animation>
+    </include>
+
+    <include name="openclose_slight_bottom">
+        <animation type="WindowOpen" reversible="False">
+            <effect type="fade" start="0" end="100" time="300"/>
+            <effect type="slide" start="0,200" end="0,0" time="300" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowClose" reversible="False">
+            <effect type="fade" start="100" end="0" time="300"/>
+            <effect type="slide" start="0,0" end="0,200" time="300" tween="cubic" easing="out" />
+        </animation>
+    </include>
+
+    <include name="openclose_slight_top">
+        <animation type="WindowOpen" reversible="False">
+            <effect type="fade" start="0" end="100" time="300"/>
+            <effect type="slide" start="0,-200" end="0,0" time="300" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowClose" reversible="False">
+            <effect type="fade" start="200" end="0" time="300"/>
+            <effect type="slide" start="0,0" end="0,-200" time="300" tween="cubic" easing="out" />
+        </animation>
+    </include>
+
+    <include name="dialogpopup_openclose">
+        <animation type="WindowOpen" reversible="false">
+            <effect type="zoom" start="80" end="100" center="50%,50%" delay="160" tween="back" time="240" />
+            <effect type="fade" delay="160" end="100" time="240" />
+        </animation>
+        <animation type="WindowClose" reversible="false">
+            <effect type="zoom" start="100" end="80" center="50%,50%" easing="in" tween="back" time="240" />
+            <effect type="fade" start="100" end="0" time="240" />
+        </animation>
+    </include>
+
+    <include name="keyboard_slide_up">
+        <animation type="WindowOpen">
+            <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="0,1080" end="0,0" time="400" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowClose">
+            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="0,0" end="0,1080" time="400" tween="cubic" easing="out" />
+        </animation>
+    </include>
+
+    <include name="positioning_osd_buttons">
+        <animation type="Conditional" condition="Control.HasFocus(300) + !Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="410,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(300) + !Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="450,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(300) + Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="290,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(300) + Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="330,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(301) + !Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="490,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(301) + !Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="530,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(301) + Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="370,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(301) + Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="410,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(302) + !Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="570,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(302) + !Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="610,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(302) + Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="450,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(302) + Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="490,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(303) + !Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="650,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(303) + !Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="690,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(303) + Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="530,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(303) + Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="570,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(304) + !Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="730,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(304) + !Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="770,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(304) + Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="610,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(304) + Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="650,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(305) + !Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="810,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(305) + !Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="850,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(305) + Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="690,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(305) + Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="730,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(306) + !Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="890,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(306) + !Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="930,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(306) + Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="770,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(306) + Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="810,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(312) + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="850,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(312) + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="890,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="[Control.HasFocus(313) | Control.HasFocus(314)] + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="930,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="[Control.HasFocus(313) | Control.HasFocus(314)] + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="970,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(315) + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1010,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(315) + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1050,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="[Control.HasFocus(307) | Control.HasFocus(311)] + !Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="970,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="[Control.HasFocus(307) | Control.HasFocus(311)] + !Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1010,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="[Control.HasFocus(307) | Control.HasFocus(311)] + Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1090,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="[Control.HasFocus(307) | Control.HasFocus(311)] + Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1130,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(308) + !Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1050,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(308) + !Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1090,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(308) + Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1170,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(308) + Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1210,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(309) + !Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1130,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(309) + !Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1090,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(309) + Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1250,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(309) + Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1210,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(310) + !Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1210,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(310) + !Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1170,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(310) + Player.SeekEnabled + VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1330,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(310) + Player.SeekEnabled + !VideoPlayer.HasTeletext" reversible="false">
+            <effect type="slide" end="1290,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="[Control.HasFocus(400) | Control.HasFocus(401)]" reversible="false">
+            <effect type="slide" end="450,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(402)" reversible="false">
+            <effect type="slide" end="530,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="[Control.HasFocus(403) | Control.HasFocus(404)]" reversible="false">
+            <effect type="slide" end="610,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(405)" reversible="false">
+            <effect type="slide" end="690,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(406)" reversible="false">
+            <effect type="slide" end="770,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="[Control.HasFocus(407) | Control.HasFocus(408)]" reversible="false">
+            <effect type="slide" end="850,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(409)" reversible="false">
+            <effect type="slide" end="930,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(410)" reversible="false">
+            <effect type="slide" end="1010,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(411)" reversible="false">
+            <effect type="slide" end="1090,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(412)" reversible="false">
+            <effect type="slide" end="1170,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+    </include>
+
+    <include name="positioning_osd_music_buttons">
+        <animation type="Conditional" condition="Control.HasFocus(400) + !Pvr.IsPlayingRadio" reversible="false">
+            <effect type="slide" end="530,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(402) + !Pvr.IsPlayingRadio" reversible="false">
+            <effect type="slide" end="610,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="[Control.HasFocus(403) | Control.HasFocus(404)] + !Pvr.IsPlayingRadio" reversible="false">
+            <effect type="slide" end="690,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(405) + !Pvr.IsPlayingRadio" reversible="false">
+            <effect type="slide" end="770,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(406) + !Pvr.IsPlayingRadio" reversible="false">
+            <effect type="slide" end="850,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(407) + !Pvr.IsPlayingRadio" reversible="false">
+            <effect type="slide" end="930,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(408) + !Pvr.IsPlayingRadio" reversible="false">
+            <effect type="slide" end="1010,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(412) + !Pvr.IsPlayingRadio" reversible="false">
+            <effect type="slide" end="1090,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(405) + Pvr.IsPlayingRadio" reversible="false">
+            <effect type="slide" end="730,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(408) + Pvr.IsPlayingRadio" reversible="false">
+            <effect type="slide" end="810,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(412) + Pvr.IsPlayingRadio" reversible="false">
+            <effect type="slide" end="890,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+    </include>
+
+    <include name="positioning_pvrinfo_buttons">
+        <animation type="Conditional" condition="Control.HasFocus(102) + Window.IsVisible(pvrguideinfo) + !Pvr.IsPlayingRecording" reversible="false">
+            <effect type="slide" end="975,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(102) + !Window.IsVisible(pvrguideinfo) + !Pvr.IsPlayingRecording" reversible="false">
+            <effect type="slide" end="1185,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(102) + Pvr.IsPlayingRecording" reversible="false">
+            <effect type="slide" end="1290,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(6) + Window.IsVisible(pvrguideinfo)" reversible="false">
+            <effect type="slide" end="1080,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(6) + !Window.IsVisible(pvrguideinfo)" reversible="false">
+            <effect type="slide" end="1290,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(103) + Window.IsVisible(pvrguideinfo)" reversible="false">
+            <effect type="slide" end="1080,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="[Control.HasFocus(103) | Control.HasFocus(104)] + !Window.IsVisible(pvrguideinfo)" reversible="false">
+            <effect type="slide" end="1290,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(5)" reversible="false">
+            <effect type="slide" end="1185,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(4)" reversible="false">
+            <effect type="slide" end="1290,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(105) | Control.HasFocus(106)" reversible="false">
+            <effect type="slide" end="1395,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(107)" reversible="false">
+            <effect type="slide" end="1500,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+    </include>
+
+    <include name="positioning_addoninfo_buttons">
+        <animation type="Conditional" condition="Control.HasFocus(12)" reversible="false">
+            <effect type="slide" end="430,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(9)" reversible="false">
+            <effect type="slide" end="540,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(8)" reversible="false">
+            <effect type="slide" end="650,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(13)" reversible="false">
+            <effect type="slide" end="760,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(10)" reversible="false">
+            <effect type="slide" end="870,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(7)" reversible="false">
+            <effect type="slide" end="980,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(6)" reversible="false">
+            <effect type="slide" end="1090,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+    </include>
+
+    <include name="positioning_gto_buttons">
+
+        <animation type="Conditional" condition="Control.HasFocus(102) + Control.IsVisible(103) + Control.IsVisible(104) + [Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="565,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(102) + !Control.IsVisible(103) + Control.IsVisible(104) + [Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="670,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(102) + Control.IsVisible(103) + !Control.IsVisible(104) + [Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="670,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+       <animation type="Conditional" condition="Control.HasFocus(102) + Control.IsVisible(103) + Control.IsVisible(104) + ![Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="670,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(102) + !Control.IsVisible(103) + !Control.IsVisible(104) + [Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="775,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(102) + !Control.IsVisible(103) + Control.IsVisible(104) + ![Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="775,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(102) + Control.IsVisible(103) + !Control.IsVisible(104) + ![Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="775,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(102) + !Control.IsVisible(103) + !Control.IsVisible(104) + ![Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="880,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(103) + Control.IsVisible(104) + [Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="670,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(103) + !Control.IsVisible(104) + [Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="775,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(103) + Control.IsVisible(104) + ![Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="775,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(103) + !Control.IsVisible(104) + ![Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="880,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(104) + [Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="775,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(104) + ![Control.IsVisible(105) | Control.IsVisible(106) ]" reversible="false">
+            <effect type="slide" end="880,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(105)" reversible="false">
+            <effect type="slide" end="880,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        
+        <animation type="Conditional" condition="Control.HasFocus(106)" reversible="false">
+            <effect type="slide" end="880,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+    </include>
+
+    <include name="positioning_videoinfo_buttons">
+        <animation type="Conditional" condition="Control.HasFocus(301) + !Control.IsEnabled(9) + Control.IsVisible(11)" reversible="false">
+            <effect type="slide" end="1290,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(301) + !Control.IsEnabled(9) + !Control.IsVisible(11)" reversible="false">
+            <effect type="slide" end="1400,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(301) + Control.IsEnabled(9) + Control.IsVisible(11)" reversible="false">
+            <effect type="slide" end="1180,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(301) + Control.IsEnabled(9) + !Control.IsVisible(11)" reversible="false">
+            <effect type="slide" end="1290,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(8) + !Control.IsEnabled(9) + Control.IsVisible(11)" reversible="false">
+            <effect type="slide" end="1400,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(8) + !Control.IsEnabled(9) + !Control.IsVisible(11)" reversible="false">
+            <effect type="slide" end="1510,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(8) + Control.IsEnabled(9) + Control.IsVisible(11)" reversible="false">
+            <effect type="slide" end="1290,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(8) + Control.IsEnabled(9) + !Control.IsVisible(11)" reversible="false">
+            <effect type="slide" end="1400,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(9)" reversible="false">
+            <effect type="slide" end="1400,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(11)" reversible="false">
+            <effect type="slide" end="1510,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(302)" reversible="false">
+            <effect type="slide" end="1620,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+    </include>
+
+    <include name="positioning_videoinfo_custom_buttons">
+        <animation type="Conditional" condition="Control.HasFocus(301)" reversible="false">
+            <effect type="slide" end="1510,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(302)" reversible="false">
+            <effect type="slide" end="1620,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+    </include>
+
+    <include name="positioning_weather_buttons">
+        <animation type="Conditional" condition="Control.HasFocus(101)" reversible="false">
+            <effect type="slide" end="1310,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(2)" reversible="false">
+            <effect type="slide" end="1400,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(102)" reversible="false">
+            <effect type="slide" end="1490,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(103)" reversible="false">
+            <effect type="slide" end="1580,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+    </include>
+
+    <include name="positioning_globalsearch_buttons">
+        <animation type="Conditional" condition="Control.HasFocus(8001)" reversible="false">
+            <effect type="slide" end="140,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(990)" reversible="false">
+            <effect type="slide" end="215,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+    </include>
+
+    <include name="positioning_tvguide_buttons">
+        <animation type="Conditional" condition="Control.HasFocus(405)" reversible="false">
+            <effect type="slide" end="1680,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(404)" reversible="false">
+            <effect type="slide" end="1620,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(403) + Control.IsVisible(404)" reversible="false">
+            <effect type="slide" end="1530,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(403) + !Control.IsVisible(404)" reversible="false">
+            <effect type="slide" end="1620,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(402) + Control.IsVisible(403) + Control.IsVisible(404)" reversible="false">
+            <effect type="slide" end="1440,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(402) + !Control.IsVisible(403) + Control.IsVisible(404)" reversible="false">
+            <effect type="slide" end="1530,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(402) + Control.IsVisible(403) + !Control.IsVisible(404)" reversible="false">
+            <effect type="slide" end="1530,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(402) + !Control.IsVisible(403) + !Control.IsVisible(404)" reversible="false">
+            <effect type="slide" end="1620,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(401) + Control.IsVisible(402) + Control.IsVisible(403) + Control.IsVisible(404)" reversible="false">
+            <effect type="slide" end="1350,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(401) + Control.IsVisible(402) + !Control.IsVisible(403) + Control.IsVisible(404)" reversible="false">
+            <effect type="slide" end="1440,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(401) + Control.IsVisible(402) + Control.IsVisible(403) + !Control.IsVisible(404)" reversible="false">
+            <effect type="slide" end="1440,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(401) + !Control.IsVisible(402) + !Control.IsVisible(403) + Control.IsVisible(404)" reversible="false">
+            <effect type="slide" end="1530,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(401) + Control.IsVisible(402) + !Control.IsVisible(403) + !Control.IsVisible(404)" reversible="false">
+            <effect type="slide" end="1530,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(401) + !Control.IsVisible(402) + !Control.IsVisible(403) + !Control.IsVisible(404)" reversible="false">
+            <effect type="slide" end="1620,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+    </include>
+
+</includes>

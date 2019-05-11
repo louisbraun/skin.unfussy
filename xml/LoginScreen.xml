@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">52</defaultcontrol>
+    <controls>
+        <include>background</include>
+        <control type="group">
+            <include>openclose_slight_top</include>
+            <control type="group">
+                <centerleft>50%</centerleft>
+                <top>160</top>
+                <width>250</width>
+                <height>112</height>
+                <control type="image">
+                    <width>112</width>
+                    <height>112</height>
+                    <aspectratio aligny="top" align="center">keep</aspectratio>
+                    <texture colordiffuse="active">icons/logo.png</texture>
+                </control>
+                <control type="image">
+                    <left>138</left>
+                    <top>0</top>
+                    <width>112</width>
+                    <height>112</height>
+                    <aspectratio aligny="center" align="center">keep</aspectratio>
+                    <texture>icons/logo-text.png</texture>
+                </control>
+            </control>
+            <control type="textbox">
+                <centerleft>50%</centerleft>
+                <top>220</top>
+                <width>750</width>
+                <height>300</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <font>regular30</font>
+                <label>$LOCALIZE[31050]</label>
+            </control>
+        </control>
+        <control type="group">
+            <include>openclose_slight_bottom</include>
+            <control type="fixedlist" id="52">
+                <left>0</left>
+                <right>0</right>
+                <top>500</top>
+                <height>300</height>
+                <onleft>52</onleft>
+                <onright>52</onright>
+                <onup>20</onup>
+                <ondown>20</ondown>
+                <focusposition>2</focusposition>
+                <orientation>horizontal</orientation>
+                <scrolltime tween="cubic" easing="out">500</scrolltime>
+                <itemlayout width="340" height="300">
+                    <control type="image">
+                        <left>20</left>
+                        <width>300</width>
+                        <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                        <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                        <bordersize>1</bordersize>
+                        <animation reversible="false" effect="fade" start="20" end="75" time="200">Focus</animation>
+                    </control>
+                    <control type="image">
+                        <centerleft>50%</centerleft>
+                        <top>20</top>
+                        <height>200</height>
+                        <width>200</width>
+                        <texture diffuse="icons/profiles/profile-diffuse.png">$INFO[ListItem.Icon]</texture>
+                        <aspectratio scalediffuse="false">scale</aspectratio>
+                    </control>
+                    <control type="textbox">
+                        <left>60</left>
+                        <right>60</right>
+                        <top>220</top>
+                        <height>80</height>
+                        <label>$INFO[ListItem.label]</label>
+                        <font>regular36</font>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <textcolor>99FFFFFF</textcolor>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="340" height="300">
+                    <control type="image">
+                        <visible>!Control.HasFocus(52)</visible>
+                        <left>20</left>
+                        <width>300</width>
+                        <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                        <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                        <bordersize>1</bordersize>
+                        <animation reversible="false" effect="fade" start="20" end="75" time="200">Focus</animation>
+                    </control>
+                    <control type="image">
+                        <visible>Control.HasFocus(52)</visible>
+                        <left>20</left>
+                        <width>300</width>
+                        <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                        <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                        <bordersize>1</bordersize>
+                        <animation reversible="false" effect="fade" start="20" end="75" time="200">Focus</animation>
+                    </control>
+                    <control type="image">
+                        <centerleft>50%</centerleft>
+                        <top>20</top>
+                        <height>200</height>
+                        <width>200</width>
+                        <texture diffuse="icons/profiles/profile-diffuse.png">$INFO[ListItem.Icon]</texture>
+                        <aspectratio scalediffuse="false">scale</aspectratio>
+                    </control>
+                    <control type="textbox">
+                        <left>60</left>
+                        <right>60</right>
+                        <top>220</top>
+                        <height>80</height>
+                        <label>$INFO[ListItem.label]</label>
+                        <font>regular36</font>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                    </control>
+                </focusedlayout>
+            </control>
+            <control type="label">
+                <left>0</left>
+                <right>0</right>
+                <top>820</top>
+                <height>45</height>
+                <font>regular24</font>
+                <textcolor>80FFFFFF</textcolor>
+                <align>center</align>
+                <aligny>center</aligny>
+                <label>$INFO[ListItem.label2]</label>
+            </control>
+            <control type="image">
+                <centerleft>50%</centerleft>
+                <bottom>19</bottom>
+                <height>132</height>
+                <width>502</width>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="button" id="20">
+                <centerleft>50%</centerleft>
+                <bottom>20</bottom>
+                <width>500</width>
+                <height>130</height>
+                <label>$LOCALIZE[31051]</label>
+                <font>regular36</font>
+                <align>center</align>
+                <onclick>ActivateWindow(ShutdownMenu)</onclick>
+                <onleft>52</onleft>
+                <onright>52</onright>
+                <onup>52</onup>
+                <ondown>52</ondown>
+            </control>
+        </control>
+    </controls>
+</window>

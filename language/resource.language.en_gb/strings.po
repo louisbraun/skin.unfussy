@@ -1,0 +1,428 @@
+# Kodi Media Center language file
+# Addon Name: Materialized
+# Addon id: skin.estuary
+# Addon Provider: phil65, Ichabod Fletchman
+msgid ""
+msgstr ""
+"Project-Id-Version: KODI Main\n"
+"Report-Msgid-Bugs-To: https://github.com/xbmc/xbmc/issues/\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_GB\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: /xml/Home.xml /xml/DialogSeekBar.xml
+msgctxt "#31000"
+msgid "Sorted by"
+msgstr ""
+
+msgctxt "#31001"
+msgid "items"
+msgstr ""
+
+msgctxt "#31002"
+msgid "Event log"
+msgstr ""
+
+msgctxt "#31003"
+msgid "Player process info"
+msgstr ""
+
+msgctxt "#31004"
+msgid "PVR info"
+msgstr ""
+
+msgctxt "#31005"
+msgid "Video decoder"
+msgstr ""
+
+msgctxt "#31006"
+msgid "hardware decoding"
+msgstr ""
+
+msgctxt "#31007"
+msgid "software decoding"
+msgstr ""
+
+msgctxt "#31007"
+msgid "Pixel format"
+msgstr ""
+
+msgctxt "#31008"
+msgid "System memory usage"
+msgstr ""
+
+msgctxt "#31009"
+msgid "Previous chapter"
+msgstr ""
+
+msgctxt "#31010"
+msgid "Big Jump back"
+msgstr ""
+
+msgctxt "#31011"
+msgid "Next chapter"
+msgstr ""
+
+msgctxt "#31012"
+msgid "Big Jump forward"
+msgstr ""
+
+msgctxt "#31013"
+msgid "Seek back"
+msgstr ""
+
+msgctxt "#31014"
+msgid "Seek forward"
+msgstr ""
+
+msgctxt "#31015"
+msgid "Jump"
+msgstr ""
+
+msgctxt "#31016"
+msgid "Toggle audio stream"
+msgstr ""
+
+msgctxt "#31017"
+msgid "Select Resolution"
+msgstr ""
+
+msgctxt "#31018"
+msgid "Channel List"
+msgstr ""
+
+msgctxt "#31019"
+msgid "items"
+msgstr ""
+
+msgctxt "#31020"
+msgid "YouTube Videos"
+msgstr ""
+
+msgctxt "#31021"
+msgid "Search for TV Show"
+msgstr ""
+
+msgctxt "#31022"
+msgid "Search for movie"
+msgstr ""
+
+msgctxt "#31023"
+msgid "No Search results"
+msgstr ""
+
+msgctxt "#31024"
+msgid "TheMovieDB"
+msgstr ""
+
+msgctxt "#31025"
+msgid "Crew"
+msgstr ""
+
+msgctxt "#31026"
+msgid "Recommended Movies"
+msgstr ""
+
+msgctxt "#31027"
+msgid "Official Videos"
+msgstr ""
+
+msgctxt "#31028"
+msgid "Roles of"
+msgstr ""
+
+msgctxt "#31029"
+msgid "in Movies"
+msgstr ""
+
+msgctxt "#31030"
+msgid "in TV Shows"
+msgstr ""
+
+msgctxt "#31031"
+msgid "Pictures of"
+msgstr ""
+
+msgctxt "#31032"
+msgid "More Pictures of"
+msgstr ""
+
+msgctxt "#31033"
+msgid "Timeshift"
+msgstr ""
+
+msgctxt "#31034"
+msgid "Start of Timeshift"
+msgstr ""
+
+msgctxt "#31035"
+msgid "Live TV"
+msgstr ""
+
+msgctxt "#31036"
+msgid "Repository"
+msgstr ""
+
+msgctxt "#31037"
+msgid "System memory usage"
+msgstr ""
+
+msgctxt "#31038"
+msgid "Version info"
+msgstr ""
+
+msgctxt "#31039"
+msgid "Order"
+msgstr ""
+
+msgctxt "#31040"
+msgid "Channel options"
+msgstr ""
+
+msgctxt "#31041"
+msgid "Misc options"
+msgstr ""
+
+msgctxt "#31042"
+msgid "Numeric pad"
+msgstr ""
+
+msgctxt "#31043"
+msgid "Available groups"
+msgstr ""
+
+msgctxt "#31044"
+msgid "Add group"
+msgstr ""
+
+msgctxt "#31045"
+msgid "Rename group"
+msgstr ""
+
+msgctxt "#31046"
+msgid "Delete group"
+msgstr ""
+
+msgctxt "#31047"
+msgid "Last logged in"
+msgstr ""
+
+msgctxt "#31048"
+msgid "Show login screen on startup"
+msgstr ""
+
+msgctxt "#31049"
+msgid "Automatic Login on startup"
+msgstr ""
+
+msgctxt "#31050"
+msgid "Select your Kodi user profile[CR]to login and continue"
+msgstr ""
+
+msgctxt "#31051"
+msgid "Power Options"
+msgstr ""
+
+msgctxt "#31052"
+msgid "Available in Database"
+msgstr ""
+
+msgctxt "#31053"
+msgid "TV recommendations"
+msgstr ""
+
+msgctxt "#31054"
+msgid "No bookmarks created yet"
+msgstr ""
+
+msgctxt "#31055"
+msgid "Loading Trailer"
+msgstr ""
+
+msgctxt "#31056"
+msgid "Rated"
+msgstr ""
+
+msgctxt "#31057"
+msgid "Mood"
+msgstr ""
+
+msgctxt "#31058"
+msgid "Show Fanart background"
+msgstr ""
+
+msgctxt "#31059"
+msgid "Show visualisation effects"
+msgstr ""
+
+msgctxt "#31060"
+msgid "Show scrolling song information"
+msgstr ""
+
+msgctxt "#31061"
+msgid "Visualisation settings"
+msgstr ""
+
+msgctxt "#31062"
+msgid "Lyrics add-on"
+msgstr ""
+
+msgctxt "#31063"
+msgid "4 Channels"
+msgstr ""
+
+msgctxt "#31064"
+msgid "6 Channels"
+msgstr ""
+
+msgctxt "#31065"
+msgid "8 Channels"
+msgstr ""
+
+msgctxt "#31066"
+msgid "10 Channels"
+msgstr ""
+
+msgctxt "#31067"
+msgid "Next Location"
+msgstr ""
+
+msgctxt "#31068"
+msgid "Choose Icons"
+msgstr ""
+
+msgctxt "#31069"
+msgid "Forcast next days"
+msgstr ""
+
+msgctxt "#31070"
+msgid "Forcast today"
+msgstr ""
+
+msgctxt "#31071"
+msgid "Previous song"
+msgstr ""
+
+msgctxt "#31072"
+msgid "Next song"
+msgstr ""
+
+msgctxt "#31073"
+msgid "Search in EPG"
+msgstr ""
+
+msgctxt "#31074"
+msgid "Local subtitle available"
+msgstr ""
+
+msgctxt "#31075"
+msgid "Go to playlist"
+msgstr ""
+
+msgctxt "#31076"
+msgid "Video playlist"
+msgstr ""
+
+msgctxt "#31077"
+msgid "Music playlist"
+msgstr ""
+
+msgctxt "#31078"
+msgid "Playlist options"
+msgstr ""
+
+msgctxt "#31079"
+msgid "Set the type and add rules to create a smart playlist. These playlists are dynamic and include all media items from your database which apply to your chosen rules."
+msgstr ""
+
+msgctxt "#31080"
+msgid "Enter text here..."
+msgstr ""
+
+msgctxt "#31081"
+msgid "Match items where"
+msgstr ""
+
+msgctxt "#31082"
+msgid "Order"
+msgstr ""
+
+msgctxt "#31083"
+msgid "Recommended Series"
+msgstr ""
+
+msgctxt "#31084"
+msgid "Search local library"
+msgstr ""
+
+msgctxt "#31085"
+msgid "Search add-ons"
+msgstr ""
+
+msgctxt "#31086"
+msgid "Search YouTube"
+msgstr ""
+
+msgctxt "#31087"
+msgid "Search TheMovieDB"
+msgstr ""
+
+msgctxt "#31088"
+msgid "New search"
+msgstr ""
+
+msgctxt "#31089"
+msgid "Next View"
+msgstr ""
+
+msgctxt "#31090"
+msgid "Select Resolution"
+msgstr ""
+
+msgctxt "#31091"
+msgid "Configure Unfussy"
+msgstr ""
+
+msgctxt "#31092"
+msgid "watched"
+msgstr ""
+
+msgctxt "#31093"
+msgid "Common Settings"
+msgstr ""
+
+msgctxt "#31094"
+msgid "hide home widgets when player is active"
+msgstr ""
+
+msgctxt "#31095"
+msgid "show detailed information for selected broadcast in tv guide"
+msgstr ""
+
+msgctxt "#31096"
+msgid "start live tv after watched a recording"
+msgstr ""
+
+msgctxt "#31097"
+msgid "use alternative channel guide with channel groups"
+msgstr ""
+
+msgctxt "#31098"
+msgid "Home"
+msgstr ""
+
+msgctxt "#31099"
+msgid "Configure Home Menu"
+msgstr ""
+
+msgctxt "#31100"
+msgid "Configure Home Widgets"
+msgstr ""
+
+msgctxt "#31101"
+msgid "Use animations in fanart views"
+msgstr ""

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- plugin.widget.gto - InfoWindow German Telecast Offers' - START -->
+<window>
+    <defaultcontrol always="true">101</defaultcontrol>
+	<onload>SetProperty(gtoinfoactive,true,home)</onload>
+    <onunload>ClearProperty(gtoinfoactive,home)</onunload>
+    <controls>
+        <include>background_dialog</include>
+		<control type="group" id="576757">
+            <centerleft>50%</centerleft>
+            <centertop>50%</centertop>
+            <width>1200</width>
+            <height>800</height>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="black">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="group">
+                <left>20</left>
+                <width>850</width>
+                <control type="label">
+                    <height>60</height>
+                    <font>light36</font>
+                    <label>$ADDON[script.service.gto 30104] - $INFO[Window(Home).Property(GTO.Info.Channel)]</label>
+                    <aligny>center</aligny>
+                </control>
+                <control type="label">
+                    <top>55</top>
+                    <height>60</height>
+                    <font>light60</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[Window(Home).Property(GTO.Info.Title)]</label>
+                    <aligny>center</aligny>
+                    <scroll>true</scroll>
+                </control>
+                <control type="label">
+                    <description>Genre</description>
+                    <top>118</top>
+                    <height>35</height>
+                    <font>regular30</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[Window(Home).Property(GTO.Info.Genre)]</label>
+                    <aligny>center</aligny>
+                </control>
+                <control type="label">
+                    <description>Start, End</description>
+                    <top>150</top>
+                    <height>35</height>
+                    <font>regular24</font>
+                    <label>$INFO[Window(Home).Property(GTO.Info.Date)] - $INFO[Window(Home).Property(GTO.Info.EndTime)] $INFO[Window(Home).Property(GTO.Info.RunTime),(, min)]</label>
+                    <aligny>center</aligny>
+                </control>
+            </control>
+            <control type="image">
+                <top>0</top>
+                <right>20</right>
+                <width>270</width>
+                <height>180</height>
+                <aspectratio>keep</aspectratio>
+                <texture border="1">$INFO[Window(Home).Property(GTO.Info.Logo)]</texture>
+            </control>
+            <control type="image">
+                <top>190</top>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <right>20</right>
+                <top>200</top>
+                <width>500</width>
+                <height>300</height>
+                <aspectratio>scale</aspectratio>
+                <texture border="1">$INFO[Window(Home).Property(GTO.Info.Picture)]</texture>
+            </control>
+            <control type="label">
+                <visible>String.IsEqual(Window(Home).Property(GTO.Info.isInDB),True)</visible>
+                <right>20</right>
+                <top>520</top>
+                <width>500</width>
+                <font>regular20</font>
+                <textcolor>active</textcolor>
+                <label>$LOCALIZE[31052]</label>
+            </control>
+            <control type="textbox">
+                <right>20</right>
+                <top>550</top>
+                <width>500</width>
+                <height>300</height>
+                <font>light30</font>
+                <scrolltime>200</scrolltime>
+                <autoscroll delay="5000" time="5000" repeat="10000">!IsEmpty(Window(Home).Property(GTO.Info.Cast))</autoscroll>
+                <label>$INFO[Window(Home).Property(GTO.Info.Cast),[COLOR active][B]$LOCALIZE[206]:[/B][/COLOR] ,]</label>
+                <align>left</align>
+            </control>
+            <control type="textbox">
+                <left>20</left>
+                <top>200</top>
+                <width>630</width>
+                <height>550</height>
+                <font>light30</font>
+                <textcolor>white</textcolor>
+                <scrolltime>200</scrolltime>
+                <autoscroll delay="5000" time="5000" repeat="10000">!IsEmpty(Window(Home).Property(GTO.Info.Description))</autoscroll>
+                <label>$INFO[Window(Home).Property(GTO.Info.Description)]</label>
+            </control>
+            <control type="grouplist" id="101">
+                <bottom>-40</bottom>
+                <right>20</right>
+                <align>right</align>
+                <height>100</height>
+                <orientation>horizontal</orientation>
+                <itemgap>5</itemgap>
+                <usecontrolcoords>true</usecontrolcoords>
+                <defaultcontrol always="true">102</defaultcontrol>
+                <onup>100001</onup>
+                <include content="button_round">
+                    <param name="id">102</param>
+                    <param name="onclick">Back</param>
+                    <param name="icon">icons/buttons/close.png</param>
+                    <param name="radius">100</param>
+                    <param name="iconsize">60</param>
+                    <param name="iconoffset">20</param>
+                </include>
+                <include content="button_round">
+                    <param name="id">103</param>
+                    <param name="visible">!IsEmpty(Window(Home).Property(GTO.Info.isInFuture)) + !String.IsEqual(Window(Home).Property(GTO.Info.ChannelID),False) + System.HasAddon(service.kn.switchtimer)</param>
+                    <param name="onclick">RunScript(service.kn.switchtimer,action=add,channel=$INFO[Window(Home).Property(GTO.Info.Channel)],icon=$INFO[Window(Home).Property(GTO.Info.Logo)],date=$INFO[Window(Home).Property(GTO.Info.Date)],title=$INFO[Window(Home).Property(GTO.Info.Title)])</param>
+                    <param name="onclick2">Dialog.Close(all)</param>
+                    <param name="icon">icons/buttons/launch.png</param>
+                    <param name="radius">100</param>
+                    <param name="iconsize">60</param>
+                    <param name="iconoffset">20</param>
+                </include>
+                <include content="button_round">
+                    <param name="id">104</param>
+                    <param name="visible">!String.IsEmpty(Window(Home).Property(GTO.Info.BroadcastID)) + !String.IsEqual(Window(Home).Property(GTO.Info.ChannelID),False) + String.IsEqual(Window(Home).Property(GTO.Info.hasTimer),False)</param>
+                    <param name="onclick">RunScript(script.service.gto,action=record&amp;broadcastid=$INFO[Window(Home).Property(GTO.Info.BroadcastID)]&amp;blob=$INFO[Window(Home).Property(GTO.Info.BlobID)])</param>
+                    <param name="onclick2">Dialog.Close(all)</param>
+                    <param name="onclick3">AlarmClock(refreshtimers,RunScript(script.unfussy.helper,action=refresh_timers),00:01,silent)</param>
+                    <param name="icon">icons/pvr/timer.png</param>
+                    <param name="radius">100</param>
+                    <param name="iconsize">60</param>
+                    <param name="iconoffset">20</param>
+                </include>
+                <include content="button_round">
+                    <param name="id">105</param>
+                    <param name="visible">Integer.IsLess(Window(Home).Property(GTO.Info.RunTime),75)</param>
+                    <param name="visible2">System.HasAddon(script.extendedinfo)</param>
+                    <param name="onclick" value="Action(close)" />
+                    <param name="onclick2" value="SetProperty(custombusy,true,home)" />
+                    <param name="onclick3" value="SetProperty(custombusyreason,tmdbtvshow,home)" />
+                    <param name="onclick4" value="SetProperty(custombusylabel,$INFO[Window(Home).Property(GTO.Info.Title)],home)" />
+                    <param name="onclick5" value="RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[Window(Home).Property(GTO.Info.Title)])" />
+                    <param name="icon">icons/buttons/tmdb.png</param>
+                    <param name="radius">100</param>
+                    <param name="iconsize">70</param>
+                    <param name="iconoffset">15</param>
+                </include>
+                <include content="button_round">
+                    <param name="id">106</param>
+                    <param name="visible">Integer.IsGreater(Window(Home).Property(GTO.Info.RunTime),74)</param>
+                    <param name="visible2">System.HasAddon(script.extendedinfo)</param>
+                    <param name="onclick" value="Action(close)" />
+                    <param name="onclick2" value="SetProperty(custombusy,true,home)" />
+                    <param name="onclick3" value="SetProperty(custombusyreason,tmdbmovie,home)" />
+                    <param name="onclick4" value="SetProperty(custombusylabel,$INFO[Window(Home).Property(GTO.Info.Title)],home)" />
+                    <param name="onclick5" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[Window(Home).Property(GTO.Info.Title)])" />
+                    <param name="icon">icons/buttons/tmdb.png</param>
+                    <param name="radius">100</param>
+                    <param name="iconsize">70</param>
+                    <param name="iconoffset">15</param>
+                </include>
+
+            </control>
+            <control type="label">
+                <visible>ControlGroup(101).HasFocus(0)</visible>
+                <top>845</top>
+                <left>0</left>
+                <width>500</width>
+                <height>30</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <font>regular24</font>
+                <label>$VAR[GTOInfoHelpText]</label>
+                <include>positioning_gto_buttons</include>
+            </control>
+        </control>
+	</controls>
+</window>

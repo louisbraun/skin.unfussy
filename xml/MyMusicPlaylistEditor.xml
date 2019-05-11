@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">50</defaultcontrol>
+    <backgroundcolor>0</backgroundcolor>
+    <views>50</views>
+    <controls>
+        <include>background</include>
+        <include content="info_header">
+            <param name="title" value="$LOCALIZE[10503]" />
+            <param name="showicon" value="true" />
+            <param name="icon" value="icons/mainmenu/music.png" />
+        </include>
+        <control type="group">
+            <include>openclose_slight_left</include>
+            <include>musicplaylisteditor_buttondecoration</include>
+            <control type="grouplist" id="9000">
+                <left>20</left>
+                <top>100</top>
+                <width>280</width>
+                <onright>50</onright>
+                <itemgap>10</itemgap>
+                <orientation>vertical</orientation>
+                <include content="dialog_button">
+                    <param name="id">6</param>
+                    <param name="background">backgrounddark</param>
+                    <param name="label">$LOCALIZE[21385]</param>
+                </include>
+                <include content="dialog_button">
+                    <param name="id">7</param>
+                    <param name="background">backgrounddark</param>
+                    <param name="label">$LOCALIZE[190]</param>
+                </include>
+                <include content="dialog_button">
+                    <param name="id">8</param>
+                    <param name="background">backgrounddark</param>
+                    <param name="label">$LOCALIZE[192]</param>
+                </include>
+            </control>
+            <control type="group">
+                <left>305</left>
+                <top>80</top>
+                <width>780</width>
+                <control type="image">
+                    <height>980</height>
+                    <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                    <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="fixedlist" id="50">
+                    <focusposition>7</focusposition>
+                    <movement>4</movement>
+                    <onleft>9000</onleft>
+                    <onright>50001</onright>
+                    <height>940</height>
+                    <pagecontrol>50001</pagecontrol>
+                    <scrolltime>200</scrolltime>
+                    <focusedlayout height="60">
+                        <include content="musicplaylisteditor_files_listitem">
+                            <param name="active">true</param>
+                        </include>
+                    </focusedlayout>
+                    <itemlayout height="60">
+                        <include content="musicplaylisteditor_files_listitem" />
+                    </itemlayout>
+                </control>
+                <control type="label">
+                    <height>48</height>
+                    <bottom>10</bottom>
+                    <aligny>center</aligny>
+                    <align>right</align>
+                    <textcolor>active</textcolor>
+                    <shadowcolor>black</shadowcolor>
+                    <label>$INFO[Container(50).CurrentItem,, / ]$INFO[Container(50).NumItems] </label>
+                </control>
+            </control>
+            <include content="scrollbar">
+                <param name="top">80</param>
+                <param name="left">1090</param>
+                <param name="width">15</param>
+                <param name="height">980</param>
+                <param name="controlled_id">50</param>
+                <param name="onleft_id">50</param>
+                <param name="onright_id">100</param>
+            </include>
+
+            <control type="group">
+                <left>1115</left>
+                <top>80</top>
+                <width>780</width>
+                <control type="image">
+                    <height>980</height>
+                    <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                    <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="fixedlist" id="100">
+                    <focusposition>7</focusposition>
+                    <movement>4</movement>
+                    <onleft>50</onleft>
+                    <onright>100001</onright>
+                    <height>940</height>
+                    <pagecontrol>100001</pagecontrol>
+                    <scrolltime>200</scrolltime>
+                    <focusedlayout height="60">
+                        <include content="musicplaylisteditor_files_listitem">
+                            <param name="listid">100</param>
+                            <param name="active">true</param>
+                        </include>
+                    </focusedlayout>
+                    <itemlayout height="60">
+                        <include content="musicplaylisteditor_files_listitem">
+                            <param name="listid">100</param>
+                        </include>
+                    </itemlayout>
+                </control>
+                <control type="label">
+                    <visible>Integer.IsGreater(Container(100).NumItems,0)</visible>
+                    <height>48</height>
+                    <bottom>10</bottom>
+                    <aligny>center</aligny>
+                    <align>right</align>
+                    <textcolor>active</textcolor>
+                    <shadowcolor>black</shadowcolor>
+                    <label>$INFO[Container(100).CurrentItem,, / ]$INFO[Container(100).NumItems] </label>
+                </control>
+            </control>
+            <include content="scrollbar">
+                <param name="top">80</param>
+                <param name="left">1900</param>
+                <param name="width">15</param>
+                <param name="height">980</param>
+                <param name="controlled_id">100</param>
+                <param name="onleft_id">100</param>
+                <param name="onright_id">9000</param>
+            </include>
+        </control>
+    </controls>
+</window>

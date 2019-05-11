@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1100" type="dialog">
+    <include>openclose_slight_left</include>
+    <defaultcontrol always="true">300</defaultcontrol>
+    <onunload>Control.SetFocus(200)</onunload>
+    <zorder>1</zorder>
+    <controls>
+        <control type="group">
+            <top>60</top>
+            <left>0</left>
+            <width>500</width>
+            <control type="grouplist" id="300">
+                <orientation>vertical</orientation>
+                <onleft>Dialog.Close(1100)</onleft>
+                <onup>Dialog.Close(1100)</onup>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+                <control type="radiobutton" id="301">
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <include>button_dialog</include>
+                    <label>$LOCALIZE[31058]</label>
+                    <radioposx>400</radioposx>
+                    <onclick>Skin.ToggleSetting(music_background_fanart)</onclick>
+                    <selected>Skin.HasSetting(music_background_fanart)</selected>
+                </control>
+                <control type="radiobutton" id="302">
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <include>button_dialog</include>
+                    <label>$LOCALIZE[31060]</label>
+                    <radioposx>400</radioposx>
+                    <onclick>Skin.ToggleSetting(music_enable_scrollingtext)</onclick>
+                    <selected>Skin.HasSetting(music_enable_scrollingtext)</selected>
+                </control>
+                <control type="radiobutton" id="303">
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <include>button_dialog</include>
+                    <label>$LOCALIZE[31059]</label>
+                    <radioposx>400</radioposx>
+                    <onclick>Skin.ToggleSetting(music_enable_visualisation)</onclick>
+                    <selected>Skin.HasSetting(music_enable_visualisation)</selected>
+                </control>
+                <control type="button" id="304">
+                    <enable>Skin.HasSetting(music_enable_visualisation)</enable>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <include>button_dialog</include>
+                    <label>$LOCALIZE[250]</label>
+                    <label2>[B]$INFO[Visualisation.Name][/B]</label2>
+                    <onclick>SendClick(500)</onclick>
+                </control>
+                <control type="button" id="305">
+                    <enable>Skin.HasSetting(music_enable_visualisation)</enable>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <include>button_dialog</include>
+                    <label>$LOCALIZE[31061]</label>
+                    <onclick>Addon.Default.OpenSettings(xbmc.player.musicviz)</onclick>
+                </control>
+                <control type="button" id="306">
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <include>button_dialog</include>
+                    <label>$LOCALIZE[31062]</label>
+                    <label2>[B]$INFO[Skin.String(lyric_script_path)][/B]</label2>
+                    <onclick>Skin.SetAddon(lyric_script_path,xbmc.python.lyrics)</onclick>
+                </control>
+            </control>
+        </control>
+    </controls>
+</window>

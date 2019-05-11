@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="music_osd">
+        <control type="group">
+            <visible>$EXP[ShowMusicOsd]</visible>
+            <bottom>0</bottom>
+            <height>200</height>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="group">
+                <visible>!Pvr.IsPlayingRadio</visible>
+                <left>20</left>
+                <bottom>220</bottom>
+                <width>400</width>
+                <height>400</height>
+                <animation effect="rotate" end="-360" center="auto" time="4800" loop="true" reversible="false" condition="Player.Playing">Conditional</animation>
+                <control type="image" id="88888">
+                    <left>0</left>
+                    <bottom>0</bottom>
+                    <width>400</width>
+                    <height>400</height>
+                    <aligny>top</aligny>
+                    <aspectratio align="left">keep</aspectratio>
+                    <fadetime>300</fadetime>
+                    <texture background="true" fallback="backgrounds/cd.png">$INFO[Player.Art(album.discart)]</texture>
+                </control>
+                <control type="label">
+                    <left>50</left>
+                    <bottom>280</bottom>
+                    <width>300</width>
+                    <height>73</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[MusicPlayer.Artist]</label>
+                    <font>light36</font>
+                    <textcolor>black</textcolor>
+                    <wrapmultiline>true</wrapmultiline>
+                    <visible>String.IsEqual(Control.GetLabel(88888),backgrounds/cd.png)</visible>
+                </control>
+                <control type="label">
+                    <left>50</left>
+                    <bottom>41</bottom>
+                    <width>300</width>
+                    <height>73</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[MusicPlayer.Album]</label>
+                    <textcolor>black</textcolor>
+                    <wrapmultiline>true</wrapmultiline>
+                    <visible>String.IsEqual(Control.GetLabel(88888),backgrounds/cd.png)</visible>
+                </control>
+            </control>
+            <control type="image">
+                <visible>!Pvr.IsPlayingRadio</visible>
+                <left>20</left>
+                <bottom>20</bottom>
+                <width>400</width>
+                <height>400</height>
+                <texture fallback="defaultmusicalbums.png">$INFO[Player.Art(album.thumb)]</texture>
+                <bordertexture colordiffuse="border">colors/black.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>Pvr.IsPlayingRadio</visible>
+                <bottom>10</bottom>
+                <left>75</left>
+                <height>180</height>
+                <width>300</width>
+                <texture>$INFO[Player.Art(thumb)]</texture>
+            </control>
+            <control type="group">
+                <left>450</left>
+                <!-- title and album -->
+                <control type="label">
+                    <height>40</height>
+                    <aligny>center</aligny>
+                    <textcolor>active</textcolor>
+                    <font>regular36</font>
+                    <scroll>true</scroll>
+                    <label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[MusicPlayer.Title]</label>
+                </control>
+                <control type="label">
+                    <top>40</top>
+                    <height>40</height>
+                    <aligny>center</aligny>
+                    <font>regular30</font>
+                    <scroll>true</scroll>
+                    <label>$INFO[MusicPlayer.Artist]$INFO[MusicPlayer.Album, - ,]$INFO[MusicPlayer.Year, (,)]</label>
+                </control>
+                <!-- progressbar -->
+                <control type="label">
+                    <visible>!Pvr.IsPlayingRadio</visible>
+                    <top>80</top>
+                    <height>20</height>
+                    <font>regular24</font>
+                    <label>$LOCALIZE[554] $INFO[MusicPlayer.TrackNumber,[COLOR active],[/COLOR]] / $INFO[MusicPlayer.PlaylistLength]</label>
+                </control>
+                <control type="label">
+                    <top>80</top>
+                    <height>20</height>
+                    <width>1100</width>
+                    <align>right</align>
+                    <font>regular24</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[MusicPlayer.Time] / $INFO[MusicPlayer.Duration]</label>
+                </control>
+                <control type="image">
+                    <top>115</top>
+                    <width>1100</width>
+                    <height>15</height>
+                    <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                </control>
+                <control type="progress">
+                    <top>115</top>
+                    <width>1100</width>
+                    <height>15</height>
+                    <texturebg colordiffuse="border" border="3">progress/texturebg_border_white.png</texturebg>
+                    <midtexture colordiffuse="active" border="6,3,6,3">progress/texturebg_white.png</midtexture>
+                    <info>Player.Progress</info>
+                </control>
+                <control type="label">
+                    <bottom>10</bottom>
+                    <width>1100</width>
+                    <height>30</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[Player.SeekStepSize,$LOCALIZE[31015] [COLOR active],[/COLOR]]</label>
+                </control>
+                <!-- songs -->
+                <control type="grouplist">
+                    <visible>!Pvr.IsPlayingRadio</visible>
+                    <visible>!String.IsEmpty(MusicPlayer.Offset(-1).Title)</visible>
+                    <top>130</top>
+                    <width>1100</width>
+                    <itemgap>0</itemgap>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="label">
+                        <align>right</align>
+                        <height>20</height>
+                        <font>regular18</font>
+                        <label>$INFO[MusicPlayer.Offset(-1).TrackNumber,[COLOR active],.[/COLOR] ]$INFO[MusicPlayer.Offset(-1).Title]$INFO[MusicPlayer.Offset(-1).Duration, (,)]</label>
+                    </control>
+                    <control type="label">
+                        <align>right</align>
+                        <height>20</height>
+                        <font>regular18</font>
+                        <label>$INFO[MusicPlayer.Offset(0).TrackNumber,[COLOR active],.[/COLOR] ]$INFO[MusicPlayer.Offset(0).Title,[COLOR active][B],[/B]]$INFO[MusicPlayer.Offset(0).Duration, (,)[/COLOR]]</label>
+                    </control>
+                    <control type="label">
+                        <align>right</align>
+                        <height>20</height>
+                        <font>regular18</font>
+                        <label>$INFO[MusicPlayer.Offset(1).TrackNumber,[COLOR active],.[/COLOR] ]$INFO[MusicPlayer.Offset(1).Title]$INFO[MusicPlayer.Offset(1).Duration, (,)]</label>
+                    </control>
+                </control>
+                <control type="grouplist">
+                    <visible>!Pvr.IsPlayingRadio</visible>
+                    <visible>String.IsEmpty(MusicPlayer.Offset(-1).Title)</visible>
+                    <top>130</top>
+                    <width>1100</width>
+                    <itemgap>0</itemgap>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="label">
+                        <align>right</align>
+                        <height>20</height>
+                        <font>regular18</font>
+                        <label>$INFO[MusicPlayer.Offset(0).TrackNumber,[COLOR active],.[/COLOR] ]$INFO[MusicPlayer.Offset(0).Title,[COLOR active][B],[/B]]$INFO[MusicPlayer.Offset(0).Duration, (,)[/COLOR]]</label>
+                    </control>
+                    <control type="label">
+                        <align>right</align>
+                        <height>20</height>
+                        <font>regular18</font>
+                        <label>$INFO[MusicPlayer.Offset(1).TrackNumber,[COLOR active],.[/COLOR] ]$INFO[MusicPlayer.Offset(1).Title]$INFO[MusicPlayer.Offset(1).Duration, (,)]</label>
+                    </control>
+                    <control type="label">
+                        <align>right</align>
+                        <height>20</height>
+                        <font>regular18</font>
+                        <label>$INFO[MusicPlayer.Offset(2).TrackNumber,[COLOR active],.[/COLOR] ]$INFO[MusicPlayer.Offset(2).Title]$INFO[MusicPlayer.Offset(2).Duration, (,)]</label>
+                    </control>
+                </control>
+                <!-- Border -->
+                <control type="image">
+                    <right>340</right>
+                    <width>1</width>
+                    <aspectratio>scale</aspectratio>
+                    <texture colordiffuse="border">colors/white.png</texture>
+                </control>
+                <!-- Time -->
+                <control type="label">
+                    <right>0</right>
+                    <width>340</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <textcolor>white</textcolor>
+                    <font>light70</font>
+                    <label>$INFO[System.Time(hh:mm:ss)]</label>
+                </control>
+                <!-- Weather -->
+                <control type="grouplist">
+                    <right>0</right>
+                    <width>340</width>
+                    <height>50</height>
+                    <align>center</align>
+                    <orientation>horizontal</orientation>
+                    <itemgap>0</itemgap>
+                    <control type="label">
+                        <width>150</width>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <font>light30</font>
+                        <label>$INFO[Window(Weather).Property(Current.Temperature)]$INFO[System.TemperatureUnits]</label>
+                        <visible>Weather.IsFetched + ![String.IsEqual(Weather.FanartCode,na)]</visible>
+                    </control>
+                    <control type="image">
+                        <width>150</width>
+                        <aligny>center</aligny>
+                        <aspectratio aligny="center" align="left">keep</aspectratio>
+                        <texture>$INFO[Weather.FanartCode,weather/small/,.png]</texture>
+                        <visible>Weather.IsFetched + ![String.IsEqual(Weather.FanartCode,na)]</visible>
+                    </control>
+                </control>
+            </control>
+            <include>media_icons_music</include>
+        </control>
+    </include>
+
+    <include name="music_osd_buttons">
+        <control type="grouplist" id="200">
+            <visible>$EXP[ShowMusicOsd]</visible>
+            <defaultcontrol always="true">405</defaultcontrol>
+            <top>5</top>
+            <height>90</height>
+            <orientation>horizontal</orientation>
+            <align>center</align>
+            <itemgap>10</itemgap>
+            <onup>Action(close)</onup>
+            <ondown>87</ondown>
+            <!-- prev button -->
+            <include content="button_round">
+                <param name="id" value="400" />
+                <param name="onclick" value="PlayerControl(Previous)" />
+                <param name="icon" value="icons/buttons/previous.png" />
+                <param name="visible" value="!Pvr.IsPlayingRadio" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- rewind button -->
+            <include content="button_round">
+                <param name="id" value="402" />
+                <param name="onclick" value="PlayerControl(Rewind)" />
+                <param name="icon" value="icons/buttons/rewind.png" />
+                <param name="visible" value="!Pvr.IsPlayingRadio" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- play / pause button -->
+            <control type="radiobutton" id="403">
+                <width>70</width>
+                <height>70</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textureradioonfocus colordiffuse="white">icons/buttons/play.png</textureradioonfocus>
+                <textureradioonnofocus colordiffuse="white">icons/buttons/play.png</textureradioonnofocus>
+                <textureradioofffocus colordiffuse="white">icons/buttons/pause.png</textureradioofffocus>
+                <textureradiooffnofocus colordiffuse="white">icons/buttons/pause.png</textureradiooffnofocus>
+                <texturefocus colordiffuse="active">buttons/button_round_3d.png</texturefocus>
+                <texturenofocus colordiffuse="ff303030">buttons/button_round_3d.png</texturenofocus>
+                <radiowidth>40</radiowidth>
+                <radioheight>40</radioheight>
+                <radioposx>15</radioposx>
+                <radioposy>15</radioposy>
+                <selected>Player.Paused</selected>
+                <onclick>PlayerControl(Play)</onclick>
+                <visible>Player.PauseEnabled</visible>
+                <visible>!Player.Rewinding + !Player.Forwarding</visible>
+                <visible>!Pvr.IsPlayingRadio</visible>
+                <animation type="Focus">
+                    <effect type="zoom" end="120" time="150" tween="sine" easing="out" center="auto" />
+                    <effect type="slide" start="0,0" end="0,10" time="150" tween="sine" easing="out" />
+                </animation>
+                <animation type="Unfocus">
+                    <effect type="zoom" end="95" time="150" tween="sine" easing="out" center="auto" />
+                    <effect type="slide" start="0,10" end="0,0" time="150" tween="sine" easing="out" />
+                </animation>
+            </control>
+            <include content="button_round">
+                <param name="id" value="404" />
+                <param name="onclick" value="PlayerControl(Play)" />
+                <param name="icon" value="icons/buttons/play.png" />
+                <param name="visible" value="[Player.Rewinding | Player.Forwarding] + !Pvr.IsPlayingRadio" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- stop button -->
+            <include content="button_round">
+                <param name="id" value="405" />
+                <param name="onclick" value="Action(Close)" />
+                <param name="onclick2" value="PlayerControl(Stop)" />
+                <param name="icon" value="icons/buttons/stop.png" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- Forward button -->
+            <include content="button_round">
+                <param name="id" value="406" />
+                <param name="onclick" value="PlayerControl(Forward)" />
+                <param name="icon" value="icons/buttons/forward.png" />
+                <param name="visible" value="!Pvr.IsPlayingRadio" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- next button -->
+            <include content="button_round">
+                <param name="id" value="407" />
+                <param name="onclick" value="PlayerControl(Next)" />
+                <param name="icon" value="icons/buttons/next.png" />
+                <param name="visible" value="!Pvr.IsPlayingRadio" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- lyrics button -->
+            <include content="button_round">
+                <param name="id" value="408" />
+                <param name="onclick" value="Action(close)" />
+                <param name="onclick2" value="RunScript(script.cu.lrclyrics)" />
+                <param name="icon" value="icons/buttons/lyrics.png" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- settings button -->
+            <include content="button_round">
+                <param name="id" value="412" />
+                <param name="onclick" value="Control.SetFocus(199)" />
+                <param name="onclick2" value="ActivateWindow(1100)" />
+                <param name="icon" value="icons/buttons/settings.png" />
+                <param name="useanimations" value="true" />
+            </include>
+        </control>
+    </include>
+
+    <include name="music_seekbar">
+        <control type="group">
+            <visible>$EXP[ShowMusicOsd]</visible>
+            <visible>!Pvr.IsPlayingRadio</visible>
+            <top>994</top>
+            <left>450</left>
+            <width>1100</width>
+            <control type="button" id="87">
+                <include>HiddenObject</include>
+                <onup>200</onup>
+                <onunfocus condition="Player.Forwarding | Player.Rewinding">PlayerControl(Play)</onunfocus>
+                <ondown>200</ondown>
+                <onright>StepForward</onright>
+                <onleft>StepBack</onleft>
+                <onclick condition="Player.Forwarding | Player.Rewinding">PlayerControl(Play)</onclick>
+            </control>
+            <control type="slider">
+                <top>-5</top>
+                <left>0</left>
+                <width>100%</width>
+                <height>26</height>
+                <texturesliderbar colordiffuse="00FFFFFF">progress/nub_leftright.png</texturesliderbar>
+                <textureslidernib>progress/nub_leftright.png</textureslidernib>
+                <textureslidernibfocus>progress/nub_leftright.png</textureslidernibfocus>
+                <info>Player.Progress</info>
+                <action>seek</action>
+                <visible>!Control.HasFocus(87)</visible>
+            </control>
+            <control type="slider">
+                <top>-5</top>
+                <left>0</left>
+                <width>100%</width>
+                <height>26</height>
+                <texturesliderbar colordiffuse="00FFFFFF">progress/nub_leftright.png</texturesliderbar>
+                <textureslidernib>progress/nub_leftright_active.png</textureslidernib>
+                <textureslidernibfocus>progress/nub_leftright_active.png</textureslidernibfocus>
+                <info>Player.Progress</info>
+                <action>seek</action>
+                <visible>Control.HasFocus(87)</visible>
+            </control>
+        </control>
+    </include>
+
+    <include name="media_icons_music">
+        <param name="left">1580</param>
+        <param name="width">340</param>
+        <definition>
+            <control type="grouplist">
+                <bottom>10</bottom>
+                <left>$PARAM[left]</left>
+                <width>$PARAM[width]</width>
+                <height>30</height>
+                <align>center</align>
+                <orientation>horizontal</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>5</itemgap>
+                <control type="image">
+                    <width>78</width>
+                    <height>30</height>
+                    <texture>$INFO[MusicPlayer.Codec,flags/audiocodec/,.png]</texture>
+                </control>
+                <control type="image">
+                    <width>78</width>
+                    <height>30</height>
+                    <texture>$INFO[MusicPlayer.Channels,flags/audiochannel/,.png]</texture>
+                </control>
+                <control type="group">
+                    <top>1</top>
+                    <width>78</width>
+                    <height>28</height>
+                    <visible>!String.IsEmpty(MusicPlayer.Bitrate)</visible>
+                    <control type="image">
+                        <texture>colors/black.png</texture>
+                        <bordertexture>colors/white.png</bordertexture>
+                        <bordersize>1</bordersize>
+                        <aspectratio>scale</aspectratio>
+                    </control>
+                    <control type="label">
+                        <top>2</top>
+                        <align>center</align>
+                        <label>$INFO[MusicPlayer.BitRate] kbps</label>
+                        <font>bold16</font>
+                    </control>
+                </control>
+                <control type="group">
+                    <top>1</top>
+                    <width>62</width>
+                    <height>28</height>
+                    <visible>!String.IsEmpty(MusicPlayer.BitsPerSample)</visible>
+                    <control type="image">
+                        <texture>colors/black.png</texture>
+                        <bordertexture>colors/white.png</bordertexture>
+                        <bordersize>1</bordersize>
+                        <aspectratio>scale</aspectratio>
+                    </control>
+                    <control type="label">
+                        <top>2</top>
+                        <align>center</align>
+                        <label>$INFO[MusicPlayer.BitsPerSample] bits</label>
+                        <font>bold16</font>
+                    </control>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="music_label_forward">
+        <param name="speed" />
+        <definition>
+            <control type="label">
+                <visible>Control.HasFocus(406) + Player.Forwarding$PARAM[speed]x</visible>
+                <top>10</top>
+                <left>965</left>
+                <width>70</width>
+                <align>center</align>
+                <font>regular24</font>
+                <textcolor>white</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <label>&#215;$PARAM[speed]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="music_label_rewind">
+        <param name="speed" />
+        <definition>
+            <control type="label">
+                <visible>Control.HasFocus(402) + Player.Rewinding$PARAM[speed]x</visible>
+                <top>10</top>
+                <left>725</left>
+                <width>70</width>
+                <align>center</align>
+                <font>regular24</font>
+                <textcolor>white</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <label>&#215;$PARAM[speed]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="musicplaylisteditor_buttondecoration">
+        <control type="group">
+            <top>99</top>
+            <left>19</left>
+            <width>272</width>
+            <control type="image">
+                <visible>!Control.HasFocus(6)</visible>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <visible>Control.HasFocus(6)</visible>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <top>70</top>
+                <visible>!Control.HasFocus(7)</visible>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <top>70</top>
+                <visible>Control.HasFocus(7)</visible>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <top>140</top>
+                <visible>!Control.HasFocus(8)</visible>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <top>140</top>
+                <visible>Control.HasFocus(8)</visible>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">colors/white.png</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="musicplaylisteditor_files_listitem">
+        <param name="active">false</param>
+        <param name="listid">50</param>
+        <definition>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <visible>Control.HasFocus($PARAM[listid]) | Control.HasFocus($PARAM[listid]001)</visible>
+                <left>0</left>
+                <top>0</top>
+                <right>0</right>
+                <bottom>0</bottom>
+                <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <left>15</left>
+                <top>0</top>
+                <width>32</width>
+                <bottom>0</bottom>
+                <aspectratio aligny="center">keep</aspectratio>
+                <texture>$VAR[FileListIcon]</texture>
+            </control>
+            <control type="group">
+                <visible>$PARAM[active]</visible>
+                <control type="label">
+                    <visible>String.IsEmpty(ListItem.Title) | String.IsEqual(ListItem.Label,ListItem.Title)</visible>
+                    <left>65</left>
+                    <top>0</top>
+                    <bottom>0</bottom>
+                    <right>20</right>
+                    <aligny>center</aligny>
+                    <scroll>true</scroll>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="label">
+                    <visible>![String.IsEmpty(ListItem.Title) | String.IsEqual(ListItem.Label,ListItem.Title)]</visible>
+                    <left>65</left>
+                    <top>0</top>
+                    <bottom>0</bottom>
+                    <right>20</right>
+                    <aligny>center</aligny>
+                    <scroll>true</scroll>
+                    <label>$INFO[ListItem.Label]$INFO[ListItem.Title]</label>
+                </control>
+                <control type="label">
+                    <left>0</left>
+                    <textoffsetx>30</textoffsetx>
+                    <top>0</top>
+                    <bottom>0</bottom>
+                    <right>0</right>
+                    <align>right</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label2]</label>
+                </control>
+            </control>
+            <control type="group">
+                <visible>!$PARAM[active]</visible>
+                <control type="label">
+                    <visible>String.IsEmpty(ListItem.Title) | String.IsEqual(ListItem.Label,ListItem.Title)</visible>
+                    <left>65</left>
+                    <top>0</top>
+                    <bottom>0</bottom>
+                    <right>20</right>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="label">
+                    <visible>![String.IsEmpty(ListItem.Title) | String.IsEqual(ListItem.Label,ListItem.Title)]</visible>
+                    <left>65</left>
+                    <top>0</top>
+                    <bottom>0</bottom>
+                    <right>20</right>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]$INFO[ListItem.Title]</label>
+                </control>
+                <control type="label">
+                    <left>0</left>
+                    <textoffsetx>30</textoffsetx>
+                    <top>0</top>
+                    <bottom>0</bottom>
+                    <right>0</right>
+                    <align>right</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label2]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+</includes>

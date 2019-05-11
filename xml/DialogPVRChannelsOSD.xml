@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <onload>ClearProperty(showdetail)</onload>
+    <onload condition="Skin.HasSetting(use_channelgroups)">SetProperty(loadingchannels,true)</onload>
+    <onload condition="Skin.HasSetting(use_channelgroups)">RunScript(script.unfussy.helper,action=channelguide)</onload>
+    <defaultcontrol>11</defaultcontrol>
+    <controls>
+        <control type="group">
+            <width>780</width>
+            <visible>Skin.HasSetting(use_channelgroups)</visible>
+            <include>openclose_slight_left</include>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(Window.Property(loadingchannels),true)</visible>
+                <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+                <control type="image">
+                    <centerleft>50%</centerleft>
+                    <centertop>50%</centertop>
+                    <width>100</width>
+                    <height>100</height>
+                    <visible>true</visible>
+                    <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                </control>
+                <control type="image">
+                    <centerleft>50%</centerleft>
+                    <centertop>50%</centertop>
+                    <width>70</width>
+                    <height>70</height>
+                    <visible>true</visible>
+                    <animation effect="rotate" end="360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture flipx="true" colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                </control>
+            </control>
+        </control>
+        <control type="group">
+            <visible>!Skin.HasSetting(use_channelgroups)</visible>
+            <include>openclose_slight_left</include>
+            <width>680</width>
+            <control type="image">
+                <width>680</width>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="fixedlist" id="11">
+                <onleft condition="!String.IsEqual(Window.Property(showdetail),true)">Close</onleft>
+                <onleft condition="String.IsEqual(Window.Property(showdetail),true)">ClearProperty(showdetail)</onleft>
+                <onright>SetProperty(showdetail,true)</onright>
+                <onup>11</onup>
+                <ondown>11</ondown>
+                <orientation>vertical</orientation>
+                <movement>5</movement>
+                <focusposition>5</focusposition>
+                <scrolltime tween="cubic" easing="out">400</scrolltime>
+                <itemlayout width="680" height="100">
+                    <include content="pvr_channelsosd_item" />
+                </itemlayout>
+                <focusedlayout width="680" height="100">
+                    <include content="pvr_channelsosd_item">
+                        <param name="active" value="true" />
+                    </include>
+                </focusedlayout>
+            </control>
+        </control>
+        <include content="pvr_osd_detail">
+            <param name="visible">!Skin.HasSetting(use_channelgroups)</param>
+        </include>
+    </controls>
+</window>

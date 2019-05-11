@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <include>dialogpopup_openclose</include>
+    <defaultcontrol always="true">1000</defaultcontrol>
+    <controls>
+        <control type="group">
+            <centertop>50%</centertop>
+            <centerleft>50%</centerleft>
+            <height>750</height>
+            <width>1220</width>
+            <include>background_dialog</include>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="background">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>2</bordersize>
+            </control>
+            <control type="image">
+                <height>80</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>2</bordersize>
+            </control>
+            <control type="label" id="1">
+                <left>20</left>
+                <right>10</right>
+                <include>headerlabel_dialog</include>
+            </control>
+            <control type="textbox" id="5">
+                <left>20</left>
+                <right>40</right>
+                <top>100</top>
+                <bottom>50</bottom>
+                <pagecontrol>10</pagecontrol>
+                <font>regular20</font>
+            </control>
+            <control type="scrollbar" id="10">
+                <right>10</right>
+                <width>15</width>
+                <top>100</top>
+                <bottom>50</bottom>
+            </control>
+            <control type="button" id="1000">
+                <include>HiddenObject</include>
+                <onclick>Action(Close)</onclick>
+                <onup>PageUp(10)</onup>
+                <ondown>PageDown(10)</ondown>
+            </control>
+        </control>
+    </controls>
+</window>

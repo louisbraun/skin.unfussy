@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol>9000</defaultcontrol>
+    <backgroundcolor>0</backgroundcolor>
+    <controls>
+        <include>background</include>
+        <include content="info_header">
+            <param name="title">$LOCALIZE[21417]</param>
+            <param name="showicon" value="true" />
+            <param name="icon" value="icons/buttons/settings.png" />
+        </include>
+        <control type="group">
+            <top>0</top>
+            <bottom>0</bottom>
+            <include>openclose_fade_slight_right</include>
+            <control type="panel" id="9000">
+                <left>320</left>
+                <width>1280</width>
+                <top>90</top>
+                <height>300</height>
+                <onup>noop</onup>
+                <ondown>Control.SetFocus(9001,$INFO[Container(9000).Position],absolute)</ondown>
+                <itemlayout width="320" height="300">
+                    <include content="settings_menuitem" />
+                </itemlayout>
+                <focusedlayout width="320" height="300">
+                    <include content="settings_menuitem">
+                        <param name="active" value="true" />
+                    </include>                
+                </focusedlayout>
+                <content>
+                    <item>
+                        <label>$LOCALIZE[10003]</label>
+                        <onclick>ActivateWindow(filemanager)</onclick>
+                        <icon>icons/settings/filemanager.png</icon>
+                    </item>
+                    <item>
+                        <label>$LOCALIZE[24001]</label>
+                        <onclick>ActivateWindow(addonbrowser)</onclick>
+                        <icon>icons/settings/addons.png</icon>
+                    </item>
+                    <item>
+                        <label>$LOCALIZE[138]</label>
+                        <onclick>ActivateWindow(systeminfo)</onclick>
+                        <icon>icons/settings/sysinfo.png</icon>
+                    </item>
+                    <item>
+                        <label>$LOCALIZE[31002]</label>
+                        <onclick>ActivateWindow(eventlog)</onclick>
+                        <icon>icons/settings/eventlog.png</icon>
+                    </item>
+                </content>
+            </control>
+            <control type="label">
+                <top>400</top>
+                <left>330</left>
+                <height>40</height>
+                <label>$LOCALIZE[5]</label>
+                <font>regular36</font>
+                <textcolor>active</textcolor>
+                <shadowcolor>black</shadowcolor>
+            </control>
+            <control type="panel" id="9001">
+                <top>460</top>
+                <left>320</left>
+                <width>1280</width>
+                <height>600</height>
+                <onup>Control.SetFocus(9000,$INFO[Container(9001).Position],absolute)</onup>
+                <itemlayout width="320" height="300">
+                    <include content="settings_menuitem" />
+                </itemlayout>
+                <focusedlayout width="320" height="300">
+                    <include content="settings_menuitem">
+                        <param name="active" value="true" />
+                    </include>                
+                </focusedlayout>
+                <content>
+                    <item>
+                        <label>$LOCALIZE[14200]</label>
+                        <onclick>ActivateWindow(PlayerSettings)</onclick>
+                        <icon>icons/settings/player.png</icon>
+                    </item>
+                    <item>
+                        <label>$LOCALIZE[14211]</label>
+                        <onclick>ActivateWindow(MediaSettings)</onclick>
+                        <icon>icons/settings/media.png</icon>
+                    </item>
+                    <item>
+                        <label>$LOCALIZE[13000]</label>
+                        <onclick>ActivateWindow(SystemSettings)</onclick>
+                        <icon>icons/settings/system.png</icon>
+                    </item>
+                    <item>
+                        <label>$LOCALIZE[14204]</label>
+                        <onclick>ActivateWindow(PVRSettings)</onclick>
+                        <icon>icons/settings/livetv.png</icon>
+                    </item>
+                    <item>
+                        <label>$LOCALIZE[14036]</label>
+                        <onclick>ActivateWindow(ServiceSettings)</onclick>
+                        <icon>icons/settings/network.png</icon>
+                    </item>
+                    <item>
+                        <label>$LOCALIZE[14206]</label>
+                        <onclick>ActivateWindow(InterfaceSettings)</onclick>
+                        <icon>icons/settings/interface.png</icon>
+                    </item>
+                    <item>
+                        <label>$LOCALIZE[31091]</label>
+                        <onclick>ActivateWindow(SkinSettings)</onclick>
+                        <icon>icons/settings/unfussy.png</icon>
+                    </item>
+                    <item>
+                        <label>LibreELEC</label>
+                        <onclick>RunAddon(service.libreelec.settings)</onclick>
+                        <icon>icons/settings/libreelec.png</icon>
+                        <visible>System.HasAddon(service.libreelec.settings)</visible>
+                    </item>
+                    <item>
+                        <label>$LOCALIZE[13200]</label>
+                        <onclick>ActivateWindow(Profiles)</onclick>
+                        <icon>icons/settings/profiles.png</icon>
+                    </item>
+                    <item>
+                        <label>$LOCALIZE[15016]</label>
+                        <visible>System.GetBool(gamesgeneral.enable)</visible>
+                        <onclick>ActivateWindow(GameSettings)</onclick>
+                        <icon>icons/settings/games.png</icon>
+                    </item>
+                </content>
+            </control>
+            <control type="group">
+                <visible>Control.HasFocus(9001)</visible>
+                <control type="image">
+                    <visible>Container(9001).HasPrevious</visible>
+                    <left>0</left>
+                    <top>430</top>
+                    <width>1920</width>
+                    <height>20</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture colordiffuse="active">icons/arrowup.png</texture>
+                </control>
+                <control type="image">
+                    <visible>Container(9001).HasNext</visible>
+                    <left>0</left>
+                    <top>1050</top>
+                    <width>1920</width>
+                    <height>20</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture colordiffuse="active">icons/arrowdown.png</texture>
+                </control>
+            </control>
+        </control>
+    </controls>
+</window>

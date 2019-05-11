@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <backgroundcolor>0</backgroundcolor>
+    <defaultcontrol>450</defaultcontrol>
+    <controls>
+        <include>background</include>
+        <include content="info_header">
+            <param name="title" value="$LOCALIZE[1036]" />
+            <param name="showicon" value="true" />
+            <param name="icon" value="icons/mainmenu/favourites.png" />
+        </include>
+        <control type="group">
+            <include>openclose_slight_left</include>
+            <control type="panel" id="450">
+                <left>20</left>
+                <top>100</top>
+                <width>1860</width>
+                <bottom>20</bottom>
+                <onleft>450001</onleft>
+                <onright>450001</onright>
+                <onup>450</onup>
+                <ondown>450</ondown>
+                <preloaditems>2</preloaditems>
+                <pagecontrol>450001</pagecontrol>
+                <scrolltime tween="sine">200</scrolltime>
+                <orientation>vertical</orientation>
+                <itemlayout width="310" height="370">
+                    <include content="dialog_favourites_listitem" />
+                </itemlayout>
+                <focusedlayout width="310" height="370">
+                    <include content="dialog_favourites_listitem">
+                        <param name="active" value="true" />
+                    </include>
+                </focusedlayout>
+            </control>
+            <include content="scrollbar">
+                <param name="top">99</param>
+                <param name="left">1890</param>
+                <param name="width">16</param>
+                <param name="height">960</param>
+                <param name="controlled_id">450</param>
+                <param name="onleft_id">450</param>
+                <param name="onright_id">450</param>
+            </include>
+        </control>
+    </controls>
+</window>

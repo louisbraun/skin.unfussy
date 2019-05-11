@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include file="Defaults.xml" />
+    <include file="Includes_Dialogs.xml" />
+	<include file="Includes_Home.xml" />
+    <include file="Includes_Home_Menucontent.xml" />
+    <include file="Includes_Widgets.xml" />
+    <include file="Includes_Home_Widgetcontent.xml" />
+    <include file="Includes_MediaMenu.xml" />
+    <include file="Includes_Video.xml" />
+    <include file="Includes_PVR.xml" />
+    <include file="Includes_Music.xml" />
+    <include file="Includes_Weather.xml" />
+    <include file="Includes_Animations.xml" />
+    <include file="Includes_SkinhelperConfig.xml" />
+    <include file="View_50_List.xml" />
+    <include file="View_51_Fanart.xml" />
+    <include file="View_52_WideList.xml" />
+    <include file="View_53_Wall.xml" />
+    <include file="View_54_Infowall.xml" />
+    <include file="View_55_Fanart_Horizontal.xml" />
+	<include file="Variables.xml" />
+    <constant name="DepthDialog">0.50</constant>
+    <constant name="DepthDialog+">0.52</constant>
+    <constant name="DepthDialog-">0.48</constant>
+    <constant name="DepthMax">0.54</constant>
+    <constant name="DepthOSD">0.40</constant>
+    <constant name="DepthOSD+">0.44</constant>
+    <constant name="DepthContentPopout">0.10</constant>
+    <constant name="DepthContentPanel">0.05</constant>
+    <constant name="DepthBars">0.12</constant>
+    <constant name="DepthBackground">-0.80</constant>
+    <constant name="DepthSideBlade">0.10</constant>
+
+    <include name="FullScreenDimensions">
+        <left>0</left>
+        <top>0</top>
+        <width>100%</width>
+        <height>100%</height>
+    </include>
+
+    <include name="HiddenObject">
+        <left>-3000</left>
+        <top>-3000</top>
+        <width>1</width>
+        <height>1</height>
+        <texturefocus />
+        <texturenofocus />
+        <label/>
+        <font></font>
+    </include>
+
+    <include name="background">
+        <control type="videowindow">
+            <visible>Player.HasVideo</visible>
+            <depth>DepthBackground</depth>
+            <include>FullScreenDimensions</include>
+        </control>
+        <control type="image">
+            <visible>Player.HasVideo</visible>
+            <visible>![ [Window.IsActive(home) + Skin.HasSetting(hide_widgets)] | Window.IsActive(1101) | Window.IsActive(tvchannels) | Window.IsActive(tvguide) | Window.IsActive(tvrecordings) | Window.IsActive(tvtimers)  | Window.IsActive(tvsearch)]</visible>
+            <left>0</left>
+            <top>0</top>
+            <width>100%</width>
+            <height>100%</height>
+            <aspectratio>scale</aspectratio>
+            <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>!Player.HasVideo</visible>
+            <left>0</left>
+            <top>0</top>
+            <width>100%</width>
+            <height>100%</height>
+            <aspectratio>scale</aspectratio>
+            <texture>backgrounds/background.png</texture>
+        </control>
+    </include>
+
+    <include name="button_round">
+        <param name="id">0</param>
+        <param name="onclick"></param>
+        <param name="onclick2"></param>
+        <param name="onclick3"></param>
+        <param name="onclick4"></param>
+        <param name="onclick5"></param>
+        <param name="onclick6"></param>
+        <param name="cond_click">true</param>
+        <param name="cond_click2">true</param>
+        <param name="cond_click3">true</param>
+        <param name="visible">true</param>
+        <param name="visible2">true</param>
+        <param name="top">0</param>
+        <param name="left">0</param>
+        <param name="radius">70</param>
+        <param name="icon"></param>
+        <param name="iconsize">40</param>
+        <param name="iconoffset">15</param>
+        <param name="useanimations">false</param>
+        <definition>
+            <control type="radiobutton" id="$PARAM[id]">
+                <top>$PARAM[top]</top>
+                <left>$PARAM[left]</left>
+                <width>$PARAM[radius]</width>
+                <height>$PARAM[radius]</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <onclick condition="$PARAM[cond_click]">$PARAM[onclick]</onclick>
+                <onclick condition="$PARAM[cond_click2]">$PARAM[onclick2]</onclick>
+                <onclick condition="$PARAM[cond_click3]">$PARAM[onclick3]</onclick>
+                <onclick>$PARAM[onclick4]</onclick>
+                <onclick>$PARAM[onclick5]</onclick>
+                <onclick>$PARAM[onclick6]</onclick>
+                <texturefocus colordiffuse="active">buttons/button_round_3d.png</texturefocus>
+                <texturenofocus colordiffuse="ff303030">buttons/button_round_3d.png</texturenofocus>
+                <textureradioonfocus colordiffuse="white">$PARAM[icon]</textureradioonfocus>
+                <textureradioonnofocus colordiffuse="white">$PARAM[icon]</textureradioonnofocus>
+                <textureradioofffocus colordiffuse="white">$PARAM[icon]</textureradioofffocus>
+                <textureradiooffnofocus colordiffuse="white">$PARAM[icon]</textureradiooffnofocus>
+                <textureradioondisabled colordiffuse="disabled">$PARAM[icon]</textureradioondisabled>
+                <textureradiooffdisabled colordiffuse="disabled">$PARAM[icon]</textureradiooffdisabled>
+                <radiowidth>$PARAM[iconsize]</radiowidth>
+                <radioheight>$PARAM[iconsize]</radioheight>
+                <radioposx>$PARAM[iconoffset]</radioposx>
+                <radioposy>$PARAM[iconoffset]</radioposy>
+                <visible>$PARAM[visible]</visible>
+                <visible>$PARAM[visible2]</visible>
+                <textcolor>00000000</textcolor>
+                <focusedcolor>00000000</focusedcolor>
+                <disabledcolor>00000000</disabledcolor>
+                <invalidcolor>00000000</invalidcolor>
+                <animation type="Focus" condition="$PARAM[useanimations]">
+                    <effect type="zoom" end="120" time="150" tween="sine" easing="out" center="auto" />
+                    <effect type="slide" start="0,0" end="0,10" time="150" tween="sine" easing="out" />
+                </animation>
+                <animation type="Unfocus" condition="$PARAM[useanimations]">
+                    <effect type="zoom" end="95" time="150" tween="sine" easing="out" center="auto" />
+                    <effect type="slide" start="0,10" end="0,0" time="150" tween="sine" easing="out" />
+                </animation>
+                <animation type="Focus" condition="!$PARAM[useanimations]">
+                    <effect type="zoom" start="100" end="115" time="100" tween="sine" easing="out" center="auto" />
+                    <effect type="zoom" start="100" end="89"  time="100" tween="sine" easing="out" center="auto" delay="100" />
+                </animation>
+            </control>
+        </definition>
+    </include>
+
+    <include name="button_toggle_round">
+        <param name="id">0</param>
+        <param name="onclick"></param>
+        <param name="onclick2"></param>
+        <param name="visible">true</param>
+        <param name="selected"></param>
+        <param name="top">0</param>
+        <param name="left">0</param>
+        <param name="radius">70</param>
+        <param name="icon_on"></param>
+        <param name="icon_off"></param>
+        <param name="iconsize">40</param>
+        <param name="iconoffsetx">0</param>
+        <param name="iconoffsety">0</param>
+        <definition>
+            <control type="radiobutton" id="$PARAM[id]">
+                <top>$PARAM[top]</top>
+                <left>$PARAM[left]</left>
+                <width>$PARAM[radius]</width>
+                <height>$PARAM[radius]</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <onclick>$PARAM[onclick]</onclick>
+                <onclick>$PARAM[onclick2]</onclick>
+                <texturefocus colordiffuse="active">buttons/button_round_3d.png</texturefocus>
+                <texturenofocus colordiffuse="ff303030">buttons/button_round_3d.png</texturenofocus>
+                <textureradioonfocus colordiffuse="white">$PARAM[icon_on]</textureradioonfocus>
+                <textureradioonnofocus colordiffuse="white">$PARAM[icon_on]</textureradioonnofocus>
+                <textureradioofffocus colordiffuse="white">$PARAM[icon_off]</textureradioofffocus>
+                <textureradiooffnofocus colordiffuse="white">$PARAM[icon_off]</textureradiooffnofocus>
+                <textureradioondisabled colordiffuse="disabled">$PARAM[icon_on]</textureradioondisabled>
+                <textureradiooffdisabled colordiffuse="disabled">$PARAM[icon_off]</textureradiooffdisabled>
+                <radiowidth>$PARAM[iconsize]</radiowidth>
+                <radioheight>$PARAM[iconsize]</radioheight>
+                <radioposx>$PARAM[iconoffsetx]</radioposx>
+                <radioposy>$PARAM[iconoffsety]</radioposy>
+                <visible>$PARAM[visible]</visible>
+                <textcolor>00000000</textcolor>
+                <focusedcolor>00000000</focusedcolor>
+                <disabledcolor>00000000</disabledcolor>
+                <invalidcolor>00000000</invalidcolor>
+                <selected>$PARAM[selected]</selected>
+                <animation type="Focus">
+                    <effect type="zoom" start="100" end="115" time="100" tween="sine" easing="out" center="auto" />
+                    <effect type="zoom" start="100" end="89"  time="100" tween="sine" easing="out" center="auto" delay="100" />
+                </animation>
+            </control>
+        </definition>
+    </include>
+
+    <include name="scrollbar">
+        <param name="visible">true</param>
+        <param name="orientation">vertical</param>
+        <param name="top">70</param>
+        <param name="left" />
+        <param name="width">15</param>
+        <param name="height">1000</param>
+        <param name="controlled_id" />
+        <param name="onup_id"></param>
+        <param name="ondown_id"></param>
+        <param name="onleft_id"></param>
+        <param name="onright_id"></param>
+        <definition>
+            <control type="image">
+                <visible>Control.IsVisible($PARAM[controlled_id]001)</visible>
+                <visible>$PARAM[visible]</visible>
+                <top>$PARAM[top]</top>
+                <left>$PARAM[left]</left>
+                <width>$PARAM[width]</width>
+                <height>$PARAM[height]</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            </control>
+            <control type="scrollbar" id="$PARAM[controlled_id]001">
+                <visible>$PARAM[visible]</visible>
+                <orientation>$PARAM[orientation]</orientation>
+                <top>$PARAM[top]</top>
+                <left>$PARAM[left]</left>
+                <width>$PARAM[width]</width>
+                <height>$PARAM[height]</height>
+                <onup>$PARAM[onup_id]</onup>
+                <ondown>$PARAM[ondown_id]</ondown>
+                <onleft>$PARAM[onleft_id]</onleft>
+                <onright>$PARAM[onright_id]</onright>
+                <texturesliderbackground colordiffuse="borderdark" border="3">progress/texturebg_border_white.png</texturesliderbackground>
+                <texturesliderbar border="3,6,3,6" colordiffuse="border">progress/texturebg_white.png</texturesliderbar>
+                <texturesliderbarfocus border="3,6,3,6" colordiffuse="active">progress/texturebg_white.png</texturesliderbarfocus>
+            </control>
+        </definition>
+    </include>
+
+<!-- HEADER -->
+
+    <include name="info_header">
+        <param name="title"></param>
+        <param name="showicon">false</param>
+        <param name="icon"></param>
+        <definition>
+            <control type="image">
+                <top>0</top>
+                <left>0</left>
+                <width>1920</width>
+                <height>60</height>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <top>60</top>
+                <left>0</left>
+                <width>1920</width>
+                <height>1</height>
+                <texture colordiffuse="border">colors/white.png</texture>
+                <visible>!Player.HasVideo</visible>
+            </control>
+            <control type="image">
+                <visible>$PARAM[showicon]</visible>
+                <top>0</top>
+                <left>0</left>
+                <width>60</width>
+                <height>60</height>
+                <aspectratio aligny="center" align="left">keep</aspectratio>
+                <texture>$PARAM[icon]</texture>
+            </control>
+            <include condition="$PARAM[showicon]" content="info_header_label">
+                <param name="title" value="$PARAM[title]" />
+                <param name="left" value="70" />
+            </include>
+            <include condition="!$PARAM[showicon]" content="info_header_label">
+                <param name="title" value="$PARAM[title]" />
+            </include>
+            <include>info_header_sortletter</include>
+            <include>info_header_listinfo</include>
+            <include>info_header_weather</include>
+            <include>info_header_time</include>
+        </definition>
+    </include>
+
+    <include name="info_header_label">
+        <param name="title"></param>
+        <param name="left">10</param>
+        <definition>
+            <control type="grouplist">
+                <left>$PARAM[left]</left>
+                <orientation>horizontal</orientation>
+                <control type="label">
+                    <include>header_label_item</include>
+                    <label>$PARAM[title]</label>
+                </control>
+                <control type="label">
+                    <visible>Window.IsActive(videos)</visible>
+                    <visible>!String.IsEqual(Container.Content,episodes)</visible>
+                    <visible>!String.IsEqual(Container.FolderName,Control.GetLabel(1))</visible>
+                    <include>header_label_item</include>
+                    <label>$INFO[Container.FolderName, / ]</label>
+                </control>
+                <control type="label">
+                    <visible>Window.IsActive(videos)</visible>
+                    <visible>String.IsEqual(Container.Content,episodes)</visible>
+                    <include>header_label_item</include>
+                    <label>$INFO[ListItem.TVShowTitle, / ]$INFO[Container.FolderName, / ]</label>
+                </control>
+                <control type="label">
+                    <visible>Window.IsActive(addonbrowser)</visible>
+                    <visible>!String.IsEqual(Container.FolderPath,addons://)</visible>
+                    <include>header_label_item</include>
+                    <label>$INFO[Container.FolderName, / ]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="header_label_item">
+        <top>0</top>
+        <width>auto</width>
+        <height>60</height>
+        <aligny>center</aligny>
+        <font>light50</font>
+        <textcolor>white</textcolor>
+    </include>
+
+    <include name="info_header_listinfo">
+        <param name="left">1180</param>
+        <definition>
+            <control type="group">
+                <visible>!Window.IsActive(tvguide) + !Window.IsActive(musicplaylisteditor)</visible>
+                <left>$PARAM[left]</left>
+                <control type="label">
+                    <top>6</top>
+                    <width>350</width>
+                    <height>30</height>
+                    <aligny>center</aligny>
+                    <font>light24</font>
+                    <textcolor>white</textcolor>
+                    <label>$INFO[Container.SortMethod,$LOCALIZE[31000]: [COLOR active],[/COLOR]]</label>
+                </control>
+                <control type="label">
+                    <top>30</top>
+                    <height>30</height>
+                    <aligny>center</aligny>
+                    <font>light24</font>
+                    <textcolor>white</textcolor>
+                    <label>$INFO[Container.CurrentItem,, [COLOR active]/[/COLOR] ]$INFO[Container.NumItems]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="info_header_weather">
+        <control type="grouplist">
+            <right>180</right>
+            <width>200</width>
+            <height>60</height>
+            <align>center</align>
+            <orientation>horizontal</orientation>
+            <itemgap>0</itemgap>
+            <control type="label">
+                <width>150</width>
+                <align>right</align>
+                <aligny>center</aligny>
+                <font>light60</font>
+                <label>$INFO[Window(Weather).Property(Current.Temperature)]$INFO[System.TemperatureUnits]</label>
+                <visible>Weather.IsFetched + ![String.IsEqual(Weather.FanartCode,na)]</visible>
+            </control>
+            <control type="image">
+                <width>80</width>
+                <aligny>center</aligny>
+                <aspectratio aligny="center" align="left">keep</aspectratio>
+                <texture>$INFO[Weather.FanartCode,weather/small/,.png]</texture>
+                <visible>Weather.IsFetched + ![String.IsEqual(Weather.FanartCode,na)]</visible>
+            </control>
+        </control>
+    </include>
+
+    <include name="info_header_time">
+        <control type="label">
+            <top>0</top>
+            <right>10</right>
+            <height>60</height>
+            <align>right</align>
+            <aligny>center</aligny>
+            <label>$INFO[System.Time]</label>
+            <font>light60</font>
+            <textcolor>white</textcolor>
+        </control>
+    </include>
+
+    <include name="info_header_sortletter">
+        <control type="label">
+            <top>0</top>
+            <left>1000</left>
+            <width>100</width>
+            <height>60</height>
+            <align>center</align>
+            <aligny>center</aligny>
+            <label>$INFO[ListItem.SortLetter]</label>
+            <font>light50</font>
+            <textcolor>active</textcolor>
+            <visible>!System.HasActiveModalDialog</visible>
+            <visible>Container.Scrolling</visible>
+            <visible>!Container.Content(seasons)</visible>
+            <visible>String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[563])</visible>
+            <animation effect="fade" start="0" end="100" time="200" reversible="true">VisibleChange</animation>
+            <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+        </control>
+    </include>
+
+<!-- DEBUG PANEL -->
+
+   <include name="debugcategory">
+        <param name="category" />
+        <param name="visible" />
+        <definition>
+            <control type="label">
+                <visible>$PARAM[visible]</visible>
+                <height>20</height>
+                <align>right</align>
+                <aligny>center</aligny>
+                <font>regular18</font>
+                <textcolor>red</textcolor>
+                <label>[B]$PARAM[category][/B]</label>
+            </control>
+            <control type="label">
+                <visible>!$PARAM[visible]</visible>
+                <height>20</height>
+                <align>right</align>
+                <aligny>center</aligny>
+                <font>regular18</font>
+                <textcolor>active</textcolor>
+                <label>[B]$PARAM[category][/B]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="debugtextbox">
+        <param name="id" />
+        <param name="visible" />
+        <definition>
+            <control type="textbox" id="$PARAM[id]1">
+                <visible>$PARAM[visible]</visible>
+                <height>auto</height>
+                <font>regular12</font>
+                <align>right</align>
+                <textcolor>white</textcolor>
+                <label>$PARAM[value1]$PARAM[value2]$PARAM[value3]$PARAM[value4]$PARAM[value5]$PARAM[value6]$PARAM[value7]$PARAM[value8]$PARAM[value9]$PARAM[value10]$PARAM[value11]$PARAM[value12]$PARAM[value13]$PARAM[value14]$PARAM[value15]$PARAM[value16]$PARAM[value17]$PARAM[value18]$PARAM[value19]$PARAM[value20]$PARAM[value21]$PARAM[value22]$PARAM[value23]$PARAM[value24]$PARAM[value25]$PARAM[value26]$PARAM[value27]$PARAM[value28]$PARAM[value29]$PARAM[value30]$PARAM[value31]$PARAM[value32]$PARAM[value33]$PARAM[value34]$PARAM[value35]$PARAM[value36]$PARAM[value37]$PARAM[value38]$PARAM[value39]$PARAM[value40]$PARAM[value41]$PARAM[value42]$PARAM[value43]$PARAM[value44]$PARAM[value45]$PARAM[value46]$PARAM[value47]$PARAM[value48]$PARAM[value49]$PARAM[value50]$PARAM[value51]$PARAM[value52]$PARAM[value53]$PARAM[value54]$PARAM[value55]$PARAM[value56]$PARAM[value57]$PARAM[value58]$PARAM[value59]$PARAM[value60]$PARAM[value61]$PARAM[value62]$PARAM[value63]$PARAM[value64]$PARAM[value65]$PARAM[value66]$PARAM[value67]$PARAM[value68]$PARAM[value69]$PARAM[value70]$PARAM[value71]$PARAM[value72]$PARAM[value73]$PARAM[value74]$PARAM[value75]$PARAM[value76]$PARAM[value77]$PARAM[value78]$PARAM[value79]$PARAM[value80]$PARAM[value81]$PARAM[value82]$PARAM[value83]$PARAM[value84]$PARAM[value85]$PARAM[value86]$PARAM[value87]$PARAM[value88]$PARAM[value89]$PARAM[value90]$PARAM[value91]$PARAM[value92]$PARAM[value93]$PARAM[value94]$PARAM[value95]$PARAM[value96]$PARAM[value97]$PARAM[value98]$PARAM[value99]$PARAM[value100]$PARAM[value101]$PARAM[value102]$PARAM[value103]$PARAM[value104]$PARAM[value105]$PARAM[value106]$PARAM[value107]$PARAM[value108]$PARAM[value109]$PARAM[value110]$PARAM[value111]$PARAM[value112]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="debugbool">
+        <param name="visible">true</param>
+        <param name="boolvalue" />
+        <definition>
+            <control type="label">
+                <visible>$PARAM[visible]</visible>
+                <visible>$PARAM[boolvalue]</visible>
+                <height>12</height>
+                <font>regular12</font>
+                <align>right</align>
+                <aligny>center</aligny>
+                <textcolor>white</textcolor>
+                <label>[COLOR active][B]$PARAM[boolvalue]:[/B][/COLOR] true</label>
+            </control>
+        </definition>
+    </include>
+
+</includes>

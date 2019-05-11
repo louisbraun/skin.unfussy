@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="view_54_infowall">
+        <control type="group">
+            <include>openclose_slight_left</include>
+            <visible>Control.IsVisible(54)</visible>
+            <control type="panel" id="54">
+                <visible>$EXP[AllowedViewInfoWall]</visible>
+                <top>65</top>
+                <left>20</left>
+                <bottom>20</bottom>
+                <width>1265</width>
+                <height>1000</height>
+                <visible>true</visible>
+                <focusposition>2</focusposition>
+                <viewtype label="Infowall">icon</viewtype>
+                <orientation>vertical</orientation>
+                <scrolltime tween="sine" easing="out">500</scrolltime>
+                <pagecontrol>54001</pagecontrol>
+                <onleft>9000</onleft>
+                <onright>54001</onright>
+                <include content="view_54_itemlayout" />
+                <include content="view_54_focusedlayout" />
+            </control>
+            <include content="scrollbar">
+                <param name="controlled_id" value="54" />
+                <param name="onleft_id" value="54" />
+                <param name="onright_id" value="54" />
+                <param name="top" value="70" />
+                <param name="left" value="1290" />
+            </include>
+            <include content="view_54_contentpanel" />
+        </control>
+    </include>
+
+    <include name="view_54_itemlayout">
+        <itemlayout condition="Container.Content(movies) | Container.Content(musicvideos)" width="253" height="432">
+            <include content="view_54_listitem_movies" />
+        </itemlayout>
+        <itemlayout condition="Container.Content(addons)" width="316" height="396">
+            <include content="view_54_listitem_addons" />
+        </itemlayout>
+        <itemlayout condition="Container.Content(artists) | Container.Content(albums)" width="316" height="396">
+            <include content="view_54_listitem_artists" />
+        </itemlayout>
+        <itemlayout condition="Container.Content(images)" width="316" height="380">
+            <include content="view_54_listitem_images" />
+        </itemlayout>
+    </include>
+
+    <include name="view_54_focusedlayout">
+        <focusedlayout condition="Container.Content(movies) | Container.Content(musicvideos)" width="253" height="432">
+            <include content="view_54_listitem_movies">
+                <param name="active">true</param>
+            </include>
+        </focusedlayout>
+        <focusedlayout condition="Container.Content(addons)" width="316" height="396">
+            <include content="view_54_listitem_addons">
+                <param name="active">true</param>
+            </include>
+        </focusedlayout>
+        <focusedlayout condition="Container.Content(artists) | Container.Content(albums)" width="316" height="396">
+            <include content="view_54_listitem_artists">
+                <param name="active">true</param>
+            </include>
+        </focusedlayout>
+        <focusedlayout condition="Container.Content(images)" width="316" height="380">
+            <include content="view_54_listitem_images">
+                <param name="active">true</param>
+            </include>
+        </focusedlayout>
+    </include>
+
+    <include name="view_54_listitem_movies">
+        <param name="active">false</param>
+        <definition>
+            <include content="listitem_background">
+                <param name="active">$PARAM[active]</param>
+                <param name="top">10</param>
+                <param name="width">250</param>
+                <param name="height">427</param>
+            </include>
+            <control type="image">
+                <top>11</top>
+                <left>1</left>
+                <width>248</width>
+                <height>372</height>
+                <aspectratio>scale</aspectratio>
+                <texture background="true">$INFO[ListItem.Art(poster)]</texture>
+            </control>
+            <control type="image">
+                <visible>String.IsEqual(ListItem.Label,..)</visible>
+                <left>10</left>
+                <right>10</right>
+                <aspectratio>keep</aspectratio>
+                <texture background="true">$INFO[ListItem.ActualIcon]</texture>
+            </control>
+            <control type="label">
+                <top>385</top>
+                <left>10</left>
+                <width>230</width>
+                <height>50</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>regular24</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="view_54_listitem_addons">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <top>10</top>
+                <include content="listitem_background">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="width">312</param>
+                </include>
+                <control type="image">
+                    <top>1</top>
+                    <left>1</left>
+                    <width>310</width>
+                    <height>310</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Label,..)</visible>
+                    <left>10</left>
+                    <right>10</right>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.ActualIcon]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(Addon.Status),$LOCALIZE[24023])</visible>
+                    <top>5</top>
+                    <left>265</left>
+                    <width>40</width>
+                    <height>40</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true" colordiffuse="red">icons/buttons/disable.png</texture>
+                </control>
+                <control type="textbox">
+                    <top>310</top>
+                    <left>10</left>
+                    <width>290</width>
+                    <height>80</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="view_54_listitem_artists">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <top>10</top>
+                <include content="listitem_background">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="width">312</param>
+                </include>
+                <control type="image">
+                    <visible>!String.IsEqual(ListItem.Label,..)</visible>
+                    <visible>Container.Content(albums)</visible>
+                    <top>1</top>
+                    <left>1</left>
+                    <width>310</width>
+                    <height>310</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true" fallback="defaultmusicalbums.png">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>!String.IsEqual(ListItem.Label,..)</visible>
+                    <visible>Container.Content(artists)</visible>
+                    <top>1</top>
+                    <left>1</left>
+                    <width>310</width>
+                    <height>310</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true" fallback="defaultartist.png">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Label,..)</visible>
+                    <left>10</left>
+                    <right>10</right>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.ActualIcon]</texture>
+                </control>
+                <control type="label">
+                    <top>310</top>
+                    <left>10</left>
+                    <width>290</width>
+                    <height>80</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular30</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="view_54_listitem_images">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <top>10</top>
+                <control type="image">
+                    <visible>!$PARAM[active]</visible>
+                    <width>308</width>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="ff202020">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <visible>$PARAM[active]</visible>
+                    <width>308</width>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="ff202020">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <visible>$PARAM[active]</visible>
+                    <top>305</top>
+                    <left>1</left>
+                    <width>303</width>
+                    <height>64</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                </control>
+                <control type="image">
+                    <top>10</top>
+                    <left>5</left>
+                    <width>298</width>
+                    <height>293</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true" fallback="defaultpicture.png">$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="textbox">
+                    <top>300</top>
+                    <left>5</left>
+                    <right>10</right>
+                    <height>70</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="view_54_contentpanel">
+        <control type="group">
+            <right>10</right>
+            <top>70</top>
+            <width>600</width>
+            <height>1000</height>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <include content="view_54_contentpanel_movies" />
+            <include content="view_54_contentpanel_addons" />
+            <include content="view_54_contentpanel_artists" />
+            <include content="view_54_contentpanel_albums" />
+            <include content="view_54_contentpanel_images" />
+            <control type="image">
+                <visible>String.IsEqual(Container(54).ListItem.Label,..)</visible>
+                <left>50</left>
+                <right>50</right>
+                <aspectratio>keep</aspectratio>
+                <texture background="true">$INFO[Container(54).ListItem.ActualIcon]</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_54_contentpanel_movies">
+        <control type="group">
+            <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,set)</visible>
+            <control type="group">
+                <visible>!String.IsEqual(Container(54).ListItem.Label,..)</visible>
+                <control type="grouplist">
+                    <top>10</top>
+                    <left>20</left>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="label">
+                        <right>10</right>
+                        <height>40</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular36</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(54).ListItem.Label]$INFO[Container(54).ListItem.Year, (,)]</label>
+                    </control>
+                    <control type="label" id="202">
+                        <visible>!String.IsEmpty(Container(54).ListItem.Tagline)</visible>
+                        <right>10</right>
+                        <height>30</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular24</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(54).ListItem.Tagline]</label>
+                    </control>
+                    <control type="label" id="203">
+                        <visible>!String.IsEmpty(Container(54).ListItem.Genre)</visible>
+                        <right>10</right>
+                        <height>30</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular24</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(54).ListItem.Genre]</label>
+                    </control>
+                    <control type="textbox">
+                        <top>20</top>
+                        <right>10</right>
+                        <height>450</height>
+                        <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
+                        <font>light24</font>
+                        <label>$INFO[Container(54).ListItem.Plot]</label>
+                    </control>            
+                </control>
+                <include content="mediaflags">
+                    <param name="top" value="620" />
+                    <param name="left" value="0" />
+                    <param name="width" value="590" />
+                    <param name="height" value="30" />
+                    <param name="align" value="right" />
+                </include>
+                <control type="image">
+                    <bottom>1</bottom>
+                    <left>1</left>
+                    <width>598</width>
+                    <height>337</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">$INFO[Container(54).ListItem.Art(fanart)]</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_54_contentpanel_addons">
+        <control type="group">
+            <visible>Container.Content(addons)</visible>
+            <control type="group">
+                <visible>!String.IsEqual(Container(54).ListItem.Label,..)</visible>
+                <control type="grouplist">
+                    <top>10</top>
+                    <left>20</left>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="textbox">
+                        <right>10</right>
+                        <height>110</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular36</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(54).ListItem.AddonSummary]</label>
+                    </control>
+                    <control type="label">
+                        <top>20</top>
+                        <right>10</right>
+                        <height>30</height>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>regular30</font>
+                        <label>$INFO[Container(54).ListItem.AddonCreator,[COLOR active]$LOCALIZE[20417]: [/COLOR]]</label>
+                    </control>
+                    <control type="label">
+                        <top>20</top>
+                        <right>10</right>
+                        <height>30</height>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>regular30</font>
+                        <label>$INFO[Container(54).ListItem.AddonVersion,[COLOR active]$LOCALIZE[19114]: [/COLOR]]</label>
+                    </control>
+                    <control type="textbox">
+                        <top>20</top>
+                        <right>10</right>
+                        <height>400</height>
+                        <font>regular24</font>
+                        <label>$INFO[Container(54).ListItem.AddonDescription]</label>
+                    </control>
+                </control>
+                <control type="image">
+                    <bottom>1</bottom>
+                    <left>1</left>
+                    <width>598</width>
+                    <height>337</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">$INFO[Container(54).ListItem.Art(fanart)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEmpty(Container(54).ListItem.Art(fanart))</visible>
+                    <bottom>1</bottom>
+                    <left>1</left>
+                    <width>598</width>
+                    <height>337</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[Container(54).ListItem.Art(thumb)]</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_54_contentpanel_artists">
+        <control type="group">
+            <visible>String.IsEqual(Container(54).ListItem.DBType,artist) + !String.IsEmpty(Container(54).ListItem.DBID)</visible>
+            <control type="grouplist">
+                <left>20</left>
+                <right>20</right>
+                <height>440</height>
+                <control type="label">
+                    <visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
+                    <height>150</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light50</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[ListItem.Artist]</label>
+                </control>
+                <control type="image">
+                    <visible>!String.IsEmpty(ListItem.Art(clearlogo))</visible>
+                    <left>1</left>
+                    <width>560</width>
+                    <height>217</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Art(clearlogo)]</texture>
+                </control>
+                <control type="label">
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[Container(10002).NumItems,[COLOR active]$LOCALIZE[36919]: [/COLOR]]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.Genre)</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Genre,[COLOR active]$LOCALIZE[515]: [/COLOR]]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.Property(Artist_Formed))</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Property(Artist_Formed),[COLOR active]$LOCALIZE[21894]: [/COLOR]]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.Property(Artist_YearsActive))</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Property(Artist_YearsActive),[COLOR active]$LOCALIZE[21898]: [/COLOR]]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.Property(Artist_Mood))</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Property(Artist_Mood),[COLOR active]$LOCALIZE[31057]: [/COLOR]]</label>
+                </control>
+            </control>
+            <control type="panel" id="10002">
+                <top>420</top>
+                <left>0</left>
+                <width>590</width>
+                <height>570</height>
+                <itemlayout width="295" height="292">
+                    <include>view_50_albumlist_item</include>
+                </itemlayout>                
+                <focusedlayout height="295" width="292">
+                    <include>view_50_albumlist_item</include>
+                </focusedlayout>
+                <content sortby="year" sortorder="descending">$INFO[Container(54).ListItem.FolderPath]</content>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_54_contentpanel_albums">
+        <control type="group">
+            <visible>String.IsEqual(Container(54).ListItem.DBType,album) + !String.IsEmpty(Container(54).ListItem.DBID)</visible>
+            <visible>!String.IsEqual(Container(54).ListItem.Label,..)</visible>
+            <control type="label">
+                <top>30</top>
+                <left>20</left>
+                <right>20</right>
+                <align>center</align>
+                <font>light50</font>
+                <textcolor>active</textcolor>
+                <label>$LOCALIZE[182]</label>
+            </control>
+            <control type="list" id="10001">
+                <top>130</top>
+                <left>20</left>
+                <right>20</right>
+                <height>700</height>
+                <orientation>vertical</orientation>
+                <focusedlayout height="30" width="560">
+                    <control type="label">
+                        <height>20</height>
+                        <aligny>center</aligny>
+                        <font>regular20</font>
+                        <label>[COLOR active]$INFO[ListItem.TrackNumber][/COLOR] - $INFO[ListItem.Label] ($INFO[ListItem.Duration])</label>
+                    </control>
+                </focusedlayout>
+                <itemlayout height="30" width="560">
+                    <control type="label">
+                        <height>20</height>
+                        <aligny>center</aligny>
+                        <font>regular20</font>
+                        <label>[COLOR active]$INFO[ListItem.TrackNumber][/COLOR] - $INFO[ListItem.Label] ($INFO[ListItem.Duration])</label>
+                    </control>
+                </itemlayout>                
+                <content sortby="year" sortorder="ascending">$INFO[Container(54).ListItem.FolderPath]</content>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_54_contentpanel_images">
+        <control type="group">
+            <visible>Container.Content(images)</visible>
+            <visible>!String.IsEqual(Container(54).ListItem.Label,..)</visible>
+            <control type="group">
+                <visible>!String.IsEmpty(Container(54).ListItem.FileName)</visible>
+                <include content="images_infolist">
+                    <param name="left">10</param>
+                    <param name="top">20</param>
+                    <param name="width">580</param>
+                    <param name="height">980</param>
+                </include>
+            </control>
+            <control type="group">
+                <visible>String.IsEmpty(Container(54).ListItem.FileName)</visible>
+                <control type="label">
+                    <left>20</left>
+                    <right>20</right>
+                    <height>80</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light50</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[Container(54).ListItem.FolderName]</label>
+                </control>
+                <control type="image">
+                    <top>80</top>
+                    <left>10</left>
+                    <width>580</width>
+                    <height>900</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true" fallback="defaultpicture.png">$INFO[Container(54).ListItem.Icon]</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+</includes>

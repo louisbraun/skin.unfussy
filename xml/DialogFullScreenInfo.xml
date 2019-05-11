@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <include>openclose_slight_bottom</include>
+    <onunload condition="VideoPlayer.Content(livetv)">SetProperty(closeonload,true,home)</onunload>
+    <controls>
+        <control type="group">
+            <visible>VideoPlayer.Content(livetv)</visible>
+            <visible>String.IsEmpty(Pvr.EPGEventIcon)</visible>
+            <top>660</top>
+            <left>0</left>
+            <width>1920</width>
+            <height>200</height>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="textbox">
+                <top>20</top>
+                <left>100</left>
+                <right>100</right>
+                <bottom>20</bottom>
+                <font>light30</font>
+                <label>$INFO[VideoPlayer.Plot]</label>
+                <autoscroll delay="5000" time="3000" repeat="5000">true</autoscroll>
+            </control>
+        </control>
+        <control type="group">
+            <visible>VideoPlayer.Content(livetv)</visible>
+            <visible>!String.IsEmpty(Pvr.EPGEventIcon)</visible>
+            <top>660</top>
+            <left>300</left>
+            <width>1620</width>
+            <height>200</height>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="textbox">
+                <top>20</top>
+                <left>50</left>
+                <right>100</right>
+                <bottom>20</bottom>
+                <font>light30</font>
+                <label>$INFO[VideoPlayer.Plot]</label>
+                <autoscroll delay="5000" time="3000" repeat="5000">true</autoscroll>
+            </control>
+        </control>
+    </controls>
+</window>

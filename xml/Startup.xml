@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">8000</defaultcontrol>
+    <controls>
+        <include>background</include>
+        <control type="button" id="8000">
+            <onfocus>ReplaceWindow($INFO[System.StartupWindow])</onfocus>
+            <onfocus>RunScript(script.unfussy.helper,action=check_includes)</onfocus>
+            <onfocus>RunScript(script.unfussy.helper,action=check_defaultsettings)</onfocus>
+            <visible allowhiddenfocus="true">false</visible>
+        </control>
+    </controls>
+</window>

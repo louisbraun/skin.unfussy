@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <defaultcontrol always="true">101</defaultcontrol>
+    <controls>
+        <include>background</include>
+        <control type="group">
+            <include>openclose_slight_left</include>
+            <top>100</top>
+            <bottom>100</bottom>
+            <left>100</left>
+            <right>100</right>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <top>210</top>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="group">
+                <visible>!String.StartsWith(Container.FolderPath,pvr://recordings)</visible>
+                <control type="textbox">
+                    <visible>!String.IsEmpty(ListItem.EPGEventIcon)</visible>
+                    <top>10</top>
+                    <right>20</right>
+                    <width>300</width>
+                    <height>190</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <textcolor>active</textcolor>
+                    <shadowcolor>black</shadowcolor>
+                    <font>light50</font>
+                    <label>$INFO[ListItem.ChannelName]</label>
+                </control>
+                <control type="image">
+                    <visible>String.IsEmpty(ListItem.EPGEventIcon)</visible>
+                    <top>10</top>
+                    <right>20</right>
+                    <width>300</width>
+                    <height>190</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.StartsWith(Container.FolderPath,pvr://recordings)</visible>
+                <control type="textbox">
+                    <visible>String.IsEmpty(ListItem.ActualIcon) | String.IsEqual(ListItem.ActualIcon,ListItem.Icon)</visible>
+                    <visible></visible>
+                    <top>10</top>
+                    <right>20</right>
+                    <width>300</width>
+                    <height>190</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <textcolor>active</textcolor>
+                    <shadowcolor>black</shadowcolor>
+                    <font>light50</font>
+                    <label>$INFO[ListItem.ChannelName]</label>
+                </control>
+                <control type="image">
+                    <visible>!String.IsEmpty(ListItem.ActualIcon)</visible>
+                    <visible>!String.IsEqual(ListItem.ActualIcon,ListItem.Icon)</visible>
+                    <top>10</top>
+                    <right>20</right>
+                    <width>300</width>
+                    <height>190</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.ActualIcon]</texture>
+                </control>
+            </control>
+            <control type="grouplist">
+                <top>30</top>
+                <left>30</left>
+                <usecontrolcoords>true</usecontrolcoords>
+                <control type="label">
+                    <height>30</height>
+                    <aligny>center</aligny>
+                    <font>light30</font>
+                    <label>$INFO[ListItem.Date] - $INFO[ListItem.EndTime]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.EpisodeName)</visible>
+                    <height>80</height>
+                    <right>330</right>
+                    <aligny>center</aligny>
+                    <scroll>true</scroll>
+                    <font>light70</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[ListItem.Title]</label>
+                </control>
+                <control type="label">
+                    <visible>String.IsEmpty(ListItem.EpisodeName)</visible>
+                    <top>20</top>
+                    <height>80</height>
+                    <right>330</right>
+                    <aligny>center</aligny>
+                    <scroll>true</scroll>
+                    <font>light80</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[ListItem.Title]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.EpisodeName)</visible>
+                    <height>36</height>
+                    <right>330</right>
+                    <aligny>center</aligny>
+                    <scroll>true</scroll>
+                    <font>light44</font>
+                    <label>$INFO[ListItem.EpisodeName]</label>
+                </control>
+            </control>
+
+            <control type="group">
+                <visible>!String.StartsWith(Container.FolderPath,pvr://recordings)</visible>
+                <control type="group">
+                    <visible>String.IsEmpty(ListItem.EPGEventIcon)</visible>
+                    <control type="textbox" id="100">
+                        <pagecontrol>100001</pagecontrol>
+                        <top>230</top>
+                        <height>600</height>
+                        <left>30</left>
+                        <width>1000</width>
+                        <font>regular30</font>
+                        <label>$INFO[ListItem.Plot]</label>
+                    </control>
+                    <include content="scrollbar">
+                        <param name="visible">String.IsEmpty(ListItem.EPGEventIcon) + !String.StartsWith(Container.FolderPath,pvr://recordings)</param>
+                        <param name="top">230</param>
+                        <param name="left">1050</param>
+                        <param name="width">15</param>
+                        <param name="height">600</param>
+                        <param name="controlled_id">100</param>
+                        <param name="onright_id">101</param>
+                    </include>
+                    <include content="pvr_info_detail_list">
+                        <param name="left">1100</param>
+                        <param name="source">ListItem</param>
+                    </include>
+                </control>
+                <control type="group">
+                    <visible>!String.IsEmpty(ListItem.EPGEventIcon)</visible>
+                    <control type="textbox" id="100">
+                        <pagecontrol>100001</pagecontrol>
+                        <top>230</top>
+                        <height>600</height>
+                        <left>30</left>
+                        <width>700</width>
+                        <font>regular30</font>
+                        <label>$INFO[ListItem.Plot]</label>
+                    </control>
+                    <include content="scrollbar">
+                        <param name="visible">!String.IsEmpty(ListItem.EPGEventIcon) + !String.StartsWith(Container.FolderPath,pvr://recordings)</param>
+                        <param name="top">230</param>
+                        <param name="left">750</param>
+                        <param name="width">15</param>
+                        <param name="height">600</param>
+                        <param name="controlled_id">100</param>
+                        <param name="onright_id">101</param>
+                    </include>
+                    <include content="pvr_info_detail_list">
+                        <param name="source">ListItem</param>
+                    </include>
+                    <control type="image">
+                        <top>230</top>
+                        <right>30</right>
+                        <width>380</width>
+                        <height>570</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture>$INFO[ListItem.EPGEventIcon]</texture>
+                    </control>
+                </control>
+            </control>
+
+            <control type="group">
+                <visible>String.StartsWith(Container.FolderPath,pvr://recordings)</visible>
+                <control type="group">
+                    <control type="textbox" id="100">
+                        <pagecontrol>100001</pagecontrol>
+                        <top>230</top>
+                        <height>600</height>
+                        <left>30</left>
+                        <width>700</width>
+                        <font>regular30</font>
+                        <label>$INFO[ListItem.Plot]</label>
+                    </control>
+                    <include content="scrollbar">
+                        <param name="top">230</param>
+                        <param name="left">750</param>
+                        <param name="width">15</param>
+                        <param name="height">600</param>
+                        <param name="controlled_id">100</param>
+                        <param name="onright_id">101</param>
+                    </include>
+                    <include content="pvr_info_detail_list">
+                        <param name="source">ListItem</param>
+                    </include>
+                    <control type="image">
+                        <top>230</top>
+                        <right>30</right>
+                        <width>380</width>
+                        <height>570</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture>$INFO[ListItem.Icon]</texture>
+                    </control>
+                </control>
+            </control>
+
+            <control type="grouplist" id="101">
+                <bottom>-40</bottom>
+                <right>20</right>
+                <align>right</align>
+                <height>100</height>
+                <orientation>horizontal</orientation>
+                <itemgap>5</itemgap>
+                <usecontrolcoords>true</usecontrolcoords>
+                <defaultcontrol always="true">102</defaultcontrol>
+                <onleft>100001</onleft>
+                <onup>100001</onup>
+                <include content="button_round">
+                    <param name="id">102</param>
+                    <param name="onclick">Back</param>
+                    <param name="onclick2"></param>
+                    <param name="icon">icons/buttons/close.png</param>
+                    <param name="radius">100</param>
+                    <param name="iconsize">60</param>
+                    <param name="iconoffset">20</param>
+                </include>
+                <include content="button_round">
+                    <param name="id">6</param>
+                    <param name="visible">!String.StartsWith(Container.FolderPath,pvr://recordings)</param>
+                    <param name="icon">icons/buttons/record.png</param>
+                    <param name="radius">100</param>
+                    <param name="iconsize">60</param>
+                    <param name="iconoffset">20</param>
+                </include>
+                <include content="button_round">
+                    <param name="id">5</param>
+                    <param name="visible">!String.StartsWith(Container.FolderPath,pvr://recordings)</param>
+                    <param name="onclick" value="Back" />
+                    <param name="icon">icons/buttons/launch.png</param>
+                    <param name="radius">100</param>
+                    <param name="iconsize">50</param>
+                    <param name="iconoffset">25</param>
+                </include>
+                <include content="button_round">
+                    <param name="id">4</param>
+                    <param name="visible">!String.StartsWith(Container.FolderPath,pvr://recordings)</param>
+                    <param name="icon">icons/buttons/similar.png</param>
+                    <param name="radius">100</param>
+                    <param name="iconsize">50</param>
+                    <param name="iconoffset">25</param>
+                </include>
+                <include content="button_round">
+                    <param name="id">105</param>
+                    <param name="visible">Integer.IsLess(ListItem.Duration(hh),1)</param>
+                    <param name="visible2">System.HasAddon(script.extendedinfo)</param>
+                    <param name="onclick" value="Action(close)" />
+                    <param name="onclick2" value="SetProperty(custombusy,true,home)" />
+                    <param name="onclick3" value="SetProperty(custombusyreason,tmdbtvshow,home)" />
+                    <param name="onclick4" value="SetProperty(custombusylabel,$INFO[ListItem.Title],home)" />
+                    <param name="onclick5" value="RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[ListItem.Title])" />
+                    <param name="icon">icons/buttons/tmdb.png</param>
+                    <param name="radius">100</param>
+                    <param name="iconsize">70</param>
+                    <param name="iconoffset">15</param>
+                </include>
+                <include content="button_round">
+                    <param name="id">106</param>
+                    <param name="visible">Integer.IsGreater(ListItem.Duration(hh),0)</param>
+                    <param name="visible2">System.HasAddon(script.extendedinfo)</param>
+                    <param name="onclick" value="Action(close)" />
+                    <param name="onclick2" value="SetProperty(custombusy,true,home)" />
+                    <param name="onclick3" value="SetProperty(custombusyreason,tmdbmovie,home)" />
+                    <param name="onclick4" value="SetProperty(custombusylabel,$INFO[ListItem.Title],home)" />
+                    <param name="onclick5" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Title])" />
+                    <param name="icon">icons/buttons/tmdb.png</param>
+                    <param name="radius">100</param>
+                    <param name="iconsize">70</param>
+                    <param name="iconoffset">15</param>
+                </include>
+                <include content="button_round">
+                    <param name="id">107</param>
+                    <param name="visible">System.HasAddon(plugin.video.youtube) + System.HasAddon(script.extendedinfo)</param>
+                    <param name="onclick" value="Action(close)" />
+                    <param name="onclick2" value="SetProperty(custombusy,true,home)" />
+                    <param name="onclick3" value="SetProperty(custombusyreason,youtube,home)" />
+                    <param name="onclick4" value="SetProperty(custombusylabel,$INFO[ListItem.Title],home)" />
+                    <param name="onclick5" value="RunScript(script.extendedinfo,info=youtubebrowser,id=$INFO[ListItem.Title])" />
+                    <param name="icon">icons/buttons/youtube.png</param>
+                    <param name="radius">100</param>
+                    <param name="iconsize">70</param>
+                    <param name="iconoffset">15</param>
+                </include>
+            </control>
+        </control>
+        <control type="label">
+            <visible>ControlGroup(101).HasFocus(0)</visible>
+            <top>1020</top>
+            <left>0</left>
+            <width>500</width>
+            <height>30</height>
+            <align>center</align>
+            <aligny>center</aligny>
+            <textcolor>active</textcolor>
+            <shadowcolor>black</shadowcolor>
+            <font>regular24</font>
+            <label>$VAR[PVRInfoHelpText]</label>
+            <include>positioning_pvrinfo_buttons</include>
+        </control>
+    </controls>
+</window>

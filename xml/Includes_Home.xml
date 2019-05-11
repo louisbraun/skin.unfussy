@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+<!-- Home Button -->
+	<include name="home_homebutton">
+		<control type="group">
+			<left>0</left>
+			<top>0</top>
+			<width>70</width>
+			<height>70</height>
+			<control type="image">
+				<aspectratio>scale</aspectratio>
+				<texture colordiffuse="black">buttons/homebutton.png</texture>
+			</control>
+			<control type="radiobutton" id="9001">
+				<onclick>SetProperty(menu_active, true)</onclick>
+				<onclick>SetFocus(9000)</onclick>
+				<onup condition="!Player.HasVideo | !Skin.HasSetting(hide_widgets)">9002</onup>
+				<onup condition="Player.HasVideo + Skin.HasSetting(hide_widgets)">Back</onup>
+				<ondown condition="!Player.HasVideo | !Skin.HasSetting(hide_widgets)">9002</ondown>
+				<ondown condition="Player.HasVideo + Skin.HasSetting(hide_widgets)">Back</ondown>
+				<onleft>9002</onleft>
+				<onright>700</onright>
+				<texturefocus colordiffuse="active">buttons/homebutton_3d.png</texturefocus>
+				<texturenofocus colordiffuse="ff303030">buttons/homebutton_3d.png</texturenofocus>
+				<textureradioonfocus colordiffuse="white">icons/logo.png</textureradioonfocus>
+				<textureradioofffocus colordiffuse="white">icons/logo.png</textureradioofffocus>
+				<textureradioonnofocus colordiffuse="active">icons/logo.png</textureradioonnofocus>
+				<textureradiooffnofocus colordiffuse="active">icons/logo.png</textureradiooffnofocus>
+				<radiowidth>35</radiowidth>
+				<radioheight>35</radioheight>
+				<radioposx>10</radioposx>
+				<radioposy>10</radioposy>
+	            <animation type="Focus">
+	                <effect type="zoom" start="100" end="115" time="100" tween="sine" easing="out" center="auto" />
+	                <effect type="zoom" start="100" end="89"  time="100" tween="sine" easing="out" center="auto" delay="100" />
+	            </animation>
+			</control>
+		</control>
+	</include>
+
+<!-- Home Buttons beside Home Button -->
+	<include name="home_buttons">
+		<control type="grouplist" id="700">
+			<orientation>horizontal</orientation>
+			<defaultcontrol always="true">701</defaultcontrol>
+			<itemgap>10</itemgap>
+			<top>2</top>
+			<left>120</left>
+			<width>250</width>
+			<height>90</height>
+			<onup condition="!Player.HasVideo">9002</onup>
+			<onup condition="Player.HasVideo">Back</onup>
+			<ondown condition="!Player.HasVideo">9002</ondown>
+			<ondown condition="Player.HasVideo">Back</ondown>
+			<onleft>9001</onleft>
+			<include content="button_round">
+				<param name="id" value="701" />
+				<param name="onclick" value="SetProperty(menu_active, false)" />
+				<param name="onclick2" value="ActivateWindow(shutdownmenu)" />
+				<param name="icon" value="icons/buttons/power.png" />
+			</include>
+			<include content="button_round">
+				<param name="id" value="702" />
+				<param name="onclick" value="SetProperty(menu_active, false)" />
+				<param name="onclick2" value="ActivateWindow(settings)" />
+				<param name="icon" value="icons/buttons/settings.png" />
+			</include>
+			<include content="button_round">
+				<param name="id" value="703" />
+				<param name="onclick" value="SetProperty(menu_active, false)" />
+				<param name="onclick2" value="ActivateWindow(1105)" />
+				<param name="icon" value="icons/buttons/search.png" />
+			</include>
+		</control>
+	</include>
+
+<!-- Main Menu -->
+	<include name="home_mainmenu">
+		<control type="group">
+			<left>0</left>
+			<width>400</width>
+			<visible>String.IsEqual(Window(Home).Property(menu_active), true)</visible>
+		    <include>openclose_homemenu</include>
+		    <include>home_mainmenu_decoration</include>
+			<include>home_mainmenu_submenus</include>
+			<control type="list" id="9000">
+				<visible allowhiddenfocus="true">true</visible>
+				<top>80</top>
+				<height>640</height>
+				<onback>SetProperty(menu_active, false)</onback>
+				<onback>9001</onback>
+				<onleft>SetProperty(menu_active, false)</onleft>
+				<onleft>9001</onleft>
+				<onright condition="Integer.IsGreater(Container(9000).ListItem.Property(submenu_id),0)">SetProperty(active_submenu,$INFO[Container(9000).ListItem.Property(submenu_id)])</onright>
+				<onright condition="Integer.IsGreater(Container(9000).ListItem.Property(submenu_id),0)">SetFocus($INFO[Container(9000).ListItem.Property(submenu_id)],0)</onright>
+				<scrolltime tween="cubic" easing="out">200</scrolltime>
+				<focusedlayout width="399" height="80">
+					<include content="home_mainmenuitem">
+						<param name="active" value="true" />
+					</include>
+				</focusedlayout>
+				<itemlayout width="399" height="80">
+					<include content="home_mainmenuitem" />
+				</itemlayout>
+				<include>home_mainmenu_content</include>
+			</control>
+		</control>
+	</include>
+
+	<include name="home_mainmenu_decoration">
+		<control type="group">
+			<visible>!Player.HasVideo</visible>
+			<control type="image">
+				<top>0</top>
+				<height>80</height>
+				<texture colordiffuse="backgrounddark">colors/white.png</texture>
+			</control>
+			<control type="image">
+				<top>720</top>
+				<width>400</width>
+				<height>30</height>
+				<texture colordiffuse="backgrounddark">colors/white.png</texture>
+			</control>
+		</control>
+		<control type="group">
+			<visible>Player.HasVideo</visible>
+			<control type="image">
+				<top>0</top>
+				<height>80</height>
+				<texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+			</control>
+			<control type="image">
+				<top>720</top>
+				<width>400</width>
+				<height>30</height>
+				<texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+			</control>
+		</control>
+		<control type="image">
+			<left>399</left>
+			<width>1</width>
+			<height>80</height>
+			<texture colordiffuse="border">colors/white.png</texture>
+		</control>
+		<control type="image">
+			<top>750</top>
+			<width>400</width>
+			<height>1</height>
+			<texture colordiffuse="border">colors/white.png</texture>
+		</control>
+		<control type="image">
+			<top>720</top>
+			<left>399</left>
+			<width>1</width>
+			<height>30</height>
+			<texture colordiffuse="border">colors/white.png</texture>
+		</control>
+		<control type="image">
+			<visible>Container(9000).HasNext</visible>
+			<left>0</left>
+			<top>725</top>
+			<width>400</width>
+			<height>16</height>
+			<aspectratio>keep</aspectratio>
+			<texture colordiffuse="active">icons/arrowdown.png</texture>
+		</control>
+		<control type="image">
+			<visible>Container(9000).HasPrevious</visible>
+			<left>0</left>
+			<top>60</top>
+			<width>400</width>
+			<height>16</height>
+			<aspectratio>keep</aspectratio>
+			<texture colordiffuse="active">icons/arrowup.png</texture>
+		</control>
+	</include>
+
+	<include name="home_mainmenuitem">
+		<param name="active">false</param>
+		<definition>
+			<!-- backgrounds -->
+			<control type="image">
+				<visible>!Player.HasVideo</visible>
+				<texture colordiffuse="backgrounddark">colors/white.png</texture>
+				<bordertexture colordiffuse="FF1E1E1E">colors/white.png</bordertexture>
+				<bordersize>1</bordersize>
+			</control>
+			<control type="image">
+				<visible>Player.HasVideo</visible>
+				<texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+			</control>
+			<control type="image">
+				<visible>$PARAM[active] + Control.HasFocus(9000)</visible>
+				<texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+				<bordertexture colordiffuse="active">colors/white.png</bordertexture>
+				<bordersize>1</bordersize>
+			</control>
+			<control type="image">
+				<left>399</left>
+				<width>1</width>
+				<texture colordiffuse="border">colors/white.png</texture>
+			</control>
+			<control type="group">
+				<visible>Integer.IsGreater(ListItem.Property(submenu_id),0)</visible>
+				<visible>String.IsEqual(ListItem.Property(submenu_id), Window(Home).Property(active_submenu))</visible>
+				<control type="image">
+                    <top>3</top>
+                    <left>3</left>
+                    <width>74</width>
+                    <height>74</height>
+					<texture colordiffuse="active">$INFO[ListItem.Art(thumb)]</texture>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>300</width>
+					<aligny>center</aligny>
+					<font>regular36</font>
+					<textcolor>active</textcolor>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</control>
+			<control type="group">
+				<visible>Integer.IsEqual(ListItem.Property(submenu_id),0) | !String.IsEqual(ListItem.Property(submenu_id), Window(Home).Property(active_submenu))</visible>
+				<control type="image">
+                    <top>3</top>
+                    <left>3</left>
+                    <width>74</width>
+                    <height>74</height>
+					<texture colordiffuse="white">$INFO[ListItem.Art(thumb)]</texture>
+				</control>
+				<control type="label">
+					<left>80</left>
+					<width>300</width>
+					<aligny>center</aligny>
+					<font>regular36</font>
+					<label>$INFO[ListItem.Label]</label>
+				</control>
+			</control>
+			<!-- submenu arrows -->
+			<control type="group">
+				<visible>$PARAM[active]</visible>
+				<visible>Integer.IsGreater(ListItem.Property(submenu_id),0)</visible>
+				<top>20</top>
+				<right>10</right>
+				<width>40</width>
+				<height>40</height>
+				<control type="image">
+					<visible>!String.IsEqual(ListItem.Property(submenu_id), Window(Home).Property(active_submenu))</visible>
+					<animation effect="rotate" start="-90" end="0" center="auto" time="200" condition="true">Visible</animation>
+					<texture colordiffuse="white">icons/buttons/play.png</texture>
+				</control>
+				<control type="image">
+					<visible>String.IsEqual(ListItem.Property(submenu_id), Window(Home).Property(active_submenu))</visible>
+					<animation effect="rotate" start="0" end="-90" center="auto" time="200" condition="true">Visible</animation>
+					<texture colordiffuse="active">icons/buttons/play.png</texture>
+				</control>
+			</control>
+		</definition>
+	</include>
+
+	<include name="home_submenu">
+		<param name="id">0</param>
+		<definition>
+			<control type="group">
+				<left>0</left>
+				<top>0</top>
+				<width>300</width>
+				<height>420</height>
+				<visible>Integer.IsEqual(Container(9000).ListItem.Property(submenu_id),$PARAM[id]) + Control.HasFocus($PARAM[id])</visible>
+				<include>position_submenu</include>
+				<include>openclose_homemenu</include>
+				<control type="list" id="$PARAM[id]">
+					<left>400</left>
+					<top>0</top>
+					<width>300</width>
+					<height>420</height>
+					<visible allowhiddenfocus="true">true</visible>
+					<onback>SetFocus(9000)</onback>
+					<onleft>SetFocus(9000)</onleft>
+					<onunfocus>SetProperty(active_submenu, 0)</onunfocus>
+					<scrolltime tween="cubic" easing="out">200</scrolltime>
+					<itemlayout width="299" height="60">
+						<include content="home_submenuitem">
+							<param name="id" value="$PARAM[id]" />
+						</include>
+					</itemlayout>
+					<focusedlayout width="299" height="60">
+						<include content="home_submenuitem">
+							<param name="id" value="$PARAM[id]" />
+							<param name="active" value="true" />
+						</include>
+					</focusedlayout>
+					<include>home_submenu_content_id_$PARAM[id]</include>
+				</control>
+				<include>home_submenu_decoration</include>
+			</control>
+		</definition>
+	</include>
+
+	<include name="home_submenu_decoration">
+		<control type="group">
+			<visible>Container($PARAM[id]).HasPrevious | Container($PARAM[id]).HasNext</visible>
+			<control type="group">
+				<visible>!Player.HasVideo</visible>
+				<control type="image">
+					<left>400</left>
+					<top>-25</top>
+					<width>300</width>
+					<height>25</height>
+					<texture colordiffuse="backgrounddark">colors/white.png</texture>
+				</control>
+				<control type="image">
+					<left>400</left>
+					<top>420</top>
+					<width>300</width>
+					<height>25</height>
+					<texture colordiffuse="backgrounddark">colors/white.png</texture>
+				</control>
+			</control>
+			<control type="group">
+				<visible>Player.HasVideo</visible>
+				<control type="image">
+					<left>400</left>
+					<top>-25</top>
+					<width>300</width>
+					<height>25</height>
+					<texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+				</control>
+				<control type="image">
+					<left>400</left>
+					<top>420</top>
+					<width>300</width>
+					<height>25</height>
+					<texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+				</control>
+			</control>
+			<control type="image">
+				<left>400</left>
+				<top>-25</top>
+				<width>300</width>
+				<height>1</height>
+				<texture colordiffuse="border">colors/white.png</texture>
+			</control>
+			<control type="image">
+				<left>699</left>
+				<top>-25</top>
+				<width>1</width>
+				<height>25</height>
+				<texture colordiffuse="border">colors/white.png</texture>
+			</control>
+			<control type="image">
+				<left>400</left>
+				<top>445</top>
+				<width>300</width>
+				<height>1</height>
+				<texture colordiffuse="border">colors/white.png</texture>
+			</control>
+			<control type="image">
+				<left>699</left>
+				<top>420</top>
+				<width>1</width>
+				<height>25</height>
+				<texture colordiffuse="border">colors/white.png</texture>
+			</control>
+		</control>
+		<control type="image">
+			<visible>Container($PARAM[id]).HasPrevious</visible>
+			<left>400</left>
+			<top>-19</top>
+			<width>300</width>
+			<height>16</height>
+			<aspectratio>keep</aspectratio>
+			<texture colordiffuse="active">icons/arrowup.png</texture>
+		</control>
+		<control type="image">
+			<visible>Container($PARAM[id]).HasNext</visible>
+			<left>400</left>
+			<top>423</top>
+			<width>300</width>
+			<height>16</height>
+			<aspectratio>keep</aspectratio>
+			<texture colordiffuse="active">icons/arrowdown.png</texture>
+		</control>
+		<control type="group">
+			<visible>!Container($PARAM[id]).HasPrevious + !Container($PARAM[id]).HasNext</visible>
+			<control type="image">
+				<left>400</left>
+				<top>0</top>
+				<width>300</width>
+				<height>1</height>
+				<texture colordiffuse="border">colors/white.png</texture>
+			</control>
+		</control>
+	</include>
+
+	<include name="home_submenuitem">
+		<param name="id"></param>
+		<param name="active">false</param>
+		<definition>
+			<control type="image">
+				<visible>$PARAM[active]</visible>
+				<left>0</left>
+				<top>0</top>
+				<height>60</height>
+				<aspectratio>scale</aspectratio>
+				<texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+				<bordertexture colordiffuse="active">colors/white.png</bordertexture>
+				<bordersize>1</bordersize>
+			</control>
+			<control type="image">
+				<visible>!$PARAM[active] + !Player.HasVideo</visible>
+				<left>0</left>
+				<top>0</top>
+				<height>60</height>
+				<aspectratio>scale</aspectratio>
+				<texture colordiffuse="backgrounddark">colors/white.png</texture>
+				<bordertexture colordiffuse="FF1E1E1E">colors/white.png</bordertexture>
+				<bordersize>1</bordersize>
+			</control>
+			<control type="image">
+				<visible>!$PARAM[active] + Player.HasVideo</visible>
+				<left>0</left>
+				<top>0</top>
+				<height>60</height>
+				<aspectratio>scale</aspectratio>
+				<texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+			</control>
+			<control type="image">
+				<left>299</left>
+				<width>1</width>
+				<aspectratio>stretch</aspectratio>
+				<texture colordiffuse="border">colors/white.png</texture>
+			</control>
+			<control type="image">
+	            <top>2</top>
+	            <left>2</left>
+	            <width>56</width>
+	            <height>56</height>
+				<texture colordiffuse="white">$INFO[ListItem.Icon]</texture>
+			</control>
+			<control type="label">
+				<left>60</left>
+				<width>230</width>
+				<aligny>center</aligny>
+				<font>regular24</font>
+				<label>$INFO[ListItem.Label]</label>
+			</control>
+		</definition>
+	</include>
+
+</includes>

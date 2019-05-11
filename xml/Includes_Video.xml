@@ -1,0 +1,1299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+    <include name="video_osd">
+        <control type="group">
+            <visible>$EXP[ShowVideoOsd]</visible>
+            <bottom>0</bottom>
+            <height>200</height>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <visible>!String.IsEmpty(Player.Art(poster))</visible>
+                <bottom>10</bottom>
+                <left>10</left>
+                <height>480</height>
+                <width>320</width>
+                <aspectratio>scale</aspectratio>
+                <texture>$INFO[Player.Art(poster)]</texture>
+            </control>
+            <control type="image">
+                <visible>!String.IsEmpty(Player.Art(tvshow.poster))</visible>
+                <bottom>10</bottom>
+                <left>10</left>
+                <height>480</height>
+                <width>320</width>
+                <aspectratio>scale</aspectratio>
+                <texture>$INFO[Player.Art(tvshow.poster)]</texture>
+            </control>
+            <control type="image">
+                <visible>String.IsEmpty(Player.Art(poster)) + String.IsEmpty(Player.Art(tvshow.poster))</visible>
+                <bottom>10</bottom>
+                <left>10</left>
+                <width>320</width>
+                <height>460</height>
+                <aspectratio align="center" aligny="bottom">scale</aspectratio>
+                <texture>$VAR[VideoOSDIcon]</texture>
+            </control>
+            <control type="image">
+                <left>350</left>
+                <width>1</width>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="grouplist">
+                <top>10</top>
+                <left>400</left>
+                <width>1100</width>
+                <orientation>vertical</orientation>
+                <itemgap>0</itemgap>
+                <usecontrolcoords>true</usecontrolcoords>
+                <control type="label">
+                    <height>40</height>
+                    <aligny>center</aligny>
+                    <textcolor>active</textcolor>
+                    <font>regular36</font>
+                    <scroll>true</scroll>
+                    <label>$VAR[VideoOSDTitle]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(VideoPlayer.Tagline) + !Pvr.IsPlayingRecording</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <textcolor>active</textcolor>
+                    <font>regular24</font>
+                    <label>$INFO[VideoPlayer.Tagline]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(VideoPlayer.EpisodeName) + !Pvr.IsPlayingRecording</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <textcolor>active</textcolor>
+                    <font>regular24</font>
+                    <label>$INFO[VideoPlayer.EpisodeName]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(VideoPlayer.TVShowTitle) + Pvr.IsPlayingRecording</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <textcolor>active</textcolor>
+                    <font>regular24</font>
+                    <label>$VAR[PVRRecPlayerEpisodeName]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(VideoPlayer.TVShowTitle) + !Pvr.IsPlayingRecording</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <textcolor>active</textcolor>
+                    <font>regular24</font>
+                    <label>$VAR[PlayerTVShowEpisodeName]</label>
+                </control>
+                <control type="label">
+                    <visible>[!String.IsEmpty(VideoPlayer.Genre) | !String.IsEmpty(VideoPlayer.Year)] + ![Pvr.IsPlayingRecording + VideoPlayer.Content(livetv)]</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[VideoPlayer.Genre]$INFO[VideoPlayer.Year, / ,]</label>
+                </control>
+            </control>
+            <!-- Progress Bar -->
+            <control type="group">
+                <top>70</top>
+                <left>400</left>
+                <width>1100</width>
+                <control type="progress">
+                    <left>0</left>
+                    <top>70</top>
+                    <width>100%</width>
+                    <height>15</height>
+                    <info>Player.ProgressCache</info>
+                    <texturebg border="3" colordiffuse="00FFFFFF">colors/white50.png</texturebg>
+                    <midtexture>colors/white50.png</midtexture>
+                </control>
+                <control type="image">
+                    <left>0</left>
+                    <top>70</top>
+                    <width>100%</width>
+                    <height>14</height>
+                    <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                </control>
+                <control type="progress">
+                    <left>0</left>
+                    <top>70</top>
+                    <width>100%</width>
+                    <height>15</height>
+                    <texturebg colordiffuse="border" border="3">progress/texturebg_border_white.png</texturebg>
+                    <midtexture colordiffuse="active" border="6,3,6,3">progress/texturebg_white.png</midtexture>
+                    <info>Player.Progress</info>
+                </control>
+                <control type="slider" id="401">
+                    <left>0</left>
+                    <top>65</top>
+                    <width>100%</width>
+                    <height>26</height>
+                    <texturesliderbar colordiffuse="00FFFFFF">progress/nub_bar.png</texturesliderbar>
+                    <textureslidernib>progress/nub_bar.png</textureslidernib>
+                    <textureslidernibfocus colordiffuse="active">colors/white.png</textureslidernibfocus>
+                </control>
+            </control>
+            <!-- Chapter Count -->
+            <control type="label">
+                <bottom>10</bottom>
+                <left>400</left>
+                <width>400</width>
+                <height>30</height>
+                <aligny>center</aligny>
+                <font>regular24</font>
+                <label>[COLOR active]$LOCALIZE[21396]: [/COLOR]$INFO[player.chapter]$INFO[player.chaptercount, / ]</label>
+                <visible>player.chaptercount</visible>
+            </control>
+            <!-- Remaining Time -->
+            <control type="label">
+                <bottom>10</bottom>
+                <right>420</right>
+                <width>400</width>
+                <height>30</height>
+                <align>right</align>
+                <aligny>center</aligny>
+                <font>regular24</font>
+                <label>$INFO[Player.Time] / $INFO[Player.Duration]</label>
+            </control>
+            <!-- Seeking Display -->
+            <control type="label">
+                <bottom>10</bottom>
+                <left>400</left>
+                <width>1100</width>
+                <height>30</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>regular24</font>
+                <label>$INFO[Player.SeekStepSize,$LOCALIZE[31015] [COLOR active],[/COLOR]]</label>
+            </control>
+            <!-- Border -->
+            <control type="image">
+                <right>380</right>
+                <width>1</width>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <!-- Time -->
+            <control type="label">
+                <right>0</right>
+                <width>380</width>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>white</textcolor>
+                <font>light70</font>
+                <label>$INFO[System.Time(hh:mm:ss)]</label>
+            </control>
+            <!-- Weather -->
+            <control type="grouplist">
+                <right>0</right>
+                <width>380</width>
+                <height>50</height>
+                <align>center</align>
+                <orientation>horizontal</orientation>
+                <itemgap>0</itemgap>
+                <control type="label">
+                    <width>150</width>
+                    <align>right</align>
+                    <aligny>center</aligny>
+                    <font>light30</font>
+                    <label>$INFO[Window(Weather).Property(Current.Temperature)]$INFO[System.TemperatureUnits]</label>
+                    <visible>Weather.IsFetched + ![String.IsEqual(Weather.FanartCode,na)]</visible>
+                </control>
+                <control type="image">
+                    <width>150</width>
+                    <aligny>center</aligny>
+                    <aspectratio aligny="center" align="left">keep</aspectratio>
+                    <texture>$INFO[Weather.FanartCode,weather/small/,.png]</texture>
+                    <visible>Weather.IsFetched + ![String.IsEqual(Weather.FanartCode,na)]</visible>
+                </control>
+            </control>
+            <include content="media_icons">
+                <param name="left">1540</param>
+                <param name="width">380</param>
+            </include>
+        </control>
+    </include>
+
+    <include name="video_osd_buttons">
+        <control type="grouplist" id="200">
+            <visible>$EXP[ShowVideoOsd]</visible>
+            <defaultcontrol always="true">405</defaultcontrol>
+            <top>5</top>
+            <height>90</height>
+            <orientation>horizontal</orientation>
+            <align>center</align>
+            <itemgap>10</itemgap>
+            <onup>Action(close)</onup>
+            <ondown>87</ondown>
+            <!-- prev button -->
+            <include content="button_round">
+                <param name="id" value="400" />
+                <param name="onclick" value="PlayerControl(Previous)" />
+                <param name="icon" value="icons/buttons/previous.png" />
+                <param name="visible" value="Player.ChapterCount" />
+                <param name="useanimations" value="true" />
+            </include>
+            <include content="button_round">
+                <param name="id" value="401" />
+                <param name="onclick" value="PlayerControl(BigSkipBackward)" />
+                <param name="icon" value="icons/buttons/previous.png" />
+                <param name="visible" value="!Player.ChapterCount" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- rewind button -->
+            <include content="button_round">
+                <param name="id" value="402" />
+                <param name="onclick" value="PlayerControl(Rewind)" />
+                <param name="icon" value="icons/buttons/rewind.png" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- play / pause button -->
+            <control type="radiobutton" id="403">
+                <width>70</width>
+                <height>70</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textureradioonfocus colordiffuse="white">icons/buttons/play.png</textureradioonfocus>
+                <textureradioonnofocus colordiffuse="white">icons/buttons/play.png</textureradioonnofocus>
+                <textureradioofffocus colordiffuse="white">icons/buttons/pause.png</textureradioofffocus>
+                <textureradiooffnofocus colordiffuse="white">icons/buttons/pause.png</textureradiooffnofocus>
+                <texturefocus colordiffuse="active">buttons/button_round_3d.png</texturefocus>
+                <texturenofocus colordiffuse="ff303030">buttons/button_round_3d.png</texturenofocus>
+                <radiowidth>40</radiowidth>
+                <radioheight>40</radioheight>
+                <radioposx>15</radioposx>
+                <radioposy>15</radioposy>
+                <selected>Player.Paused</selected>
+                <onclick>PlayerControl(Play)</onclick>
+                <visible>Player.PauseEnabled</visible>
+                <visible>!Player.Rewinding + !Player.Forwarding</visible>
+                <animation type="Focus">
+                    <effect type="zoom" end="120" time="150" tween="sine" easing="out" center="auto" />
+                    <effect type="slide" start="0,0" end="0,10" time="150" tween="sine" easing="out" />
+                </animation>
+                <animation type="Unfocus">
+                    <effect type="zoom" end="95" time="150" tween="sine" easing="out" center="auto" />
+                    <effect type="slide" start="0,10" end="0,0" time="150" tween="sine" easing="out" />
+                </animation>
+            </control>
+            <include content="button_round">
+                <param name="id" value="404" />
+                <param name="onclick" value="PlayerControl(Play)" />
+                <param name="icon" value="icons/buttons/play.png" />
+                <param name="visible" value="Player.Rewinding | Player.Forwarding" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- stop button -->
+            <include content="button_round">
+                <param name="id" value="405" />
+                <param name="onclick" value="Action(Close)" />
+                <param name="onclick2" value="PlayerControl(Stop)" />
+                <param name="icon" value="icons/buttons/stop.png" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- Forward button -->
+            <include content="button_round">
+                <param name="id" value="406" />
+                <param name="onclick" value="PlayerControl(Forward)" />
+                <param name="icon" value="icons/buttons/forward.png" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- next button -->
+            <include content="button_round">
+                <param name="id" value="407" />
+                <param name="onclick" value="PlayerControl(Next)" />
+                <param name="icon" value="icons/buttons/next.png" />
+                <param name="visible" value="Player.ChapterCount" />
+                <param name="useanimations" value="true" />
+            </include>
+            <include content="button_round">
+                <param name="id" value="408" />
+                <param name="onclick" value="PlayerControl(BigSkipForward)" />
+                <param name="icon" value="icons/buttons/next.png" />
+                <param name="visible" value="!Player.ChapterCount" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- info button -->
+            <include content="button_round">
+                <param name="id" value="409" />
+                <param name="onclick" value="Action(Close)" />
+                <param name="cond_click2" value="!Pvr.IsPlayingRecording" />
+                <param name="onclick2" value="ActivateWindow(1106)" />
+                <param name="cond_click3" value="Pvr.IsPlayingRecording" />
+                <param name="onclick3" value="ActivateWindow(1101)" />
+                <param name="icon" value="icons/buttons/info.png" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- bookmarks button -->
+            <include content="button_round">
+                <param name="id" value="410" />
+                <param name="onclick" value="Control.SetFocus(199)" />
+                <param name="onclick2" value="ActivateWindow(videobookmarks)" />
+                <param name="icon" value="icons/buttons/bookmarks.png" />
+                <param name="useanimations" value="true" />
+                <param name="iconsize">60</param>
+                <param name="iconoffset">5</param>
+            </include>
+            <!-- player info button -->
+            <include content="button_round">
+                <param name="id" value="411" />
+                <param name="onclick" value="Control.SetFocus(199)" />
+                <param name="onclick2" value="ActivateWindow(playerprocessinfo)" />
+                <param name="icon" value="icons/buttons/processinfo.png" />
+                <param name="useanimations" value="true" />
+            </include>
+            <!-- settings button -->
+            <include content="button_round">
+                <param name="id" value="412" />
+                <param name="onclick" value="Control.SetFocus(199)" />
+                <param name="onclick2" value="ActivateWindow(1102)" />
+                <param name="icon" value="icons/buttons/settings.png" />
+                <param name="useanimations" value="true" />
+            </include>
+        </control>
+    </include>
+
+    <include name="video_label_forward">
+        <param name="speed" />
+        <definition>
+            <control type="label">
+                <visible>Control.HasFocus(406) + Player.Forwarding$PARAM[speed]x</visible>
+                <top>10</top>
+                <left>885</left>
+                <width>70</width>
+                <align>center</align>
+                <font>regular24</font>
+                <textcolor>white</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <label>&#215;$PARAM[speed]</label>
+            </control>
+            <control type="label">
+                <visible>Control.HasFocus(315) + Player.Forwarding$PARAM[speed]x</visible>
+                <top>10</top>
+                <left>1125</left>
+                <width>70</width>
+                <align>center</align>
+                <font>regular24</font>
+                <textcolor>white</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <label>&#215;$PARAM[speed]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="video_label_rewind">
+        <param name="speed" />
+        <definition>
+            <control type="label">
+                <visible>Control.HasFocus(402) + Player.Rewinding$PARAM[speed]x</visible>
+                <top>10</top>
+                <left>645</left>
+                <width>70</width>
+                <align>center</align>
+                <font>regular24</font>
+                <textcolor>white</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <label>&#215;$PARAM[speed]</label>
+            </control>
+            <control type="label">
+                <visible>Control.HasFocus(312) + Player.Rewinding$PARAM[speed]x</visible>
+                <top>10</top>
+                <left>965</left>
+                <width>70</width>
+                <align>center</align>
+                <font>regular24</font>
+                <textcolor>white</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <label>&#215;$PARAM[speed]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="video_seekbar">
+        <control type="group">
+            <visible>$EXP[ShowVideoOsd]</visible>
+            <top>1020</top>
+            <left>400</left>
+            <width>1100</width>
+            <control type="button" id="87">
+                <include>HiddenObject</include>
+                <onup>200</onup>
+                <onunfocus condition="Player.Forwarding | Player.Rewinding">PlayerControl(Play)</onunfocus>
+                <ondown>200</ondown>
+                <onright>StepForward</onright>
+                <onleft>StepBack</onleft>
+                <onclick condition="Player.Forwarding | Player.Rewinding">PlayerControl(Play)</onclick>
+            </control>
+            <control type="slider">
+                <top>-5</top>
+                <left>0</left>
+                <width>100%</width>
+                <height>26</height>
+                <texturesliderbar colordiffuse="00FFFFFF">progress/nub_leftright.png</texturesliderbar>
+                <textureslidernib>progress/nub_leftright.png</textureslidernib>
+                <textureslidernibfocus>progress/nub_leftright.png</textureslidernibfocus>
+                <info>Player.Progress</info>
+                <action>seek</action>
+                <visible>!Control.HasFocus(87)</visible>
+            </control>
+            <control type="slider">
+                <top>-5</top>
+                <left>0</left>
+                <width>100%</width>
+                <height>26</height>
+                <texturesliderbar colordiffuse="00FFFFFF">progress/nub_leftright.png</texturesliderbar>
+                <textureslidernib>progress/nub_leftright_active.png</textureslidernib>
+                <textureslidernibfocus>progress/nub_leftright_active.png</textureslidernibfocus>
+                <info>Player.Progress</info>
+                <action>seek</action>
+                <visible>Control.HasFocus(87)</visible>
+            </control>
+        </control>
+    </include>
+
+    <include name="media_icons">
+        <param name="left">1580</param>
+        <param name="width">340</param>
+        <definition>
+            <control type="grouplist">
+                <bottom>10</bottom>
+                <left>$PARAM[left]</left>
+                <width>$PARAM[width]</width>
+                <height>30</height>
+                <align>center</align>
+                <orientation>horizontal</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>5</itemgap>
+                <control type="image">
+                    <width>44</width>
+                    <height>30</height>
+                    <texture>$INFO[VideoPlayer.VideoResolution,flags/videoresolution/,.png]</texture>
+                </control>
+                <control type="image">
+                    <width>78</width>
+                    <height>30</height>
+                    <texture>$INFO[VideoPlayer.VideoCodec,flags/videocodec/,.png]</texture>
+                </control>
+                <control type="image">
+                    <visible>!VideoPlayer.Content(livetv)</visible>
+                    <width>65</width>
+                    <height>30</height>
+                    <texture>$INFO[VideoPlayer.VideoAspect,flags/aspectratio/,.png]</texture>
+                </control>
+                <control type="image">
+                    <width>78</width>
+                    <height>30</height>
+                    <texture>$INFO[VideoPlayer.AudioCodec,flags/audiocodec/,.png]</texture>
+                </control>
+                <control type="image">
+                    <width>78</width>
+                    <height>30</height>
+                    <texture>$INFO[VideoPlayer.AudioChannels,flags/audiochannel/,.png]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="video_info">
+        <top>10</top>
+        <left>10</left>
+        <right>10</right>
+        <bottom>10</bottom>
+        <orientation>vertical</orientation>
+        <usecontrolcoords>true</usecontrolcoords>
+        <control type="label">
+            <height>30</height>
+            <aligny>center</aligny>
+            <textcolor>active</textcolor>
+            <label>$INFO[Player.Process(videodecoder),$LOCALIZE[31005] : [COLOR white],]$VAR[VideoHWDecoder, (,)[/COLOR]]</label>
+        </control>
+        <control type="label">
+            <height>30</height>
+            <aligny>center</aligny>
+            <textcolor>active</textcolor>
+            <label>$INFO[Player.Process(pixformat),$LOCALIZE[31007]: [COLOR white],[/COLOR]]</label>
+        </control>
+        <control type="label">
+            <height>30</height>
+            <aligny>center</aligny>
+            <textcolor>active</textcolor>
+            <label>$INFO[Player.Process(deintmethod),$LOCALIZE[16038]: [COLOR white],[/COLOR]]</label>
+        </control>
+        <control type="label">
+            <height>30</height>
+            <aligny>center</aligny>
+            <textcolor>active</textcolor>
+            <label>$INFO[Player.Process(videowidth),$LOCALIZE[38031] : [COLOR white],x]$INFO[Player.Process(videoheight),, px]$INFO[Player.Process(videodar),$COMMA , AR]$INFO[Player.Process(videofps),$COMMA , FPS][/COLOR]</label>
+        </control>
+        <control type="label">
+            <height>30</height>
+            <aligny>center</aligny>
+            <textcolor>active</textcolor>
+            <label>$LOCALIZE[460]: [COLOR white]$INFO[Player.Process(audiochannels),,$COMMA ]$INFO[Player.Process(audiodecoder)]$INFO[Player.Process(audiobitspersample),$COMMA , bits]$INFO[Player.Process(audiosamplerate),$COMMA , Hz]$INFO[VideoPlayer.AudioBitrate,$COMMA , kb/s][/COLOR]</label>
+        </control>
+        <control type="group">
+            <height>50</height>
+            <control type="image">
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="label">
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <label>$LOCALIZE[31008]:</label>
+            </control>
+            <control type="progress">
+                <top>15</top>
+                <right>0</right>
+                <width>200</width>
+                <height>15</height>
+                <info>System.Memory(used)</info>
+            </control>
+            <control type="label">
+                <top>25</top>
+                <right>0</right>
+                <align>right</align>
+                <textcolor>active</textcolor>
+                <font>regular18</font>
+                <label>$INFO[System.Memory(used.percent)]</label>
+            </control>
+        </control>
+        <control type="group">
+            <height>50</height>
+            <control type="image">
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="label">
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <label>$LOCALIZE[13271]</label>
+            </control>
+            <control type="progress">
+                <top>15</top>
+                <right>0</right>
+                <width>200</width>
+                <height>15</height>
+                <info>System.CpuUsage</info>
+            </control>
+            <control type="label">
+                <top>25</top>
+                <right>0</right>
+                <align>right</align>
+                <textcolor>active</textcolor>
+                <font>regular18</font>
+                <label>$INFO[System.CpuUsage]</label>
+            </control>
+        </control>
+        <control type="group">
+            <height>50</height>
+            <control type="image">
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="label">
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <label>$LOCALIZE[439]:</label>
+            </control>
+            <control type="progress">
+                <top>15</top>
+                <right>0</right>
+                <width>200</width>
+                <height>15</height>
+                <info>Player.CacheLevel</info>
+            </control>
+            <control type="label">
+                <top>25</top>
+                <right>0</right>
+                <align>right</align>
+                <textcolor>active</textcolor>
+                <font>regular18</font>
+                <label>$INFO[Player.CacheLevel]%</label>
+            </control>
+        </control>
+    </include>
+
+<!-- Widgets -->
+
+    <include name="widget_header">
+        <param name="id"></param>
+        <param name="label"></param>
+        <param name="width">250</param>
+        <param name="height">410</param>
+        <definition>
+            <control type="group" id="$PARAM[id]666">
+                <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
+                <control type="group">
+                    <top>10</top>
+                    <left>40</left>
+                    <visible>String.IsEqual(Window.Property(active_channel),$PARAM[id])</visible>
+                    <width>$PARAM[width]</width>
+                    <height>$PARAM[height]</height>
+                    <control type="image">
+                        <aspectratio>stretch</aspectratio>
+                        <texture colordiffuse="backgrounddark">backgrounds/overlay_background.png</texture>
+                        <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                        <bordersize>3</bordersize>
+                    </control>
+                    <control type="label">
+                        <right>10</right>
+                        <bottom>5</bottom>
+                        <width>240</width>
+                        <height>20</height>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <font>bold16</font>
+                        <textcolor>active</textcolor>
+                        <label>$INFO[Container($PARAM[id]).CurrentItem]/$INFO[Container($PARAM[id]).NumItems]</label>
+                    </control>
+                    <control type="textbox">
+                        <height>$PARAM[height]</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>light36</font>
+                        <textcolor>active</textcolor>
+                        <label>$PARAM[label]</label>
+                    </control>
+                </control>
+                <control type="group">
+                    <top>10</top>
+                    <left>40</left>
+                    <visible>!String.IsEqual(Window.Property(active_channel),$PARAM[id])</visible>
+                    <width>$PARAM[width]</width>
+                    <height>$PARAM[height]</height>
+                    <control type="image">
+                        <aspectratio>stretch</aspectratio>
+                        <texture colordiffuse="backgrounddark">backgrounds/overlay_background.png</texture>
+                        <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                        <bordersize>1</bordersize>
+                    </control>
+                    <control type="textbox">
+                        <height>$PARAM[height]</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>light36</font>
+                        <label>$PARAM[label]</label>
+                    </control>
+                </control>
+                <control type="group">
+                    <visible>String.IsEqual(Window.Property(active_channel), $PARAM[id])</visible>
+                    <control type="image">
+                        <description>left scroll arrow</description>
+                        <visible>Container($PARAM[id]).HasPrevious</visible>
+                        <left>10</left>
+                        <width>15</width>
+                        <height>410</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture colordiffuse="active">icons/arrowleft.png</texture>
+                    </control>
+                    <control type="image">
+                        <description>right scroll arrow</description>
+                        <visible>Container($PARAM[id]).HasNext</visible>
+                        <right>10</right>
+                        <width>15</width>
+                        <height>410</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture colordiffuse="active">icons/arrowright.png</texture>
+                    </control>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_content">
+        <param name="id"></param>
+        <param name="content"></param>
+        <param name="height">410</param>
+        <param name="itemwidth">250</param>
+        <param name="label1"></param>
+        <param name="label2"></param>
+        <param name="label2set">false</param>
+        <definition>
+            <control type="panel" id="$PARAM[id]">
+                <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
+                <top>10</top>
+                <left>295</left>
+                <right>40</right>
+                <height>$PARAM[height]</height>
+                <orientation>horizontal</orientation>
+                <scrolltime tween="sine" easing="out">200</scrolltime>
+                <preloaditems>2</preloaditems>
+                <onfocus>SetProperty(active_channel, $PARAM[id])</onfocus>
+                <onunfocus>SetProperty(active_channel, 0)</onunfocus>
+                <itemlayout width="$PARAM[itemwidth]" height="$PARAM[height]">
+                    <include content="widget_$PARAM[content]_item">
+                        <param name="label1">$PARAM[label1]</param>
+                        <param name="label2">$PARAM[label2]</param>
+                        <param name="label2">$PARAM[label2set]</param>
+                    </include>
+                </itemlayout>
+                <focusedlayout width="$PARAM[itemwidth]" height="$PARAM[height]">
+                    <include content="widget_$PARAM[content]_item">
+                        <param name="active">true</param>
+                        <param name="label1">$PARAM[label1]</param>
+                        <param name="label2">$PARAM[label2]</param>
+                        <param name="label2">$PARAM[label2set]</param>
+                    </include>
+                </focusedlayout>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_actors_item">
+        <param name="active">false</param>
+        <param name="label1"></param>
+        <param name="label2"></param>
+        <definition>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <left>5</left>
+                <width>240</width>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <left>5</left>
+                <width>240</width>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <top>1</top>
+                <left>6</left>
+                <width>238</width>
+                <height>360</height>
+                <texture background="true" fallback="DefaultActorSolid.png">$INFO[ListItem.Thumb]</texture>
+                <aspectratio>scale</aspectratio>
+            </control>
+            <control type="label">
+                <top>360</top>
+                <left>10</left>
+                <width>230</width>
+                <height>25</height>
+                <font>regular20</font>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <label>$PARAM[label1]</label>
+            </control>
+            <control type="label">
+                <top>385</top>
+                <left>10</left>
+                <width>230</width>
+                <height>25</height>
+                <font>regular20</font>
+                <align>center</align>
+                <aligny>center</aligny>
+                <label>$PARAM[label2]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_movies_item">
+        <param name="active">false</param>
+        <param name="label1"></param>
+        <definition>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <left>5</left>
+                <width>240</width>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <left>5</left>
+                <width>240</width>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <top>1</top>
+                <left>6</left>
+                <width>238</width>
+                <height>360</height>
+                <texture background="true" fallback="DefaultVideo.png">$INFO[Listitem.Art(poster)]</texture>
+                <aspectratio>scale</aspectratio>
+            </control>
+            <control type="label">
+                <top>360</top>
+                <left>10</left>
+                <width>230</width>
+                <height>50</height>
+                <font>regular24</font>
+                <align>center</align>
+                <aligny>center</aligny>
+                <label>$PARAM[label1]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_movierole_item">
+        <param name="active">false</param>
+        <param name="label1"></param>
+        <param name="label2"></param>
+        <definition>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <left>5</left>
+                <width>240</width>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <left>5</left>
+                <width>240</width>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <top>1</top>
+                <left>6</left>
+                <width>238</width>
+                <height>360</height>
+                <texture background="true" fallback="DefaultVideo.png">$INFO[Listitem.Art(poster)]</texture>
+                <aspectratio>scale</aspectratio>
+            </control>
+            <control type="label">
+                <top>360</top>
+                <left>10</left>
+                <width>230</width>
+                <height>25</height>
+                <font>regular20</font>
+                <align>center</align>
+                <aligny>center</aligny>
+                <label>$PARAM[label1]</label>
+            </control>
+            <control type="label">
+                <top>385</top>
+                <left>10</left>
+                <width>230</width>
+                <height>25</height>
+                <font>regular20</font>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <label>$PARAM[label2]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_videos_item">
+        <param name="active">false</param>
+        <param name="label1"></param>
+        <definition>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <left>5</left>
+                <width>524</width>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <left>5</left>
+                <width>524</width>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <top>1</top>
+                <left>6</left>
+                <width>522</width>
+                <height>300</height>
+                <texture background="true" fallback="DefaultVideoFanart.png">$INFO[Listitem.Thumb]</texture>
+                <aspectratio>scale</aspectratio>
+            </control>
+            <control type="label">
+                <top>300</top>
+                <left>10</left>
+                <width>514</width>
+                <height>50</height>
+                <font>regular24</font>
+                <align>center</align>
+                <aligny>center</aligny>
+                <label>$PARAM[label1]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_poster_item">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <top>1</top>
+                <left>6</left>
+                <width>238</width>
+                <height>360</height>
+                <aspectratio>scale</aspectratio>
+                <texture background="true" fallback="DefaultVideo.png">$INFO[Listitem.Art(poster)]</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="group">
+                <visible>$PARAM[active]</visible>
+                <control type="image">
+                    <left>5</left>
+                    <width>240</width>
+                    <aspectratio>scale</aspectratio>
+                    <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <top>3</top>
+                    <left>8</left>
+                    <width>234</width>
+                    <height>356</height>
+                    <texture background="true" fallback="DefaultVideo.png">$INFO[Listitem.Art(poster)]</texture>
+                    <aspectratio>scale</aspectratio>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_fanart_item">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <top>1</top>
+                <left>6</left>
+                <width>638</width>
+                <height>360</height>
+                <aspectratio>scale</aspectratio>
+                <texture background="true" fallback="DefaultVideo.png">$INFO[Listitem.Thumb]</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="group">
+                <visible>$PARAM[active]</visible>
+                <control type="image">
+                    <left>5</left>
+                    <width>640</width>
+                    <aspectratio>scale</aspectratio>
+                    <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <top>3</top>
+                    <left>8</left>
+                    <width>634</width>
+                    <height>356</height>
+                    <texture background="true" fallback="DefaultVideo.png">$INFO[Listitem.Thumb]</texture>
+                    <aspectratio>keep</aspectratio>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="mediaflags">
+        <param name="source">ListItem</param>
+        <param name="top">0</param>
+        <param name="left">0</param>
+        <param name="width">1000</param>
+        <param name="height">30</param>
+        <param name="align">right</param>
+        <param name="iconwidth1">44</param>
+        <param name="iconwidth2">65</param>
+        <param name="iconwidth3">78</param>
+        <definition>
+            <control type="grouplist">
+                <top>$PARAM[top]</top>
+                <left>$PARAM[left]</left>
+                <width>$PARAM[width]</width>
+                <height>$PARAM[height]</height>
+                <align>$PARAM[align]</align>
+                <orientation>horizontal</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>5</itemgap>
+                <control type="image">
+                    <width>$PARAM[iconwidth1]</width>
+                    <height>$PARAM[height]</height>
+                    <texture>$INFO[$PARAM[source].VideoResolution,flags/videoresolution/,.png]</texture>
+                </control>
+                <control type="image">
+                    <width>$PARAM[iconwidth3]</width>
+                    <height>$PARAM[height]</height>
+                    <texture>$INFO[$PARAM[source].VideoCodec,flags/videocodec/,.png]</texture>
+                </control>
+                <control type="image">
+                    <width>$PARAM[iconwidth2]</width>
+                    <height>$PARAM[height]</height>
+                    <texture>$INFO[$PARAM[source].VideoAspect,flags/aspectratio/,.png]</texture>
+                </control>
+                <control type="image">
+                    <width>$PARAM[iconwidth3]</width>
+                    <height>$PARAM[height]</height>
+                    <texture>$INFO[$PARAM[source].AudioCodec,flags/audiocodec/,.png]</texture>
+                </control>
+                <control type="image">
+                    <width>$PARAM[iconwidth3]</width>
+                    <height>$PARAM[height]</height>
+                    <texture>$INFO[$PARAM[source].AudioChannels,flags/audiochannel/,.png]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="languageflags">
+        <param name="top">0</param>
+        <definition>
+            <control type="group">
+                <top>$PARAM[top]</top>
+                <control type="image">
+                    <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+                    <width>40</width>
+                    <height>40</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>icons/video/audio.png</texture>
+                </control>
+                <control type="grouplist">
+                    <top>4</top>
+                    <left>60</left>
+                    <orientation>horizontal</orientation>
+                    <itemgap>5</itemgap>
+                    <control type="image">
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture fallback="flags/flags/fallback.png">$INFO[ListItem.Property(AudioLanguage.1),flags/flags/,.png]</texture>
+                        <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+                    </control>
+                    <control type="image">
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture fallback="flags/flags/fallback.png">$INFO[ListItem.Property(AudioLanguage.2),flags/flags/,.png]</texture>
+                        <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2))</visible>
+                    </control>
+                    <control type="image">
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture fallback="flags/flags/fallback.png">$INFO[ListItem.Property(AudioLanguage.3),flags/flags/,.png]</texture>
+                        <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
+                    </control>
+                    <control type="image">
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture fallback="flags/flags/fallback.png">$INFO[ListItem.Property(AudioLanguage.4),flags/flags/,.png]</texture>
+                        <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.4))</visible>
+                    </control>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="subtitleflags">
+        <param name="top">0</param>
+        <definition>
+            <control type="group">
+                <top>$PARAM[top]</top>
+                <control type="image">
+                    <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+                    <width>40</width>
+                    <height>40</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>icons/video/subtitles.png</texture>
+                </control>
+                <control type="grouplist">
+                    <top>4</top>
+                    <left>60</left>
+                    <orientation>horizontal</orientation>
+                    <itemgap>5</itemgap>
+                    <control type="image">
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture fallback="flags/flags/fallback.png">$INFO[ListItem.Property(SubtitleLanguage.1),flags/flags/,.png]</texture>
+                        <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+                    </control>
+                    <control type="image">
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture fallback="flags/flags/fallback.png">$INFO[ListItem.Property(SubtitleLanguage.2),flags/flags/,.png]</texture>
+                        <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2))</visible>
+                    </control>
+                    <control type="image">
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture fallback="flags/flags/fallback.png">$INFO[ListItem.Property(SubtitleLanguage.3),flags/flags/,.png]</texture>
+                        <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
+                    </control>
+                    <control type="image">
+                        <width>32</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture fallback="flags/flags/fallback.png">$INFO[ListItem.Property(SubtitleLanguage.4),flags/flags/,.png]</texture>
+                        <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.4))</visible>
+                    </control>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="actors_header">
+        <control type="group">
+            <top>640</top>
+            <left>20</left>
+            <width>250</width>
+            <control type="group">
+                <visible>Control.HasFocus(50)</visible>
+                <height>420</height>
+                <control type="image">
+                    <texture colordiffuse="backgrounddark">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                    <bordersize>3</bordersize>
+                </control>
+                <control type="textbox">
+                    <width>230</width>
+                    <height>420</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light36</font>
+                    <label>$LOCALIZE[344]</label>
+                </control>
+                <control type="label">
+                    <right>10</right>
+                    <bottom>5</bottom>
+                    <width>240</width>
+                    <height>20</height>
+                    <align>right</align>
+                    <aligny>center</aligny>
+                    <font>bold16</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[Container(50).CurrentItem]/$INFO[Container(50).NumItems]</label>
+                </control>
+            </control>
+            <control type="group">
+                <visible>!Control.HasFocus(50)</visible>
+                <height>420</height>
+                <control type="image">
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="backgrounddark">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="textbox">
+                    <width>230</width>
+                    <height>420</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light36</font>
+                    <label>$LOCALIZE[344]</label>
+                </control>
+            </control>
+        </control>
+        <control type="group">
+            <top>640</top>
+            <visible>Control.HasFocus(50)</visible>
+            <control type="image">
+                <description>left scroll arrow</description>
+                <visible>Container(50).HasPrevious</visible>
+                <left>1</left>
+                <width>15</width>
+                <height>420</height>
+                <aspectratio>keep</aspectratio>
+                <texture colordiffuse="active">icons/arrowleft.png</texture>
+            </control>
+            <control type="image">
+                <description>right scroll arrow</description>
+                <visible>Container(50).HasNext</visible>
+                <right>1</right>
+                <width>15</width>
+                <height>420</height>
+                <aspectratio>keep</aspectratio>
+                <texture colordiffuse="active">icons/arrowright.png</texture>
+            </control>
+        </control>
+    </include>
+    
+    <include name="actors_list_item">
+        <param name="active">false</param>
+        <param name="icon">$INFO[ListItem.Icon]</param>
+        <param name="label">$INFO[ListItem.Label]</param>
+        <param name="label2">$INFO[ListItem.Label2]</param>
+        <definition>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <left>5</left>
+                <width>240</width>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <left>5</left>
+                <width>240</width>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <left>6</left>
+                <top>1</top>
+                <width>238</width>
+                <height>359</height>
+                <texture background="true" fallback="DefaultActorSolid.png">$PARAM[icon]</texture>
+                <aspectratio>scale</aspectratio>
+            </control>
+            <control type="label">
+                <top>365</top>
+                <left>10</left>
+                <width>230</width>
+                <height>25</height>
+                <font>regular20</font>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <label>$PARAM[label]</label>
+            </control>
+            <control type="label">
+                <top>390</top>
+                <left>10</left>
+                <width>230</width>
+                <height>25</height>
+                <font>regular20</font>
+                <align>center</align>
+                <aligny>center</aligny>
+                <label>$PARAM[label2]</label>
+            </control>            
+        </definition>
+    </include>
+</includes>

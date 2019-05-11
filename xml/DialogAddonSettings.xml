@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol>5</defaultcontrol>
+    <include>dialogpopup_openclose</include>
+    <controls>
+        <control type="group">
+            <centertop>50%</centertop>
+            <centerleft>50%</centerleft>
+            <width>1820</width>
+            <height>1000</height>
+            <include>background_dialog</include>
+            <include>dialog_addonsetting_decoration</include>
+            <control type="label" id="2">
+                <include>HiddenObject</include>
+            </control>
+            <control type="label">
+                <include>headerlabel_dialog</include>
+                <label>$INFO[Control.GetLabel(2)]</label>
+            </control>
+            <control type="grouplist" id="3">
+                <description>Categories Area</description>
+                <left>11</left>
+                <top>101</top>
+                <width>400</width>
+                <height>868</height>
+                <itemgap>0</itemgap>
+                <orientation>vertical</orientation>
+                <onleft>9000</onleft>
+                <onright>5</onright>
+                <onup>3</onup>
+                <ondown>3</ondown>
+            </control>
+            <control type="button" id="10">
+                <description>Default Category Button</description>
+                <font>regular30</font>
+                <height>90</height>
+                <width>400</width>
+                <textoffsetx>20</textoffsetx>
+                <aligny>center</aligny>
+                <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+            </control>
+            <control type="grouplist" id="5">
+                <description>control area</description>
+                <top>101</top>
+                <left>431</left>
+                <width>1060</width>
+                <height>878</height>
+                <onleft>3</onleft>
+                <onright>9000</onright>
+                <onup>5</onup>
+                <ondown>5</ondown>
+            </control>
+            <control type="button" id="7">
+                <description>Default Button</description>
+                <font>regular30</font>
+                <height>90</height>
+                <textoffsetx>20</textoffsetx>
+                <aligny>center</aligny>
+                <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+            </control>
+            <control type="radiobutton" id="8">
+                <description>Default RadioButton</description>
+                <textoffsetx>20</textoffsetx>
+                <font>regular30</font>
+                <height>90</height>
+                <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+            </control>
+            <control type="spincontrolex" id="9">
+                <description>Default SpinControlex</description>
+                <textoffsetx>20</textoffsetx>
+                <font>regular30</font>
+                <height>90</height>
+                <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+            </control>
+            <control type="image" id="11">
+                <description>separator image</description>
+                <height>1</height>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="edit" id="12">
+                <height>90</height>
+                <textoffsetx>20</textoffsetx>
+                <font>regular30</font>
+            </control>
+            <control type="sliderex" id="13">
+                <description>Default Slider</description>
+                <height>90</height>
+                <font>regular30</font>
+                <textoffsetx>20</textoffsetx>
+                <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+            </control>
+            <control type="label" id="14">
+                <description>Default Label</description>
+                <textoffsetx>20</textoffsetx>
+                <height>90</height>
+                <font>regular30</font>
+                <textcolor>active</textcolor>
+                <aligny>center</aligny>
+            </control>
+            <control type="grouplist" id="9000">
+                <left>1510</left>
+                <top>101</top>
+                <orientation>vertical</orientation>
+                <width>300</width>
+                <height>500</height>
+                <itemgap>10</itemgap>
+                <onleft>5</onleft>
+                <onright>3</onright>
+                <include content="dialog_button">
+                    <param name="id" value="28" />
+                    <param name="width" value="300" />
+                </include>
+                <include content="dialog_button">
+                    <param name="id" value="29" />
+                    <param name="width" value="300" />
+                </include>
+                <include content="dialog_button">
+                    <param name="id" value="30" />
+                    <param name="width" value="300" />
+                </include>
+            </control>
+        </control>
+    </controls>
+</window>

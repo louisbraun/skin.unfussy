@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="view_52_widelist">
+        <control type="group">
+            <include>openclose_slight_left</include>
+            <visible>Control.IsVisible(52)</visible>
+            <control type="image">
+                <top>70</top>
+                <right>40</right>
+                <width>1200</width>
+                <height>1000</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="background">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="group">
+                <control type="list" id="52">
+                    <top>71</top>
+                    <right>41</right>
+                    <width>1198</width>
+                    <height>998</height>
+                    <viewtype label="WideList">list</viewtype>
+                    <orientation>vertical</orientation>
+                    <scrolltime tween="sine" easing="out">200</scrolltime>
+                    <pagecontrol>52001</pagecontrol>
+                    <onleft>9000</onleft>
+                    <onright>52001</onright>
+                    <itemlayout condition="!Container.Content(songs)" width="1198" height="80">
+                        <include content="view_52_listitem" />
+                    </itemlayout>
+                    <itemlayout condition="Container.Content(songs)" width="1198" height="80">
+                        <include content="view_52_listitem_songs" />
+                    </itemlayout>
+                    <focusedlayout condition="!Container.Content(songs)" width="1198" height="80">
+                        <include content="view_52_listitem">
+                            <param name="active" value="true" />
+                        </include>
+                    </focusedlayout>
+                    <focusedlayout condition="Container.Content(songs)" width="1198" height="80">
+                        <include content="view_52_listitem_songs">
+                            <param name="active" value="true" />
+                        </include>
+                    </focusedlayout>
+                </control>
+                <include content="scrollbar">
+                    <param name="controlled_id" value="52" />
+                    <param name="onleft_id" value="52" />
+                    <param name="onright_id" value="52" />
+                    <param name="left" value="1895" />
+                </include>
+                <include content="view_52_contentpanel" />
+            </control>
+        </control>
+    </include>
+
+    <include name="view_52_listitem">
+        <param name="active">false</param>
+        <definition>
+            <include content="listitem_background">
+                <param name="active">$PARAM[active]</param>
+                <param name="simple">true</param>
+                <param name="height">79</param>
+            </include>
+            <control type="image">
+                <top>24</top>
+                <left>10</left>
+                <width>32</width>
+                <height>32</height>
+                <texture>overlays/$INFO[ListItem.Overlay]</texture>
+            </control>
+            <control type="label">
+                <visible>!String.IsEmpty(ListItem.Overlay)</visible>
+                <left>50</left>
+                <right>20</right>
+                <aligny>center</aligny>
+                <font>light30</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="label">
+                <visible>String.IsEmpty(ListItem.Overlay)</visible>
+                <left>20</left>
+                <right>20</right>
+                <aligny>center</aligny>
+                <font>light30</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="label">
+                <left>100</left>
+                <right>20</right>
+                <align>right</align>
+                <aligny>center</aligny>
+                <font>light30</font>
+                <label>$VAR[ListLabel2]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="view_52_listitem_songs">
+        <param name="active">false</param>
+        <definition>
+            <include content="listitem_background">
+                <param name="active">$PARAM[active]</param>
+                <param name="simple">true</param>
+                <param name="height">79</param>
+            </include>
+            <control type="label">
+                <visible>String.IsEmpty(ListItem.Title)</visible>
+                <left>20</left>
+                <right>20</right>
+                <aligny>center</aligny>
+                <font>light30</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="label">
+                <visible>!String.IsEmpty(ListItem.Title)</visible>
+                <left>20</left>
+                <right>20</right>
+                <aligny>center</aligny>
+                <font>light30</font>
+                <label>[B]$INFO[ListItem.TrackNumber][/B] - $INFO[ListItem.Title]</label>
+            </control>
+            <control type="label">
+                <left>100</left>
+                <right>20</right>
+                <align>right</align>
+                <aligny>center</aligny>
+                <font>light30</font>
+                <label>[B]$INFO[ListItem.Label2][/B]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="view_52_contentpanel">
+        <control type="group">
+            <left>10</left>
+            <top>70</top>
+            <width>660</width>
+            <height>1000</height>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <include content="view_52_contentpanel_movies" />
+            <include content="view_52_contentpanel_season" />
+            <include content="view_52_contentpanel_episode" />
+            <include content="view_52_contentpanel_actors" />
+            <include content="view_52_contentpanel_genre" />
+            <include content="view_52_contentpanel_addons" />
+            <include content="view_52_contentpanel_artists" />
+            <include content="view_52_contentpanel_albums" />
+            <include content="view_52_contentpanel_songs" />
+            <include content="view_52_contentpanel_images" />
+            <include content="view_52_contentpanel_default" />
+        </control>
+    </include>
+
+    <include name="view_52_contentpanel_movies">
+        <control type="group">
+            <visible>
+                [String.IsEqual(ListItem.DBType,movie) | 
+                 String.IsEqual(ListItem.DBType,tvshow) |
+                 String.IsEqual(ListItem.DBType,musicvideo) | 
+                 String.IsEqual(ListItem.DBType,set)]
+                + !String.IsEmpty(ListItem.DBID)</visible>
+            <control type="label">
+                <top>20</top>
+                <left>20</left>
+                <right>20</right>
+                <align>center</align>
+                <textcolor>active</textcolor>
+                <font>light50</font>
+                <scroll>true</scroll>
+                <autoscroll delay="1000" time="1500" repeat="10000">true</autoscroll>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="label">
+                <top>70</top>
+                <left>20</left>
+                <right>20</right>
+                <align>center</align>
+                <textcolor>active</textcolor>
+                <font>light36</font>
+                <scroll>true</scroll>
+                <autoscroll delay="1000" time="1500" repeat="10000">true</autoscroll>
+                <label>$INFO[ListItem.TagLine]</label>
+            </control>
+            <control type="image">
+                <left>100</left>
+                <right>100</right>
+                <aspectratio>keep</aspectratio>
+                <texture background="true">$INFO[ListItem.Art(poster)]</texture>
+            </control>
+            <include content="mediaflags">
+                <param name="top" value="960" />
+                <param name="left" value="10" />
+                <param name="width" value="650" />
+                <param name="height" value="30" />
+                <param name="align" value="left" />
+            </include>
+        </control>
+    </include>
+
+    <include name="view_52_contentpanel_season">
+        <control type="group">
+            <visible>String.IsEqual(Container(52).ListItem.DBType,season) + !String.IsEmpty(Container(52).ListItem.DBID)</visible>
+            <control type="group">
+                <top>0</top>
+                <left>10</left>
+                <height>1000</height>
+                <control type="grouplist">
+                    <top>10</top>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="label" id="200">
+                        <visible>!String.IsEmpty(Container(52).ListItem.TVShowTitle)</visible>
+                        <left>10</left>
+                        <right>10</right>
+                        <height>40</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular36</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(52).ListItem.TVShowTitle]</label>
+                    </control>
+                    <control type="label">
+                        <left>10</left>
+                        <right>10</right>
+                        <height>40</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular36</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(52).ListItem.Label]$INFO[Container(52).ListItem.Year, (,)]</label>
+                    </control>
+                    <control type="label" id="202">
+                        <visible>!String.IsEmpty(Container(52).ListItem.Tagline)</visible>
+                        <left>10</left>
+                        <right>10</right>
+                        <height>30</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular24</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(52).ListItem.Tagline]</label>
+                    </control>
+                    <control type="label" id="203">
+                        <visible>!String.IsEmpty(Container(52).ListItem.Genre)</visible>
+                        <left>10</left>
+                        <right>10</right>
+                        <height>30</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular24</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(52).ListItem.Genre]</label>
+                    </control>
+                    <control type="textbox">
+                        <top>20</top>
+                        <left>10</left>
+                        <right>10</right>
+                        <height>400</height>
+                        <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
+                        <font>light24</font>
+                        <label>$INFO[Container(52).ListItem.Plot]</label>
+                    </control>            
+                </control>
+            </control>
+            <control type="label">
+                <right>10</right>
+                <bottom>380</bottom>
+                <height>30</height>
+                <align>right</align>
+                <aligny>center</aligny>
+                <font>light24</font>
+                <textcolor>active</textcolor>
+                <label>$INFO[Container(52).ListItem.Property(TotalSeasons),[COLOR white]$LOCALIZE[33054]:[/COLOR] , / ]$INFO[Container(52).ListItem.Property(TotalEpisodes),[COLOR white]$LOCALIZE[36907]:[/COLOR] ,]$INFO[Container(52).ListItem.Property(WatchedEpisodes), / [COLOR white]$LOCALIZE[16102]:[/COLOR] ,]</label>
+            </control>
+            <control type="image">
+                <bottom>1</bottom>
+                <left>1</left>
+                <width>658</width>
+                <height>371</height>
+                <aspectratio>scale</aspectratio>
+                <texture background="true">$INFO[Container(52).ListItem.Art(fanart)]</texture>
+            </control>
+        </control>
+        <control type="group">
+            <visible>String.IsEqual(Container(52).ListItem.Label,$LOCALIZE[20366])</visible>
+            <visible>String.IsEqual(Container(52).ListItem.DBType,season)</visible>
+            <control type="image">
+                <centertop>500</centertop>
+                <centerleft>330</centerleft>
+                <width>600</width>
+                <height>900</height>
+                <aspectratio>scale</aspectratio>
+                <texture background="true">$INFO[Container(52).Art(tvshow.fanart)]</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_52_contentpanel_episode">
+        <control type="group">
+            <visible>String.IsEqual(Container(52).ListItem.DBType,episode) + !String.IsEmpty(Container(52).ListItem.DBID)</visible>
+            <control type="group">
+                <visible>!String.IsEqual(Container(52).ListItem.Label,..)</visible>
+                <visible>!String.IsEqual(Container(52).ListItem.Label,$LOCALIZE[20366])</visible>
+                <top>0</top>
+                <left>10</left>
+                <height>1000</height>
+                <control type="grouplist">
+                    <top>10</top>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="label" id="201">
+                        <visible>!String.IsEmpty(Container(52).ListItem.TVShowTitle)</visible>
+                        <left>10</left>
+                        <right>10</right>
+                        <height>40</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular36</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(52).ListItem.TVShowTitle]$INFO[Container(52).ListItem.Season, - $LOCALIZE[20373] ,]</label>
+                    </control>
+                    <control type="label">
+                        <left>10</left>
+                        <right>10</right>
+                        <height>40</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular36</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(52).ListItem.Label]$INFO[Container(52).ListItem.Year, (,)]</label>
+                    </control>
+                    <control type="label" id="202">
+                        <visible>!String.IsEmpty(Container(52).ListItem.Tagline)</visible>
+                        <left>10</left>
+                        <right>10</right>
+                        <height>30</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular24</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(50).ListItem.Tagline]</label>
+                    </control>
+                    <control type="label" id="203">
+                        <visible>!String.IsEmpty(Container(52).ListItem.Genre)</visible>
+                        <left>10</left>
+                        <right>10</right>
+                        <height>30</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular24</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(52).ListItem.Genre]</label>
+                    </control>
+                    <control type="textbox">
+                        <top>20</top>
+                        <left>10</left>
+                        <right>10</right>
+                        <height>456</height>
+                        <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
+                        <font>light24</font>
+                        <label>$INFO[Container(52).ListItem.Plot]</label>
+                    </control>            
+                </control>
+            </control>
+            <control type="image">
+                <bottom>1</bottom>
+                <left>1</left>
+                <width>658</width>
+                <height>371</height>
+                <aspectratio>scale</aspectratio>
+                <texture background="true">$INFO[Container(52).ListItem.Art(thumb)]</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_52_contentpanel_actors">
+        <control type="group">
+            <visible>[String.IsEqual(ListItem.DBType,actor)  | String.IsEqual(ListItem.DBType,director)] + !String.IsEmpty(ListItem.DBID)</visible>
+            <control type="label">
+                <top>20</top>
+                <left>20</left>
+                <right>20</right>
+                <align>center</align>
+                <textcolor>active</textcolor>
+                <font>light50</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="label">
+                <top>70</top>
+                <left>20</left>
+                <right>20</right>
+                <align>center</align>
+                <textcolor>active</textcolor>
+                <font>light36</font>
+                <label>$LOCALIZE[38026]: $INFO[ListItem.Appearances]</label>
+            </control>
+            <control type="image">
+                <visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+                <left>50</left>
+                <right>50</right>
+                <aspectratio>keep</aspectratio>
+                <texture>DefaultActor.png</texture>
+            </control>
+            <control type="image">
+                <top>155</top>
+                <left>100</left>
+                <width>460</width>
+                <height>705</height>
+                <aspectratio>scale</aspectratio>
+                <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_52_contentpanel_genre">
+        <control type="group">
+            <visible>String.IsEqual(ListItem.DBType,genre) + !String.IsEmpty(ListItem.DBID)</visible>
+            <control type="image">
+                <top>20</top>
+                <left>20</left>
+                <right>20</right>
+                <aspectratio>keep</aspectratio>
+                <texture background="true">$INFO[ListItem.Label,resource://resource.images.moviegenreicons.white/,.jpg]</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_52_contentpanel_addons">
+        <control type="group">
+            <visible>String.StartsWith(Container.FolderPath,addons)</visible>
+            <control type="group">
+                <visible>!Container.Content(addons)</visible>
+                <control type="image">
+                    <visible>!String.IsEmpty(ListItem.Art(thumb))</visible>
+                    <top>20</top>
+                    <left>20</left>
+                    <right>20</right>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+                    <top>20</top>
+                    <left>20</left>
+                    <right>20</right>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.Icon]</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Container.Content(addons)</visible>
+                <control type="label">
+                    <top>20</top>
+                    <left>30</left>
+                    <width>600</width>
+                    <font>regular30</font>
+                    <label>$INFO[ListItem.AddonCreator,[COLOR active]$LOCALIZE[21863]:[/COLOR] ]</label>
+                </control>
+                <control type="textbox">
+                    <top>80</top>
+                    <left>30</left>
+                    <width>600</width>
+                    <height>260</height>
+                    <label>$INFO[ListItem.AddonDescription]</label>
+                </control>
+                <control type="image">
+                    <left>30</left>
+                    <width>600</width>
+                    <height>600</height>
+                    <bottom>20</bottom>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+                    <top>20</top>
+                    <left>20</left>
+                    <right>20</right>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.Icon]</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_52_contentpanel_artists">
+        <control type="group">
+            <visible>String.IsEqual(ListItem.DBType,artist) + !String.IsEmpty(ListItem.DBID)</visible>
+            <control type="list" id="10000">
+                <focusedlayout height="0" width="0">
+                </focusedlayout>
+                <itemlayout height="0" width="0">
+                </itemlayout>                
+                <content sortby="year" sortorder="ascending">$INFO[ListItem.FolderPath]</content>
+            </control>
+            <control type="grouplist">
+                <left>20</left>
+                <right>20</right>
+                <height>440</height>
+                <control type="label">
+                    <height>90</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light50</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[ListItem.Artist]</label>
+                </control>
+                <control type="label">
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[Container(10000).NumItems,[COLOR active]$LOCALIZE[36919]: [/COLOR]]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.Genre)</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Genre,[COLOR active]$LOCALIZE[515]: [/COLOR]]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.Property(Artist_Formed))</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Property(Artist_Formed),[COLOR active]$LOCALIZE[21894]: [/COLOR]]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.Property(Artist_YearsActive))</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Property(Artist_YearsActive),[COLOR active]$LOCALIZE[21898]: [/COLOR]]</label>
+                </control>
+                <control type="label">
+                    <visible>!String.IsEmpty(ListItem.Property(Artist_Mood))</visible>
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Property(Artist_Mood),[COLOR active]$LOCALIZE[31057]: [/COLOR]]</label>
+                </control>
+            </control>
+            <control type="image">
+                <bottom>1</bottom>
+                <left>1</left>
+                <width>658</width>
+                <height>658</height>
+                <aspectratio>scale</aspectratio>
+                <texture background="true">$INFO[Container(52).ListItem.Art(thumb)]</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_52_contentpanel_albums">
+        <control type="group">
+            <visible>String.IsEqual(ListItem.DBType,album) + !String.IsEmpty(ListItem.DBID)</visible>
+            <control type="label">
+                <top>30</top>
+                <left>20</left>
+                <right>20</right>
+                <height>70</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>light50</font>
+                <textcolor>active</textcolor>
+                <label>$INFO[Container(52).ListItem.Label]</label>
+            </control>
+            <control type="label">
+                <top>120</top>
+                <left>20</left>
+                <height>35</height>
+                <aligny>center</aligny>
+                <font>regular30</font>
+                <textcolor>active</textcolor>
+                <label>$LOCALIZE[182]</label>
+            </control>
+            <control type="list" id="10001">
+                <top>160</top>
+                <left>20</left>
+                <right>20</right>
+                <height>310</height>
+                <orientation>vertical</orientation>
+                <focusedlayout height="26" width="600">
+                    <control type="label">
+                        <height>20</height>
+                        <aligny>center</aligny>
+                        <font>regular20</font>
+                        <label>[COLOR active]$INFO[ListItem.TrackNumber][/COLOR] - $INFO[ListItem.Label] ($INFO[ListItem.Duration])</label>
+                    </control>
+                </focusedlayout>
+                <itemlayout height="26" width="600">
+                    <control type="label">
+                        <height>20</height>
+                        <aligny>center</aligny>
+                        <font>regular20</font>
+                        <label>[COLOR active]$INFO[ListItem.TrackNumber][/COLOR] - $INFO[ListItem.Label] ($INFO[ListItem.Duration])</label>
+                    </control>
+                </itemlayout>                
+                <content sortby="year" sortorder="ascending">$INFO[Container(52).ListItem.FolderPath]</content>
+            </control>
+            <control type="label">
+                <visible>Integer.IsGreaterOrEqual(Container(10001).NumItems,13)</visible>
+                <top>455</top>
+                <left>25</left>
+                <height>35</height>
+                <aligny>center</aligny>
+                <font>regular30</font>
+                <label>...</label>
+            </control>
+            <control type="image">
+                <bottom>8</bottom>
+                <left>50</left>
+                <width>566</width>
+                <height>500</height>
+                <aspectratio>scale</aspectratio>
+                <texture>backgrounds/cd_cover.jpg</texture>
+            </control>
+            <control type="image">
+                <bottom>10</bottom>
+                <left>113</left>
+                <width>496</width>
+                <height>496</height>
+                <aspectratio>scale</aspectratio>
+                <texture>colors/black.png</texture>
+            </control>
+            <control type="image">
+                <bottom>10</bottom>
+                <left>113</left>
+                <width>496</width>
+                <height>496</height>
+                <aspectratio>scale</aspectratio>
+                <texture background="true" fallback="defaultmusicalbums.png">$INFO[Container(52).ListItem.Art(thumb)]</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_52_contentpanel_songs">
+        <control type="group">
+            <visible>String.IsEqual(ListItem.DBType,song) + !String.IsEmpty(ListItem.DBID)</visible>
+            <control type="label">
+                <top>30</top>
+                <left>20</left>
+                <right>20</right>
+                <height>70</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>light50</font>
+                <textcolor>active</textcolor>
+                <label>$INFO[Container(52).ListItem.Artist]</label>
+            </control>
+            <control type="label">
+                <top>90</top>
+                <left>20</left>
+                <right>20</right>
+                <height>70</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>light36</font>
+                <label>$INFO[Container(52).ListItem.Album]</label>
+            </control>
+            <control type="group">
+                <visible>String.IsEmpty(ListItem.Art(album.discart))</visible>
+                <control type="image">
+                    <top>300</top>
+                    <left>50</left>
+                    <width>566</width>
+                    <height>500</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">backgrounds/cd_cover.jpg</texture>
+                </control>
+                <control type="image">
+                    <top>302</top>
+                    <left>113</left>
+                    <width>496</width>
+                    <height>496</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">colors/black.png</texture>
+                </control>
+                <control type="image">
+                    <top>302</top>
+                    <left>113</left>
+                    <width>496</width>
+                    <height>496</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true" fallback="defaultmusicalbums.png">$INFO[Container(52).ListItem.Art(thumb)]</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>!String.IsEmpty(ListItem.Art(album.discart))</visible>
+                <control type="image">
+                    <top>180</top>
+                    <left>113</left>
+                    <width>496</width>
+                    <height>496</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">$INFO[Container(52).ListItem.Art(album.discart)]</texture>
+                </control>
+                <control type="image">
+                    <top>430</top>
+                    <left>50</left>
+                    <width>566</width>
+                    <height>500</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">backgrounds/cd_cover.jpg</texture>
+                </control>
+                <control type="image">
+                    <top>432</top>
+                    <left>113</left>
+                    <width>496</width>
+                    <height>496</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">colors/black.png</texture>
+                </control>
+                <control type="image">
+                    <top>432</top>
+                    <left>113</left>
+                    <width>496</width>
+                    <height>496</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true" fallback="defaultmusicalbums.png">$INFO[Container(52).ListItem.Art(thumb)]</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_52_contentpanel_images">
+        <control type="group">
+            <visible>Container.Content(images)</visible>
+            <control type="group">
+                <visible>String.IsEmpty(Container(52).ListItem.FileName)</visible>
+                <control type="label">
+                    <visible>!String.IsEqual(Container(52).ListItem.Label,..)</visible>
+                    <left>20</left>
+                    <right>20</right>
+                    <height>80</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light50</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[Container(52).ListItem.Label]</label>
+                </control>
+                <control type="image">
+                    <left>10</left>
+                    <width>640</width>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true" fallback="defaultpicture.png">$INFO[Container(52).ListItem.Icon]</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>!String.IsEmpty(Container(52).ListItem.FileName)</visible>
+                <control type="label">
+                    <left>20</left>
+                    <right>20</right>
+                    <height>80</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light50</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[Container(52).ListItem.FolderName]</label>
+                </control>
+                <control type="image">
+                    <top>80</top>
+                    <left>10</left>
+                    <width>640</width>
+                    <height>480</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true" fallback="defaultpicture.png">$INFO[Container(52).ListItem.Icon]</texture>
+                </control>
+                <include>images_infolist</include>
+            </control>
+
+
+        </control>
+    </include>
+
+    <include name="view_52_contentpanel_default">
+        <control type="group">
+            <visible>!String.IsEqual(ListItem.DBType,movie)</visible>
+            <visible>!String.IsEqual(ListItem.DBType,tvshow)</visible>
+            <visible>!String.IsEqual(ListItem.DBType,episode)</visible>
+            <visible>!String.IsEqual(ListItem.DBType,season)</visible>
+            <visible>!String.IsEqual(ListItem.DBType,musicvideo)</visible>
+            <visible>!String.IsEqual(ListItem.DBType,actor)</visible>
+            <visible>!String.IsEqual(ListItem.DBType,set)</visible>
+            <visible>!String.IsEqual(ListItem.DBType,director)</visible>
+            <visible>!String.IsEqual(ListItem.DBType,genre)</visible>
+            <visible>!String.IsEqual(ListItem.DBType,artist)</visible>
+            <visible>!String.IsEqual(ListItem.DBType,album)</visible>
+            <visible>!String.IsEqual(ListItem.DBType,song)</visible>
+            <visible>!String.StartsWith(Container.FolderPath,addons)</visible>
+            <visible>!Container.Content(images)</visible>
+            <control type="image">
+                <left>50</left>
+                <right>50</right>
+                <aspectratio>keep</aspectratio>
+                <texture>$INFO[ListItem.ActualIcon]</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="images_infolist">
+        <param name="left">20</param>
+        <param name="top">600</param>
+        <param name="width">620</param>
+        <param name="height">380</param>
+        <definition>
+            <control type="grouplist">
+                <left>$PARAM[left]</left>
+                <top>$PARAM[top]</top>
+                <width>$PARAM[width]</width>
+                <height>$PARAM[height]</height>
+                <orientation>vertical</orientation>
+                <itemgap>0</itemgap>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21820]"/>
+                    <param name="value" value="ListItem.PictureDatetime" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21805]"/>
+                    <param name="value" value="ListItem.PictureResolution" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21826]"/>
+                    <param name="value" value="ListItem.PictureAperture" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21863]"/>
+                    <param name="value" value="ListItem.PictureAuthor" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21867]"/>
+                    <param name="value" value="ListItem.PictureByline" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21868]"/>
+                    <param name="value" value="ListItem.PictureBylineTitle" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[31041]"/>
+                    <param name="value" value="ListItem.PictureCamMake" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21823]"/>
+                    <param name="value" value="ListItem.PictureCamModel" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21862]"/>
+                    <param name="value" value="ListItem.PictureCaption" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21866]"/>
+                    <param name="value" value="ListItem.PictureCategory" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21839]"/>
+                    <param name="value" value="ListItem.PictureCCDWidth" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21873]"/>
+                    <param name="value" value="ListItem.PictureCity" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21807]"/>
+                    <param name="value" value="ListItem.PictureColour" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21839]"/>
+                    <param name="value" value="ListItem.PictureComment" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21871]"/>
+                    <param name="value" value="ListItem.PictureCopyrightNotice" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21875]"/>
+                    <param name="value" value="ListItem.PictureCountry" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21879]"/>
+                    <param name="value" value="ListItem.PictureCountryCode" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21869]"/>
+                    <param name="value" value="ListItem.PictureCredit" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21821]"/>
+                    <param name="value" value="ListItem.PictureDesc" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21838]"/>
+                    <param name="value" value="ListItem.PictureDigitalZoom" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21832]"/>
+                    <param name="value" value="ListItem.PictureExpMode" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21829]"/>
+                    <param name="value" value="ListItem.PictureExposure" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21831]"/>
+                    <param name="value" value="ListItem.PictureExposureBias" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21830]"/>
+                    <param name="value" value="ListItem.PictureExpTime" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21833]"/>
+                    <param name="value" value="ListItem.PictureFlashUsed" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21827]"/>
+                    <param name="value" value="ListItem.PictureFocalLen" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21828]"/>
+                    <param name="value" value="ListItem.PictureFocusDist" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21840]"/>
+                    <param name="value" value="ListItem.PictureGPSLat" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21841]"/>
+                    <param name="value" value="ListItem.PictureGPSLon" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21842]"/>
+                    <param name="value" value="ListItem.PictureGPSAlt" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21864]"/>
+                    <param name="value" value="ListItem.PictureHeadline" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21858]"/>
+                    <param name="value" value="ListItem.PictureImageType" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21837]"/>
+                    <param name="value" value="ListItem.PictureISO" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21861]"/>
+                    <param name="value" value="ListItem.PictureKeywords" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21843]"/>
+                    <param name="value" value="ListItem.PictureOrientation" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21808]"/>
+                    <param name="value" value="ListItem.PictureProcess" />
+                </include>
+                <include content="images_infoline">
+                    <param name="label" value="$LOCALIZE[21802]"/>
+                    <param name="value" value="ListItem.Label2" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="images_infoline">
+        <param name="label"></param>
+        <param name="value"></param>
+        <definition>
+            <control type="grouplist">
+                <visible>!String.IsEmpty($PARAM[value])</visible>
+                <height>35</height>
+                <orientation>horizontal</orientation>
+                <width>620</width>
+                <itemgap>10</itemgap>
+                <control type="label">
+                    <width>auto</width>
+                    <height>30</height>
+                    <aligny>center</aligny>
+                    <label>$PARAM[label]:</label>
+                    <textcolor>active</textcolor>
+                </control>
+                <control type="label">
+                    <width>auto</width>
+                    <height>30</height>
+                    <align>right</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[$PARAM[value]]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+
+</includes>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <zorder>3</zorder>
+    <animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
+    <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+    <controls>
+        <control type="group">
+            <top>85</top>
+            <right>0</right>
+            <width>640</width>
+            <include>openclose_slight_right</include>
+            <control type="image">
+                <left>0</left>
+                <top>0</top>
+                <width>640</width>
+                <height>100</height>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="group">
+                <top>20</top>
+                <left>20</left>
+                <width>60</width>
+                <height>60</height>
+                <control type="image">
+                    <texture>progress/extendedprogress/loading-back.png</texture>
+                </control>
+                <control type="image">
+                    <texture>$INFO[Control.GetLabel(32),progress/volume/progress/p,.png]</texture>
+                    <animation effect="fade" end="50" time="0" condition="true">Conditional</animation>
+                </control>
+                <control type="image">
+                    <texture colordiffuse="active">progress/extendedprogress/loading.png</texture>
+                    <animation effect="rotate" center="auto" start="360" end="0" time="1500" loop="true" condition="true">Conditional</animation>
+                </control>
+            </control>
+            <control type="label" id="30">
+                <top>10</top>
+                <left>100</left>
+                <width>520</width>
+                <height>25</height>
+                <font>regular20</font>
+                <aligny>center</aligny>
+            </control>
+            <control type="label" id="31">
+                <top>35</top>
+                <left>100</left>
+                <width>520</width>
+                <height>25</height>
+                <font>regular20</font>
+                <textcolor>active</textcolor>
+            </control>
+            <control type="label">
+                <top>60</top>
+                <left>100</left>
+                <width>520</width>
+                <height>25</height>
+                <font>regular20</font>
+                <label>$INFO[Control.GetLabel(32),,%]</label>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+            </control>
+            <control type="progress" id="32">
+                <left>3000</left>
+                <height>15</height>
+            </control>
+        </control>
+    </controls>
+</window>

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">95</defaultcontrol>
+    <backgroundcolor>0</backgroundcolor>
+    <controls>
+        <include>background</include>
+        <include content="info_header">
+            <param name="title" value="$LOCALIZE[10007]" />
+        </include>
+        <control type="group">
+            <include>openclose_slight_right</include>
+            <control type="image">
+                <left>480</left>
+                <top>99</top>
+                <width>1392</width>
+                <height>942</height>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border" border="1">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="grouplist">
+                <left>500</left>
+                <top>120</top>
+                <height>550</height>
+                <orientation>vertical</orientation>
+                <control type="label" id="2">
+                    <height>47</height>
+                    <width>1400</width>
+                    <font>regular30</font>
+                </control>
+                <control type="label" id="3">
+                    <height>47</height>
+                    <width>1400</width>
+                    <font>regular30</font>
+                </control>
+                <control type="label" id="4">
+                    <height>47</height>
+                    <width>1400</width>
+                    <font>regular30</font>
+                </control>
+                <control type="label" id="5">
+                    <height>47</height>
+                    <width>1400</width>
+                    <font>regular30</font>
+                </control>
+                <control type="label" id="6">
+                    <height>47</height>
+                    <width>1400</width>
+                    <font>regular30</font>
+                </control>
+                <control type="label" id="7">
+                    <height>47</height>
+                    <width>1400</width>
+                    <font>regular30</font>
+                </control>
+                <control type="label" id="8">
+                    <height>47</height>
+                    <width>1400</width>
+                    <font>regular30</font>
+                </control>
+                <control type="label" id="9">
+                    <height>47</height>
+                    <width>1400</width>
+                    <font>regular30</font>
+                </control>
+                <control type="label" id="10">
+                    <height>47</height>
+                    <width>1400</width>
+                    <font>regular30</font>
+                </control>
+                <control type="label" id="11">
+                    <height>47</height>
+                    <width>1400</width>
+                    <font>regular30</font>
+                </control>
+                <control type="label" id="12">
+                    <height>47</height>
+                    <width>1400</width>
+                    <font>regular30</font>
+                </control>
+            </control>
+            <control type="textbox" id="30">
+                <left>500</left>
+                <right>70</right>
+                <top>120</top>
+                <bottom>315</bottom>
+                <pagecontrol>60</pagecontrol>
+                <autoscroll delay="5000" repeat="7500" time="5000">!Control.HasFocus(60)</autoscroll>
+                <font>regular30</font>
+            </control>
+            <control type="image">
+                <visible>Control.IsVisible(60)</visible>
+                <right>15</right>
+                <top>100</top>
+                <width>15</width>
+                <bottom>312</bottom>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            </control>
+            <control type="scrollbar" id="60">
+                <right>15</right>
+                <top>100</top>
+                <width>15</width>
+                <bottom>312</bottom>
+                <orientation>vertical</orientation>
+                <texturesliderbackground colordiffuse="borderdark" border="3">progress/texturebg_border_white.png</texturesliderbackground>
+                <texturesliderbar border="3,6,3,6" colordiffuse="border">progress/texturebg_white.png</texturesliderbar>
+                <texturesliderbarfocus border="3,6,3,6" colordiffuse="active">progress/texturebg_white.png</texturesliderbarfocus>
+                <onleft>9000</onleft>
+                <onright>9000</onright>
+                <visible>Control.IsVisible(30)</visible>
+            </control>
+            <control type="group">
+                <bottom>0</bottom>
+                <height>230</height>
+                <left>500</left>
+                <control type="grouplist">
+                    <orientation>vertical</orientation>
+                    <control type="label">
+                        <description>CPU Text</description>
+                        <width>730</width>
+                        <height>80</height>
+                        <label>$LOCALIZE[13271] $INFO[System.CPUUsage]</label>
+                        <aligny>top</aligny>
+                        <textoffsety>40</textoffsety>
+                        <shadowcolor>black</shadowcolor>
+                        <font>regular24</font>
+                    </control>
+                    <control type="progress">
+                        <description>CPU BAR</description>
+                        <width>730</width>
+                        <height>16</height>
+                        <info>System.CPUUsage</info>
+                    </control>
+                    <control type="label">
+                        <description>Memory Text</description>
+                        <width>730</width>
+                        <height>40</height>
+                        <label>$LOCALIZE[31037]: $INFO[system.memory(used)] [B]/[/B] $INFO[system.memory(total)] [B]-[/B] $INFO[system.memory(used.percent)]</label>
+                        <aligny>center</aligny>
+                        <shadowcolor>black</shadowcolor>
+                        <font>regular24</font>
+                    </control>
+                    <control type="progress">
+                        <description>Memory BAR</description>
+                        <width>730</width>
+                        <height>16</height>
+                        <info>system.memory(used)</info>
+                    </control>
+                </control>
+                <control type="label">
+                    <top>30</top>
+                    <left>800</left>
+                    <width>auto</width>
+                    <height>50</height>
+                    <aligny>bottom</aligny>
+                    <textoffsety>10</textoffsety>
+                    <label>$LOCALIZE[31038]:</label>
+                    <font>bold30</font>
+                    <textcolor>active</textcolor>
+                </control>
+                <control type="grouplist">
+                    <description>Kodi build version</description>
+                    <itemgap>10</itemgap>
+                    <top>80</top>
+                    <left>800</left>
+                    <width>820</width>
+                    <height>45</height>
+                    <orientation>horizontal</orientation>
+                    <control type="label">
+                        <description>Build label</description>
+                        <width>auto</width>
+                        <height>50</height>
+                        <aligny>bottom</aligny>
+                        <textoffsety>10</textoffsety>
+                        <label>$LOCALIZE[144]</label>
+                        <shadowcolor>black</shadowcolor>
+                    </control>
+                    <control type="label" id="52">
+                        <description>Kodi Build Version</description>
+                        <height>50</height>
+                        <aligny>bottom</aligny>
+                        <textoffsety>10</textoffsety>
+                        <width>auto</width>
+                        <textcolor>active</textcolor>
+                        <shadowcolor>black</shadowcolor>
+                    </control>
+                </control>
+                <control type="grouplist">
+                    <description>Build date</description>
+                    <itemgap>10</itemgap>
+                    <top>125</top>
+                    <left>800</left>
+                    <width>800</width>
+                    <orientation>horizontal</orientation>
+                    <control type="label">
+                        <description>kodi Compiled Text</description>
+                        <width>auto</width>
+                        <height>25</height>
+                        <label>$LOCALIZE[174]</label>
+                        <shadowcolor>black</shadowcolor>
+                    </control>
+                    <control type="label" id="53">
+                        <description>Kodi Build Date</description>
+                        <width>auto</width>
+                        <textcolor>active</textcolor>
+                        <shadowcolor>black</shadowcolor>
+                    </control>
+                </control>
+            </control>
+        </control>
+        <control type="image">
+            <include>openclose_slight_left</include>
+            <left>19</left>
+            <top>99</top>
+            <width>422</width>
+            <height>942</height>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border" border="1">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="group">
+            <left>20</left>
+            <top>100</top>
+            <include>openclose_slight_left</include>
+            <control type="grouplist" id="9000">
+                <width>420</width>
+                <height>940</height>
+                <onup>9000</onup>
+                <ondown>9000</ondown>
+                <onright>60</onright>
+                <itemgap>0</itemgap>
+                <control type="button" id="95">
+                    <description>Button Summary Values</description>
+                    <textoffsetx>20</textoffsetx>
+                    <height>80</height>
+                    <aligny>center</aligny>
+                    <width>420</width>
+                    <font>light36</font>
+                    <label>$LOCALIZE[20037]</label>
+                    <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                </control>
+                <control type="button" id="94">
+                    <description>Button Storage</description>
+                    <textoffsetx>20</textoffsetx>
+                    <height>80</height>
+                    <aligny>center</aligny>
+                    <width>420</width>
+                    <font>light36</font>
+                    <label>$LOCALIZE[13277]</label>
+                    <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                </control>
+                <control type="button" id="96">
+                    <description>Button Network</description>
+                    <textoffsetx>20</textoffsetx>
+                    <height>80</height>
+                    <aligny>center</aligny>
+                    <width>420</width>
+                    <font>light36</font>
+                    <label>$LOCALIZE[13279]</label>
+                    <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                </control>
+                <control type="button" id="97">
+                    <description>Button Video</description>
+                    <textoffsetx>20</textoffsetx>
+                    <height>80</height>
+                    <aligny>center</aligny>
+                    <width>420</width>
+                    <font>light36</font>
+                    <label>$LOCALIZE[13280]</label>
+                    <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                </control>
+                <control type="button" id="98">
+                    <description>Button Hardware</description>
+                    <textoffsetx>20</textoffsetx>
+                    <height>80</height>
+                    <aligny>center</aligny>
+                    <width>420</width>
+                    <font>light36</font>
+                    <label>$LOCALIZE[13281]</label>
+                    <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                </control>
+                <control type="button" id="99">
+                    <description>Button PVR</description>
+                    <textoffsetx>20</textoffsetx>
+                    <height>80</height>
+                    <aligny>center</aligny>
+                    <width>420</width>
+                    <font>light36</font>
+                    <label>$LOCALIZE[19191]</label>
+                    <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                </control>
+                <control type="button" id="100">
+                    <description>Button Privacy policy</description>
+                    <textoffsetx>20</textoffsetx>
+                    <height>80</height>
+                    <aligny>center</aligny>
+                    <width>420</width>
+                    <font>light36</font>
+                    <label>$LOCALIZE[12389]</label>
+                    <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                </control>
+            </control>
+        </control>
+        <include>BottomBar</include>
+    </controls>
+</window>

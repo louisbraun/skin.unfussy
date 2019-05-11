@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <animation effect="fade" time="300">WindowOpen</animation>
+    <defaultcontrol always="true">5</defaultcontrol>
+    <onunload>ClearProperty(submenu,1102)</onunload>
+    <controls>
+        <control type="group">
+            <visible>$EXP[settings_full]</visible>
+            <include>dialog_settings_decoration</include>
+            <control type="label" id="2">
+                <top>160</top>
+                <left>310</left>
+                <width>1300</width>
+                <include>headerlabel_dialog</include>
+            </control>
+            <control type="grouplist" id="100">
+                <orientation>vertical</orientation>
+                <left>1332</left>
+                <top>250</top>
+                <height>150</height>
+                <align>center</align>
+                <itemgap>5</itemgap>
+                <onleft>5</onleft>
+                <onright>5</onright>
+                <include content="dialog_button">
+                    <param name="id" value="28" />
+                    <param name="width" value="250" />
+                    <param name="label" value="$LOCALIZE[186]" />
+                </include>
+                <include content="dialog_button">
+                    <param name="id" value="29" />
+                    <param name="width" value="250" />
+                    <param name="label" value="$LOCALIZE[222]" />
+                </include>
+            </control>
+        </control>
+        <include>dialog_settings_backgrounds_light</include>
+        <control type="grouplist" id="5">
+            <top>260</top>
+            <left>312</left>
+            <width>1000</width>
+            <height>590</height>
+            <orientation>vertical</orientation>
+            <itemgap>0</itemgap>
+            <onleft condition="$EXP[settings_full]">100</onleft>
+            <onleft condition="!$EXP[settings_full]">Back</onleft>
+            <onright condition="$EXP[settings_full]">100</onright>
+            <animation effect="slide" end="188,-175" time="0" condition="Window.Is(osdaudiosettings)">WindowOpen</animation>
+            <animation effect="slide" end="188,-125" time="0" condition="Window.Is(osdsubtitlesettings)">WindowOpen</animation>
+            <animation effect="slide" end="188, -75" time="0" condition="Window.Is(osdvideosettings)">WindowOpen</animation>
+            <animation effect="slide" end="188, -25" time="0" condition="Window.Is(osdcmssettings)">WindowOpen</animation>
+        </control>
+        <control type="button" id="7">
+            <include>button_dialog</include>
+        </control>
+        <control type="radiobutton" id="8">
+            <include>button_dialog</include>
+            <textoffsetx>40</textoffsetx>
+        </control>
+        <control type="spincontrolex" id="9">
+            <include>button_dialog</include>
+        </control>
+        <control type="image" id="11">
+            <height>1</height>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="edit" id="12">
+            <include>button_dialog</include>
+        </control>
+        <control type="sliderex" id="13">
+            <include>button_dialog</include>
+        </control>
+        <control type="label" id="14">
+            <height>50</height>
+            <font>bold24</font>
+            <align>center</align>
+            <aligny>center</aligny>
+        </control>
+    </controls>
+</window>

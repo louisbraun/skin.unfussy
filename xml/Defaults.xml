@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <default type="label">
+        <textcolor>white</textcolor>
+        <disabledcolor>inactive</disabledcolor>
+        <selectedcolor>selected</selectedcolor>
+        <font>regular24</font>
+    </default>
+    <default type="textbox">
+        <textcolor>white</textcolor>
+        <font>regular24</font>
+    </default>
+    <default type="scrollbar">
+        <texturesliderbackground colordiffuse="backgrounddark">colors/white.png</texturesliderbackground>
+        <texturesliderbar colordiffuse="border">colors/white.png</texturesliderbar>
+        <texturesliderbarfocus colordiffuse="active">colors/white.png</texturesliderbarfocus>
+        <pulseonselect>false</pulseonselect>
+        <orientation>vertical</orientation>
+        <showonepage>false</showonepage>
+    </default>
+    <default type="button">
+        <textcolor>white</textcolor>
+        <focusedcolor>white</focusedcolor>
+        <disabledcolor>disabled</disabledcolor>
+        <invalidcolor>disabled</invalidcolor>
+        <pulseonselect>no</pulseonselect>
+        <shadowcolor>black</shadowcolor>
+        <font>regular24</font>
+        <aligny>center</aligny>
+        <texturefocus colordiffuse="active" border="1">backgrounds/overlay_background_border.png</texturefocus>
+        <texturenofocus colordiffuse="backgrounddark">colors/white.png</texturenofocus>
+    </default>
+    <default type="togglebutton">
+        <textcolor>white</textcolor>
+        <focusedcolor>white</focusedcolor>
+        <disabledcolor>disabled</disabledcolor>
+        <invalidcolor>disabled</invalidcolor>
+        <shadowcolor>black</shadowcolor>
+        <pulseonselect>no</pulseonselect>
+        <font>regular24</font>
+        <aligny>center</aligny>
+        <pulseonselect>no</pulseonselect>
+        <texturefocus colordiffuse="active" border="1">backgrounds/overlay_background_border.png</texturefocus>
+        <texturenofocus colordiffuse="backgrounddark">colors/white.png</texturenofocus>
+    </default>
+    <default type="radiobutton">
+        <radiowidth>120</radiowidth>
+        <radioheight>76</radioheight>
+        <texturefocus colordiffuse="active" border="1">backgrounds/overlay_background_border.png</texturefocus>
+        <texturenofocus colordiffuse="backgrounddark">colors/white.png</texturenofocus>
+        <textureradioonfocus>buttons/radio-button-on.png</textureradioonfocus>
+        <textureradioonnofocus>buttons/radio-button-on.png</textureradioonnofocus>
+        <textureradioofffocus>buttons/radio-button-off.png</textureradioofffocus>
+        <textureradiooffnofocus>buttons/radio-button-off.png</textureradiooffnofocus>
+        <textureradioondisabled colordiffuse="disabled">buttons/radio-button-on.png</textureradioondisabled>
+        <textureradiooffdisabled colordiffuse="disabled">buttons/radio-button-off.png</textureradiooffdisabled>
+        <textoffsetx>7</textoffsetx>
+        <align>left</align>
+        <aligny>center</aligny>
+        <pulseonselect>no</pulseonselect>
+        <font>regular24</font>
+        <textcolor>white</textcolor>
+        <focusedcolor>white</focusedcolor>
+        <disabledcolor>disabled</disabledcolor>
+        <invalidcolor>disabled</invalidcolor>
+        <shadowcolor>black</shadowcolor>
+    </default>
+    <default type="spincontrolex">
+        <spinwidth>32</spinwidth>
+        <spinheight>60</spinheight>
+        <texturefocus colordiffuse="active" border="1">backgrounds/overlay_background_border.png</texturefocus>
+        <texturenofocus colordiffuse="backgrounddark">colors/white.png</texturenofocus>
+        <textureup colordiffuse="white">buttons/spinctrl/arrow-light-up.png</textureup>
+        <texturedown colordiffuse="white">buttons/spinctrl/arrow-light-down.png</texturedown>
+        <textureupfocus colordiffuse="background">buttons/spinctrl/arrow-light-up.png</textureupfocus>
+        <texturedownfocus colordiffuse="background">buttons/spinctrl/arrow-light-down.png</texturedownfocus>
+        <textureupdisabled colordiffuse="white">buttons/spinctrl/arrow-light-up.png</textureupdisabled>
+        <texturedowndisabled colordiffuse="white">buttons/spinctrl/arrow-light-down.png</texturedowndisabled>
+        <textoffsetx>7</textoffsetx>
+        <aligny>center</aligny>
+        <reverse>yes</reverse>
+        <pulseonselect>no</pulseonselect>
+        <font>regular24</font>
+        <textcolor>white</textcolor>
+        <disabledcolor>disabled</disabledcolor>
+    </default>
+    <default type="edit">
+        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+        <texturenofocus colordiffuse="backgrounddark">colors/white.png</texturenofocus>
+        <font>regular24</font>
+        <textoffsetx>40</textoffsetx>
+        <textcolor>white</textcolor>
+        <focusedcolor>white</focusedcolor>
+        <disabledcolor>disabled</disabledcolor>
+        <invalidcolor>red</invalidcolor>
+        <shadowcolor>black</shadowcolor>
+        <textoffsetx>7</textoffsetx>
+        <aligny>center</aligny>
+        <pulseonselect>no</pulseonselect>
+    </default>
+    <default type="slider">
+        <pulseonselect>no</pulseonselect>
+        <orientation>horizontal</orientation>
+        <font>regular24</font>
+        <textcolor>white</textcolor>
+        <disabledcolor>disabled</disabledcolor>
+    </default>
+    <default type="sliderex">
+        <sliderwidth>150</sliderwidth>
+        <sliderheight>28</sliderheight>
+        <texturesliderbar>buttons/slider-back.png</texturesliderbar>
+        <textureslidernib>buttons/slider-nib.png</textureslidernib>
+        <textureslidernibfocus colordiffuse="border">buttons/slider-nib.png</textureslidernibfocus>
+        <pulseonselect>no</pulseonselect>
+        <orientation>horizontal</orientation>
+        <font>regular24</font>
+        <aligny>center</aligny>
+        <textcolor>white</textcolor>
+        <shadowcolor>black</shadowcolor>
+        <disabledcolor>disabled</disabledcolor>
+        <texturefocus colordiffuse="active" border="1">backgrounds/overlay_background_border.png</texturefocus>
+        <texturenofocus colordiffuse="backgrounddark">colors/white.png</texturenofocus>
+    </default>
+    <default type="progress">
+        <texturebg colordiffuse="border" border="3">progress/texturebg_border_white.png</texturebg>
+        <midtexture colordiffuse="active" border="5,3,5,3">progress/texturebg_white.png</midtexture>
+        <lefttexture></lefttexture>
+        <righttexture></righttexture>
+        <overlaytexture></overlaytexture>
+    </default>
+</includes>

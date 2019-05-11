@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="view_51_fanart">
+        <control type="group">
+            <include>openclose_slight_left</include>
+            <visible>Control.IsVisible(51)</visible>
+            <control type="fixedlist" id="51">
+                <visible>$EXP[AllowedViewFanart]</visible>
+                <top>70</top>
+                <left>20</left>
+                <bottom>20</bottom>
+                <width>565</width>
+                <height>1000</height>
+                <visible>true</visible>
+                <focusposition>2</focusposition>
+                <movement>2</movement>
+                <viewtype label="Fanart">biglist</viewtype>
+                <orientation>vertical</orientation>
+                <scrolltime tween="sine" easing="out">500</scrolltime>
+                <pagecontrol>51001</pagecontrol>
+                <onleft>9000</onleft>
+                <onright>51001</onright>
+                <include content="view_51_itemlayout" />
+                <include content="view_51_focusedlayout" />
+            </control>
+            <include content="scrollbar">
+                <param name="controlled_id" value="51" />
+                <param name="onleft_id" value="51" />
+                <param name="onright_id" value="51" />
+                <param name="left" value="595" />
+            </include>
+        </control>
+        <include content="view_51_contentpanel" />
+    </include>
+
+    <include name="view_51_itemlayout">
+        <itemlayout width="508" height="180">
+            <control type="group">
+                <include content="listitem_background">
+                    <param name="active">false</param>
+                    <param name="top">5</param>
+                    <param name="height">175</param>
+                </include>
+                <control type="image">
+                    <top>6</top>
+                    <left>1</left>
+                    <width>116</width>
+                    <height>173</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">$INFO[ListItem.Art(poster)]</texture>
+                </control>
+                <control type="textbox">
+                    <top>15</top>
+                    <left>140</left>
+                    <width>351</width>
+                    <height>155</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light30</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+        </itemlayout>
+    </include>
+
+    <include name="view_51_focusedlayout">
+        <focusedlayout width="565" height="281">
+            <control type="group">
+                <animation effect="zoom" start="90,90" end="100,100" center="0,0"   time="500" tween="sine" easing="out" condition="Container(51).OnNext + Skin.HasSetting(use_animations_fanart)">focus</animation>
+                <animation effect="zoom" start="90,90" end="100,100" center="0,281" time="500" tween="sine" easing="out" condition="Container(51).OnPrevious + Skin.HasSetting(use_animations_fanart)">focus</animation>
+                <include content="listitem_background">
+                    <param name="active">true</param>
+                    <param name="top">5</param>
+                    <param name="height">276</param>
+                </include>
+                <control type="image">
+                    <top>6</top>
+                    <left>1</left>
+                    <width>183</width>
+                    <height>274</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">$INFO[ListItem.Art(poster)]</texture>
+                </control>
+                <control type="textbox">
+                    <top>20</top>
+                    <left>200</left>
+                    <right>15</right>
+                    <height>241</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light36</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+        </focusedlayout>
+    </include>
+
+    <include name="view_51_contentpanel">
+        <control type="group">
+            <visible>Control.IsVisible(51) + !String.IsEqual(Container(51).ListItem.Label,..)</visible>                
+            <include>openclose_slight_right</include>
+            <control type="image">
+                <right>20</right>
+                <top>70</top>
+                <width>1280</width>
+                <height>720</height>
+                <aspectratio>scale</aspectratio>
+                <texture background="true">$INFO[Container(51).ListItem.Art(fanart)]</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="group">
+                <right>20</right>
+                <top>800</top>
+                <width>1280</width>
+                <height>270</height>
+                <control type="image">
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                    <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="grouplist">
+                    <top>5</top>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="label">
+                        <left>20</left>
+                        <width>850</width>
+                        <height>40</height>
+                        <aligny>center</aligny>
+                        <font>regular36</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(51).ListItem.Label] $INFO[Container(51).ListItem.Year,(,)]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(Container(51).ListItem.Tagline)</visible>
+                        <left>20</left>
+                        <width>850</width>
+                        <height>30</height>
+                        <aligny>center</aligny>
+                        <font>regular24</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(51).ListItem.Tagline]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(Container(51).ListItem.Genre)</visible>
+                        <left>20</left>
+                        <width>850</width>
+                        <height>30</height>
+                        <aligny>center</aligny>
+                        <font>regular24</font>
+                        <textcolor>active</textcolor>
+                        <scroll>true</scroll>
+                        <label>$INFO[Container(51).ListItem.Genre]</label>
+                    </control>
+                    <control type="textbox">
+                        <visible>String.IsEmpty(Container(51).ListItem.Tagline) + String.IsEmpty(Container(51).ListItem.Genre)</visible>
+                        <left>20</left>
+                        <right>20</right>
+                        <height>205</height>
+                        <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
+                        <font>light24</font>
+                        <label>$INFO[Container(51).ListItem.Plot]</label>
+                    </control>
+                    <control type="textbox">
+                        <visible>[!String.IsEmpty(Container(51).ListItem.Tagline) + String.IsEmpty(Container(51).ListItem.Genre)] | [String.IsEmpty(Container(51).ListItem.Tagline) + !String.IsEmpty(Container(51).ListItem.Genre)]</visible>
+                        <left>20</left>
+                        <right>20</right>
+                        <height>175</height>
+                        <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
+                        <font>light24</font>
+                        <label>$INFO[Container(51).ListItem.Plot]</label>
+                    </control>
+                    <control type="textbox">
+                        <visible>!String.IsEmpty(Container(51).ListItem.Tagline) + !String.IsEmpty(Container(51).ListItem.Genre)</visible>
+                        <left>20</left>
+                        <right>20</right>
+                        <height>145</height>
+                        <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
+                        <font>light24</font>
+                        <label>$INFO[Container(51).ListItem.Plot]</label>
+                    </control>
+                </control>
+                <include content="mediaflags">
+                    <param name="top" value="10" />
+                    <param name="left" value="10" />
+                    <param name="width" value="1260" />
+                    <param name="height" value="30" />
+                </include>
+            </control>
+        </control>
+        <control type="group">
+            <visible>Control.IsVisible(51) + String.IsEqual(Container(51).ListItem.Label,..)</visible>
+            <include>openclose_slight_right</include>
+            <control type="group">
+                <right>20</right>
+                <top>70</top>
+                <width>1280</width>
+                <height>1000</height>
+                <control type="image">
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                    <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <top>250</top>
+                    <left>380</left>
+                    <width>500</width>
+                    <height>500</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[Container(51).ListItem.Icon]</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+</includes>

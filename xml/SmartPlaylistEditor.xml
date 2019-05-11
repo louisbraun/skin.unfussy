@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol>22</defaultcontrol>
+    <include>dialogpopup_openclose</include>
+    <controls>
+        <control type="group">
+            <centertop>50%</centertop>
+            <centerleft>50%</centerleft>
+            <width>1760</width>
+            <height>900</height>
+            <include>background_dialog</include>
+            <include>dialog_smartplayllisteditor_decoration</include>
+            <control type="label" id="2">
+                <left>10</left>
+                <right>10</right>
+                <include>headerlabel_dialog</include>
+            </control>
+            <control type="grouplist" id="500">
+                <orientation>vertical</orientation>
+                <left>10</left>
+                <top>95</top>
+                <onright>10</onright>
+                <onleft>9001</onleft>
+                <itemgap>10</itemgap>
+                <usecontrolcoords>true</usecontrolcoords>
+                <control type="button" id="22">
+                    <description>Set Playlist type</description>
+                    <width>700</width>
+                    <include content="button_settings">
+                        <param name="textoffsetx">20</param>
+                    </include>
+                    <label>$LOCALIZE[467]</label>
+                </control>
+                <control type="button" id="12">
+                    <description>Name Button</description>
+                    <label>$LOCALIZE[21433]</label>
+                    <width>700</width>
+                    <include content="button_settings">
+                        <param name="textoffsetx">20</param>
+                    </include>
+                </control>
+                <control type="label" id="1101">
+                    <description>Name Label</description>
+                    <top>20</top>
+                    <left>10</left>
+                    <width>700</width>
+                    <height>40</height>
+                    <font>light30</font>
+                    <textcolor>active</textcolor>
+                    <label>$LOCALIZE[31078]</label>
+                </control>
+                <control type="button" id="16">
+                    <width>700</width>
+                    <label>$LOCALIZE[21424]</label>
+                    <include content="button_settings">
+                        <param name="textoffsetx">20</param>
+                    </include>
+                </control>
+                <control type="button" id="17">
+                    <width>700</width>
+                    <label>$LOCALIZE[21427]</label>
+                    <include content="button_settings">
+                        <param name="textoffsetx">20</param>
+                    </include>
+                </control>
+                <control type="button" id="18">
+                    <label>$LOCALIZE[21429]</label>
+                    <width>700</width>
+                    <include content="button_settings">
+                        <param name="textoffsetx">20</param>
+                    </include>
+                </control>
+                <control type="button" id="19">
+                    <width>700</width>
+                    <include content="button_settings">
+                        <param name="textoffsetx">20</param>
+                    </include>
+                    <label>$LOCALIZE[31082]</label>
+                </control>
+                <control type="button" id="23">
+                    <width>700</width>
+                    <label>$LOCALIZE[21458]</label>
+                    <include content="button_settings">
+                        <param name="textoffsetx">20</param>
+                    </include>
+                </control>
+                <control type="radiobutton" id="24">
+                    <width>700</width>
+                    <include content="button_settings">
+                        <param name="textoffsetx">20</param>
+                    </include>
+                    <label>$LOCALIZE[467]: $LOCALIZE[21459]</label>
+                </control>
+            </control>
+            <control type="list" id="10">
+                <description>Rules List Control</description>
+                <left>721</left>
+                <top>115</top>
+                <width>698</width>
+                <height>480</height>
+                <onleft>500</onleft>
+                <onright>9001</onright>
+                <orientation>vertical</orientation>
+                <itemlayout width="698" height="70">
+                    <control type="label">
+                        <left>20</left>
+                        <top>0</top>
+                        <right>20</right>
+                        <bottom>0</bottom>
+                        <font>light30</font>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label]</label>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="698" height="70">
+                    <control type="image">
+                        <visible>Control.HasFocus(10)</visible>
+                        <aspectratio>stretch</aspectratio>
+                        <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                        <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                        <bordersize>1</bordersize>
+                    </control>
+                    <control type="label">
+                        <left>20</left>
+                        <top>0</top>
+                        <right>20</right>
+                        <bottom>0</bottom>
+                        <font>light30</font>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label]</label>
+                        <scroll>true</scroll>
+                    </control>
+                </focusedlayout>
+            </control>
+            <control type="textbox">
+                <left>730</left>
+                <top>620</top>
+                <width>700</width>
+                <height>300</height>
+                <aligny>top</aligny>
+                <label>$LOCALIZE[31079]</label>
+                <textcolor>grey</textcolor>
+                <font>light24</font>
+            </control>
+            <control type="grouplist" id="9001">
+                <orientation>vertical</orientation>
+                <left>1440</left>
+                <width>300</width>
+                <itemgap>5</itemgap>
+                <top>100</top>
+                <onleft>10</onleft>
+                <onright>500</onright>
+                <include content="dialog_button">
+                    <param name="id" value="20" />
+                    <param name="width" value="300" />
+                    <param name="label" value="$LOCALIZE[186]" />
+                </include>
+                <include content="dialog_button">
+                    <param name="id" value="21" />
+                    <param name="width" value="300" />
+                    <param name="label" value="$LOCALIZE[222]" />
+                </include>
+            </control>
+        </control>
+    </controls>
+</window>

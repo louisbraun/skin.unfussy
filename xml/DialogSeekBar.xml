@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <visible>Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding | Player.ShowInfo | Window.IsActive(fullscreeninfo) | Window.IsActive(videoosd) | Window.IsActive(musicosd) | Window.IsActive(playerprocessinfo) | !String.IsEmpty(Player.SeekNumeric) | !String.IsEmpty(PVR.ChannelNumberInput)</visible>
+    <visible>Window.IsActive(fullscreenvideo) | Window.IsActive(visualisation)</visible>
+    <include>openclose_slight_bottom</include>
+    <controls>
+        <include>video_osd</include>
+        <include>pvr_channelnumber_input</include>
+        <include>pvr_osd</include>
+        <include>music_osd</include>
+    </controls>
+</window>

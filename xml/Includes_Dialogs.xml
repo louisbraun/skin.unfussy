@@ -1,0 +1,2109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+    <expression name="settings_full">
+        ![
+            Window.Is(osdaudiosettings) | 
+            Window.Is(osdsubtitlesettings) | 
+            Window.Is(osdvideosettings) | 
+            Window.Is(osdcmssettings)
+        ]
+    </expression>
+
+    <include name="background_dialog">
+        <param name="opacity">88</param>
+        <definition>
+            <control type="image">
+                <left>-2000</left>
+                <top>-2000</top>
+                <width>6000</width>
+                <height>6000</height>
+                <animation effect="fade" time="300">VisibleChange</animation>
+                <animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
+                <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+                <texture colordiffuse="$PARAM[opacity]FFFFFF">colors/black.png</texture>
+            </control>
+        </definition>
+    </include>
+
+    <include name="headerlabel_dialog">
+        <height>80</height>
+        <align>center</align>
+        <aligny>center</aligny>
+        <font>light36</font>
+        <textcolor>active</textcolor>
+        <shadowcolor>black</shadowcolor>
+    </include>
+
+    <include name="button_dialog">
+        <height>50</height>
+        <textoffsetx>10</textoffsetx>
+        <aligny>center</aligny>
+        <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+        <texturenofocus />
+    </include>
+
+    <include name="button_settings">
+        <param name="height">70</param>
+        <param name="textoffsetx">40</param>
+        <definition>
+            <textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+            <top>0</top>
+            <height>$PARAM[height]</height>
+            <aligny>center</aligny>
+            <font>regular30</font>
+            <invalidcolor>invalid</invalidcolor>
+            <selectedcolor>white</selectedcolor>
+            <texturenofocus />
+        </definition>
+    </include>
+
+    <include name="dialog_button">
+        <param name="id" />
+        <param name="width">270</param>
+        <param name="background">backgrounddark</param>
+        <param name="label" />
+        <param name="onclick"></param>
+        <param name="visible">true</param>
+        <definition>
+            <control type="button" id="$PARAM[id]">
+                <visible>$PARAM[visible]</visible>
+                <width>$PARAM[width]</width>
+                <height>60</height>
+                <label>$PARAM[label]</label>
+                <font>regular24</font>
+                <textoffsetx>20</textoffsetx>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>white</textcolor>
+                <focusedcolor>white</focusedcolor>
+                <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                <texturenofocus colordiffuse="$PARAM[background]">colors/white.png</texturenofocus>
+                <onclick>$PARAM[onclick]</onclick>
+            </control>
+        </definition>
+    </include>
+
+    <include name="dialogselect_menuitem">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <visible>Control.HasFocus(3) + $PARAM[active]</visible>
+                <left>0</left>
+                <top>0</top>
+                <right>0</right>
+                <bottom>0</bottom>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="activedialog">colors/white.png</texture>
+            </control>
+            <control type="label">
+                <left>20</left>
+                <top>0</top>
+                <right>20</right>
+                <bottom>0</bottom>
+                <font>regular30</font>
+                <aligny>center</aligny>
+                <textcolor>white</textcolor>
+                <selectedcolor>selected</selectedcolor>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="dialogselect_menuitem_details">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <left>0</left>
+                <top>0</top>
+                <right>0</right>
+                <bottom>0</bottom>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="activedialog">colors/white.png</texture>
+                <visible>Control.HasFocus(6) + $PARAM[active]</visible>
+            </control>
+            <control type="group">
+                <visible>!String.IsEmpty(ListItem.Art(thumb))</visible>
+                <control type="image">
+                    <left>10</left>
+                    <top>5</top>
+                    <width>120</width>
+                    <height>90</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="label">
+                    <left>150</left>
+                    <top>0</top>
+                    <right>20</right>
+                    <bottom>0</bottom>
+                    <font>regular30</font>
+                    <aligny>center</aligny>
+                    <textcolor>white</textcolor>
+                    <selectedcolor>selected</selectedcolor>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+                <visible>String.IsEmpty(ListItem.Label2)</visible>
+                <control type="label">
+                    <left>10</left>
+                    <top>0</top>
+                    <right>20</right>
+                    <bottom>0</bottom>
+                    <font>regular30</font>
+                    <aligny>center</aligny>
+                    <textcolor>white</textcolor>
+                    <selectedcolor>selected</selectedcolor>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEmpty(ListItem.Art(thumb))</visible>
+                <visible>!String.IsEmpty(ListItem.Label2)</visible>
+                <control type="label">
+                    <top>5</top>
+                    <left>20</left>
+                    <right>20</right>
+                    <height>60</height>
+                    <font>regular30</font>
+                    <aligny>center</aligny>
+                    <textcolor>white</textcolor>
+                    <selectedcolor>selected</selectedcolor>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="label">
+                    <top>50</top>
+                    <left>20</left>
+                    <right>20</right>
+                    <height>40</height>
+                    <font>regular24</font>
+                    <aligny>center</aligny>
+                    <textcolor>white</textcolor>
+                    <selectedcolor>selected</selectedcolor>
+                    <label>$INFO[ListItem.Label2]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="settings_menuitem">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <visible>!$PARAM[active]</visible>
+                <control type="image">
+                    <left>0</left>
+                    <top>0</top>
+                    <width>300</width>
+                    <height>280</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                    <bordertexture colordiffuse="border" border="1">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <left>1</left>
+                    <top>200</top>
+                    <width>298</width>
+                    <height>79</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="background">backgrounds/overlay_background.png</texture>
+                </control>
+                <control type="image">
+                    <top>0</top>
+                    <left>50</left>
+                    <width>200</width>
+                    <height>200</height>
+                    <align>center</align>
+                    <aspectratio>scale</aspectratio>
+                    <texture colordiffuse="inactive">$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="image">
+                    <left>1</left>
+                    <top>200</top>
+                    <width>298</width>
+                    <height>1</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="border">colors/white.png</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>$PARAM[active]</visible>
+                <control type="image">
+                    <left>0</left>
+                    <top>0</top>
+                    <width>300</width>
+                    <height>280</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                    <bordertexture colordiffuse="activedialog" border="1">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <left>1</left>
+                    <top>200</top>
+                    <width>298</width>
+                    <height>79</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="activedialog">backgrounds/overlay_background.png</texture>
+                </control>
+                <control type="image">
+                    <top>0</top>
+                    <left>50</left>
+                    <width>200</width>
+                    <height>200</height>
+                    <align>center</align>
+                    <aspectratio>scale</aspectratio>
+                    <texture colordiffuse="activedialog">$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="image">
+                    <left>1</left>
+                    <top>200</top>
+                    <width>298</width>
+                    <height>1</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="activedialog">colors/white.png</texture>
+                </control>
+            </control>
+            <control type="label">
+                <left>20</left>
+                <top>200</top>
+                <height>80</height>
+                <width>260</width>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>regular36</font>
+                <textcolor>white</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="filemanager_panel_background">
+        <param name="left" />
+        <definition>
+            <control type="image">
+                <left>$PARAM[left]</left>
+                <width>850</width>
+                <top>80</top>
+                <height>980</height>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+        </definition>
+    </include>
+
+    <include name="filemanager_panel">
+        <param name="list_id" />
+        <param name="left" />
+        <param name="right" />
+        <param name="onleft" />
+        <param name="onright" />
+        <param name="scrollbar_id" />
+        <definition>
+            <control type="fixedlist" id="$PARAM[list_id]">
+                <left>$PARAM[left]</left>
+                <top>100</top>
+                <bottom>100</bottom>
+                <width>840</width>
+                <focusposition>4</focusposition>
+                <movement>3</movement>
+                <onleft>$PARAM[onleft]</onleft>
+                <onright>$PARAM[onright]</onright>
+                <onup>$PARAM[list_id]</onup>
+                <ondown>$PARAM[list_id]</ondown>
+                <pagecontrol>$PARAM[scrollbar_id]</pagecontrol>
+                <scrolltime>200</scrolltime>
+                <focusedlayout height="80">
+                    <control type="image">
+                        <left>0</left>
+                        <top>0</top>
+                        <right>0</right>
+                        <bottom>0</bottom>
+                        <texture colordiffuse="activedialog">backgrounds/overlay_background.png</texture>
+                        <animation effect="fade" start="100" end="0" time="0" condition="!Control.HasFocus($PARAM[list_id])">Conditional</animation>
+                    </control>
+                    <control type="image">
+                        <left>15</left>
+                        <top>0</top>
+                        <width>32</width>
+                        <bottom>0</bottom>
+                        <aspectratio aligny="center">keep</aspectratio>
+                        <texture>$VAR[FileListIcon]</texture>
+                    </control>
+                    <control type="label">
+                        <left>65</left>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <right>20</right>
+                        <aligny>center</aligny>
+                        <scroll>true</scroll>
+                        <label>$INFO[ListItem.Label]</label>
+                    </control>
+                    <control type="label">
+                        <left>0</left>
+                        <textoffsetx>30</textoffsetx>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <right>0</right>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label2]</label>
+                    </control>
+                </focusedlayout>
+                <itemlayout height="80">
+                    <control type="image">
+                        <left>15</left>
+                        <top>0</top>
+                        <width>32</width>
+                        <bottom>0</bottom>
+                        <aspectratio aligny="center">keep</aspectratio>
+                        <texture>$VAR[FileListIcon]</texture>
+                    </control>
+                    <control type="label">
+                        <left>65</left>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <right>20</right>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label]</label>
+                    </control>
+                    <control type="label">
+                        <left>0</left>
+                        <textoffsetx>30</textoffsetx>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <right>0</right>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Label2]</label>
+                        <textcolor>grey</textcolor>
+                    </control>
+                </itemlayout>
+            </control>
+        </definition>
+    </include>
+
+    <include name="filemanager_scrollbar">
+        <param name="scrollbar_id" />
+        <param name="filemanager_panel_id" />
+        <param name="left" />
+        <definition>
+            <control type="scrollbar" id="$PARAM[scrollbar_id]">
+                <top>100</top>
+                <left>$PARAM[left]</left>
+                <width>10</width>
+                <bottom>20</bottom>
+                <onleft>$PARAM[filemanager_panel_id]</onleft>
+                <onright>$PARAM[filemanager_panel_id]</onright>
+                <orientation>vertical</orientation>
+                <texturesliderbackground />
+            </control>
+        </definition>
+    </include>
+
+    <include name="pvr_channelmanager_decoration">
+        <control type="image">
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <control type="image">
+            <height>80</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(20) + !Control.HasFocus(20001)</visible>
+            <left>19</left>
+            <top>99</top>
+            <width>631</width>
+            <height>701</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(20) | Control.HasFocus(20001)</visible>
+            <left>19</left>
+            <top>99</top>
+            <width>631</width>
+            <height>701</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="activedialog">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>!ControlGroup(9002).HasFocus + !ControlGroup(9003).HasFocus</visible>
+            <left>689</left>
+            <top>99</top>
+            <width>702</width>
+            <height>702</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>ControlGroup(9002).HasFocus | ControlGroup(9003).HasFocus</visible>
+            <left>689</left>
+            <top>99</top>
+            <width>702</width>
+            <height>702</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="activedialog">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(4)</visible>
+            <left>1449</left>
+            <top>109</top>
+            <width>352</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(4)</visible>
+            <left>1449</left>
+            <top>109</top>
+            <width>352</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(5)</visible>
+            <left>1449</left>
+            <top>174</top>
+            <width>352</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(5)</visible>
+            <left>1449</left>
+            <top>174</top>
+            <width>352</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(6)</visible>
+            <left>1449</left>
+            <top>239</top>
+            <width>352</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(6)</visible>
+            <left>1449</left>
+            <top>239</top>
+            <width>352</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+    </include>
+
+    <include name="pvr_channelmanager_listitem">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="activedialog">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <left>0</left>
+                <top>2</top>
+                <width>120</width>
+                <height>66</height>
+                <texture>$INFO[ListItem.Property(icon)]</texture>
+                <aspectratio>keep</aspectratio>
+            </control>
+            <control type="image">
+                <right>0</right>
+                <top>10</top>
+                <width>50</width>
+                <height>50</height>
+                <texture>overlays/overlaylocked.png</texture>
+                <aspectratio>keep</aspectratio>
+                <visible>ListItem.Property(ParentalLocked)</visible>
+            </control>
+            <control type="label">
+                <visible>!$PARAM[active]</visible>
+                <left>130</left>
+                <right>40</right>
+                <bottom>0</bottom>
+                <aligny>center</aligny>
+                <font>regular30</font>
+                <label>$INFO[ListItem.Property(Number),[B],[/B] - ]$INFO[ListItem.Property(Name)]</label>
+            </control>
+            <control type="label">
+                <visible>$PARAM[active]</visible>
+                <left>130</left>
+                <right>40</right>
+                <top>0</top>
+                <font>regular30</font>
+                <label>$INFO[ListItem.Property(Number),[B],[/B] - ]$INFO[ListItem.Property(Name)]</label>
+            </control>
+            <control type="label">
+                <visible>$PARAM[active]</visible>
+                <left>130</left>
+                <top>35</top>
+                <right>40</right>
+                <height>30</height>
+                <font>regular20</font>
+                <aligny>center</aligny>
+                <label>$LOCALIZE[19210]: $INFO[ListItem.Property(ClientName)]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="pvr_channelgroupmanager_decoration">
+        <control type="image">
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <control type="image">
+            <height>80</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- border buttons left -->
+        <control type="image">
+            <left>9</left>
+            <top>109</top>
+            <width>372</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <left>9</left>
+            <top>179</top>
+            <width>372</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <left>9</left>
+            <top>249</top>
+            <width>372</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <left>9</left>
+            <top>319</top>
+            <width>372</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <left>9</left>
+            <top>389</top>
+            <width>372</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <left>9</left>
+            <top>459</top>
+            <width>372</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <!-- background groups -->
+        <control type="image">
+            <visible>!Control.HasFocus(13) + !Control.HasFocus(13001)</visible>
+            <left>400</left>
+            <top>100</top>
+            <width>350</width>
+            <height>770</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(13) | Control.HasFocus(13001)</visible>
+            <left>400</left>
+            <top>100</top>
+            <width>350</width>
+            <height>770</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <left>401</left>
+            <top>101</top>
+            <width>348</width>
+            <height>48</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+        </control>
+    </include>
+
+    <include name="pvr_channelmanagerlist">
+        <control type="image">
+            <visible>!Control.HasFocus($PARAM[list_id]) + !Control.HasFocus($PARAM[scrollbar_id])</visible>
+            <left>0</left>
+            <top>0</top>
+            <width>470</width>
+            <height>770</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus($PARAM[list_id]) | Control.HasFocus($PARAM[scrollbar_id])</visible>
+            <left>0</left>
+            <top>0</top>
+            <width>470</width>
+            <height>770</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <top>1</top>
+            <left>1</left>
+            <width>468</width>
+            <height>48</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+        </control>
+        <control type="grouplist">
+            <orientation>horizontal</orientation>
+            <left>0</left>
+            <align>center</align>
+            <width>470</width>
+            <control type="label" id="$PARAM[header_id]">
+                <width>auto</width>
+                <height>50</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+            </control>
+            <control type="label">
+                <width>auto</width>
+                <height>50</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <label>: [COLOR white]$INFO[Container($PARAM[list_id]).Numitems][/COLOR]</label>
+            </control>
+        </control>
+        <control type="list" id="$PARAM[list_id]">
+            <left>0</left>
+            <top>50</top>
+            <width>440</width>
+            <height>700</height>
+            <onup>$PARAM[list_id]</onup>
+            <ondown>$PARAM[list_id]</ondown>
+            <onleft>$PARAM[onleft]</onleft>
+            <onright>$PARAM[scrollbar_id]</onright>
+            <pagecontrol>$PARAM[scrollbar_id]</pagecontrol>
+            <scrolltime>200</scrolltime>
+            <itemlayout height="70" width="440">
+                <control type="image">
+                    <width>100</width>
+                    <height>70</height>
+                    <right>5</right>
+                    <texture>$INFO[ListItem.ActualIcon]</texture>
+                    <bordersize>2</bordersize>
+                    <aspectratio>keep</aspectratio>
+                </control>
+                <control type="label">
+                    <left>20</left>
+                    <right>110</right>
+                    <height>70</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <shadowcolor>black</shadowcolor>
+                    <label>$INFO[ListItem.ChannelNumberLabel,[B],[/B] - ]$INFO[ListItem.ChannelName]</label>
+                </control>
+            </itemlayout>
+            <focusedlayout height="70" width="440">
+                <control type="image">
+                    <visible>Control.HasFocus($PARAM[list_id])</visible>
+                    <left>0</left>
+                    <right>0</right>
+                    <bottom>0</bottom>
+                    <texture colordiffuse="activedialog">colors/white.png</texture>
+                </control>
+                <control type="image">
+                    <width>100</width>
+                    <height>70</height>
+                    <right>5</right>
+                    <texture>$INFO[ListItem.ActualIcon]</texture>
+                    <aspectratio>keep</aspectratio>
+                </control>
+                <control type="label">
+                    <left>20</left>
+                    <right>110</right>
+                    <height>70</height>
+                    <font>regular24</font>
+                    <shadowcolor>black</shadowcolor>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.ChannelNumberLabel,[B],[/B] - ]$INFO[ListItem.ChannelName]</label>
+                </control>
+            </focusedlayout>
+        </control>
+        <control type="image">
+            <visible>Control.IsVisible($PARAM[scrollbar_id])</visible>
+            <left>450</left>
+            <top>55</top>
+            <width>12</width>
+            <height>705</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+        </control>
+        <control type="scrollbar" id="$PARAM[scrollbar_id]">
+            <left>450</left>
+            <top>55</top>
+            <width>12</width>
+            <height>705</height>
+            <onleft>$PARAM[list_id]</onleft>
+            <onright>$PARAM[onright]</onright>
+            <ondown>$PARAM[scrollbar_id]</ondown>
+            <onup>$PARAM[scrollbar_id]</onup>
+            <orientation>vertical</orientation>
+            <texturesliderbackground colordiffuse="borderdark" border="3">progress/texturebg_border_white.png</texturesliderbackground>
+            <texturesliderbar border="3,6,3,6" colordiffuse="border">progress/texturebg_white.png</texturesliderbar>
+            <texturesliderbarfocus border="3,6,3,6" colordiffuse="active">progress/texturebg_white.png</texturesliderbarfocus>
+        </control>
+    </include>
+
+    <include name="pvr_search_decoration">
+        <control type="image">
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <control type="image">
+            <height>80</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- bordersearch box -->
+        <control type="image">
+            <visible>!Control.HasFocus(9)</visible>
+            <left>19</left>
+            <top>89</top>
+            <width>1443</width>
+            <height>82</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(9)</visible>
+            <left>19</left>
+            <top>89</top>
+            <width>1443</width>
+            <height>82</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <!-- border buttons left -->
+        <control type="image">
+            <visible>!Control.HasFocus(26)</visible>
+            <left>1519</left>
+            <top>99</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(26)</visible>
+            <left>1519</left>
+            <top>99</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(28)</visible>
+            <left>1519</left>
+            <top>164</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(28)</visible>
+            <left>1519</left>
+            <top>164</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(25)</visible>
+            <left>1519</left>
+            <top>229</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(25)</visible>
+            <left>1519</left>
+            <top>229</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+    </include>
+
+    <include name="keyboard_button">
+        <width>120</width>
+        <height>120</height>
+        <textoffsety>27</textoffsety>
+        <texturefocus colordiffuse="activedialog">buttons/buttonkeyboard.png</texturefocus>
+        <texturenofocus />
+        <align>center</align>
+        <aligny>top</aligny>
+        <font>light50</font>
+    </include>
+
+    <include name="dialog_confirm_decoration">
+        <control type="image">
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- header -->
+        <control type="image">
+            <width>800</width>
+            <height>80</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- button background -->
+        <control type="image">
+            <left>2</left>
+            <top>330</top>
+            <width>796</width>
+            <height>98</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+        </control>
+        <!-- separator line -->
+        <control type="image">
+            <left>1</left>
+            <top>330</top>
+            <width>798</width>
+            <height>2</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <!-- button borders -->
+        <control type="group">
+            <visible>Control.IsVisible(10) + Control.IsVisible(11)</visible>
+            <control type="image">
+                <visible>!Control.HasFocus(11)</visible>
+                <left>34</left>
+                <top>349</top>
+                <width>352</width>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <visible>Control.HasFocus(11)</visible>
+                <left>34</left>
+                <top>349</top>
+                <width>352</width>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <visible>!Control.HasFocus(10)</visible>
+                <left>414</left>
+                <top>349</top>
+                <width>352</width>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <visible>Control.HasFocus(10)</visible>
+                <left>414</left>
+                <top>349</top>
+                <width>352</width>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">colors/white.png</texture>
+            </control>
+        </control>
+        <control type="image">
+            <visible>!Control.IsVisible(10) | !Control.IsVisible(11)</visible>
+            <left>224</left>
+            <top>349</top>
+            <width>352</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+    </include>
+
+    <include name="dialog_mediasource_decoration">
+        <control type="image">
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- header -->
+        <control type="image">
+            <height>80</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- sources box -->
+        <control type="image">
+            <visible>!Control.HasFocus(10)</visible>
+            <left>25</left>
+            <top>145</top>
+            <width>860</width>
+            <height>285</height>
+            <texture border="40" colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(10)</visible>
+            <left>25</left>
+            <top>145</top>
+            <width>860</width>
+            <height>285</height>
+            <texture border="40" colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <!-- borders buttons right  -->
+        <control type="image">
+            <visible>!Control.HasFocus(11)</visible>
+            <top>146</top>
+            <left>899</left>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(11)</visible>
+            <top>146</top>
+            <left>899</left>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(13)</visible>
+            <top>211</top>
+            <left>899</left>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(13)</visible>
+            <top>211</top>
+            <left>899</left>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(14)</visible>
+            <top>276</top>
+            <left>899</left>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(14)</visible>
+            <top>276</top>
+            <left>899</left>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <!-- border name edit  -->
+        <control type="image">
+            <visible>!Control.HasFocus(12)</visible>
+            <left>29</left>
+            <top>499</top>
+            <width>1142</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(12)</visible>
+            <left>29</left>
+            <top>499</top>
+            <width>1142</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <!-- border buttons bottom  -->
+        <control type="image">
+            <visible>!Control.HasFocus(18)</visible>
+            <left>319</left>
+            <top>579</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(18)</visible>
+            <left>319</left>
+            <top>579</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(19)</visible>
+            <left>609</left>
+            <top>579</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(19)</visible>
+            <left>609</left>
+            <top>579</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+    </include>
+
+    <include name="dialog_mediasource_sourceitem">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <visible>Control.HasFocus(10)</visible>
+                <left>0</left>
+                <top>0</top>
+                <bottom>0</bottom>
+                <right>0</right>
+                <texture colordiffuse="activedialog">colors/white.png</texture>
+            </control>
+            <control type="label">
+                <left>10</left>
+                <top>0</top>
+                <bottom>0</bottom>
+                <right>10</right>
+                <aligny>center</aligny>
+                <label>$INFO[ListItem.Label]</label>
+                <shadowcolor>black</shadowcolor>
+            </control>
+        </definition>
+    </include>
+
+    <include name="dialog_filebrowser_decoration">
+        <control type="image">
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- header  -->
+        <control type="image">
+            <height>80</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- border buttons right  -->
+        <control type="image">
+            <visible>!Control.HasFocus(413)</visible>
+            <left>989</left>
+            <top>99</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(413)</visible>
+            <left>989</left>
+            <top>99</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(414)</visible>
+            <left>989</left>
+            <top>164</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(414)</visible>
+            <left>989</left>
+            <top>164</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.IsEnabled(415)</visible>
+            <visible>!Control.HasFocus(415)</visible>
+            <left>989</left>
+            <top>229</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.IsEnabled(415)</visible>
+            <visible>Control.HasFocus(415)</visible>
+            <left>989</left>
+            <top>229</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.IsEnabled(415)</visible>
+            <visible>Control.IsEnabled(416)</visible>
+            <visible>!Control.HasFocus(416)</visible>
+            <left>989</left>
+            <top>294</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.IsEnabled(415)</visible>
+            <visible>Control.IsEnabled(416)</visible>
+            <visible>Control.HasFocus(416)</visible>
+            <left>989</left>
+            <top>294</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <!-- filelist background -->
+        <control type="image">
+            <visible>!Control.HasFocus(450)</visible>
+            <left>19</left>
+            <top>99</top>
+            <width>942</width>
+            <height>702</height>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(450)</visible>
+            <left>19</left>
+            <top>99</top>
+            <width>942</width>
+            <height>702</height>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <!-- icon background -->
+        <control type="image">
+            <left>990</left>
+            <top>550</top>
+            <width>280</width>
+            <height>250</height>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+    </include>
+
+    <include name="dialog_filebrowser_listitem">
+        <param name="list_id">450</param>
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <visible>Control.HasFocus($PARAM[list_id])</visible>
+                <visible>$PARAM[active]</visible>
+                <texture colordiffuse="activedialog">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <left>10</left>
+                <top>10</top>
+                <width>50</width>
+                <height>50</height>
+                <texture>$INFO[ListItem.Icon]</texture>
+                <aspectratio>keep</aspectratio>
+            </control>
+            <control type="label">
+                <left>75</left>
+                <top>0</top>
+                <right>20</right>
+                <height>70</height>
+                <aligny>center</aligny>
+                <selectedcolor>selected</selectedcolor>
+                <shadowcolor>black</shadowcolor>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="dialog_buttonmenu_listitem">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <left>10</left>
+                <top>10</top>
+                <width>230</width>
+                <height>230</height>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <left>10</left>
+                <top>10</top>
+                <width>230</width>
+                <height>230</height>
+                <texture colordiffuse="activedialog">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <left>50</left>
+                <top>25</top>
+                <width>150</width>
+                <height>150</height>
+                <aspectratio>keep</aspectratio>
+                <texture>$INFO[ListItem.Icon]</texture>
+            </control>
+            <control type="label">
+                <left>30</left>
+                <right>30</right>
+                <bottom>20</bottom>
+                <height>30</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="dialog_select_decoration">
+        <control type="image">
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- header  -->
+        <control type="image">
+            <top>0</top>
+            <left>0</left>
+            <width>1220</width>
+            <height>80</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- background right  -->
+        <control type="image">
+            <top>80</top>
+            <left>930</left>
+            <width>288</width>
+            <height>668</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+        </control>
+        <!-- separator line  -->
+        <control type="image">
+            <top>80</top>
+            <left>930</left>
+            <width>2</width>
+            <height>668</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <!-- border buttons right  -->
+        <control type="image">
+            <visible>!Control.HasFocus(5)</visible>
+            <left>949</left>
+            <top>119</top>
+            <width>252</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(5) | [!Control.IsVisible(5) + Control.HasFocus(7)]</visible>
+            <left>949</left>
+            <top>119</top>
+            <width>252</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.IsVisible(5)</visible>
+            <visible>!Control.HasFocus(7)</visible>
+            <left>949</left>
+            <top>189</top>
+            <width>252</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.IsVisible(5)</visible>
+            <visible>Control.HasFocus(7)</visible>
+            <left>949</left>
+            <top>189</top>
+            <width>252</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+    </include>
+
+    <include name="dialog_addonsetting_decoration">
+        <control type="image">
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- header  -->
+        <control type="image">
+            <height>80</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- background left  -->
+        <control type="image">
+            <visible>!ControlGroup(5).HasFocus</visible>
+            <top>100</top>
+            <left>10</left>
+            <width>402</width>
+            <height>870</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="activedialog">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>ControlGroup(5).HasFocus</visible>
+            <top>100</top>
+            <left>10</left>
+            <width>402</width>
+            <height>870</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <!-- background mid  -->
+        <control type="image">
+            <visible>!ControlGroup(5).HasFocus</visible>
+            <top>100</top>
+            <left>430</left>
+            <width>1062</width>
+            <height>870</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>ControlGroup(5).HasFocus</visible>
+            <top>100</top>
+            <left>430</left>
+            <width>1062</width>
+            <height>870</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="activedialog">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <!-- border buttons right  -->
+        <control type="image">
+            <visible>!Control.HasFocus(28)</visible>
+            <top>100</top>
+            <left>1509</left>
+            <width>302</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(28)</visible>
+            <top>100</top>
+            <left>1509</left>
+            <width>302</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(29)</visible>
+            <top>170</top>
+            <left>1509</left>
+            <width>302</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(29)</visible>
+            <top>170</top>
+            <left>1509</left>
+            <width>302</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(30)</visible>
+            <top>240</top>
+            <left>1509</left>
+            <width>302</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(30)</visible>
+            <top>240</top>
+            <left>1509</left>
+            <width>302</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+    </include>
+
+    <include name="dialog_favourites_listitem">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <visible>$PARAM[active]</visible>
+                <control type="image">
+                    <width>300</width>
+                    <height>360</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="backgrounddark">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="activedialog">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <top>299</top>
+                    <left>1</left>
+                    <width>298</width>
+                    <height>60</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="activedialog">backgrounds/overlay_background.png</texture>
+                </control>
+            </control>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <width>300</width>
+                <height>360</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <top>1</top>
+                <left>1</left>
+                <width>298</width>
+                <height>298</height>
+                <aspectratio>keep</aspectratio>
+                <texture fallback="DefaultFavourites.png">$INFO[ListItem.Art(thumb)]</texture>
+            </control>
+            <control type="label">
+                <top>300</top>
+                <left>20</left>
+                <right>20</right>
+                <height>60</height>
+                <font>light36</font>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>white</textcolor>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="dialog_subtitles_decoration">
+        <control type="image">
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- header  -->
+        <control type="image">
+            <height>80</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- left -->
+        <control type="image">
+            <left>1</left>
+            <top>79</top>
+            <width>400</width>
+            <height>719</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <top>79</top>
+            <left>400</left>
+            <width>1</width>
+            <height>719</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <!-- right -->
+        <control type="image">
+            <left>1321</left>
+            <top>79</top>
+            <width>378</width>
+            <height>719</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <top>79</top>
+            <left>1321</left>
+            <width>1</width>
+            <height>719</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(160)</visible>
+            <top>99</top>
+            <left>1369</left>
+            <width>302</width>
+            <height>82</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(160)</visible>
+            <top>99</top>
+            <left>1369</left>
+            <width>302</width>
+            <height>82</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+    </include>
+
+    <include name="dialog_subtitles_provider_listitem">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <texture colordiffuse="activedialog">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="label">
+                <left>20</left>
+                <top>0</top>
+                <right>20</right>
+                <bottom>0</bottom>
+                <aligny>center</aligny>
+                <font>light30</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="dialog_subtitles_listitem">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <texture colordiffuse="activedialog">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <left>25</left>
+                <top>5</top>
+                <width>50</width>
+                <height>50</height>
+                <texture>$INFO[ListItem.Thumb,subtitles/flags/,.png]</texture>
+                <aspectratio>keep</aspectratio>
+            </control>
+            <control type="label">
+                <left>0</left>
+                <top>20</top>
+                <width>100</width>
+                <height>100</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="image">
+                <left>810</left>
+                <top>60</top>
+                <width>30</width>
+                <height>20</height>
+                <texture>subtitles/icon_close_caption.png</texture>
+                <visible>ListItem.property(hearing_imp)</visible>
+            </control>
+            <control type="image">
+                <left>850</left>
+                <top>60</top>
+                <width>60</width>
+                <height>20</height>
+                <texture>subtitles/icon_sync.png</texture>
+                <visible>ListItem.property(sync)</visible>
+            </control>
+            <control type="textbox">
+                <left>130</left>
+                <width>645</width>
+                <height>100</height>
+                <aligny>center</aligny>
+                <label>$INFO[ListItem.Label2]</label>
+            </control>
+            <control type="image">
+                <left>810</left>
+                <top>10</top>
+                <width>100</width>
+                <height>45</height>
+                <texture colordiffuse="white" fallback="flags/starrating/rating0.png">$INFO[ListItem.ActualIcon,flags/starrating/rating,.png]</texture>
+                <aspectratio>keep</aspectratio>
+            </control>
+        </definition>
+    </include>
+
+    <include name="dialog_smartplayllisteditor_decoration">
+        <control type="image">
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- header  -->
+        <control type="image">
+            <height>80</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- left -->
+        <control type="image">
+            <left>10</left>
+            <top>95</top>
+            <width>700</width>
+            <height>780</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <!-- mid -->
+        <control type="image">
+            <left>720</left>
+            <top>95</top>
+            <width>700</width>
+            <height>480</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <!-- right -->
+        <control type="group">
+            <left>1439</left>
+            <top>99</top>
+            <control type="image">
+                <visible>!Control.HasFocus(20)</visible>
+                <width>302</width>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <visible>Control.HasFocus(20)</visible>
+                <width>302</width>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <visible>!Control.HasFocus(21)</visible>
+                <top>65</top>
+                <width>302</width>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <visible>Control.HasFocus(21)</visible>
+                <top>65</top>
+                <width>302</width>
+                <height>62</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">colors/white.png</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="dialog_smartplayllistrule_decoration">
+        <control type="image">
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- header  -->
+        <control type="image">
+            <height>80</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- content -->
+        <control type="image">
+            <left>10</left>
+            <top>100</top>
+            <width>940</width>
+            <height>300</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(17)</visible>
+            <left>29</left>
+            <top>299</top>
+            <width>582</width>
+            <height>72</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(20)</visible>
+            <left>615</left>
+            <top>300</top>
+            <width>315</width>
+            <height>70</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>1</bordersize>
+        </control>
+        <!-- ok buttons -->
+        <control type="image">
+            <visible>!Control.HasFocus(18)</visible>
+            <left>204</left>
+            <top>429</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(18)</visible>
+            <left>204</left>
+            <top>429</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(19)</visible>
+            <left>484</left>
+            <top>429</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(19)</visible>
+            <left>484</left>
+            <top>429</top>
+            <width>272</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+    </include>
+
+    <include name="dialog_settings_decoration">
+        <control type="image">
+            <top>160</top>
+            <left>310</left>
+            <width>1300</width>
+            <height>750</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>                
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <control type="image">
+            <top>210</top>
+            <left>1312</left>
+            <width>296</width>
+            <height>698</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <top>160</top>
+            <left>310</left>
+            <width>1300</width>
+            <height>80</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>        
+        <control type="image">
+            <top>239</top>
+            <left>1311</left>
+            <width>1</width>
+            <height>670</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(28)</visible>
+            <left>1331</left>
+            <top>262</top>
+            <width>252</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(28)</visible>
+            <left>1331</left>
+            <top>262</top>
+            <width>252</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>!Control.HasFocus(29)</visible>
+            <left>1331</left>
+            <top>327</top>
+            <width>252</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="image">
+            <visible>Control.HasFocus(29)</visible>
+            <left>1331</left>
+            <top>327</top>
+            <width>252</width>
+            <height>62</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="active">colors/white.png</texture>
+        </control>        
+    </include>
+
+    <include name="dialog_settings_backgrounds_light">
+        <control type="image">
+            <visible>Window.Is(osdaudiosettings)</visible>
+            <top>85</top>
+            <left>500</left>
+            <width>1000</width>
+            <height>350</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgroundtransparent">colors/white.png</texture>                
+        </control>
+        <control type="image">
+            <visible>Window.Is(osdsubtitlesettings)</visible>
+            <top>135</top>
+            <left>500</left>
+            <width>1000</width>
+            <height>300</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgroundtransparent">colors/white.png</texture>                
+        </control>
+        <control type="image">
+            <visible>Window.Is(osdvideosettings)</visible>
+            <top>185</top>
+            <left>500</left>
+            <width>1000</width>
+            <height>590</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgroundtransparent">colors/white.png</texture>                
+        </control>
+        <control type="image">
+            <visible>Window.Is(osdcmssettings)</visible>
+            <top>235</top>
+            <left>500</left>
+            <width>1000</width>
+            <height>150</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="backgroundtransparent">colors/white.png</texture>                
+        </control>
+    </include>
+
+    <include name="dialog_contextmenu_decoration">
+        <control type="image" id="999">
+            <description>background image</description>
+            <left>0</left>
+            <top>80</top>
+            <width>510</width>
+            <height>780</height>
+            <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <control type="image">
+            <left>0</left>
+            <top>0</top>
+            <width>510</width>
+            <height>80</height>
+            <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>        
+    </include>
+
+    <include name="dialog_globalsearch_decoration">
+        <control type="image">
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+        <!-- header  -->
+        <control type="image">
+            <height>80</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="background">colors/white.png</texture>
+            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+            <bordersize>2</bordersize>
+        </control>
+    </include>
+
+    <include name="dialog_globalsearch_listitem">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <visible>$PARAM[active]</visible>
+                <texture colordiffuse="activedialog">colors/white.png</texture>
+            </control>
+            <control type="label">
+                <left>20</left>
+                <right>20</right>
+                <height>70</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>light36</font>
+                <shadowcolor>black</shadowcolor>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </definition>        
+    </include>
+</includes>

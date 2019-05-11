@@ -1,0 +1,1506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+    <expression name="ShowVideoOsd">
+        VideoPlayer.Content(movies) |
+        VideoPlayer.Content(episodes) |
+        VideoPlayer.Content(musicvideos) |
+        [VideoPlayer.Content(files) + !VideoPlayer.Content(livetv) + !Player.HasAudio] |
+        Pvr.IsPlayingRecording |
+        Player.IsInternetStream
+    </expression>
+
+    <expression name="ShowMusicOsd">
+        Window.IsVisible(MusicVisualisation.xml)
+    </expression>
+
+    <expression name="AllowedViewList">
+        Container.Content(movies) | 
+        Container.Content(tvshows) | 
+        Container.Content(seasons) | 
+        Container.Content(episodes) |
+        Container.Content(musicvideos) |
+        Container.Content(artists) |
+        Container.Content(albums)
+    </expression>
+
+    <expression name="AllowedViewFanart">
+        Container.Content(movies) | 
+        Container.Content(tvshows) | 
+        Container.Content(musicvideos)
+    </expression>
+
+    <expression name="AllowedViewWall">
+        Container.Content(movies) | 
+        Container.Content(tvshows) | 
+        Container.Content(musicvideos) | 
+        Container.Content(addons) |
+        Container.Content(artists) |
+        Container.Content(albums) |
+        Container.Content(images)
+    </expression>
+
+    <expression name="AllowedViewInfoWall">
+        Container.Content(movies) | 
+        Container.Content(musicvideos) | 
+        Container.Content(addons) |
+        Container.Content(artists) |
+        Container.Content(albums) |
+        Container.Content(images)
+    </expression>
+
+    <variable name="ImageLeftView50">
+        <value condition="String.IsEqual(Container(50).ListItem.DBTYPE,season) + String.IsEqual(Container(50).ListItem.Label,$LOCALIZE[20366])">$INFO[Container(50).Art(tvshow.fanart)]</value>
+        <value condition="!String.IsEqual(Container(50).ListItem.DBTYPE,episode)">$INFO[Container(50).ListItem.Art(poster)]</value>
+        <value condition="String.IsEqual(Container(50).ListItem.DBTYPE,episode)">$INFO[Container(50).ListItem.Art(season.poster)]</value>
+        <value></value>
+    </variable>
+
+    <!-- Breadcrumbs -->
+    <variable name="BreadcrumbsVideo">
+        <value condition="Container.Content(movies) | String.StartsWith(container.folderpath,library://video/movies/) | String.StartsWith(container.folderpath,videodb://movies)">$LOCALIZE[20342]</value>
+        <value condition="Container.Content(musicvideos) | String.StartsWith(container.folderpath,library://video/musicvideos/) | String.StartsWith(container.folderpath,videodb://musicvideos)">$LOCALIZE[20389]</value>
+        <value condition="Container.Content(tvshows) | String.StartsWith(container.folderpath,library://video/tvshows/) | String.StartsWith(container.folderpath,videodb://tvshows)">$LOCALIZE[20343]</value>
+        <value condition="Container.Content(seasons)">$LOCALIZE[20343]</value>
+        <value condition="Container.Content(episodes)">$LOCALIZE[20343]</value>
+        <value>$LOCALIZE[3]</value>
+    </variable>
+
+    <variable name="BreadcrumbsPVRChannels">
+        <value condition="Window.IsActive(TVChannels)">$LOCALIZE[19020] / $LOCALIZE[19019] / $INFO[Control.GetLabel(29)]</value>
+        <value>$LOCALIZE[19021] / $LOCALIZE[19019] / $INFO[Control.GetLabel(29)]</value>
+    </variable>
+    <variable name="BreadcrumbsPVRRecordings">
+        <value condition="Window.IsActive(TVRecordings)">$LOCALIZE[19020] / $LOCALIZE[19017]$INFO[Control.GetLabel(30), / ]</value>
+        <value>$LOCALIZE[19021] / $LOCALIZE[19017]$INFO[Control.GetLabel(30), / ]</value>
+    </variable>
+
+    <variable name="BreadcrumbsPVRTimers">
+        <value condition="Window.IsActive(TVTimers)">$LOCALIZE[19020] / $LOCALIZE[19040]</value>
+        <value condition="Window.IsActive(RadioTimers)">$LOCALIZE[19021] / $LOCALIZE[19040]</value>
+        <value condition="Window.IsActive(TVTimerRules)">$LOCALIZE[19020] / $LOCALIZE[19138]$INFO[Control.GetLabel(29), / ]</value>
+        <value>$LOCALIZE[19021] / $LOCALIZE[19138]$INFO[Control.GetLabel(29), / ]</value>
+    </variable>
+
+    <variable name="BreadcrumbsPVRSearch">
+        <value condition="Window.IsActive(TVSearch)">$LOCALIZE[19020] / $LOCALIZE[137]</value>
+        <value>$LOCALIZE[19021] / $LOCALIZE[137]</value>
+    </variable>
+
+    <variable name="BreadcrumbsPVRIcon">
+        <value condition="Window.IsActive(TVChannels)">tv</value>
+        <value>radio</value>
+    </variable>
+
+    <!-- PVR Header -->
+    <variable name="PVRChannelMgrHeader">
+        <value condition="!String.IsEmpty(Window.Property(IsRadio))">$LOCALIZE[19199] - $LOCALIZE[19024]</value>
+        <value>$LOCALIZE[19199] - $LOCALIZE[19023]</value>
+    </variable>
+
+    <variable name="PVRGroupMgrHeader">
+        <value condition="!String.IsEmpty(Window.Property(IsRadio))">$LOCALIZE[19048] - $LOCALIZE[19174]</value>
+        <value>$LOCALIZE[19048] - $LOCALIZE[19173]</value>
+    </variable>
+
+    <variable name="CastContentpath">
+        <value condition="VideoPlayer.Content(movies)">plugin://script.unfussy.helper/?info=getcast&amp;movie=$INFO[VideoPlayer.DBID]</value>
+        <value condition="VideoPlayer.Content(episodes)">plugin://script.unfussy.helper/?info=getcast&amp;tvshow=$INFO[VideoPlayer.TvShowTitle]</value>
+    </variable>
+
+    <!-- PVR Episode Name -->
+    <variable name="PVREpisodeName">
+        <value condition="String.IsEmpty(VideoPlayer.Season) + String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.EpisodeName]</value>
+        <value condition="!String.IsEmpty(VideoPlayer.Season) + String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Season] - $INFO[VideoPlayer.EpisodeName]</value>
+        <value condition="String.IsEmpty(VideoPlayer.Season) + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Episode] - $INFO[VideoPlayer.EpisodeName]</value>
+        <value>S$INFO[VideoPlayer.Season]E$INFO[VideoPlayer.Episode] - $INFO[VideoPlayer.EpisodeName]</value>
+    </variable>
+
+    <!-- PVR Recordings Episode Name -->
+    <variable name="PVRRecEpisodeName">
+        <value condition="String.IsEmpty(ListItem.Season) + String.IsEmpty(ListItem.Episode) + !String.IsEmpty(ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]</value>
+        <value condition="!String.IsEmpty(ListItem.Season) + String.IsEmpty(ListItem.Episode)">$INFO[ListItem.Season] - $INFO[ListItem.TvShowTitle]</value>
+        <value condition="String.IsEmpty(ListItem.Season) + !String.IsEmpty(ListItem.Episode)">$INFO[ListItem.Episode] - $INFO[ListItem.TvShowTitle]</value>
+        <value condition="!String.IsEmpty(ListItem.TvShowTitle)">S$INFO[ListItem.Season]E$INFO[ListItem.Episode] - $INFO[ListItem.TvShowTitle]</value>
+        <value>$INFO[ListItem.Genre]</value>
+    </variable>
+
+    <!-- PVR Recordings Player Episode Name -->
+    <variable name="PVRRecPlayerEpisodeName">
+        <value condition="String.IsEmpty(VideoPlayer.Season) + String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.TvShowTitle]</value>
+        <value condition="!String.IsEmpty(VideoPlayer.Season) + String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Season] - $INFO[VideoPlayer.TvShowTitle]</value>
+        <value condition="String.IsEmpty(VideoPlayer.Season) + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Episode] - $INFO[VideoPlayer.TvShowTitle]</value>
+        <value condition="!String.IsEmpty(VideoPlayer.TvShowTitle)">S$INFO[VideoPlayer.Season]E$INFO[VideoPlayer.Episode] - $INFO[VideoPlayer.TvShowTitle]</value>
+        <value>$INFO[VideoPlayer.Genre]</value>
+    </variable>
+
+    <!-- PVR Recordings Player Episode Name -->
+    <variable name="PlayerTVShowEpisodeName">
+        <value condition="String.IsEmpty(VideoPlayer.Season) + String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Title]</value>
+        <value condition="!String.IsEmpty(VideoPlayer.Season) + String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Season] - $INFO[VideoPlayer.Title]</value>
+        <value condition="String.IsEmpty(VideoPlayer.Season) + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.Episode] - $INFO[VideoPlayer.Title]</value>
+        <value condition="!String.IsEmpty(VideoPlayer.Title)">S$INFO[VideoPlayer.Season]E$INFO[VideoPlayer.Episode] - $INFO[VideoPlayer.Title]</value>
+        <value>$INFO[VideoPlayer.Genre]</value>
+    </variable>
+
+    <variable name="PVRListitemEpisodeName">
+        <value condition="String.IsEmpty(ListItem.Season) + String.IsEmpty(ListItem.Episode)">$INFO[ListItem.EpisodeName]</value>
+        <value condition="!String.IsEmpty(ListItem.Season) + String.IsEmpty(ListItem.Episode)">$INFO[ListItem.Season] - $INFO[ListItem.EpisodeName]</value>
+        <value condition="String.IsEmpty(ListItem.Season) + !String.IsEmpty(ListItem.Episode)">$INFO[ListItem.Episode] - $INFO[ListItem.EpisodeName]</value>
+        <value>S$INFO[ListItem.Season]E$INFO[ListItem.Episode] - $INFO[ListItem.EpisodeName]</value>
+    </variable>
+
+    <variable name="EventDuration">
+        <value condition="Integer.IsEqual(ListItem.Duration(hh),0)">$INFO[ListItem.Duration(mm)]min</value>
+        <value condition="!Integer.IsEqual(ListItem.Duration(hh),0)">$INFO[ListItem.Duration(hh)]h$INFO[ListItem.Duration(mm)]</value>
+    </variable>
+
+    <!-- PVR ListLabel2 in View50 -->
+    <variable name="ListLabel2">
+        <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[556])">$INFO[ListItem.Year]</value>
+        <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[20359])"></value>
+        <value condition="!String.isempty(ListItem.Appearances)">$LOCALIZE[38026]: $INFO[ListItem.Appearances]</value>
+        <value>$INFO[ListItem.Label2]</value>
+    </variable>
+
+    <variable name="ListWatchedIcon">
+        <value condition="ListItem.IsRecording">icons/pvr/pvr-isrecording.png</value>
+        <value condition="ListItem.IsPlaying">overlays/overlayplaying.png</value>
+        <value condition="ListItem.IsResumable">overlays/resume.png</value>
+        <value>overlays/$INFO[ListItem.Overlay]</value>
+    </variable>
+
+    <variable name="FileListIcon">
+        <value condition="ListItem.IsFolder">overlays/overlayfolder.png</value>
+        <value>overlays/overlayunwatched.png</value>
+    </variable>
+
+    <variable name="FileBrowserSelectLabel">
+        <value condition="Control.IsVisible(450)">[COLOR=active]$INFO[Container(450).NumItems][/COLOR] $LOCALIZE[31036] - [COLOR=active]$INFO[Container(450).CurrentPage]/$INFO[Container(450).NumPages][/COLOR]</value>
+        <value>[COLOR=active]$INFO[Container(451).NumItems][/COLOR] $LOCALIZE[31036] - [COLOR=active]$INFO[Container(451).CurrentPage]/$INFO[Container(451).NumPages][/COLOR]</value>
+    </variable>
+
+    <variable name="MasterModeLabel">
+        <value condition="!System.IsMaster">$LOCALIZE[20045]</value>
+        <value>$LOCALIZE[20046]</value>
+    </variable>
+
+    <variable name="VolumeIconVar">
+        <value condition="Player.Muted">progress/volume/mute.png</value>
+        <value condition="Integer.IsGreater(Player.Volume,66)">progress/volume/volume.png</value>
+        <value condition="Integer.IsGreater(Player.Volume,33)">progress/volume/volume2.png</value>
+        <value condition="player.passthrough">progress/volume/volume.png</value>
+        <value>progress/volume/volume1.png</value>
+    </variable>
+
+    <variable name="PlaylistLabelVar">
+        <value condition="String.IsEqual(ListItem.DbType,episode)">$INFO[ListItem.TVShowtitle,,: ]$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
+        <value condition="String.IsEqual(ListItem.DbType,musicvideo)">$INFO[ListItem.Artist,, - ]$INFO[ListItem.Title]</value>
+        <value condition="String.IsEqual(ListItem.DbType,song)">$INFO[ListItem.Artist,, - ]$INFO[ListItem.Title]</value>
+        <value>$INFO[ListItem.Label]</value>
+    </variable>
+    <variable name="PlaylistLabel2Var">
+        <value condition="Window.IsActive(musicplaylist)">$INFO[ListItem.Duration]</value>
+        <value>$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value>
+    </variable>
+    <variable name="PlaylistTrackCount">
+        <value condition="Window.IsActive(videoplaylist) + !String.IsEmpty(Playlist.Position(video))">$LOCALIZE[554]: [COLOR white]$INFO[Playlist.Position(video)] / $INFO[Playlist.Length(video)][/COLOR]</value>
+        <value condition="Window.IsActive(videoplaylist) + String.IsEmpty(Playlist.Position(video))">$LOCALIZE[554]: [COLOR white]0 / $INFO[Playlist.Length(video)][/COLOR]</value>
+        <value condition="Window.IsActive(musicplaylist) + !String.IsEmpty(Playlist.Position(music))">$LOCALIZE[554]: [COLOR white]$INFO[Playlist.Position(music)] / $INFO[Playlist.Length(music)][/COLOR]</value>
+        <value condition="Window.IsActive(musicplaylist) + String.IsEmpty(Playlist.Position(music))">$LOCALIZE[554]: [COLOR white]0 / $INFO[Playlist.Length(music)][/COLOR]</value>
+    </variable>
+
+    <variable name="VideoOSDHelpText">
+        <value condition="Control.HasFocus(300)">$LOCALIZE[15067]</value>
+        <value condition="Control.HasFocus(301)">$LOCALIZE[19033]</value>
+        <value condition="Control.HasFocus(302)">$LOCALIZE[31018]</value>
+        <value condition="Control.HasFocus(303)">$LOCALIZE[4]</value>
+        <value condition="Control.HasFocus(304)">$LOCALIZE[10701]</value>
+        <value condition="Control.HasFocus(305)">$LOCALIZE[10703]</value>
+        <value condition="Control.HasFocus(306)">$LOCALIZE[13009]</value>
+        <value condition="Control.HasFocus(307)">$LOCALIZE[36428]</value>
+        <value condition="Control.HasFocus(308)">$LOCALIZE[10550]</value>
+        <value condition="Control.HasFocus(309)">$LOCALIZE[31003]</value>
+        <value condition="Control.HasFocus(310)">$LOCALIZE[5]</value>
+        <value condition="Control.HasFocus(311)">$LOCALIZE[265]</value>
+        <value condition="Control.HasFocus(312)">$LOCALIZE[31034]</value>
+        <value condition="Control.HasFocus(313) + Player.Paused">$LOCALIZE[208]</value>
+        <value condition="Control.HasFocus(313) + !Player.Paused">$LOCALIZE[36045]</value>
+        <value condition="Control.HasFocus(314)">$LOCALIZE[208]</value>
+        <value condition="Control.HasFocus(315)">$LOCALIZE[31035]</value>
+        <value condition="Control.HasFocus(400)">$LOCALIZE[31009]</value>
+        <value condition="Control.HasFocus(401)">$LOCALIZE[31010]</value>
+        <value condition="Control.HasFocus(402)">$LOCALIZE[31013]</value>
+        <value condition="Control.HasFocus(403) + Player.Paused">$LOCALIZE[208]</value>
+        <value condition="Control.HasFocus(403) + !Player.Paused">$LOCALIZE[36045]</value>
+        <value condition="Control.HasFocus(404)">$LOCALIZE[208]</value>
+        <value condition="Control.HasFocus(405)">$LOCALIZE[36044]</value>
+        <value condition="Control.HasFocus(406)">$LOCALIZE[31014]</value>
+        <value condition="Control.HasFocus(407)">$LOCALIZE[31011]</value>
+        <value condition="Control.HasFocus(408)">$LOCALIZE[31012]</value>
+        <value condition="Control.HasFocus(409)">$LOCALIZE[19033]</value>
+        <value condition="Control.HasFocus(410)">$LOCALIZE[298]</value>
+        <value condition="Control.HasFocus(411)">$LOCALIZE[31003]</value>
+        <value condition="Control.HasFocus(412)">$LOCALIZE[5]</value>
+        <value></value>
+    </variable>
+
+    <variable name="MusicOSDHelpText">
+        <value condition="Control.HasFocus(400)">$LOCALIZE[31071]</value>
+        <value condition="Control.HasFocus(402)">$LOCALIZE[31013]</value>
+        <value condition="Control.HasFocus(403) + Player.Paused">$LOCALIZE[208]</value>
+        <value condition="Control.HasFocus(403) + !Player.Paused">$LOCALIZE[36045]</value>
+        <value condition="Control.HasFocus(404)">$LOCALIZE[208]</value>
+        <value condition="Control.HasFocus(405)">$LOCALIZE[36044]</value>
+        <value condition="Control.HasFocus(406)">$LOCALIZE[31014]</value>
+        <value condition="Control.HasFocus(407)">$LOCALIZE[31072]</value>
+        <value condition="Control.HasFocus(408)">$LOCALIZE[24013]</value>
+        <value condition="Control.HasFocus(412)">$LOCALIZE[5]</value>
+        <value></value>
+    </variable>
+
+    <variable name="PVRInfoHelpText">
+        <value condition="Control.HasFocus(102)">$LOCALIZE[15067]</value>
+        <value condition="Control.HasFocus(6)">$INFO[Control.GetLabel(6)]</value>
+        <value condition="Control.HasFocus(103)">$LOCALIZE[36428]</value>
+        <value condition="Control.HasFocus(104)">$LOCALIZE[265]</value>
+        <value condition="Control.HasFocus(5)">$LOCALIZE[19165]</value>
+        <value condition="Control.HasFocus(4)">$LOCALIZE[19003]</value>
+        <value condition="Control.HasFocus(105) | Control.HasFocus(106)">$LOCALIZE[31024]</value>
+        <value condition="Control.HasFocus(107)">$LOCALIZE[31020]</value>
+        <value></value>
+    </variable>
+
+    <variable name="VideoInfoHelpText">
+        <value condition="Control.HasFocus(301)">$LOCALIZE[15067]</value>
+        <value condition="Control.HasFocus(8)">$LOCALIZE[13358]</value>
+        <value condition="Control.HasFocus(9)">$LOCALIZE[13381]</value>
+        <value condition="Control.HasFocus(11)">$LOCALIZE[20410]</value>
+        <value condition="Control.HasFocus(302)">$LOCALIZE[31024]</value>
+        <value></value>
+    </variable>
+
+    <variable name="GTOInfoHelpText">
+        <value condition="Control.HasFocus(102)">$LOCALIZE[15067]</value>
+        <value condition="Control.HasFocus(103)">$ADDON[script.service.gto 30107]</value>
+        <value condition="Control.HasFocus(104)">$ADDON[script.service.gto 30112]</value>
+        <value condition="Control.HasFocus(105)">$LOCALIZE[31021]</value>
+        <value condition="Control.HasFocus(106)">$LOCALIZE[31022]</value>
+        <value></value>
+    </variable>
+
+    <variable name="WeatherHelpText">
+        <value condition="Control.HasFocus(101)">$LOCALIZE[15067]</value>
+        <value condition="Control.HasFocus(2)">$LOCALIZE[24069]</value>
+        <value condition="Control.HasFocus(102)">$LOCALIZE[31067]</value>
+        <value condition="Control.HasFocus(103)">$LOCALIZE[31068]</value>
+        <value></value>
+    </variable>
+
+    <variable name="GlobalsearchHelpText">
+        <value condition="Control.HasFocus(8001)">$LOCALIZE[31089]</value>
+        <value condition="Control.HasFocus(990)">$LOCALIZE[31088]</value>
+        <value></value>
+    </variable>
+
+    <variable name="TVGuideHelpText">
+        <value condition="Control.HasFocus(401)">$INFO[Skin.String(runningat_name_0)]</value>
+        <value condition="Control.HasFocus(402)">$INFO[Skin.String(runningat_name_1)]</value>
+        <value condition="Control.HasFocus(403)">$INFO[Skin.String(runningat_name_2)]</value>
+        <value condition="Control.HasFocus(404)">$LOCALIZE[31053]</value>
+        <value condition="Control.HasFocus(405)">$LOCALIZE[31073]</value>
+        <value></value>
+    </variable>
+
+    <variable name="RunningAtHeader">
+        <value condition="Integer.IsEqual(Window(home).Property(runningat_active),0)">$INFO[Skin.String(runningat_name_0)]</value>
+        <value condition="Integer.IsEqual(Window(home).Property(runningat_active),1)">$INFO[Skin.String(runningat_name_1)]</value>
+        <value condition="Integer.IsEqual(Window(home).Property(runningat_active),2)">$INFO[Skin.String(runningat_name_2)]</value>
+        <value></value>
+    </variable>
+
+    <variable name="VideoHWDecoder">
+        <value condition="Player.Process(videohwdecoder)">$LOCALIZE[31006]</value>
+        <value>$LOCALIZE[31007]</value>
+    </variable>
+
+    <variable name="VideoOSDIcon">
+        <value condition="VideoPlayer.Content(livetv) + Pvr.IsPlayingRecording">$INFO[PVR.NowRecordingChannelIcon]</value>
+        <value condition="!String.IsEmpty(Player.Art(thumb))">$INFO[Player.Art(thumb)]</value>
+        <value>$INFO[Player.Icon]</value>
+    </variable>
+
+    <variable name="VideoOSDTitle">
+        <value condition="VideoPlayer.Content(livetv) + Pvr.IsPlayingRecording">$INFO[PVR.NowRecordingTitle]</value>
+        <value condition="VideoPlayer.Content(episodes)">$INFO[VideoPlayer.TVShowTitle]</value>
+        <value>$INFO[VideoPlayer.Title]</value>
+    </variable>
+
+    <variable name="AddonInfoHelpText">
+        <value condition="Control.HasFocus(12)">$LOCALIZE[518]</value>
+        <value condition="Control.HasFocus(9)">$LOCALIZE[24020]</value>
+        <value condition="Control.HasFocus(8)">$LOCALIZE[24069]</value>
+        <value condition="Control.HasFocus(13)">$INFO[Control.GetLabel(13)]</value>
+        <value condition="Control.HasFocus(10)">$LOCALIZE[39024]</value>
+        <value condition="Control.HasFocus(7)">$INFO[Control.GetLabel(7)]</value>
+        <value condition="Control.HasFocus(6)">$INFO[Control.GetLabel(6)]</value>
+        <value></value>
+    </variable>
+
+    <variable name="GlobalSearchLabelWallMovies">
+        <value condition="!Container.Content(seasons)">$INFO[ListItem.Label]$INFO[ListItem.Year, - ,]</value>
+        <value condition="Container.Content(seasons)">$INFO[ListItem.Episode,, - ]$INFO[ListItem.Label]</value>
+    </variable>
+
+    <variable name="ExtendedInfoDurationVar">
+        <value condition="String.IsEqual(Window.Property(Duration),1)">1 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),2)">2 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),3)">3 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),4)">4 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),5)">5 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),6)">6 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),7)">7 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),8)">8 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),9)">9 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),10)">10 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),11)">11 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),12)">12 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),13)">13 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),14)">14 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),15)">15 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),16)">16 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),17)">17 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),18)">18 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),19)">19 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),20)">20 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),21)">21 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),22)">22 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),23)">23 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),24)">24 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),25)">25 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),26)">26 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),27)">27 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),28)">28 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),29)">29 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),30)">30 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),31)">31 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),32)">32 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),33)">33 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),34)">34 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),35)">35 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),36)">36 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),37)">37 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),38)">38 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),39)">39 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),40)">40 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),41)">41 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),42)">42 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),43)">43 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),44)">44 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),45)">45 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),46)">46 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),47)">47 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),48)">48 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),49)">49 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),50)">50 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),51)">51 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),52)">52 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),53)">53 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),54)">54 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),55)">55 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),56)">56 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),57)">57 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),58)">58 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),59)">59 min</value>
+        <value condition="String.IsEqual(Window.Property(Duration),60)">1h00</value>
+        <value condition="String.IsEqual(Window.Property(Duration),61)">1h01</value>
+        <value condition="String.IsEqual(Window.Property(Duration),62)">1h02</value>
+        <value condition="String.IsEqual(Window.Property(Duration),63)">1h03</value>
+        <value condition="String.IsEqual(Window.Property(Duration),64)">1h04</value>
+        <value condition="String.IsEqual(Window.Property(Duration),65)">1h05</value>
+        <value condition="String.IsEqual(Window.Property(Duration),66)">1h06</value>
+        <value condition="String.IsEqual(Window.Property(Duration),67)">1h07</value>
+        <value condition="String.IsEqual(Window.Property(Duration),68)">1h08</value>
+        <value condition="String.IsEqual(Window.Property(Duration),69)">1h09</value>
+        <value condition="String.IsEqual(Window.Property(Duration),70)">1h10</value>
+        <value condition="String.IsEqual(Window.Property(Duration),71)">1h11</value>
+        <value condition="String.IsEqual(Window.Property(Duration),72)">1h12</value>
+        <value condition="String.IsEqual(Window.Property(Duration),73)">1h13</value>
+        <value condition="String.IsEqual(Window.Property(Duration),74)">1h14</value>
+        <value condition="String.IsEqual(Window.Property(Duration),75)">1h15</value>
+        <value condition="String.IsEqual(Window.Property(Duration),76)">1h16</value>
+        <value condition="String.IsEqual(Window.Property(Duration),77)">1h17</value>
+        <value condition="String.IsEqual(Window.Property(Duration),78)">1h18</value>
+        <value condition="String.IsEqual(Window.Property(Duration),79)">1h19</value>
+        <value condition="String.IsEqual(Window.Property(Duration),80)">1h20</value>
+        <value condition="String.IsEqual(Window.Property(Duration),81)">1h21</value>
+        <value condition="String.IsEqual(Window.Property(Duration),82)">1h22</value>
+        <value condition="String.IsEqual(Window.Property(Duration),83)">1h23</value>
+        <value condition="String.IsEqual(Window.Property(Duration),84)">1h24</value>
+        <value condition="String.IsEqual(Window.Property(Duration),85)">1h25</value>
+        <value condition="String.IsEqual(Window.Property(Duration),86)">1h26</value>
+        <value condition="String.IsEqual(Window.Property(Duration),87)">1h27</value>
+        <value condition="String.IsEqual(Window.Property(Duration),88)">1h28</value>
+        <value condition="String.IsEqual(Window.Property(Duration),89)">1h29</value>
+        <value condition="String.IsEqual(Window.Property(Duration),90)">1h30</value>
+        <value condition="String.IsEqual(Window.Property(Duration),91)">1h31</value>
+        <value condition="String.IsEqual(Window.Property(Duration),92)">1h32</value>
+        <value condition="String.IsEqual(Window.Property(Duration),93)">1h33</value>
+        <value condition="String.IsEqual(Window.Property(Duration),94)">1h34</value>
+        <value condition="String.IsEqual(Window.Property(Duration),95)">1h35</value>
+        <value condition="String.IsEqual(Window.Property(Duration),96)">1h36</value>
+        <value condition="String.IsEqual(Window.Property(Duration),97)">1h37</value>
+        <value condition="String.IsEqual(Window.Property(Duration),98)">1h38</value>
+        <value condition="String.IsEqual(Window.Property(Duration),99)">1h39</value>
+        <value condition="String.IsEqual(Window.Property(Duration),100)">1h40</value>
+        <value condition="String.IsEqual(Window.Property(Duration),101)">1h41</value>
+        <value condition="String.IsEqual(Window.Property(Duration),102)">1h42</value>
+        <value condition="String.IsEqual(Window.Property(Duration),103)">1h43</value>
+        <value condition="String.IsEqual(Window.Property(Duration),104)">1h44</value>
+        <value condition="String.IsEqual(Window.Property(Duration),105)">1h45</value>
+        <value condition="String.IsEqual(Window.Property(Duration),106)">1h46</value>
+        <value condition="String.IsEqual(Window.Property(Duration),107)">1h47</value>
+        <value condition="String.IsEqual(Window.Property(Duration),108)">1h48</value>
+        <value condition="String.IsEqual(Window.Property(Duration),109)">1h49</value>
+        <value condition="String.IsEqual(Window.Property(Duration),110)">1h50</value>
+        <value condition="String.IsEqual(Window.Property(Duration),111)">1h51</value>
+        <value condition="String.IsEqual(Window.Property(Duration),112)">1h52</value>
+        <value condition="String.IsEqual(Window.Property(Duration),113)">1h53</value>
+        <value condition="String.IsEqual(Window.Property(Duration),114)">1h54</value>
+        <value condition="String.IsEqual(Window.Property(Duration),115)">1h55</value>
+        <value condition="String.IsEqual(Window.Property(Duration),116)">1h56</value>
+        <value condition="String.IsEqual(Window.Property(Duration),117)">1h57</value>
+        <value condition="String.IsEqual(Window.Property(Duration),118)">1h58</value>
+        <value condition="String.IsEqual(Window.Property(Duration),119)">1h59</value>
+        <value condition="String.IsEqual(Window.Property(Duration),120)">2h00</value>
+        <value condition="String.IsEqual(Window.Property(Duration),121)">2h01</value>
+        <value condition="String.IsEqual(Window.Property(Duration),122)">2h01</value>
+        <value condition="String.IsEqual(Window.Property(Duration),123)">2h03</value>
+        <value condition="String.IsEqual(Window.Property(Duration),124)">2h04</value>
+        <value condition="String.IsEqual(Window.Property(Duration),125)">2h05</value>
+        <value condition="String.IsEqual(Window.Property(Duration),126)">2h06</value>
+        <value condition="String.IsEqual(Window.Property(Duration),127)">2h07</value>
+        <value condition="String.IsEqual(Window.Property(Duration),128)">2h08</value>
+        <value condition="String.IsEqual(Window.Property(Duration),129)">2h09</value>
+        <value condition="String.IsEqual(Window.Property(Duration),130)">2h10</value>
+        <value condition="String.IsEqual(Window.Property(Duration),131)">2h11</value>
+        <value condition="String.IsEqual(Window.Property(Duration),132)">2h12</value>
+        <value condition="String.IsEqual(Window.Property(Duration),133)">2h13</value>
+        <value condition="String.IsEqual(Window.Property(Duration),134)">2h14</value>
+        <value condition="String.IsEqual(Window.Property(Duration),135)">2h15</value>
+        <value condition="String.IsEqual(Window.Property(Duration),136)">2h16</value>
+        <value condition="String.IsEqual(Window.Property(Duration),137)">2h17</value>
+        <value condition="String.IsEqual(Window.Property(Duration),138)">2h18</value>
+        <value condition="String.IsEqual(Window.Property(Duration),139)">2h19</value>
+        <value condition="String.IsEqual(Window.Property(Duration),140)">2h20</value>
+        <value condition="String.IsEqual(Window.Property(Duration),141)">2h21</value>
+        <value condition="String.IsEqual(Window.Property(Duration),142)">2h22</value>
+        <value condition="String.IsEqual(Window.Property(Duration),143)">2h23</value>
+        <value condition="String.IsEqual(Window.Property(Duration),144)">2h24</value>
+        <value condition="String.IsEqual(Window.Property(Duration),145)">2h25</value>
+        <value condition="String.IsEqual(Window.Property(Duration),146)">2h26</value>
+        <value condition="String.IsEqual(Window.Property(Duration),147)">2h27</value>
+        <value condition="String.IsEqual(Window.Property(Duration),148)">2h28</value>
+        <value condition="String.IsEqual(Window.Property(Duration),149)">2h29</value>
+        <value condition="String.IsEqual(Window.Property(Duration),150)">2h30</value>
+        <value condition="String.IsEqual(Window.Property(Duration),151)">2h31</value>
+        <value condition="String.IsEqual(Window.Property(Duration),152)">2h32</value>
+        <value condition="String.IsEqual(Window.Property(Duration),153)">2h33</value>
+        <value condition="String.IsEqual(Window.Property(Duration),154)">2h34</value>
+        <value condition="String.IsEqual(Window.Property(Duration),155)">2h35</value>
+        <value condition="String.IsEqual(Window.Property(Duration),156)">2h36</value>
+        <value condition="String.IsEqual(Window.Property(Duration),157)">2h37</value>
+        <value condition="String.IsEqual(Window.Property(Duration),158)">2h38</value>
+        <value condition="String.IsEqual(Window.Property(Duration),159)">2h39</value>
+        <value condition="String.IsEqual(Window.Property(Duration),160)">2h40</value>
+        <value condition="String.IsEqual(Window.Property(Duration),161)">2h41</value>
+        <value condition="String.IsEqual(Window.Property(Duration),162)">2h42</value>
+        <value condition="String.IsEqual(Window.Property(Duration),163)">2h43</value>
+        <value condition="String.IsEqual(Window.Property(Duration),164)">2h44</value>
+        <value condition="String.IsEqual(Window.Property(Duration),165)">2h45</value>
+        <value condition="String.IsEqual(Window.Property(Duration),166)">2h46</value>
+        <value condition="String.IsEqual(Window.Property(Duration),167)">2h47</value>
+        <value condition="String.IsEqual(Window.Property(Duration),168)">2h48</value>
+        <value condition="String.IsEqual(Window.Property(Duration),169)">2h49</value>
+        <value condition="String.IsEqual(Window.Property(Duration),170)">2h50</value>
+        <value condition="String.IsEqual(Window.Property(Duration),171)">2h51</value>
+        <value condition="String.IsEqual(Window.Property(Duration),172)">2h52</value>
+        <value condition="String.IsEqual(Window.Property(Duration),173)">2h53</value>
+        <value condition="String.IsEqual(Window.Property(Duration),174)">2h54</value>
+        <value condition="String.IsEqual(Window.Property(Duration),175)">2h55</value>
+        <value condition="String.IsEqual(Window.Property(Duration),176)">2h56</value>
+        <value condition="String.IsEqual(Window.Property(Duration),177)">2h57</value>
+        <value condition="String.IsEqual(Window.Property(Duration),178)">2h58</value>
+        <value condition="String.IsEqual(Window.Property(Duration),179)">2h59</value>
+        <value condition="String.IsEqual(Window.Property(Duration),180)">3h00</value>
+        <value condition="String.IsEqual(Window.Property(Duration),181)">3h01</value>
+        <value condition="String.IsEqual(Window.Property(Duration),182)">3h02</value>
+        <value condition="String.IsEqual(Window.Property(Duration),183)">3h03</value>
+        <value condition="String.IsEqual(Window.Property(Duration),184)">3h04</value>
+        <value condition="String.IsEqual(Window.Property(Duration),185)">3h05</value>
+        <value condition="String.IsEqual(Window.Property(Duration),186)">3h06</value>
+        <value condition="String.IsEqual(Window.Property(Duration),187)">3h07</value>
+        <value condition="String.IsEqual(Window.Property(Duration),188)">3h08</value>
+        <value condition="String.IsEqual(Window.Property(Duration),189)">3h09</value>
+        <value condition="String.IsEqual(Window.Property(Duration),190)">3h10</value>
+        <value condition="String.IsEqual(Window.Property(Duration),191)">3h11</value>
+        <value condition="String.IsEqual(Window.Property(Duration),192)">3h12</value>
+        <value condition="String.IsEqual(Window.Property(Duration),193)">3h13</value>
+        <value condition="String.IsEqual(Window.Property(Duration),194)">3h14</value>
+        <value condition="String.IsEqual(Window.Property(Duration),195)">3h15</value>
+        <value condition="String.IsEqual(Window.Property(Duration),196)">3h16</value>
+        <value condition="String.IsEqual(Window.Property(Duration),197)">3h17</value>
+        <value condition="String.IsEqual(Window.Property(Duration),198)">3h18</value>
+        <value condition="String.IsEqual(Window.Property(Duration),199)">3h19</value>
+        <value condition="String.IsEqual(Window.Property(Duration),200)">3h20</value>
+        <value condition="String.IsEqual(Window.Property(Duration),201)">3h21</value>
+        <value condition="String.IsEqual(Window.Property(Duration),202)">3h22</value>
+        <value condition="String.IsEqual(Window.Property(Duration),203)">3h23</value>
+        <value condition="String.IsEqual(Window.Property(Duration),204)">3h24</value>
+        <value condition="String.IsEqual(Window.Property(Duration),205)">3h25</value>
+        <value condition="String.IsEqual(Window.Property(Duration),206)">3h26</value>
+        <value condition="String.IsEqual(Window.Property(Duration),207)">3h27</value>
+        <value condition="String.IsEqual(Window.Property(Duration),208)">3h28</value>
+        <value condition="String.IsEqual(Window.Property(Duration),209)">3h29</value>
+        <value condition="String.IsEqual(Window.Property(Duration),210)">3h30</value>
+        <value condition="String.IsEqual(Window.Property(Duration),211)">3h31</value>
+        <value condition="String.IsEqual(Window.Property(Duration),212)">3h32</value>
+        <value condition="String.IsEqual(Window.Property(Duration),213)">3h33</value>
+        <value condition="String.IsEqual(Window.Property(Duration),214)">3h34</value>
+        <value condition="String.IsEqual(Window.Property(Duration),215)">3h35</value>
+        <value condition="String.IsEqual(Window.Property(Duration),216)">3h36</value>
+        <value condition="String.IsEqual(Window.Property(Duration),217)">3h37</value>
+        <value condition="String.IsEqual(Window.Property(Duration),218)">3h38</value>
+        <value condition="String.IsEqual(Window.Property(Duration),219)">3h39</value>
+        <value condition="String.IsEqual(Window.Property(Duration),220)">3h40</value>
+        <value condition="String.IsEqual(Window.Property(Duration),221)">3h41</value>
+        <value condition="String.IsEqual(Window.Property(Duration),222)">3h42</value>
+        <value condition="String.IsEqual(Window.Property(Duration),223)">3h43</value>
+        <value condition="String.IsEqual(Window.Property(Duration),224)">3h44</value>
+        <value condition="String.IsEqual(Window.Property(Duration),225)">3h45</value>
+        <value condition="String.IsEqual(Window.Property(Duration),226)">3h46</value>
+        <value condition="String.IsEqual(Window.Property(Duration),227)">3h47</value>
+        <value condition="String.IsEqual(Window.Property(Duration),228)">3h48</value>
+        <value condition="String.IsEqual(Window.Property(Duration),229)">3h49</value>
+        <value condition="String.IsEqual(Window.Property(Duration),230)">3h50</value>
+        <value condition="String.IsEqual(Window.Property(Duration),231)">3h51</value>
+        <value condition="String.IsEqual(Window.Property(Duration),232)">3h52</value>
+        <value condition="String.IsEqual(Window.Property(Duration),233)">3h53</value>
+        <value condition="String.IsEqual(Window.Property(Duration),234)">3h54</value>
+        <value condition="String.IsEqual(Window.Property(Duration),235)">3h55</value>
+        <value condition="String.IsEqual(Window.Property(Duration),236)">3h56</value>
+        <value condition="String.IsEqual(Window.Property(Duration),237)">3h57</value>
+        <value condition="String.IsEqual(Window.Property(Duration),238)">3h58</value>
+        <value condition="String.IsEqual(Window.Property(Duration),239)">3h59</value>
+        <value condition="String.IsEqual(Window.Property(Duration),240)">4h00</value>
+        <value>$INFO[Window.Property(Duration)]</value>
+    </variable>
+
+    <variable name="DurationVar">
+        <value condition="String.StartsWith(ListItem.Duration,01:00:)">1h00</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:01:)">1h01</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:02:)">1h02</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:03:)">1h03</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:04:)">1h04</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:05:)">1h05</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:06:)">1h06</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:07:)">1h07</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:08:)">1h08</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:09:)">1h09</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:10:)">1h10</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:11:)">1h11</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:12:)">1h12</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:13:)">1h13</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:14:)">1h14</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:15:)">1h15</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:16:)">1h16</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:17:)">1h17</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:18:)">1h18</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:19:)">1h19</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:20:)">1h20</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:21:)">1h21</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:22:)">1h22</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:23:)">1h23</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:24:)">1h24</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:25:)">1h25</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:26:)">1h26</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:27:)">1h27</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:28:)">1h28</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:29:)">1h29</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:30:)">1h30</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:31:)">1h31</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:32:)">1h32</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:33:)">1h33</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:34:)">1h34</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:35:)">1h35</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:36:)">1h36</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:37:)">1h37</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:38:)">1h38</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:39:)">1h39</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:40:)">1h40</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:41:)">1h41</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:42:)">1h42</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:43:)">1h43</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:44:)">1h44</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:45:)">1h45</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:46:)">1h46</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:47:)">1h47</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:48:)">1h48</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:49:)">1h49</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:50:)">1h50</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:51:)">1h51</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:52:)">1h52</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:53:)">1h53</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:54:)">1h54</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:55:)">1h55</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:56:)">1h56</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:57:)">1h57</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:58:)">1h58</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:59:)">1h59</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:00:)">1h00</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:01:)">1h01</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:02:)">1h02</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:03:)">1h03</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:04:)">1h04</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:05:)">1h05</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:06:)">1h06</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:07:)">1h07</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:08:)">1h08</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:09:)">1h09</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:10:)">1h10</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:11:)">1h11</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:12:)">1h12</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:13:)">1h13</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:14:)">1h14</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:15:)">1h15</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:16:)">1h16</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:17:)">1h17</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:18:)">1h18</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:19:)">1h19</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:20:)">1h20</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:21:)">1h21</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:22:)">1h22</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:23:)">1h23</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:24:)">1h24</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:25:)">1h25</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:26:)">1h26</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:27:)">1h27</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:28:)">1h28</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:29:)">1h29</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:30:)">1h30</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:31:)">1h31</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:32:)">1h32</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:33:)">1h33</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:34:)">1h34</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:35:)">1h35</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:36:)">1h36</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:37:)">1h37</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:38:)">1h38</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:39:)">1h39</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:40:)">1h40</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:41:)">1h41</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:42:)">1h42</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:43:)">1h43</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:44:)">1h44</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:45:)">1h45</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:46:)">1h46</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:47:)">1h47</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:48:)">1h48</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:49:)">1h49</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:50:)">1h50</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:51:)">1h51</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:52:)">1h52</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:53:)">1h53</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:54:)">1h54</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:55:)">1h55</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:56:)">1h56</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:57:)">1h57</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:58:)">1h58</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,01:59:)">1h59</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:00:)">1h00</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:01:)">1h01</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:02:)">1h02</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:03:)">1h03</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:04:)">1h04</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:05:)">1h05</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:06:)">1h06</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:07:)">1h07</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:08:)">1h08</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:09:)">1h09</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:10:)">1h10</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:11:)">1h11</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:12:)">1h12</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:13:)">1h13</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:14:)">1h14</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:15:)">1h15</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:16:)">1h16</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:17:)">1h17</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:18:)">1h18</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:19:)">1h19</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:20:)">1h20</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:21:)">1h21</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:22:)">1h22</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:23:)">1h23</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:24:)">1h24</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:25:)">1h25</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:26:)">1h26</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:27:)">1h27</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:28:)">1h28</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:29:)">1h29</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:30:)">1h30</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:31:)">1h31</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:32:)">1h32</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:33:)">1h33</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:34:)">1h34</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:35:)">1h35</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:36:)">1h36</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:37:)">1h37</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:38:)">1h38</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:39:)">1h39</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:40:)">1h40</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:41:)">1h41</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:42:)">1h42</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:43:)">1h43</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:44:)">1h44</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:45:)">1h45</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:46:)">1h46</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:47:)">1h47</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:48:)">1h48</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:49:)">1h49</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:50:)">1h50</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:51:)">1h51</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:52:)">1h52</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:53:)">1h53</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:54:)">1h54</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:55:)">1h55</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:56:)">1h56</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:57:)">1h57</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:58:)">1h58</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:59:)">1h59</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:00:)">2h00</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:01:)">2h01</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:02:)">2h02</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:03:)">2h03</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:04:)">2h04</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:05:)">2h05</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:06:)">2h06</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:07:)">2h07</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:08:)">2h08</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:09:)">2h09</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:10:)">2h10</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:11:)">2h11</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:12:)">2h12</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:13:)">2h13</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:14:)">2h14</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:15:)">2h15</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:16:)">2h16</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:17:)">2h17</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:18:)">2h18</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:19:)">2h19</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:20:)">2h20</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:21:)">2h21</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:22:)">2h22</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:23:)">2h23</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:24:)">2h24</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:25:)">2h25</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:26:)">2h26</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:27:)">2h27</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:28:)">2h28</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:29:)">2h29</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:30:)">2h30</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:31:)">2h31</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:32:)">2h32</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:33:)">2h33</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:34:)">2h34</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:35:)">2h35</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:36:)">2h36</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:37:)">2h37</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:38:)">2h38</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:39:)">2h39</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:40:)">2h40</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:41:)">2h41</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:42:)">2h42</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:43:)">2h43</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:44:)">2h44</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:45:)">2h45</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:46:)">2h46</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:47:)">2h47</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:48:)">2h48</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:49:)">2h49</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:50:)">2h50</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:51:)">2h51</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:52:)">2h52</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:53:)">2h53</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:54:)">2h54</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:55:)">2h55</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:56:)">2h56</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:57:)">2h57</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:58:)">2h58</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:59:)">2h59</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:00:)">2h00</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:01:)">2h01</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:02:)">2h02</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:03:)">2h03</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:04:)">2h04</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:05:)">2h05</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:06:)">2h06</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:07:)">2h07</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:08:)">2h08</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:09:)">2h09</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:10:)">2h10</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:11:)">2h11</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:12:)">2h12</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:13:)">2h13</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:14:)">2h14</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:15:)">2h15</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:16:)">2h16</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:17:)">2h17</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:18:)">2h18</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:19:)">2h19</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:20:)">2h20</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:21:)">2h21</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:22:)">2h22</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:23:)">2h23</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:24:)">2h24</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:25:)">2h25</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:26:)">2h26</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:27:)">2h27</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:28:)">2h28</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:29:)">2h29</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:30:)">2h30</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:31:)">2h31</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:32:)">2h32</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:33:)">2h33</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:34:)">2h34</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:35:)">2h35</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:36:)">2h36</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:37:)">2h37</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:38:)">2h38</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:39:)">2h39</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:40:)">2h40</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:41:)">2h41</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:42:)">2h42</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:43:)">2h43</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:44:)">2h44</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:45:)">2h45</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:46:)">2h46</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:47:)">2h47</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:48:)">2h48</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:49:)">2h49</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:50:)">2h50</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:51:)">2h51</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:52:)">2h52</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:53:)">2h53</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:54:)">2h54</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:55:)">2h55</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:56:)">2h56</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:57:)">2h57</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:58:)">2h58</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,02:59:)">2h59</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:00:)">2h00</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:01:)">2h01</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:02:)">2h02</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:03:)">2h03</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:04:)">2h04</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:05:)">2h05</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:06:)">2h06</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:07:)">2h07</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:08:)">2h08</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:09:)">2h09</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:10:)">2h10</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:11:)">2h11</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:12:)">2h12</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:13:)">2h13</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:14:)">2h14</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:15:)">2h15</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:16:)">2h16</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:17:)">2h17</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:18:)">2h18</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:19:)">2h19</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:20:)">2h20</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:21:)">2h21</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:22:)">2h22</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:23:)">2h23</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:24:)">2h24</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:25:)">2h25</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:26:)">2h26</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:27:)">2h27</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:28:)">2h28</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:29:)">2h29</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:30:)">2h30</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:31:)">2h31</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:32:)">2h32</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:33:)">2h33</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:34:)">2h34</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:35:)">2h35</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:36:)">2h36</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:37:)">2h37</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:38:)">2h38</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:39:)">2h39</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:40:)">2h40</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:41:)">2h41</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:42:)">2h42</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:43:)">2h43</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:44:)">2h44</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:45:)">2h45</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:46:)">2h46</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:47:)">2h47</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:48:)">2h48</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:49:)">2h49</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:50:)">2h50</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:51:)">2h51</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:52:)">2h52</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:53:)">2h53</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:54:)">2h54</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:55:)">2h55</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:56:)">2h56</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:57:)">2h57</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:58:)">2h58</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:59:)">2h59</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:00:)">3h00</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:01:)">3h01</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:02:)">3h02</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:03:)">3h03</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:04:)">3h04</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:05:)">3h05</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:06:)">3h06</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:07:)">3h07</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:08:)">3h08</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:09:)">3h09</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:10:)">3h10</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:11:)">3h11</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:12:)">3h12</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:13:)">3h13</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:14:)">3h14</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:15:)">3h15</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:16:)">3h16</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:17:)">3h17</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:18:)">3h18</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:19:)">3h19</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:20:)">3h20</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:21:)">3h21</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:22:)">3h22</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:23:)">3h23</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:24:)">3h24</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:25:)">3h25</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:26:)">3h26</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:27:)">3h27</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:28:)">3h28</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:29:)">3h29</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:30:)">3h30</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:31:)">3h31</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:32:)">3h32</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:33:)">3h33</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:34:)">3h34</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:35:)">3h35</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:36:)">3h36</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:37:)">3h37</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:38:)">3h38</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:39:)">3h39</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:40:)">3h40</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:41:)">3h41</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:42:)">3h42</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:43:)">3h43</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:44:)">3h44</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:45:)">3h45</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:46:)">3h46</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:47:)">3h47</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:48:)">3h48</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:49:)">3h49</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:50:)">3h50</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:51:)">3h51</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:52:)">3h52</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:53:)">3h53</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:54:)">3h54</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:55:)">3h55</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:56:)">3h56</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:57:)">3h57</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:58:)">3h58</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:59:)">3h59</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:00:)">3h00</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:01:)">3h01</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:02:)">3h02</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:03:)">3h03</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:04:)">3h04</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:05:)">3h05</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:06:)">3h06</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:07:)">3h07</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:08:)">3h08</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:09:)">3h09</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:10:)">3h10</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:11:)">3h11</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:12:)">3h12</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:13:)">3h13</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:14:)">3h14</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:15:)">3h15</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:16:)">3h16</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:17:)">3h17</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:18:)">3h18</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:19:)">3h19</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:20:)">3h20</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:21:)">3h21</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:22:)">3h22</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:23:)">3h23</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:24:)">3h24</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:25:)">3h25</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:26:)">3h26</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:27:)">3h27</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:28:)">3h28</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:29:)">3h29</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:30:)">3h30</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:31:)">3h31</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:32:)">3h32</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:33:)">3h33</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:34:)">3h34</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:35:)">3h35</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:36:)">3h36</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:37:)">3h37</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:38:)">3h38</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:39:)">3h39</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:40:)">3h40</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:41:)">3h41</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:42:)">3h42</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:43:)">3h43</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:44:)">3h44</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:45:)">3h45</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:46:)">3h46</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:47:)">3h47</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:48:)">3h48</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:49:)">3h49</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:50:)">3h50</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:51:)">3h51</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:52:)">3h52</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:53:)">3h53</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:54:)">3h54</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:55:)">3h55</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:56:)">3h56</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:57:)">3h57</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:58:)">3h58</value>
+        <value condition="String.StartsWith(VideoPlayer.Duration,03:59:)">3h59</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:00:)">3h00</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:01:)">3h01</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:02:)">3h02</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:03:)">3h03</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:04:)">3h04</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:05:)">3h05</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:06:)">3h06</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:07:)">3h07</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:08:)">3h08</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:09:)">3h09</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:10:)">3h10</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:11:)">3h11</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:12:)">3h12</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:13:)">3h13</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:14:)">3h14</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:15:)">3h15</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:16:)">3h16</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:17:)">3h17</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:18:)">3h18</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:19:)">3h19</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:20:)">3h20</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:21:)">3h21</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:22:)">3h22</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:23:)">3h23</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:24:)">3h24</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:25:)">3h25</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:26:)">3h26</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:27:)">3h27</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:28:)">3h28</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:29:)">3h29</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:30:)">3h30</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:31:)">3h31</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:32:)">3h32</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:33:)">3h33</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:34:)">3h34</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:35:)">3h35</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:36:)">3h36</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:37:)">3h37</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:38:)">3h38</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:39:)">3h39</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:40:)">3h40</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:41:)">3h41</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:42:)">3h42</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:43:)">3h43</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:44:)">3h44</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:45:)">3h45</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:46:)">3h46</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:47:)">3h47</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:48:)">3h48</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:49:)">3h49</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:50:)">3h50</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:51:)">3h51</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:52:)">3h52</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:53:)">3h53</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:54:)">3h54</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:55:)">3h55</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:56:)">3h56</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:57:)">3h57</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:58:)">3h58</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:59:)">3h59</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:00:)">4h00</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:01:)">4h01</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:02:)">4h02</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:03:)">4h03</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:04:)">4h04</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:05:)">4h05</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:06:)">4h06</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:07:)">4h07</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:08:)">4h08</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:09:)">4h09</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:10:)">4h10</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:11:)">4h11</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:12:)">4h12</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:13:)">4h13</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:14:)">4h14</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:15:)">4h15</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:16:)">4h16</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:17:)">4h17</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:18:)">4h18</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:19:)">4h19</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:20:)">4h20</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:21:)">4h21</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:22:)">4h22</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:23:)">4h23</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:24:)">4h24</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:25:)">4h25</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:26:)">4h26</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:27:)">4h27</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:28:)">4h28</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:29:)">4h29</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:30:)">4h30</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:31:)">4h31</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:32:)">4h32</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:33:)">4h33</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:34:)">4h34</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:35:)">4h35</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:36:)">4h36</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:37:)">4h37</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:38:)">4h38</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:39:)">4h39</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:40:)">4h40</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:41:)">4h41</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:42:)">4h42</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:43:)">4h43</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:44:)">4h44</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:45:)">4h45</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:46:)">4h46</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:47:)">4h47</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:48:)">4h48</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:49:)">4h49</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:50:)">4h50</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:51:)">4h51</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:52:)">4h52</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:53:)">4h53</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:54:)">4h54</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:55:)">4h55</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:56:)">4h56</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:57:)">4h57</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:58:)">4h58</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:59:)">4h59</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:00:)">4h00</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:01:)">4h01</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:02:)">4h02</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:03:)">4h03</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:04:)">4h04</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:05:)">4h05</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:06:)">4h06</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:07:)">4h07</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:08:)">4h08</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:09:)">4h09</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:10:)">4h10</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:11:)">4h11</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:12:)">4h12</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:13:)">4h13</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:14:)">4h14</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:15:)">4h15</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:16:)">4h16</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:17:)">4h17</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:18:)">4h18</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:19:)">4h19</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:20:)">4h20</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:21:)">4h21</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:22:)">4h22</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:23:)">4h23</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:24:)">4h24</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:25:)">4h25</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:26:)">4h26</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:27:)">4h27</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:28:)">4h28</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:29:)">4h29</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:30:)">4h30</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:31:)">4h31</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:32:)">4h32</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:33:)">4h33</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:34:)">4h34</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:35:)">4h35</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:36:)">4h36</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:37:)">4h37</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:38:)">4h38</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:39:)">4h39</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:40:)">4h40</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:41:)">4h41</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:42:)">4h42</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:43:)">4h43</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:44:)">4h44</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:45:)">4h45</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:46:)">4h46</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:47:)">4h47</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:48:)">4h48</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:49:)">4h49</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:50:)">4h50</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:51:)">4h51</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:52:)">4h52</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:53:)">4h53</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:54:)">4h54</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:55:)">4h55</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:56:)">4h56</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:57:)">4h57</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:58:)">4h58</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:59:)">4h59</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:00:)">5h00</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:01:)">5h01</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:02:)">5h02</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:03:)">5h03</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:04:)">5h04</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:05:)">5h05</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:06:)">5h06</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:07:)">5h07</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:08:)">5h08</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:09:)">5h09</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:10:)">5h10</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:11:)">5h11</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:12:)">5h12</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:13:)">5h13</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:14:)">5h14</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:15:)">5h15</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:16:)">5h16</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:17:)">5h17</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:18:)">5h18</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:19:)">5h19</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:20:)">5h20</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:21:)">5h21</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:22:)">5h22</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:23:)">5h23</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:24:)">5h24</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:25:)">5h25</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:26:)">5h26</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:27:)">5h27</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:28:)">5h28</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:29:)">5h29</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:30:)">5h30</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:31:)">5h31</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:32:)">5h32</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:33:)">5h33</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:34:)">5h34</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:35:)">5h35</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:36:)">5h36</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:37:)">5h37</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:38:)">5h38</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:39:)">5h39</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:40:)">5h40</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:41:)">5h41</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:42:)">5h42</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:43:)">5h43</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:44:)">5h44</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:45:)">5h45</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:46:)">5h46</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:47:)">5h47</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:48:)">5h48</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:49:)">5h49</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:50:)">5h50</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:51:)">5h51</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:52:)">5h52</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:53:)">5h53</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:54:)">5h54</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:55:)">5h55</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:56:)">5h56</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:57:)">5h57</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:58:)">5h58</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:59:)">5h59</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:00:)">5h00</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:01:)">5h01</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:02:)">5h02</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:03:)">5h03</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:04:)">5h04</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:05:)">5h05</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:06:)">5h06</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:07:)">5h07</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:08:)">5h08</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:09:)">5h09</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:10:)">5h10</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:11:)">5h11</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:12:)">5h12</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:13:)">5h13</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:14:)">5h14</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:15:)">5h15</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:16:)">5h16</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:17:)">5h17</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:18:)">5h18</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:19:)">5h19</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:20:)">5h20</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:21:)">5h21</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:22:)">5h22</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:23:)">5h23</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:24:)">5h24</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:25:)">5h25</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:26:)">5h26</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:27:)">5h27</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:28:)">5h28</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:29:)">5h29</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:30:)">5h30</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:31:)">5h31</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:32:)">5h32</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:33:)">5h33</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:34:)">5h34</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:35:)">5h35</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:36:)">5h36</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:37:)">5h37</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:38:)">5h38</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:39:)">5h39</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:40:)">5h40</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:41:)">5h41</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:42:)">5h42</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:43:)">5h43</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:44:)">5h44</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:45:)">5h45</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:46:)">5h46</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:47:)">5h47</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:48:)">5h48</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:49:)">5h49</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:50:)">5h50</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:51:)">5h51</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:52:)">5h52</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:53:)">5h53</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:54:)">5h54</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:55:)">5h55</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:56:)">5h56</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:57:)">5h57</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:58:)">5h58</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:59:)">5h59</value>
+        <value condition="String.StartsWith(ListItem.Duration,00:)">1 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:)">1 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:)">2 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:)">3 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:)">4 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:)">5 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,06:)">6 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,07:)">7 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,08:)">8 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,09:)">9 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,10:)">10 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,11:)">11 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,12:)">12 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,13:)">13 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,14:)">14 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,15:)">15 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,16:)">16 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,17:)">17 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,18:)">18 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,19:)">19 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,20:)">20 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,21:)">21 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,22:)">22 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,23:)">23 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,24:)">24 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,25:)">25 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,26:)">26 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,27:)">27 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,28:)">28 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,29:)">29 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,30:)">30 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,31:)">31 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,32:)">32 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,33:)">33 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,34:)">34 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,35:)">35 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,36:)">36 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,37:)">37 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,38:)">38 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,39:)">39 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,40:)">40 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,41:)">41 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,42:)">42 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,43:)">43 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,44:)">44 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,45:)">45 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,46:)">46 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,47:)">47 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,48:)">48 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,49:)">49 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,50:)">50 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,51:)">51 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,52:)">52 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,53:)">53 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,54:)">54 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,55:)">55 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,56:)">56 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,57:)">57 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,58:)">58 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,59:)">59 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,00:)">1 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:)">1 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:)">2 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:)">3 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:)">4 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:)">5 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,06:)">6 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,07:)">7 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,08:)">8 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,09:)">9 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,10:)">10 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,11:)">11 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,12:)">12 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,13:)">13 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,14:)">14 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,15:)">15 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,16:)">16 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,17:)">17 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,18:)">18 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,19:)">19 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,20:)">20 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,21:)">21 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,22:)">22 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,23:)">23 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,24:)">24 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,25:)">25 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,26:)">26 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,27:)">27 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,28:)">28 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,29:)">29 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,30:)">30 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,31:)">31 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,32:)">32 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,33:)">33 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,34:)">34 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,35:)">35 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,36:)">36 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,37:)">37 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,38:)">38 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,39:)">39 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,40:)">40 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,41:)">41 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,42:)">42 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,43:)">43 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,44:)">44 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,45:)">45 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,46:)">46 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,47:)">47 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,48:)">48 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,49:)">49 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,50:)">50 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,51:)">51 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,52:)">52 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,53:)">53 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,54:)">54 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,55:)">55 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,56:)">56 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,57:)">57 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,58:)">58 min</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,59:)">59 min</value>
+    </variable>
+
+    <variable name="ExtendedInfoRecommendedHeader">
+        <value condition="String.IsEqual(Window.Property(Type),tvshow)">$LOCALIZE[31083]</value>
+        <value>$LOCALIZE[31026]</value>
+    </variable>
+</includes>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <defaultcontrol always="true">9000</defaultcontrol>
+    <onload condition="!ListItem.Property(addon.isinstalled) + Window.IsActive(addonbrowser)">SetFocus(6)</onload>
+    <include>dialogpopup_openclose</include>
+    <controls>
+        <control type="group">
+            <centertop>50%</centertop>
+            <centerleft>50%</centerleft>
+            <width>1520</width>
+            <height>900</height>
+            <include>background_dialog</include>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="label">
+                <align>center</align>
+                <aligny>center</aligny>
+                <height>60</height>
+                <font>light50</font>
+                <textcolor>active</textcolor>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="label">
+                <top>65</top>
+                <align>center</align>
+                <aligny>center</aligny>
+                <height>30</height>
+                <font>regular30</font>
+                <label>$INFO[ListItem.AddonCreator,$LOCALIZE[21863]: [COLOR active],[/COLOR]] $INFO[ListItem.AddonOrigin, / [COLOR active]$LOCALIZE[31036]:[/COLOR] ]</label>
+            </control>
+            <control type="image">
+                <top>150</top>
+                <left>20</left>
+                <width>600</width>
+                <height>600</height>
+                <aspectratio>keep</aspectratio>
+                <texture>$INFO[ListItem.Art(thumb)]</texture>
+            </control>
+            <control type="textbox">
+                <visible>Integer.IsEqual(Container(50).NumItems,0)</visible>
+                <top>150</top>
+                <left>700</left>
+                <width>820</width>
+                <height>600</height>
+                <label>$INFO[ListItem.AddonSummary,[B],[/B][CR][CR]]$INFO[ListItem.AddonDescription]</label>
+            </control>
+            <control type="textbox">
+                <visible>!Integer.IsEqual(Container(50).NumItems,0)</visible>
+                <top>500</top>
+                <left>650</left>
+                <width>820</width>
+                <height>300</height>
+                <label>$INFO[ListItem.AddonSummary,[B],[/B][CR][CR]]$INFO[ListItem.AddonDescription]</label>
+            </control>
+            <control type="panel" id="50">
+                <left>650</left>
+                <top>150</top>
+                <width>850</width>
+                <height>300</height>
+                <ondown>9000</ondown>
+                <onup>9000</onup>
+                <orientation>horizontal</orientation>
+                <itemlayout height="300" width="500">
+                    <control type="image">
+                        <top>10</top>
+                        <width>498</width>
+                        <height>280</height>
+                        <texture background="true">$INFO[ListItem.Icon]</texture>
+                        <aspectratio>scale</aspectratio>
+                        <bordertexture border="2" colordiffuse="border">colors/white.png</bordertexture>
+                        <bordersize>2</bordersize>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="300" width="500">
+                    <control type="image">
+                        <top>10</top>
+                        <width>498</width>
+                        <height>280</height>
+                        <texture background="true">$INFO[ListItem.Icon]</texture>
+                        <aspectratio>scale</aspectratio>
+                        <bordertexture border="2" colordiffuse="active">colors/white.png</bordertexture>
+                        <bordersize>2</bordersize>
+                    </control>
+                </focusedlayout>
+            </control>
+        </control>
+        <control type="label">
+            <include>positioning_addoninfo_buttons</include>
+            <top>910</top>
+            <width>400</width>
+            <height>30</height>
+            <align>center</align>
+            <aligny>center</aligny>
+            <font>regular24</font>
+            <textcolor>active</textcolor>
+            <shadowcolor>black</shadowcolor>
+            <label>$VAR[AddonInfoHelpText]</label>
+        </control>
+        <control type="grouplist" id="9000">
+            <top>940</top>
+            <height>100</height>
+            <onleft>9000</onleft>
+            <onright>9000</onright>
+            <onup>50</onup>
+            <ondown>9000</ondown>
+            <align>center</align>
+            <itemgap>10</itemgap>
+            <orientation>horizontal</orientation>        
+            <include content="button_round">
+                <param name="id">12</param>
+                <param name="icon">icons/buttons/launch.png</param>
+                <param name="radius">100</param>
+                <param name="iconsize">60</param>
+                <param name="iconoffset">20</param>
+            </include>
+            <include content="button_round">
+                <param name="id">9</param>
+                <param name="icon">icons/buttons/configure.png</param>
+                <param name="radius">100</param>
+                <param name="iconsize">60</param>
+                <param name="iconoffset">20</param>
+            </include>
+            <include content="button_round">
+                <param name="id">8</param>
+                <param name="icon">icons/buttons/update.png</param>
+                <param name="radius">100</param>
+                <param name="iconsize">60</param>
+                <param name="iconoffset">20</param>
+            </include>
+            <include content="button_toggle_round">
+                <param name="id">13</param>
+                <param name="icon_on">buttons/radio-button-on.png</param>
+                <param name="icon_off">buttons/radio-button-off.png</param>
+                <param name="radius">100</param>
+                <param name="iconsize">100</param>
+                <param name="iconoffsetx">2</param>
+            </include>
+            <include content="button_round">
+                <param name="id">10</param>
+                <param name="icon">icons/buttons/info.png</param>
+                <param name="radius">100</param>
+                <param name="iconsize">60</param>
+                <param name="iconoffset">20</param>
+            </include>
+            <include content="button_toggle_round">
+                <param name="id">7</param>
+                <param name="icon_on">icons/buttons/disable.png</param>
+                <param name="icon_off">icons/buttons/enabled.png</param>
+                <param name="radius">100</param>
+                <param name="iconsize">60</param>
+                <param name="iconoffsetx">20</param>
+            </include>
+            <include content="button_toggle_round">
+                <param name="id">6</param>
+                <param name="icon_on">icons/buttons/uninstall.png</param>
+                <param name="icon_off">icons/buttons/install.png</param>
+                <param name="radius">100</param>
+                <param name="iconsize">60</param>
+                <param name="iconoffsetx">20</param>
+                <param name="selected" value="ListItem.Property(addon.isinstalled) | !Window.IsActive(addonbrowser)" />
+            </include>
+       </control>
+    </controls>
+</window>

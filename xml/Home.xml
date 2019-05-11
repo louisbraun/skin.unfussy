@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">9001</defaultcontrol>
+	<onload>ClearProperty(menu_active)</onload>
+	<onload>SetProperty(active_submenu, 0)</onload>
+	<onload>SetProperty(active_channel, 0)</onload>
+    <onload condition="String.IsEqual(Window(home).Property(closeonload),true) + VideoPlayer.Content(livetv)">ReplaceWindow(fullscreenvideo)</onload>
+	<onload condition="String.IsEqual(Window(home).Property(startlivetv),true) + !Player.HasVideo">Action(PlayPvrTV)</onload>
+	<onload condition="String.IsEqual(Window(home).Property(startlivetv),true) + !Player.HasVideo">ReplaceWindow(fullscreenvideo)</onload>
+	<onunload>ClearProperty(menu_active)</onunload>
+	<backgroundcolor>0</backgroundcolor>
+	<controls>
+		<include>background</include>
+		<include content="widgets_mainmenu" />
+		<control type="group">
+			<include condition="Player.HasVideo">openclose_slight_top</include>
+			<include content="info_header" />
+			<include content="home_buttons" />
+			<include content="home_mainmenu" />
+			<include content="home_homebutton" />
+		</control>
+	</controls>
+</window>

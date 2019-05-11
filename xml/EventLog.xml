@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">50</defaultcontrol>
+    <backgroundcolor>0</backgroundcolor>
+    <views>50</views>
+    <controls>
+        <include>background</include>
+        <include content="info_header">
+            <param name="title">$LOCALIZE[31002]</param>
+            <param name="showicon" value="true" />
+            <param name="icon" value="icons/settings/eventlog.png" />
+        </include>
+        <control type="group">
+            <control type="group">
+                <visible>Control.IsVisible(50)</visible>
+                <include>openclose_slight_right</include>
+                <top>80</top>
+                <left>520</left>
+                <width>1360</width>
+                <height>960</height>
+                <control type="image">
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                    <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="fixedlist" id="50">
+                    <left>1</left>
+                    <top>1</top>
+                    <width>1358</width>
+                    <onleft>9000</onleft>
+                    <onright>60</onright>
+                    <onup>50</onup>
+                    <movement>2</movement>
+                    <focusposition>3</focusposition>
+                    <ondown>50</ondown>
+                    <pagecontrol>60</pagecontrol>
+                    <scrolltime tween="cubic" easing="out">500</scrolltime>
+                    <itemlayout height="141">
+                        <control type="image">
+                            <left>10</left>
+                            <top>10</top>
+                            <width>120</width>
+                            <height>120</height>
+                            <texture fallback="DefaultAddon.png">$INFO[Listitem.Icon]</texture>
+                            <aspectratio>scale</aspectratio>
+                            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                            <bordersize>4</bordersize>
+                        </control>
+                        <control type="label">
+                            <left>160</left>
+                            <right>400</right>
+                            <top>10</top>
+                            <height>35</height>
+                            <aligny>center</aligny>
+                            <font>regular24</font>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                        <control type="textbox">
+                            <left>160</left>
+                            <top>45</top>
+                            <right>20</right>
+                            <height>80</height>
+                            <aligny>top</aligny>
+                            <textcolor>grey</textcolor>
+                            <label>$INFO[ListItem.Property(Event.Description)]</label>
+                        </control>
+                        <control type="label">
+                            <left>0</left>
+                            <right>30</right>
+                            <top>10</top>
+                            <height>35</height>
+                            <align>right</align>
+                            <aligny>center</aligny>
+                            <label>$INFO[ListItem.Label2]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout height="141">
+                        <control type="image">
+                            <left>0</left>
+                            <top>0</top>
+                            <right>0</right>
+                            <bottom>0</bottom>
+                            <texture colordiffuse="active">colors/white.png</texture>
+                            <visible>Control.HasFocus(50)</visible>
+                        </control>
+                        <control type="image">
+                            <left>10</left>
+                            <top>10</top>
+                            <width>120</width>
+                            <height>120</height>
+                            <texture fallback="DefaultAddon.png">$INFO[Listitem.Icon]</texture>
+                            <aspectratio>scale</aspectratio>
+                            <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                            <bordersize>4</bordersize>
+                        </control>
+                        <control type="label">
+                            <left>160</left>
+                            <right>400</right>
+                            <top>10</top>
+                            <height>35</height>
+                            <aligny>center</aligny>
+                            <font>regular30</font>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                        <control type="textbox">
+                            <left>160</left>
+                            <top>45</top>
+                            <right>20</right>
+                            <height>80</height>
+                            <aligny>top</aligny>
+                            <label>$INFO[ListItem.Property(Event.Description)]</label>
+                        </control>
+                        <control type="label">
+                            <left>0</left>
+                            <right>30</right>
+                            <top>10</top>
+                            <height>35</height>
+                            <align>right</align>
+                            <aligny>center</aligny>
+                            <label>$INFO[ListItem.Label2]</label>
+                        </control>
+                    </focusedlayout>
+                </control>
+            </control>
+            <control type="group">
+                <include>openclose_slight_left</include>
+                <top>80</top>
+                <left>20</left>
+                <width>482</width>
+                <height>960</height>
+                <control type="image">
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                    <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="grouplist" id="9000">
+                    <orientation>vertical</orientation>
+                    <top>1</top>
+                    <left>1</left>
+                    <width>480</width>
+                    <itemgap>0</itemgap>
+                    <onup>9000</onup>
+                    <ondown>9000</ondown>
+                    <onleft>50</onleft>
+                    <onright>50</onright>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <width>450</width>
+                    <control type="togglebutton" id="4">
+                        <height>90</height>
+                        <aligny>center</aligny>
+                        <textoffsetx>20</textoffsetx>
+                        <texturenofocus />
+                        <alttexturenofocus></alttexturenofocus>
+                        <alttexturefocus colordiffuse="active">colors/white.png</alttexturefocus>
+                        <textoffsety>35</textoffsety>
+                        <font>light36</font>
+                        <label>$LOCALIZE[31039]: $LOCALIZE[584]</label>
+                        <altlabel>$LOCALIZE[31039]: $LOCALIZE[585]</altlabel>
+                    </control>
+                    <control type="button" id="21">
+                        <height>90</height>
+                        <font>light36</font>
+                        <textoffsetx>20</textoffsetx>
+                        <aligny>center</aligny>
+                        <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                        <texturenofocus />
+                    </control>
+                    <control type="radiobutton" id="22">
+                        <height>90</height>
+                        <aligny>center</aligny>
+                        <texturenofocus />
+                        <textoffsetx>20</textoffsetx>
+                        <font>light36</font>
+                        <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                        <radioposx>380</radioposx>
+                    </control>
+                    <control type="button" id="20">
+                        <height>90</height>
+                        <font>light36</font>
+                        <textoffsetx>20</textoffsetx>
+                        <aligny>center</aligny>
+                        <label>$LOCALIZE[192]</label>
+                        <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                        <texturenofocus />
+                    </control>
+                    <control type="button" id="501">
+                        <height>90</height>
+                        <font>light36</font>
+                        <textoffsetx>20</textoffsetx>
+                        <aligny>center</aligny>
+                        <label>$LOCALIZE[5]</label>
+                        <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                        <texturenofocus />
+                        <onclick>ActivateWindow(systemsettings,logging)</onclick>
+                    </control>
+                </control>
+                <control type="image">
+                    <left>70</left>
+                    <bottom>90</bottom>
+                    <width>300</width>
+                    <height>300</height>
+                    <fadetime>300</fadetime>
+                    <aspectratio aligny="bottom">keep</aspectratio>
+                    <texture fallback="DefaultAddon.png">$INFO[ListItem.Icon]</texture>
+                    <bordertexture border="21">overlays/shadow.png</bordertexture>
+                    <bordersize>20</bordersize>
+                </control>
+            </control>
+            <control type="image">
+                <visible>Control.IsVisible(60)</visible>
+                <right>15</right>
+                <top>80</top>
+                <width>15</width>
+                <bottom>40</bottom>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            </control>
+            <control type="scrollbar" id="60">
+                <right>15</right>
+                <top>80</top>
+                <width>15</width>
+                <bottom>40</bottom>
+                <orientation>vertical</orientation>
+                <texturesliderbackground colordiffuse="borderdark" border="3">progress/texturebg_border_white.png</texturesliderbackground>
+                <texturesliderbar border="3,6,3,6" colordiffuse="border">progress/texturebg_white.png</texturesliderbar>
+                <texturesliderbarfocus border="3,6,3,6" colordiffuse="active">progress/texturebg_white.png</texturesliderbarfocus>
+                <onleft>50</onleft>
+                <onright>9000</onright>
+                <visible>Control.IsVisible(50)</visible>
+            </control>
+        </control>
+    </controls>
+</window>

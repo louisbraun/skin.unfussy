@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol>150</defaultcontrol>
+    <controls>
+        <include>dialogpopup_openclose</include>
+        <control type="group">
+            <centertop>50%</centertop>
+            <centerleft>50%</centerleft>
+            <width>1700</width>
+            <height>800</height>
+            <include>background_dialog</include>
+            <include>dialog_subtitles_decoration</include>
+            <control type="label" id="100">
+                <left>10</left>
+                <right>10</right>
+                <include>headerlabel_dialog</include>
+            </control>
+            <control type="image" id="110">
+                <left>20</left>
+                <bottom>0</bottom>
+                <width>360</width>
+                <height>200</height>
+                <aspectratio>keep</aspectratio>
+            </control>
+            <control type="panel" id="150">
+                <top>100</top>
+                <left>1</left>
+                <width>399</width>
+                <height>480</height>
+                <onleft></onleft>
+                <onright>120</onright>
+                <onup>150</onup>
+                <ondown>150</ondown>
+                <scrolltime>200</scrolltime>
+                <itemlayout width="400" height="80">
+                    <include content="dialog_subtitles_provider_listitem" />
+                </itemlayout>
+                <focusedlayout width="400" height="80">
+                    <include content="dialog_subtitles_provider_listitem">
+                        <param name="active">true</param>
+                    </include>
+                </focusedlayout>            
+            </control>
+            <control type="panel" id="120">
+                <top>80</top>
+                <left>401</left>
+                <width>920</width>
+                <height>719</height>
+                <onleft>150</onleft>
+                <onright>120001</onright>
+                <onup>120</onup>
+                <ondown>120</ondown>
+                <pagecontrol>120001</pagecontrol>
+                <scrolltime>200</scrolltime>
+                <itemlayout height="100">
+                    <include content="dialog_subtitles_listitem" />
+                </itemlayout>
+                <focusedlayout height="100">
+                    <include content="dialog_subtitles_listitem">
+                        <param name="active">true</param>
+                    </include>
+                </focusedlayout>
+            </control>
+            <include content="scrollbar">
+                <param name="top">82</param>
+                <param name="left">1325</param>
+                <param name="width">12</param>
+                <param name="height">715</param>
+                <param name="controlled_id">120</param>
+                <param name="onleft_id">120</param>
+                <param name="onright_id">160</param>
+            </include>
+            <control type="group">
+                <visible>String.IsEqual(Control.GetLabel(140),$LOCALIZE[10210])</visible>
+                <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+                <control type="image">
+                    <centerleft>50%</centerleft>
+                    <centertop>50%</centertop>
+                    <width>100</width>
+                    <height>100</height>
+                    <visible>true</visible>
+                    <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                </control>
+                <control type="image">
+                    <centerleft>50%</centerleft>
+                    <centertop>50%</centertop>
+                    <width>70</width>
+                    <height>70</height>
+                    <visible>true</visible>
+                    <animation effect="rotate" end="360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture flipx="true" colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                </control>
+            </control>
+            <control type="button" id="160">
+                <top>100</top>
+                <left>1370</left>
+                <width>300</width>
+                <height>80</height>
+                <label>$LOCALIZE[24120]</label> 
+                <onleft>120</onleft>
+                <onright>150</onright>
+                <font>regular30</font>
+                <align>center</align>
+                <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                <texturenofocus colordiffuse="backgrounddark">colors/white.png</texturenofocus>
+            </control>
+            <control type="label" id="130">
+                <bottom>40</bottom>
+                <left>1340</left>
+                <width>340</width>
+                <height>40</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>light24</font>
+                <label>$LOCALIZE[31074]</label>
+            </control>
+            <control type="label" id="140">
+                <bottom>0</bottom>
+                <left>1340</left>
+                <width>340</width>
+                <height>40</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>light24</font>
+                <textcolor>active</textcolor>
+                <scroll>true</scroll>
+            </control>
+        </control>
+    </controls>
+</window>

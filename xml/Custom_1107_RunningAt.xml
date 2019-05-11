@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1107">
+    <defaultcontrol always="true">99999</defaultcontrol>
+    <backgroundcolor>0</backgroundcolor>
+    <controls>
+        <include>background</include>
+        <control type="group">
+            <include>openclose_slight_left</include>
+            <control type="image">
+                <left>20</left>
+                <top>10</top>
+                <width>1880</width>
+                <height>1060</height>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="group">
+                <visible>Container(99999).IsUpdating + !Integer.IsGreater(Container(99999).NumItems,0)</visible>
+                <control type="group">
+                    <animation effect="fade" time="320" delay="400">Visible</animation>
+                    <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+                    <control type="image">
+                        <centerleft>50%</centerleft>
+                        <centertop>50%</centertop>
+                        <width>100</width>
+                        <height>100</height>
+                        <visible>true</visible>
+                        <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                        <texture colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                    </control>
+                    <control type="image">
+                        <centerleft>50%</centerleft>
+                        <centertop>50%</centertop>
+                        <width>70</width>
+                        <height>70</height>
+                        <visible>true</visible>
+                        <animation effect="rotate" end="360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                        <texture flipx="true" colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                    </control>
+                </control>
+                <control type="label">
+                    <top>63%</top>
+                    <align>center</align>
+                    <textcolor>active</textcolor>
+                    <font>light70</font>
+                    <label>Lade $VAR[RunningAtHeader]</label>
+                </control>
+            </control>
+            <control type="label">
+                <font>light70</font>
+                <align>center</align>
+                <textcolor>active</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <label>$VAR[RunningAtHeader]</label>
+            </control>
+            <control type="panel" id="99999">
+                <left>50</left>
+                <top>100</top>
+                <width>1820</width>
+                <height>960</height>
+                <itemlayout height="200" width="910">
+                    <include content="pvr_runningat_listitem" />
+                </itemlayout>
+                <focusedlayout height="200" width="910">
+                    <include content="pvr_runningat_listitem">
+                        <param name="active">true</param>
+                    </include>
+                </focusedlayout>
+                <include condition="Integer.IsEqual(Window(home).Property(runningat_active),0)" content="pvr_runningat_content">
+                    <param name="path">$INFO[Skin.String(runningat_path_0)]</param>
+                </include>
+                <include condition="Integer.IsEqual(Window(home).Property(runningat_active),1)" content="pvr_runningat_content">
+                    <param name="path">$INFO[Skin.String(runningat_path_1)]</param>
+                </include>
+                <include condition="Integer.IsEqual(Window(home).Property(runningat_active),2)" content="pvr_runningat_content">
+                    <param name="path">$INFO[Skin.String(runningat_path_2)]</param>
+                </include>
+                <onclick>RunScript(script.unfussy.helper,action=info_runningat&amp;bc_id=$INFO[ListItem.Property(broadcastid)]&amp;c_id=$INFO[ListItem.Property(channelid)])</onclick>
+            </control>
+        </control>
+    </controls>
+</window>

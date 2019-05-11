@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">20</defaultcontrol>
+    <controls>
+        <include>background</include>
+        <include content="info_header">
+            <param name="title">$LOCALIZE[10003]</param>
+            <param name="showicon" value="true" />
+            <param name="icon" value="icons/settings/filemanager.png" />
+        </include>        
+        <control type="image">
+            <centerleft>50%</centerleft>
+            <centertop>50%</centertop>
+            <width>68</width>
+            <height>68</height>
+            <texture colordiffuse="active" border="2">icons/left-right.png</texture>
+            <animation effect="fade" start="0" end="100" time="300" delay="100">WindowOpen</animation>
+            <animation effect="fade" start="100" end="0" time="160">WindowClose</animation>
+        </control>
+        <control type="group">
+            <left>0</left>
+            <include>openclose_slight_left</include>
+            <include content="filemanager_panel_background">
+                <param name="left" value="20" />
+            </include>
+            <include content="filemanager_panel">
+                <param name="list_id" value="20" />
+                <param name="left" value="30" />
+                <param name="onleft" value="60" />
+                <param name="onright" value="21" />
+                <param name="scrollbar_id" value="60" />
+            </include>
+            <include content="filemanager_scrollbar">
+                <param name="scrollbar_id" value="60" />
+                <param name="filemanager_panel_id" value="20" />
+                <param name="left" value="5" />
+            </include>
+        </control>
+        <control type="group">
+            <right>0</right>
+            <include>openclose_slight_right</include>
+            <include content="filemanager_panel_background">
+                <param name="left" value="1050" />
+            </include>
+            <include content="filemanager_panel">
+                <param name="list_id" value="21" />
+                <param name="left" value="1060" />
+                <param name="onleft" value="20" />
+                <param name="onright" value="61" />
+                <param name="scrollbar_id" value="61" />
+            </include>
+            <include content="filemanager_scrollbar">
+                <param name="scrollbar_id" value="61" />
+                <param name="filemanager_panel_id" value="21" />
+                <param name="left" value="1905" />
+            </include>
+        </control>
+        <control type="group">
+            <bottom>0</bottom>
+            <height>65</height>
+            <animation effect="fade" start="0" end="100" time="400">WindowOpen</animation>
+            <animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
+            <control type="label">
+                <right>730</right>
+                <width>400</width>
+                <height>48</height>
+                <aligny>center</aligny>
+                <align>right</align>
+                <label>$INFO[Container(21).CurrentItem,, / ]$INFO[Container(21).NumItems]</label>
+            </control>
+            <control type="label" id="102">
+                <right>40</right>
+                <width>600</width>
+                <height>48</height>
+                <font>regular30</font>
+                <align>right</align>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <label>$PARAM[header_label]</label>
+                <haspath>true</haspath>
+            </control>
+            <control type="label">
+                <left>730</left>
+                <width>400</width>
+                <height>48</height>
+                <aligny>center</aligny>
+                <label>$INFO[Container(20).CurrentItem,, / ]$INFO[Container(20).NumItems]</label>
+            </control>
+            <control type="label" id="101">
+                <left>40</left>
+                <width>600</width>
+                <height>48</height>
+                <font>regular30</font>
+                <aligny>center</aligny>
+                <label>$PARAM[header_label]</label>
+                <textcolor>active</textcolor>
+                <haspath>true</haspath>
+            </control>
+        </control>
+    </controls>
+</window>

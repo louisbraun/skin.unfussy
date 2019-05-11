@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol condition="Control.IsVisible(3)" always="true">3</defaultcontrol>
+    <defaultcontrol condition="Control.IsVisible(6)" always="true">6</defaultcontrol>
+    <include>dialogpopup_openclose</include>
+    <controls>
+        <control type="group">
+            <centertop>50%</centertop>
+            <centerleft>50%</centerleft>
+            <width>1220</width>
+            <height>750</height>
+            <include>background_dialog</include>
+            <include>dialog_select_decoration</include>
+            <control type="label" id="1">
+                <include>headerlabel_dialog</include>
+                <label></label>
+            </control>
+            <control type="list" id="3">
+                <left>2</left>
+                <top>100</top>
+                <width>900</width>
+                <bottom>20</bottom>
+                <onup>3</onup>
+                <ondown>3</ondown>
+                <onleft>9001</onleft>
+                <onright>61</onright>
+                <pagecontrol>61</pagecontrol>
+                <scrolltime>200</scrolltime>
+                <itemlayout width="900" height="70">
+                    <include content="dialogselect_menuitem" />
+                </itemlayout>
+                <focusedlayout width="900" height="70">
+                    <include content="dialogselect_menuitem">
+                        <param name="active" value="true" />
+                    </include>
+                </focusedlayout>
+            </control>
+            <control type="list" id="6">
+                <left>2</left>
+                <top>100</top>
+                <width>900</width>
+                <bottom>20</bottom>
+                <onup>6</onup>
+                <ondown>6</ondown>
+                <onleft>9001</onleft>
+                <onright>61</onright>
+                <pagecontrol>61</pagecontrol>
+                <scrolltime>200</scrolltime>
+                <itemlayout width="900" height="100">
+                    <include content="dialogselect_menuitem_details" />
+                </itemlayout>
+                <focusedlayout width="900" height="100">
+                    <include content="dialogselect_menuitem_details">
+                        <param name="active" value="true" />
+                    </include>
+                </focusedlayout>
+            </control>
+            <control type="image">
+                <visible>Control.IsVisible(61)</visible>
+                <left>910</left>
+                <top>100</top>
+                <width>12</width>
+                <bottom>20</bottom>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            </control>
+            <control type="scrollbar" id="61">
+                <left>910</left>
+                <top>100</top>
+                <width>12</width>
+                <bottom>20</bottom>
+                <onleft condition="Control.IsVisible(3)">3</onleft>
+                <onleft condition="Control.IsVisible(6)">6</onleft>
+                <onright>9001</onright>
+                <orientation>vertical</orientation>
+                <texturesliderbackground colordiffuse="borderdark" border="3">progress/texturebg_border_white.png</texturesliderbackground>
+                <texturesliderbar border="3,6,3,6" colordiffuse="border">progress/texturebg_white.png</texturesliderbar>
+                <texturesliderbarfocus border="3,6,3,6" colordiffuse="active">progress/texturebg_white.png</texturesliderbarfocus>
+            </control>
+            <control type="grouplist" id="9001">
+                <left>950</left>
+                <top>120</top>
+                <itemgap>10</itemgap>
+                <onleft condition="Control.IsVisible(3)">3</onleft>
+                <onleft condition="Control.IsVisible(6)">6</onleft>
+                <onright condition="Control.IsVisible(3)">3</onright>
+                <onright condition="Control.IsVisible(6)">6</onright>
+                <include content="dialog_button">
+                    <param name="id" value="5" />
+                    <param name="width" value="250" />
+                    <param name="background">background</param>
+                </include>
+                <include content="dialog_button">
+                    <param name="id" value="7" />
+                    <param name="width" value="250" />
+                    <param name="label" value="$LOCALIZE[222]" />
+                    <param name="background">background</param>
+                </include>
+            </control>
+            <control type="label">
+                <left>930</left>
+                <bottom>0</bottom>
+                <width>280</width>
+                <height>35</height>
+                <font>regular20</font>
+                <align>right</align>
+                <textcolor>white</textcolor>
+                <visible>Control.IsVisible(3)</visible>
+                <label>$INFO[Container(3).NumItems] $LOCALIZE[31001] - $INFO[Container(3).CurrentPage]/$INFO[Container(3).NumPages]</label>
+            </control>
+        </control>        
+    </controls>
+</window>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    
+    <expression name="ShowPartyMode">
+        Container.Content(musicvideos) | 
+        Container.Content(artists) |
+        Container.Content(albums) |
+        Container.Content(songs)
+    </expression>
+
+    <include name="media_menu">
+        <control type="group">
+            <left>-400</left>
+            <top>60</top>
+            <animation type="Conditional" condition="ControlGroup(9000).HasFocus" reversible="true">
+                <effect type="slide" start="0" end="400" time="400" tween="cubic" easing="out" />
+            </animation>
+            <control type="image">
+                <width>400</width>
+                <height>60</height>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="grouplist" id="9000">
+                <top>60</top>
+                <width>400</width>
+                <onleft>50</onleft>
+                <onright>50</onright>
+                <onback>50</onback>
+                <itemgap>0</itemgap>
+                <control type="button" id="1001">
+                    <visible>!String.IsEmpty(Container.Viewmode)</visible>
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <textoffsetx>20</textoffsetx>
+                    <radioposx>370</radioposx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <label>Ansicht</label>
+                    <label2>[B]$INFO[Container.Viewmode][/B]</label2>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <onclick>Container.NextViewMode</onclick>
+                </control>
+                <control type="button" id="1002">
+                    <description>PVR Channel Groups</description>
+                    <visible>!String.IsEmpty(Control.GetLabel(29))</visible>
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <textoffsetx>20</textoffsetx>
+                    <radioposx>370</radioposx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <label>$LOCALIZE[19141]</label>
+                    <label2>[B]$INFO[Control.GetLabel(29)][/B]</label2>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <onclick>NextChannelGroup</onclick>
+                </control>
+                <control type="button" id="1005">
+                    <description>PVR Channel Groups</description>
+                    <visible>!String.IsEmpty(Control.GetLabel(30))</visible>
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <textoffsetx>20</textoffsetx>
+                    <radioposx>370</radioposx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <label>$LOCALIZE[19141]</label>
+                    <label2>[B]$INFO[Control.GetLabel(30)][/B]</label2>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <onclick>NextChannelGroup</onclick>
+                </control>
+                <control type="button" id="1003">
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <textoffsetx>20</textoffsetx>
+                    <radioposx>370</radioposx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <label>Sortierung</label>
+                    <label2>[B]$INFO[Container.SortMethod][/B]</label2>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <onclick>Container.NextSortMethod</onclick>
+                </control>
+                <control type="button" id="1004">
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <textoffsetx>20</textoffsetx>
+                    <radioposx>370</radioposx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <label>Reihenfolge</label>
+                    <label2>[B]$INFO[Container.SortOrder][/B]</label2>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <onclick>Container.SetSortDirection</onclick>
+                </control>
+                <control type="button" id="10">
+                    <visible>!String.IsEmpty(Container.Content) | String.StartsWith(Container.FolderPath,pvr://recordings)</visible>
+                    <visible>!String.IsEmpty(Control.GetLabel(10))</visible>
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <label2>[B]$INFO[Container.NumItems][/B]</label2>
+                    <radioposx>370</radioposx>
+                    <textoffsetx>20</textoffsetx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                </control>
+                <control type="button" id="16">
+                    <visible>$EXP[ShowPartyMode]</visible>
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <radioposx>370</radioposx>
+                    <textoffsetx>20</textoffsetx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <label>$LOCALIZE[589]</label>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                </control>
+                <control type="button" id="610">
+                    <visible>Container.Content(movies)</visible>
+                    <visible>Integer.IsGreater(Playlist.Length(video),0)</visible>
+                    <onclick>ActivateWindow(videoplaylist)</onclick>
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <radioposx>370</radioposx>
+                    <textoffsetx>20</textoffsetx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <label>$LOCALIZE[31075]</label>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                </control>                
+                <control type="button" id="611">
+                    <visible>Container.Content(songs) | Container.Content(artists) | Container.Content(albums)</visible>
+                    <visible>Integer.IsGreater(Playlist.Length(music),0)</visible>
+                    <onclick>ActivateWindow(musicplaylist)</onclick>
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <radioposx>370</radioposx>
+                    <textoffsetx>20</textoffsetx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <label>$LOCALIZE[31075]</label>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                </control>                
+                <control type="button" id="6">
+                    <visible>Container.Content(images)</visible>
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <radioposx>370</radioposx>
+                    <textoffsetx>20</textoffsetx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <label>$LOCALIZE[13317]</label>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                </control>
+                <control type="button" id="7">
+                    <visible>Container.Content(images)</visible>
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <radioposx>370</radioposx>
+                    <textoffsetx>20</textoffsetx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <label>$LOCALIZE[13318]</label>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                </control>
+                <control type="radiobutton" id="9">
+                    <visible>Container.Content(images)</visible>
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <radioposx>300</radioposx>
+                    <textoffsetx>20</textoffsetx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <label>$LOCALIZE[13319]</label>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                </control>
+            </control>
+            <control type="image">
+                <top>15</top>
+                <left>20</left>
+                <width>30</width>
+                <height>30</height>
+                <texture colordiffuse="active">icons/buttons/settings.png</texture>
+            </control>
+            <control type="label">
+                <left>60</left>
+                <width>300</width>
+                <height>60</height>
+                <aligny>center</aligny>
+                <font>regular30</font>
+                <textcolor>active</textcolor>
+                <label>$LOCALIZE[21417]</label>
+            </control>
+            <control type="button" id="12">
+                <visible>false</visible>
+            </control>
+        </control>
+    </include>
+
+</includes>

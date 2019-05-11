@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">50</defaultcontrol>
+    <backgroundcolor>background</backgroundcolor>
+    <views>50,52,53,54</views>
+    <menucontrol>9000</menucontrol>
+    <controls>
+        <include>background</include>
+        <include content="info_header">
+            <param name="title" value="$LOCALIZE[24001]" />
+            <param name="showicon" value="true" />
+            <param name="icon" value="icons/settings/addons.png" />
+        </include>
+        <include>view_50_list</include>
+        <include>view_52_widelist</include>
+        <include>view_53_wall</include>
+        <include>view_54_infowall</include>
+        <include>media_menu</include>
+    </controls>
+</window>

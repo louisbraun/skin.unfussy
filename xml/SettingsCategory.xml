@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <backgroundcolor>0</backgroundcolor>
+    <controls>
+        <include>background</include>
+        <control type="label" id="2">
+            <visible>false</visible>
+        </control>
+        <include content="info_header">
+            <param name="title" value="$LOCALIZE[5]$INFO[Control.GetLabel(2), / ]" />
+            <param name="showicon" value="true" />
+            <param name="icon" value="icons/buttons/settings.png" />
+        </include>
+        <control type="group">
+            <include>openclose_slight_left</include>
+            <control type="image">
+                <visible>ControlGroup(5).HasFocus | Control.HasFocus(5001)</visible>
+                <top>100</top>
+                <left>10</left>
+                <width>500</width>
+                <height>940</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border" border="1">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>ControlGroup(3).HasFocus + ![ControlGroup(5).HasFocus | Control.HasFocus(5001)]</visible>
+                <top>100</top>
+                <left>10</left>
+                <width>500</width>
+                <height>940</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="activedialog" border="1">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="grouplist" id="3">
+                <description>menu</description>
+                <left>11</left>
+                <top>101</top>
+                <width>498</width>
+                <height>800</height>
+                <itemgap>1</itemgap>
+                <usecontrolcoords>true</usecontrolcoords>
+                <onleft>5</onleft>
+                <onright>5</onright>
+                <onup>3</onup>
+                <ondown>20</ondown>
+            </control>
+            <control type="image">
+                <bottom>131</bottom>
+                <left>11</left>
+                <width>498</width>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="radiobutton" id="20">
+                <description>settings level button</description>
+                <width>498</width>
+                <left>11</left>
+                <bottom>41</bottom>
+                <height>90</height>
+                <aligny>center</aligny>
+                <onclick>SettingsLevelChange</onclick>
+                <font>regular30</font>
+                <focusedcolor>white</focusedcolor>
+                <textoffsetx>80</textoffsetx>
+                <textoffsety>0</textoffsety>
+                <radioposx>20</radioposx>
+                <radioposy>0</radioposy>
+                <radiowidth>40</radiowidth>
+                <radioheight>40</radioheight>
+                <onleft>5</onleft>
+                <onright>5</onright>
+                <onup>3</onup>
+                <ondown>3</ondown>
+                <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                <textureradioonfocus>icons/buttons/settings.png</textureradioonfocus>
+                <textureradioonnofocus colordiffuse="white">icons/buttons/settings.png</textureradioonnofocus>
+                <textureradioofffocus>icons/buttons/settings.png</textureradioofffocus>
+                <textureradiooffnofocus colordiffuse="white">icons/buttons/settings.png</textureradiooffnofocus>
+            </control>
+        </control>
+        <control type="button" id="10">
+            <description>menu button</description>
+            <left>0</left>
+            <height>90</height>
+            <width>500</width>
+            <textoffsetx>20</textoffsetx>
+            <aligny>center</aligny>
+            <font>light36</font>
+            <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+        </control>
+        <control type="button" id="7">
+            <include>button_settings</include>
+            <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+        </control>
+        <control type="radiobutton" id="8">
+            <include>button_settings</include>
+            <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+        </control>
+        <control type="spincontrolex" id="9">
+            <include>button_settings</include>
+            <aligny>center</aligny>
+            <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+        </control>
+        <control type="sliderex" id="13">
+            <include>button_settings</include>
+            <aligny>center</aligny>
+            <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+        </control>
+        <control type="label" id="14">
+            <description>settings subsection label</description>
+            <width>1300</width>
+            <textoffsetx>45</textoffsetx>
+            <top>0</top>
+            <height>50</height>
+            <label></label>
+            <align>center</align>
+            <aligny>center</aligny>
+            <font>regular30</font>
+            <textcolor>active</textcolor>
+        </control>
+        <control type="image" id="11">
+            <description>separator image</description>
+            <height>1</height>
+            <aspectratio>stretch</aspectratio>
+            <texture colordiffuse="border">colors/white.png</texture>
+        </control>
+        <control type="edit" id="12">
+            <description>edit control</description>
+            <height>50</height>
+            <font>regular30</font>
+            <visible>true</visible>
+        </control>
+        <control type="group">
+            <include>openclose_slight_right</include>
+            <control type="image">
+                <visible>!ControlGroup(5).HasFocus + !Control.HasFocus(5001)</visible>
+                <top>100</top>
+                <left>540</left>
+                <width>1335</width>
+                <height>940</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border" border="1">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>ControlGroup(5).HasFocus | Control.HasFocus(5001)</visible>
+                <top>100</top>
+                <left>540</left>
+                <width>1335</width>
+                <height>940</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="activedialog" border="1">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="grouplist" id="5">
+                <description>control area</description>
+                <top>110</top>
+                <left>541</left>
+                <width>1333</width>
+                <bottom>150</bottom>
+                <pagecontrol>5001</pagecontrol>
+                <onleft>3</onleft>
+                <onright>5001</onright>
+                <onup>5</onup>
+                <ondown>5</ondown>
+            </control>
+            <control type="textbox" id="6">
+                <description>description area</description>
+                <left>570</left>
+                <width>1260</width>
+                <bottom>50</bottom>
+                <height>75</height>
+                <font>regular24</font>
+                <align>justify</align>
+                <textcolor>active</textcolor>
+                <autoscroll time="3000" delay="3000" repeat="5000">true</autoscroll>
+            </control>
+            <control type="image">
+                <bottom>140</bottom>
+                <left>540</left>
+                <width>1335</width>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+        </control>
+        <include content="scrollbar">
+            <param name="controlled_id" value="5" />
+            <param name="onleft_id" value="5" />
+            <param name="onright_id" value="5" />
+            <param name="top" value="100" />
+            <param name="left" value="1895" />
+            <param name="height" value="840" />
+        </include>
+    </controls>
+</window>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol>10</defaultcontrol>
+    <include>dialogpopup_openclose</include>
+    <controls>
+        <control type="group">
+            <centertop>50%</centertop>
+            <height>660</height>
+            <centerleft>50%</centerleft>
+            <width>1200</width>
+            <include>background_dialog</include>
+            <include>dialog_mediasource_decoration</include>
+            <control type="label" id="2">
+                <left>20</left>
+                <right>10</right>
+                <include>headerlabel_dialog</include>
+            </control>
+            <control type="label">
+                <description>path label</description>
+                <left>30</left>
+                <top>95</top>
+                <width>1140</width>
+                <height>30</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>regular24</font>
+                <label>$LOCALIZE[1021]</label>
+            </control>
+            <control type="list" id="10">
+                <left>25</left>
+                <top>145</top>
+                <width>860</width>
+                <height>245</height>
+                <onup>9001</onup>
+                <onleft>9000</onleft>
+                <onright>60</onright>
+                <ondown>12</ondown>
+                <pagecontrol>60</pagecontrol>
+                <scrolltime>200</scrolltime>
+                <itemlayout height="70">
+                    <include content="dialog_mediasource_sourceitem" />
+                </itemlayout>
+                <focusedlayout height="70">
+                    <include content="dialog_mediasource_sourceitem">
+                        <param name="active">true</param>
+                    </include>
+                </focusedlayout>
+            </control>
+            <control type="image">
+                <visible>Control.IsVisible(60)</visible>
+                <left>870</left>
+                <top>166</top>
+                <width>12</width>
+                <height>243</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            </control>
+            <control type="scrollbar" id="60">
+                <left>870</left>
+                <top>146</top>
+                <width>12</width>
+                <height>243</height>
+                <onleft>10</onleft>
+                <onright>9000</onright>
+                <orientation>vertical</orientation>
+                <texturesliderbackground colordiffuse="borderdark" border="3">progress/texturebg_border_white.png</texturesliderbackground>
+                <texturesliderbar border="3,6,3,6" colordiffuse="border">progress/texturebg_white.png</texturesliderbar>
+                <texturesliderbarfocus border="3,6,3,6" colordiffuse="active">progress/texturebg_white.png</texturesliderbarfocus>
+            </control>
+            <control type="grouplist" id="9000">
+                <left>900</left>
+                <top>147</top>
+                <orientation>vertical</orientation>
+                <onleft>10</onleft>
+                <onright>10</onright>
+                <ondown>12</ondown>
+                <itemgap>5</itemgap>
+                <include content="dialog_button">
+                    <param name="id" value="11" />
+                    <param name="label" value="$LOCALIZE[1024]" />
+                </include>
+                <include content="dialog_button">
+                    <param name="id" value="13" />
+                    <param name="label" value="$LOCALIZE[15019]" />
+                </include>
+                <include content="dialog_button">
+                    <param name="id" value="14" />
+                    <param name="label" value="$LOCALIZE[1210]" />
+                </include>
+            </control>
+            <control type="label">
+                <description>Name label</description>
+                <left>30</left>
+                <top>460</top>
+                <width>1140</width>
+                <height>30</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>regular24</font>
+                <label>$LOCALIZE[1022]</label>
+            </control>
+            <control type="edit" id="12">
+                <description>Name Button</description>
+                <left>30</left>
+                <top>500</top>
+                <width>1140</width>
+                <height>60</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <label></label>
+                <onup>10</onup>
+                <ondown>9001</ondown>
+            </control>
+            <control type="grouplist" id="9001">
+                <left>0</left>
+                <bottom>0</bottom>
+                <height>80</height>
+                <width>1200</width>
+                <align>center</align>
+                <itemgap>20</itemgap>
+                <orientation>horizontal</orientation>
+                <onup>12</onup>
+                <include content="dialog_button">
+                    <param name="id" value="18" />
+                    <param name="label" value="$LOCALIZE[186]" />
+                </include>
+                <include content="dialog_button">
+                    <param name="id" value="19" />
+                    <param name="label" value="$LOCALIZE[222]" />
+                </include>
+            </control>
+        </control>
+    </controls>
+</window>

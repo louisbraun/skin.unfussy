@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <defaultcontrol>200</defaultcontrol>
+    <zorder>10</zorder>
+    <controls>
+        <control type="group">
+            <include>openclose_slight_top</include>
+            <top>0</top>
+            <height>100</height>
+            <control type="image">
+                <height>60</height>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="label">
+                <visible>ControlGroup(200).HasFocus(0)</visible>
+                <top>92</top>
+                <left>0</left>
+                <width>300</width>
+                <height>30</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <font>regular24</font>
+                <label>$VAR[MusicOSDHelpText]</label>
+                <include>positioning_osd_music_buttons</include>
+            </control>
+            <control type="button" id="199">
+                <visible>false</visible>
+            </control>
+            <include>music_osd_buttons</include>
+            <include content="music_label_forward">
+                <param name="speed" value="2" />
+            </include>
+            <include content="music_label_forward">
+                <param name="speed" value="4" />
+            </include>
+            <include content="music_label_forward">
+                <param name="speed" value="8" />
+            </include>
+            <include content="music_label_forward">
+                <param name="speed" value="16" />
+            </include>
+            <include content="music_label_forward">
+                <param name="speed" value="32" />
+            </include>
+            <include content="music_label_rewind">
+                <param name="speed" value="2" />
+            </include>
+            <include content="music_label_rewind">
+                <param name="speed" value="4" />
+            </include>
+            <include content="music_label_rewind">
+                <param name="speed" value="8" />
+            </include>
+            <include content="music_label_rewind">
+                <param name="speed" value="16" />
+            </include>
+            <include content="music_label_rewind">
+                <param name="speed" value="32" />
+            </include>
+            <control type="group">
+                <include>openclose_slight_bottom</include>
+                <include>music_seekbar</include>
+            </control>
+        </control>
+    </controls>
+</window>

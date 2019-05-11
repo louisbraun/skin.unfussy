@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">50</defaultcontrol>
+    <backgroundcolor>0</backgroundcolor>
+    <views>50,51,52,53</views>
+    <menucontrol>9000</menucontrol>
+    <onunload condition="VideoPlayer.Content(livetv)">SetProperty(closeonload,true,home)</onunload>
+    <onunload>RunScript(script.unfussy.helper,action=refresh_timers)</onunload>
+    <controls>
+        <include>background</include>
+        <control type="group">
+            <visible>!Window.IsVisible(1103)</visible>
+            <visible>!Window.IsVisible(1104)</visible>
+            <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)</visible>
+            <include content="info_header">
+                <param name="title" value="$LOCALIZE[4]" />
+                <param name="showicon" value="true" />
+                <param name="icon" value="icons/pvr/epg.png" />
+            </include>
+            <include content="pvr_tvguide_view">
+                <param name="view_id">50</param>
+                <param name="view_name">$LOCALIZE[31063]</param>
+            </include>
+            <include content="pvr_tvguide_view">
+                <param name="view_id">51</param>
+                <param name="view_name">$LOCALIZE[31064]</param>
+                <param name="view_height">572</param>
+            </include>        
+            <include content="pvr_tvguide_view">
+                <param name="view_id">52</param>
+                <param name="view_name">$LOCALIZE[31065]</param>
+                <param name="view_height">732</param>
+            </include>        
+            <include content="pvr_tvguide_view">
+                <param name="view_id">53</param>
+                <param name="view_name">$LOCALIZE[31066]</param>
+                <param name="view_height">892</param>
+            </include>
+            <include>media_menu</include>
+            <control type="label" id="30">
+                <description>active ChannelGroup</description>
+                <visible>false</visible>
+            </control>
+        </control>
+    </controls>
+</window>
