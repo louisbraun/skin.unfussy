@@ -21,7 +21,7 @@
 		<description lang="en_GB">An "unfussy" skin, in particular designed for watching LiveTV.</description>
 		<platform>all</platform>
 		<license>CC BY-SA 4.0, GNU GENERAL PUBLIC LICENSE Version 2.0</license>
-		<source>https://github.com/louis72/skin.schaumermal/</source>
+		<source>https://github.com/louisbraun/skin.unfussy</source>
 		<assets>
 			<icon>resources/icon.png</icon>
 			<fanart></fanart>

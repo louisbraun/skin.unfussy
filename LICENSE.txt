@@ -1,4 +1,4 @@
-Unfussy - by Louis 2019
+Unfussy - a Kodi Skin by Louis 2019
 
 Unfussy code work is licensed under
 GNU General Public License (GPL), Version 2.0

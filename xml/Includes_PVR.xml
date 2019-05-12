@@ -127,16 +127,20 @@
                         <visible>Player.SeekEnabled</visible>
                         <visible>
                             !String.IsEmpty(Player.Duration(ss)) + 
-                            !String.IsEqual(Player.Duration(ss),00) + 
-                            !String.IsEqual(Player.Duration(ss),01) + 
-                            !String.IsEqual(Player.Duration(ss),02) + 
-                            !String.IsEqual(Player.Duration(ss),03) + 
-                            !String.IsEqual(Player.Duration(ss),04) + 
-                            !String.IsEqual(Player.Duration(ss),05) + 
-                            !String.IsEqual(Player.Duration(ss),06) + 
-                            !String.IsEqual(Player.Duration(ss),07) + 
-                            !String.IsEqual(Player.Duration(ss),08) + 
-                            !String.IsEqual(Player.Duration(ss),09)
+                            ![ String.IsEqual(Player.Duration(mm),00) 
+                             + String.IsEqual(Player.Duration(hh),00) 
+                             +  [String.IsEqual(Player.Duration(ss),00) | 
+                                 String.IsEqual(Player.Duration(ss),01) |
+                                 String.IsEqual(Player.Duration(ss),02) | 
+                                 String.IsEqual(Player.Duration(ss),03) | 
+                                 String.IsEqual(Player.Duration(ss),04) | 
+                                 String.IsEqual(Player.Duration(ss),05) | 
+                                 String.IsEqual(Player.Duration(ss),06) | 
+                                 String.IsEqual(Player.Duration(ss),07) | 
+                                 String.IsEqual(Player.Duration(ss),08) | 
+                                 String.IsEqual(Player.Duration(ss),09)
+                                ]
+                            ]
                         </visible>
                         <control type="progress">
                             <top>118</top>
