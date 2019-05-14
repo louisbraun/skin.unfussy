@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
+	<defaultcontrol>110</defaultcontrol>
 	<animation type="WindowOpen" reversible="false">
 		<effect type="zoom" start="80" end="100" center="960,540" delay="160" tween="back" time="240" />
 		<effect type="fade" delay="160" end="100" time="240" />
@@ -9,31 +10,20 @@
 		<effect type="fade" start="100" end="0" time="240" />
 	</animation>
 	<depth>0.50</depth>
-	<coordinates>
-		<left>1000</left>
-		<top>0</top>
-	</coordinates>
 	<controls>
 		<control type="image">
-			<description>background image</description>
-			<left>0</left>
-			<top>0</top>
-			<width>920</width>
 			<height>300</height>
 			<texture colordiffuse="backgroundtransparent">colors/white.png</texture>
 		</control>
 		<!-- ** Required ** Do not change <id> or <type> (Lyrics, will autoscroll if lrc based lyrics are shown) -->
 		<control type="list" id="110">
-			<left>10</left>
+			<left>50</left>
 			<top>50</top>
-			<width>900</width>
+			<width>1820</width>
 			<height>210</height>
 			<scrolltime>200</scrolltime>
 			<itemlayout height="40">
 				<control type="label">
-					<left>0</left>
-					<top>0</top>
-					<width>900</width>
 					<height>30</height>
 					<aligny>center</aligny>
 					<align>center</align>
@@ -42,17 +32,13 @@
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 			</itemlayout>
-			<focusedlayout height="60">
+			<focusedlayout height="80">
 				<control type="label">
-					<left>0</left>
-					<top>0</top>
-					<width>900</width>
-					<height>60</height>
 					<aligny>center</aligny>
 					<align>center</align>
 					<textcolor>active</textcolor>
 					<shadowcolor>FF666666</shadowcolor>
-					<font>bold36</font>
+					<font>bold50</font>
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 			</focusedlayout>
