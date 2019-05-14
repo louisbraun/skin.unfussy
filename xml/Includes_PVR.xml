@@ -99,7 +99,7 @@
                     <aligny>center</aligny>
                     <textcolor>active</textcolor>
                     <font>regular50</font>
-                    <label>$INFO[VideoPlayer.StartTime] - $INFO[VideoPlayer.EndTime]</label>
+                    <label>$INFO[VideoPlayer.StartTime] $INFO[VideoPlayer.EndTime,- ,]</label>
                 </control>
                 <!-- Running Recording -->
                 <include>pvr_recording_indicator</include>
@@ -113,7 +113,7 @@
                     <aligny>center</aligny>
                     <textcolor>active</textcolor>
                     <font>regular24</font>
-                    <label>$INFO[PVR.EpgEventElapsedTime] / $INFO[PVR.EpgEventDuration]</label>
+                    <label>$INFO[PVR.EpgEventElapsedTime] $INFO[PVR.EpgEventDuration,/ ,]</label>
                 </control>
                 <!-- Progress Bar -->
                 <control type="group">
@@ -214,7 +214,7 @@
                     <aligny>center</aligny>
                     <textcolor>white</textcolor>
                     <font>regular36</font>
-                    <label>$INFO[VideoPlayer.NextStartTime] - $INFO[VideoPlayer.NextEndTime]</label>
+                    <label>$INFO[VideoPlayer.NextStartTime] $INFO[VideoPlayer.NextEndTime,- ,]</label>
                 </control>
                 <!-- Border -->
                 <control type="image">
@@ -801,7 +801,7 @@
                     <height>20</height>
                     <align>right</align>
                     <font>light18</font>
-                    <label>$INFO[ListItem.StartTime] - $INFO[ListItem.EndTime]</label>
+                    <label>$INFO[ListItem.StartTime] $INFO[ListItem.EndTime,- ,]</label>
                 </control>
                 <control type="progress">
                     <visible>!$PARAM[active]</visible>
@@ -919,7 +919,7 @@
                 <left>20</left>
                 <aligny>center</aligny>
                 <font>light18</font>
-                <label>$INFO[ListItem.StartTime] - $INFO[ListItem.EndTime]</label>
+                <label>$INFO[ListItem.StartTime] $INFO[ListItem.EndTime,- ,]</label>
             </control>
             <control type="textbox">
                 <top>160</top>
@@ -950,12 +950,12 @@
                     <control type="label">
                         <height>40</height>
                         <font>light36</font>
-                        <label>[COLOR active]$LOCALIZE[552]:[/COLOR] $INFO[Container($PARAM[container_id]).ListItem.Date]</label>
+                        <label>$INFO[Container($PARAM[container_id]).ListItem.Date,[COLOR active]$LOCALIZE[552]:[/COLOR] ,]</label>
                     </control>
                     <control type="label">
                         <height>40</height>
                         <font>light36</font>
-                        <label>[COLOR active]$LOCALIZE[180]:[/COLOR] $INFO[Container($PARAM[container_id]).ListItem.Duration(hh:mm)]h</label>
+                        <label>$INFO[Container($PARAM[container_id]).ListItem.Duration(hh:mm),[COLOR active]$LOCALIZE[180]:[/COLOR] ,h]</label>
                     </control>
                 </control>
                 <control type="image">
@@ -1163,7 +1163,7 @@
                     <aligny>center</aligny>
                     <font>light36</font>
                     <textcolor>white</textcolor>
-                    <label>$INFO[Container($PARAM[container_id]).ListItem.NextStartTime] - $INFO[Container($PARAM[container_id]).ListItem.NextEndTime] [COLOR active]$INFO[Container($PARAM[container_id]).ListItem.NextTitle][/COLOR]</label>
+                    <label>$INFO[Container($PARAM[container_id]).ListItem.NextStartTime] $INFO[Container($PARAM[container_id]).ListItem.NextEndTime,- ,] [COLOR active]$INFO[Container($PARAM[container_id]).ListItem.NextTitle][/COLOR]</label>
                 </control>
                 <control type="label">
                     <bottom>0</bottom>
@@ -2031,7 +2031,7 @@
                 <width>50</width>
                 <height>36</height>
                 <font>regular18</font>
-                <label>$INFO[ListItem.StartTime] - $INFO[ListItem.EndTime]</label>
+                <label>$INFO[ListItem.StartTime] $INFO[ListItem.EndTime,- ,]</label>
                 <visible>!ListItem.HasTimer + !ListItem.HasTimerSchedule + !ListItem.IsRecording</visible>
             </control>
             <control type="label" id="1">
@@ -2040,7 +2040,7 @@
                 <width>50</width>
                 <height>36</height>
                 <font>regular18</font>
-                <label>$INFO[ListItem.StartTime] - $INFO[ListItem.EndTime]</label>
+                <label>$INFO[ListItem.StartTime] $INFO[ListItem.EndTime,- ,]</label>
                 <visible>ListItem.HasTimer | ListItem.HasTimerSchedule | ListItem.IsRecording</visible>
             </control>
             <control type="image">
@@ -2148,7 +2148,7 @@
                 <control type="label">
                     <height>15</height>
                     <font>regular20</font>
-                    <label>$INFO[ListItem.StartTime] - $INFO[ListItem.EndTime] ($VAR[EventDuration])</label>
+                    <label>$INFO[ListItem.StartTime] $INFO[ListItem.EndTime,- ,] $VAR[EventDuration,(,)]</label>
                 </control>
                 <control type="label">
                     <height>40</height>
