@@ -426,3 +426,7 @@ msgstr ""
 msgctxt "#31101"
 msgid "Use animations in fanart views"
 msgstr ""
+
+msgctxt "#31102"
+msgid "Hide channel numbers in all PVR Views"
+msgstr ""

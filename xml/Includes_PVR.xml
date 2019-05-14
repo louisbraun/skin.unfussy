@@ -23,6 +23,7 @@
                     <texture>$INFO[Player.Art(thumb)]</texture>
                 </control>
                 <control type="label">
+                    <visible>!Skin.HasSetting(hide_channelnumbers)</visible>
                     <top>10</top>
                     <left>10</left>
                     <width>300</width>
@@ -30,6 +31,16 @@
                     <textcolor>white</textcolor>
                     <font>regular24</font>
                     <label>$INFO[VideoPlayer.ChannelNumberLabel] - $INFO[VideoPlayer.ChannelName]</label>
+                </control>
+                <control type="label">
+                    <visible>Skin.HasSetting(hide_channelnumbers)</visible>
+                    <top>10</top>
+                    <left>10</left>
+                    <width>300</width>
+                    <align>center</align>
+                    <textcolor>white</textcolor>
+                    <font>regular24</font>
+                    <label>$INFO[VideoPlayer.ChannelName]</label>
                 </control>
                 <!-- Border -->
                 <control type="image">
@@ -697,21 +708,89 @@
             <include content="pvr_listitem_back">
                 <param name="active" value="$PARAM[active]" />
             </include>
-            <control type="label">
-                <width>80</width>
-                <align>center</align>
-                <aligny>center</aligny>
-                <font>light50</font>
-                <label>$INFO[ListItem.ChannelNumberLabel]</label>
-                <textcolor>white</textcolor>
+            <control type="group">
+                <visible>!Skin.HasSetting(hide_channelnumbers)</visible>
+                <control type="label">
+                    <visible>Integer.IsLess(ListItem.ChannelNumberLabel,100)</visible>
+                    <width>80</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light50</font>
+                    <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                    <textcolor>white</textcolor>
+                </control>
+                <control type="label">
+                    <visible>Integer.IsGreater(ListItem.ChannelNumberLabel,99)</visible>
+                    <visible>Integer.IsLess(ListItem.ChannelNumberLabel,1000)</visible>
+                    <width>80</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light36</font>
+                    <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                    <textcolor>white</textcolor>
+                </control>
+                <control type="label">
+                    <visible>Integer.IsGreater(ListItem.ChannelNumberLabel,999)</visible>
+                    <width>80</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light30</font>
+                    <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                    <textcolor>white</textcolor>
+                </control>
+                <control type="image">
+                    <top>11</top>
+                    <left>85</left>
+                    <width>100</width>
+                    <height>60</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <left>200</left>
+                    <height>50</height>
+                    <right>240</right>
+                    <aligny>center</aligny>
+                    <font>light30</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="label">
+                    <left>200</left>
+                    <top>45</top>
+                    <height>24</height>
+                    <right>10</right>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Title]</label>
+                </control>
             </control>
-            <control type="image">
-                <top>11</top>
-                <left>85</left>
-                <width>100</width>
-                <height>60</height>
-                <aspectratio>scale</aspectratio>
-                <texture>$INFO[ListItem.Icon]</texture>
+            <control type="group">
+                <visible>Skin.HasSetting(hide_channelnumbers)</visible>
+                <control type="image">
+                    <top>11</top>
+                    <left>10</left>
+                    <width>100</width>
+                    <height>60</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <left>130</left>
+                    <height>50</height>
+                    <right>240</right>
+                    <aligny>center</aligny>
+                    <font>light30</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="label">
+                    <left>130</left>
+                    <top>45</top>
+                    <height>24</height>
+                    <right>10</right>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Title]</label>
+                </control>
             </control>
             <control type="group">
                 <left>215</left>
@@ -745,21 +824,6 @@
                     <midtexture colordiffuse="backgrounddark" border="5,3,5,3">progress/texturebg_white.png</midtexture>
                     <visible>ListItem.HasEpg</visible>
                     <info>ListItem.Progress</info>
-                </control>
-                <control type="label">
-                    <height>50</height>
-                    <right>240</right>
-                    <aligny>center</aligny>
-                    <font>light30</font>
-                    <label>$INFO[ListItem.Label]</label>
-                </control>
-                <control type="label">
-                    <top>45</top>
-                    <height>24</height>
-                    <right>10</right>
-                    <aligny>center</aligny>
-                    <font>regular24</font>
-                    <label>$INFO[ListItem.Title]</label>
                 </control>
             </control>
             <include content="pvr_recording_indicator">
@@ -1896,17 +1960,48 @@
                 <aspectratio>stretch</aspectratio>
                 <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
             </control>
-            <control type="label">
-                <width>50</width>
-                <align>center</align>
-                <aligny>center</aligny>
-                <font>light30</font>
-                <label>$INFO[ListItem.ChannelNumberLabel]</label>
+            <control type="group">
+                <visible>!Skin.HasSetting(hide_channelnumbers)</visible>
+                <control type="label">
+                    <visible>Integer.IsLess(ListItem.ChannelNumberLabel,100)</visible>
+                    <width>50</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light30</font>
+                    <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                </control>
+                <control type="label">
+                    <visible>Integer.IsGreater(ListItem.ChannelNumberLabel,99)</visible>
+                    <visible>Integer.IsLess(ListItem.ChannelNumberLabel,1000)</visible>
+                    <width>50</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                </control>
+                <control type="label">
+                    <visible>Integer.IsGreater(ListItem.ChannelNumberLabel,999)</visible>
+                    <width>50</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular20</font>
+                    <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                </control>
+                <control type="image">
+                    <left>35</left>
+                    <top>0</top>
+                    <width>150</width>
+                    <height>80</height>
+                    <align>center</align>
+                    <texture fallback="DefaultTVGuide.png">$INFO[ListItem.Icon]</texture>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                </control>
             </control>
             <control type="image">
-                <left>35</left>
+                <visible>Skin.HasSetting(hide_channelnumbers)</visible>
+                <left>10</left>
                 <top>0</top>
-                <width>150</width>
+                <width>180</width>
                 <height>80</height>
                 <align>center</align>
                 <texture fallback="DefaultTVGuide.png">$INFO[ListItem.Icon]</texture>
@@ -2300,24 +2395,93 @@
             <include content="pvr_listitem_back">
                 <param name="active" value="$PARAM[active]" />
             </include>
-            <!-- channel number -->
-            <control type="label">
-                <height>100</height>
-                <width>75</width>
-                <align>center</align>
-                <aligny>center</aligny>
-                <font>light50</font>
-                <label>$INFO[ListItem.ChannelNumberLabel]</label>
+            <control type="group">
+                <visible>!Skin.HasSetting(hide_channelnumbers)</visible>
+                <!-- channel number -->
+                <control type="label">
+                    <visible>Integer.IsLess(ListItem.ChannelNumberLabel,100)</visible>
+                    <height>100</height>
+                    <width>75</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light50</font>
+                    <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                </control>
+                <control type="label">
+                    <visible>Integer.IsGreater(ListItem.ChannelNumberLabel,99)</visible>
+                    <visible>Integer.IsLess(ListItem.ChannelNumberLabel,1000)</visible>
+                    <height>100</height>
+                    <width>75</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light36</font>
+                    <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                </control>
+                <control type="label">
+                    <visible>Integer.IsGreater(ListItem.ChannelNumberLabel,999)</visible>
+                    <height>100</height>
+                    <width>75</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light30</font>
+                    <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                </control>
+                <!-- channel icon -->
+                <control type="image">
+                    <left>75</left>
+                    <width>120</width>
+                    <height>100</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <top>10</top>
+                    <left>210</left>
+                    <height>50</height>
+                    <right>140</right>
+                    <aligny>center</aligny>
+                    <font>regular30</font>
+                    <label>$INFO[ListItem.Title]</label>
+                </control>
+                <control type="label">
+                    <top>55</top>
+                    <left>210</left>
+                    <height>34</height>
+                    <right>140</right>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.NextTitle]</label>
+                </control>
             </control>
-            <!-- channel icon -->
-            <control type="image">
-                <left>75</left>
-                <width>120</width>
-                <height>100</height>
-                <aspectratio>keep</aspectratio>
-                <texture>$INFO[ListItem.Icon]</texture>
+            <control type="group">
+                <visible>Skin.HasSetting(hide_channelnumbers)</visible>
+                <!-- channel icon -->
+                <control type="image">
+                    <left>10</left>
+                    <width>120</width>
+                    <height>100</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <left>150</left>
+                    <top>10</top>
+                    <height>50</height>
+                    <right>140</right>
+                    <aligny>center</aligny>
+                    <font>regular30</font>
+                    <label>$INFO[ListItem.Title]</label>
+                </control>
+                <control type="label">
+                    <top>55</top>
+                    <left>150</left>
+                    <height>34</height>
+                    <right>140</right>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.NextTitle]</label>
+                </control>
             </control>
-            <!-- current schedule -->
             <control type="progress">
                 <visible>!$PARAM[active]</visible>
                 <right>20</right>
@@ -2348,30 +2512,12 @@
                 <label>- $INFO[ListItem.EndTime]</label>
             </control>
             <control type="label">
-                <top>10</top>
-                <left>210</left>
-                <height>50</height>
-                <right>140</right>
-                <aligny>center</aligny>
-                <font>regular30</font>
-                <label>$INFO[ListItem.Title]</label>
-            </control>
-            <control type="label">
                 <top>60</top>
                 <right>20</right>
                 <align>right</align>
                 <font>regular16</font>
                 <font>regular16</font>
                 <label>$INFO[ListItem.NextStartTime] - $INFO[ListItem.NextEndTime]</label>
-            </control>
-            <control type="label">
-                <top>55</top>
-                <left>210</left>
-                <height>34</height>
-                <right>140</right>
-                <aligny>center</aligny>
-                <font>regular24</font>
-                <label>$INFO[ListItem.NextTitle]</label>
             </control>
             <include content="pvr_recording_indicator">
                 <param name="top">5</param>
@@ -2462,24 +2608,93 @@
                     <bordersize>1</bordersize>
                 </control>
             </control>
-            <!-- channel number -->
-            <control type="label">
-                <height>100</height>
-                <width>75</width>
-                <align>center</align>
-                <aligny>center</aligny>
-                <font>light50</font>
-                <label>$INFO[ListItem.Property(channelnumber)]</label>
+            <control type="group">
+                <visible>!Skin.HasSetting(hide_channelnumbers)</visible>
+                <!-- channel number -->
+                <control type="label">
+                    <visible>Integer.IsLess(ListItem.Property(channelnumber),100)</visible>
+                    <height>100</height>
+                    <width>75</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light50</font>
+                    <label>$INFO[ListItem.Property(channelnumber)]</label>
+                </control>
+                <control type="label">
+                    <visible>Integer.IsGreater(ListItem.Property(channelnumber),99)</visible>
+                    <visible>Integer.IsLess(ListItem.Property(channelnumber),1000)</visible>
+                    <height>100</height>
+                    <width>75</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light36</font>
+                    <label>$INFO[ListItem.Property(channelnumber)]</label>
+                </control>
+                <control type="label">
+                    <visible>Integer.IsGreater(ListItem.Property(channelnumber),999)</visible>
+                    <height>100</height>
+                    <width>75</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light30</font>
+                    <label>$INFO[ListItem.Property(channelnumber)]</label>
+                </control>
+                <!-- channel icon -->
+                <control type="image">
+                    <left>75</left>
+                    <width>120</width>
+                    <height>100</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <top>10</top>
+                    <left>210</left>
+                    <height>50</height>
+                    <right>140</right>
+                    <aligny>center</aligny>
+                    <font>regular30</font>
+                    <label>$INFO[ListItem.Property(now_title)]</label>
+                </control>
+                <control type="label">
+                    <top>55</top>
+                    <left>210</left>
+                    <height>34</height>
+                    <right>140</right>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Property(next_title)]</label>
+                </control>
             </control>
-            <!-- channel icon -->
-            <control type="image">
-                <left>75</left>
-                <width>120</width>
-                <height>100</height>
-                <aspectratio>keep</aspectratio>
-                <texture>$INFO[ListItem.Icon]</texture>
+            <control type="group">
+                <visible>Skin.HasSetting(hide_channelnumbers)</visible>
+                <!-- channel icon -->
+                <control type="image">
+                    <left>20</left>
+                    <width>120</width>
+                    <height>100</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <top>10</top>
+                    <left>160</left>
+                    <height>50</height>
+                    <right>140</right>
+                    <aligny>center</aligny>
+                    <font>regular30</font>
+                    <label>$INFO[ListItem.Property(now_title)]</label>
+                </control>
+                <control type="label">
+                    <top>55</top>
+                    <left>160</left>
+                    <height>34</height>
+                    <right>140</right>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Property(next_title)]</label>
+                </control>
             </control>
-            <!-- current schedule -->
             <control type="progress">
                 <visible>!$PARAM[active]</visible>
                 <right>20</right>
@@ -2508,30 +2723,12 @@
                 <label>- $INFO[ListItem.Property(now_endtime)]</label>
             </control>
             <control type="label">
-                <top>10</top>
-                <left>210</left>
-                <height>50</height>
-                <right>140</right>
-                <aligny>center</aligny>
-                <font>regular30</font>
-                <label>$INFO[ListItem.Property(now_title)]</label>
-            </control>
-            <control type="label">
                 <top>60</top>
                 <right>20</right>
                 <align>right</align>
                 <font>regular16</font>
                 <font>regular16</font>
                 <label>$INFO[ListItem.Property(next_starttime)] - $INFO[ListItem.Property(next_endtime)]</label>
-            </control>
-            <control type="label">
-                <top>55</top>
-                <left>210</left>
-                <height>34</height>
-                <right>140</right>
-                <aligny>center</aligny>
-                <font>regular24</font>
-                <label>$INFO[ListItem.Property(next_title)]</label>
             </control>
             <include content="pvr_recording_indicator">
                 <param name="top">5</param>

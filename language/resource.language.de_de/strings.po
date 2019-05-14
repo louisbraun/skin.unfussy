@@ -426,3 +426,8 @@ msgstr "Home Widgets konfigurieren"
 msgctxt "#31101"
 msgid "Use animations in fanart views"
 msgstr "Animationen in Fanart Views benutzen"
+
+msgctxt "#31102"
+msgid "Hide channel numbers in all PVR Views"
+msgstr "Kanalnummern in allen PVR Views verbergen"
+
