@@ -17,9 +17,9 @@
                 <control type="image">
                     <bottom>10</bottom>
                     <left>10</left>
-                    <height>180</height>
+                    <height>165</height>
                     <width>300</width>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio>keep</aspectratio>
                     <texture>$INFO[Player.Art(thumb)]</texture>
                 </control>
                 <control type="label">

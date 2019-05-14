@@ -19,7 +19,7 @@
                 <left>100</left>
                 <right>100</right>
                 <bottom>20</bottom>
-                <font>light30</font>
+                <font>regular30</font>
                 <label>$INFO[VideoPlayer.Plot]</label>
                 <autoscroll delay="5000" time="3000" repeat="5000">true</autoscroll>
             </control>
@@ -40,7 +40,7 @@
                 <left>50</left>
                 <right>100</right>
                 <bottom>20</bottom>
-                <font>light30</font>
+                <font>regular30</font>
                 <label>$INFO[VideoPlayer.Plot]</label>
                 <autoscroll delay="5000" time="3000" repeat="5000">true</autoscroll>
             </control>
