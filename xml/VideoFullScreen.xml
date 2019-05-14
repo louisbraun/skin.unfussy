@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <window>
+    <backgroundcolor>black</backgroundcolor>
     <onload>ClearProperty(closeonload,home)</onload>
     <onload>ClearProperty(startlivetv,home)</onload>
     <onload>ClearProperty(custombusy,home)</onload>
