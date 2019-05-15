@@ -16,7 +16,7 @@
                 <left>10</left>
                 <height>480</height>
                 <width>320</width>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture>$INFO[Player.Art(poster)]</texture>
             </control>
             <control type="image">
@@ -25,7 +25,7 @@
                 <left>10</left>
                 <height>480</height>
                 <width>320</width>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture>$INFO[Player.Art(tvshow.poster)]</texture>
             </control>
             <control type="image">
@@ -34,7 +34,7 @@
                 <left>10</left>
                 <width>320</width>
                 <height>460</height>
-                <aspectratio align="center" aligny="bottom">scale</aspectratio>
+                <aspectratio align="center" aligny="bottom">keep</aspectratio>
                 <texture>$VAR[VideoOSDIcon]</texture>
             </control>
             <control type="image">
@@ -95,7 +95,7 @@
                     <height>35</height>
                     <aligny>center</aligny>
                     <font>regular24</font>
-                    <label>$INFO[VideoPlayer.Genre]$INFO[VideoPlayer.Year, / ,]</label>
+                    <label>$INFO[VideoPlayer.Genre,, \ ]$INFO[VideoPlayer.Year]</label>
                 </control>
             </control>
             <!-- Progress Bar -->
