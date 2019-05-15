@@ -133,7 +133,7 @@
                     <centerleft>295</centerleft>
                     <width>550</width>
                     <height>825</height>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio>keep</aspectratio>
                     <texture background="true">$VAR[ImageLeftView50]</texture>
                 </control>
                 <include content="mediaflags">
@@ -257,7 +257,7 @@
                 <left>1</left>
                 <width>588</width>
                 <height>332</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[Container(50).ListItem.Art(fanart)]</texture>
             </control>
             <control type="image">
@@ -266,7 +266,7 @@
                 <left>1</left>
                 <width>588</width>
                 <height>332</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[Container(50).ListItem.Art(thumb)]</texture>
             </control>
         </control>
@@ -322,7 +322,7 @@
                 <left>1</left>
                 <width>588</width>
                 <height>588</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[Container(50).ListItem.Art(thumb)]</texture>
             </control>
         </control>
@@ -369,7 +369,7 @@
             <left>35</left>
             <width>238</width>
             <height>238</height>
-            <aspectratio>scale</aspectratio>
+            <aspectratio>keep</aspectratio>
             <texture background="true" fallback="defaultmusicalbums.png">$INFO[ListItem.Art(thumb)]</texture>
         </control>
         <control type="label">
@@ -400,7 +400,7 @@
                 <left>1</left>
                 <width>560</width>
                 <height>217</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture>$INFO[Container(50).ListItem.Art(artist.clearlogo)]</texture>
             </control>
             <control type="image">
@@ -424,7 +424,7 @@
                 <left>78</left>
                 <width>496</width>
                 <height>496</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true" fallback="defaultmusicalbums.png">$INFO[Container(50).ListItem.Art(thumb)]</texture>
             </control>            
         </control>

@@ -49,7 +49,7 @@
                 <left>1</left>
                 <width>168</width>
                 <height>252</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[ListItem.Art(poster)]</texture>
             </control>
             <control type="label">
@@ -81,7 +81,7 @@
                     <left>1</left>
                     <width>218</width>
                     <height>300</height>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio>keep</aspectratio>
                     <texture background="true">$INFO[ListItem.Art(poster)]</texture>
                 </control>
                 <control type="label">
@@ -107,7 +107,7 @@
                 <top>70</top>
                 <width>1120</width>
                 <height>630</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[Container(55).ListItem.Art(fanart)]</texture>
                 <bordertexture colordiffuse="border">colors/white.png</bordertexture>
                 <bordersize>1</bordersize>

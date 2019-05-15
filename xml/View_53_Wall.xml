@@ -92,7 +92,7 @@
                 <left>1</left>
                 <width>250</width>
                 <height>375</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[ListItem.Art(poster)]</texture>
             </control>
             <control type="image">
@@ -129,7 +129,7 @@
                 <left>1</left>
                 <width>930</width>
                 <height>172</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[ListItem.Art(banner)]</texture>
             </control>
             <control type="group">
@@ -190,7 +190,7 @@
                     <left>1</left>
                     <width>300</width>
                     <height>300</height>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio>keep</aspectratio>
                     <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
                 <control type="image">
@@ -248,7 +248,7 @@
                     <left>1</left>
                     <width>300</width>
                     <height>300</height>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio>keep</aspectratio>
                     <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
                 <control type="image">

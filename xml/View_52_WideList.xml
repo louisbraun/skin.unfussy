@@ -287,7 +287,7 @@
                 <left>1</left>
                 <width>658</width>
                 <height>371</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[Container(52).ListItem.Art(fanart)]</texture>
             </control>
         </control>
@@ -299,7 +299,7 @@
                 <centerleft>330</centerleft>
                 <width>600</width>
                 <height>900</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[Container(52).Art(tvshow.fanart)]</texture>
             </control>
         </control>
@@ -381,7 +381,7 @@
                 <left>1</left>
                 <width>658</width>
                 <height>371</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[Container(52).ListItem.Art(thumb)]</texture>
             </control>
         </control>
@@ -420,7 +420,7 @@
                 <left>100</left>
                 <width>460</width>
                 <height>705</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
             </control>
         </control>
@@ -559,7 +559,7 @@
                 <left>1</left>
                 <width>658</width>
                 <height>658</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[Container(52).ListItem.Art(thumb)]</texture>
             </control>
         </control>
@@ -642,7 +642,7 @@
                 <left>113</left>
                 <width>496</width>
                 <height>496</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture background="true" fallback="defaultmusicalbums.png">$INFO[Container(52).ListItem.Art(thumb)]</texture>
             </control>
         </control>
@@ -695,7 +695,7 @@
                     <left>113</left>
                     <width>496</width>
                     <height>496</height>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio>keep</aspectratio>
                     <texture background="true" fallback="defaultmusicalbums.png">$INFO[Container(52).ListItem.Art(thumb)]</texture>
                 </control>
             </control>
@@ -706,7 +706,7 @@
                     <left>113</left>
                     <width>496</width>
                     <height>496</height>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio>keep</aspectratio>
                     <texture background="true">$INFO[Container(52).ListItem.Art(album.discart)]</texture>
                 </control>
                 <control type="image">
@@ -730,7 +730,7 @@
                     <left>113</left>
                     <width>496</width>
                     <height>496</height>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio>keep</aspectratio>
                     <texture background="true" fallback="defaultmusicalbums.png">$INFO[Container(52).ListItem.Art(thumb)]</texture>
                 </control>
             </control>

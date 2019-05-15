@@ -609,7 +609,7 @@
                 <right>0</right>
                 <width>100</width>
                 <height>60</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture>$PARAM[icon]</texture>
             </control>
         </definition>
@@ -743,7 +743,7 @@
                     <left>85</left>
                     <width>100</width>
                     <height>60</height>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio>keep</aspectratio>
                     <texture>$INFO[ListItem.Icon]</texture>
                 </control>
                 <control type="label">
@@ -771,7 +771,7 @@
                     <left>10</left>
                     <width>100</width>
                     <height>60</height>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio>keep</aspectratio>
                     <texture>$INFO[ListItem.Icon]</texture>
                 </control>
                 <control type="label">
@@ -1305,7 +1305,7 @@
                 <right>0</right>
                 <width>240</width>
                 <height>160</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture>$INFO[Container(50).ListItem.ActualIcon]</texture>
             </control>
             <control type="label">
@@ -1506,7 +1506,7 @@
                 <right>0</right>
                 <width>240</width>
                 <height>160</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture>$INFO[Container(50).ListItem.Icon]</texture>
             </control>
             <control type="grouplist">
@@ -1578,7 +1578,7 @@
                 <right>0</right>
                 <width>240</width>
                 <height>360</height>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>keep</aspectratio>
                 <texture>$INFO[Container(50).ListItem.EPGEventIcon]</texture>
             </control>
             <control type="image">
@@ -1733,7 +1733,7 @@
                     <right>0</right>
                     <height>140</height>
                     <width>220</width>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio>keep</aspectratio>
                     <texture>$INFO[Container(50).ListItem.Icon]</texture>
                 </control>
                 <control type="progress">
