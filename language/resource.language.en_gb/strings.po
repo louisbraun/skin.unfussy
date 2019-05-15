@@ -434,3 +434,7 @@ msgstr ""
 msgctxt "#31103"
 msgid "hide \"all channels\" channelgroup"
 msgstr ""
+
+msgctxt "#31104"
+msgid "activate fullscreen when startimg music song"
+msgstr ""

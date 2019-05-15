@@ -82,6 +82,13 @@
                 <control type="radiobutton" id="1008">
                     <include>button_settings</include>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                    <label>$LOCALIZE[31104]</label>
+                    <selected>Skin.HasSetting(start_music_fullscreen)</selected>
+                    <onclick>Skin.ToggleSetting(start_music_fullscreen)</onclick>
+                </control>
+                <control type="radiobutton" id="1009">
+                    <include>button_settings</include>
+                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <label>$LOCALIZE[31101]</label>
                     <selected>Skin.HasSetting(use_animations_fanart)</selected>
                     <onclick>Skin.ToggleSetting(use_animations_fanart)</onclick>

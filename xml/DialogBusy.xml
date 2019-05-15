@@ -2,7 +2,7 @@
 <window>
     <animation effect="fade" end="100" time="500">WindowOpen</animation>
     <animation effect="fade" start="100" end="0" time="240">WindowClose</animation>
-    <onunload condition="Player.HasAudio">Action(FullScreen)</onunload>
+    <onunload condition="Player.HasAudio + Skin.HasSetting(start_music_fullscreen)">Action(FullScreen)</onunload>
     <controls>
         <control type="image">
             <visible>!String.IsEmpty(Player.Art(fanart))</visible>
