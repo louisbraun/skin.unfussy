@@ -431,3 +431,6 @@ msgctxt "#31102"
 msgid "Hide channel numbers in all PVR Views"
 msgstr "Kanalnummern in allen PVR Views verbergen"
 
+msgctxt "#31103"
+msgid "hide \"all channels\" channelgroup"
+msgstr "Kanalgruppe \"Alle Kanäle\" verbergen"

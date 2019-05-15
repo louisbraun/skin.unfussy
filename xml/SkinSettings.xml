@@ -49,27 +49,37 @@
                     <onclick>Skin.ToggleSetting(use_channelgroups)</onclick>
                 </control>
                 <control type="radiobutton" id="1004">
+                    <visible>Skin.HasSetting(use_channelgroups)</visible>
+                    <include content="button_settings">
+                        <param name="textoffsetx">70</param>
+                    </include>
+                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                    <label>$LOCALIZE[31103]</label>
+                    <selected>Skin.HasSetting(hide_all_channels)</selected>
+                    <onclick>Skin.ToggleSetting(hide_all_channels)</onclick>
+                </control>
+                <control type="radiobutton" id="1005">
                     <include>button_settings</include>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <label>$LOCALIZE[31095]</label>
                     <selected>Skin.HasSetting(tvguide_show_detail)</selected>
                     <onclick>Skin.ToggleSetting(tvguide_show_detail)</onclick>
                 </control>
-                <control type="radiobutton" id="1005">
+                <control type="radiobutton" id="1006">
                     <include>button_settings</include>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <label>$LOCALIZE[31102]</label>
                     <selected>Skin.HasSetting(hide_channelnumbers)</selected>
                     <onclick>Skin.ToggleSetting(hide_channelnumbers)</onclick>
                 </control>
-                <control type="radiobutton" id="1006">
+                <control type="radiobutton" id="1007">
                     <include>button_settings</include>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <label>$LOCALIZE[31096]</label>
                     <selected>Skin.HasSetting(start_live_tv)</selected>
                     <onclick>Skin.ToggleSetting(start_live_tv)</onclick>
                 </control>
-                <control type="radiobutton" id="1007">
+                <control type="radiobutton" id="1008">
                     <include>button_settings</include>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <label>$LOCALIZE[31101]</label>
