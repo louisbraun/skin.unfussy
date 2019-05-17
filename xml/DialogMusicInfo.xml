@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="dialog">
     <defaultcontrol always="true">100001</defaultcontrol>
+    <onload condition="String.IsEqual(Container.Content,albums)">Control.SetFocus(200001)</onload>
     <animation effect="fade" end="100" time="300">WindowOpen</animation>
     <animation effect="fade" start="100" end="0" time="250">WindowClose</animation>
     <controls>
@@ -36,25 +37,52 @@
                 <bordertexture colordiffuse="border">colors/white.png</bordertexture>
                 <bordersize>1</bordersize>
             </control>
-            <control type="image">
-                <top>10</top>
-                <left>10</left>
-                <width>600</width>
-                <height>200</height>
-                <aspectratio>keep</aspectratio>
-                <texture>$INFO[ListItem.Art(clearlogo)]</texture>
+            <control type="group">
+                <visible>String.IsEqual(Container.Content,artists)</visible>
+                <control type="image">
+                    <top>10</top>
+                    <left>10</left>
+                    <width>600</width>
+                    <height>200</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Art(clearlogo)]</texture>
+                </control>
+                <control type="textbox">
+                    <visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
+                    <top>10</top>
+                    <left>10</left>
+                    <width>600</width>
+                    <height>200</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light50</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
             </control>
-            <control type="textbox">
-                <visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
+            <control type="grouplist">
+                <visible>String.IsEqual(Container.Content,albums) | String.IsEqual(Container.Content,songs)</visible>
                 <top>10</top>
-                <left>10</left>
-                <width>600</width>
-                <height>200</height>
-                <align>center</align>
-                <aligny>center</aligny>
-                <font>light50</font>
-                <textcolor>active</textcolor>
-                <label>$INFO[ListItem.Label]</label>
+                <control type="textbox">
+                    <left>10</left>
+                    <width>600</width>
+                    <height>auto</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light50</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[ListItem.Artist]</label>
+                </control>
+                <control type="textbox">
+                    <left>10</left>
+                    <width>600</width>
+                    <height>auto</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light50</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[ListItem.Album]</label>
+                </control>
             </control>
             <control type="grouplist">
                 <top>210</top>
@@ -90,42 +118,78 @@
                     <label>$INFO[ListItem.Property(Artist_Mood),[COLOR active]$LOCALIZE[31057]: [/COLOR]]</label>
                 </control>
             </control>
-            <control type="textbox" id="100">
+            <control type="group">
+                <visible>String.IsEqual(Container.Content,artists) | String.IsEqual(Container.Content,songs)</visible>
                 <visible>!String.IsEmpty(ListItem.Property(Artist_Description))</visible>
-                <top>400</top>
-                <left>20</left>
-                <right>50</right>
-                <height>620</height>
-                <font>regular24</font>
-                <pagecontrol>100001</pagecontrol>
-                <label>$INFO[ListItem.Property(Artist_Description)]</label>
+                <control type="textbox" id="100">
+                    <top>400</top>
+                    <left>20</left>
+                    <right>50</right>
+                    <height>620</height>
+                    <font>regular24</font>
+                    <pagecontrol>100001</pagecontrol>
+                    <label>$INFO[ListItem.Property(Artist_Description)]</label>
+                </control>
+                <include content="scrollbar">
+                    <param name="controlled_id" value="100" />
+                    <param name="onleft_id" value="300001" />
+                    <param name="onright_id" value="300001" />
+                    <param name="left" value="600" />
+                    <param name="top" value="400" />
+                    <param name="height" value="620" />
+                </include>
             </control>
-            <include content="scrollbar">
-                <param name="controlled_id" value="100" />
-                <param name="onleft_id" value="100" />
-                <param name="onright_id" value="100" />
-                <param name="left" value="600" />
-                <param name="top" value="400" />
-                <param name="height" value="620" />
-            </include>
-            <control type="textbox" id="200">
+            <control type="group">
+                <visible>String.IsEqual(Container.Content,albums)</visible>
                 <visible>!String.IsEmpty(ListItem.Property(Album_Description))</visible>
-                <top>400</top>
+                <control type="textbox" id="200">
+                    <top>400</top>
+                    <left>20</left>
+                    <right>50</right>
+                    <height>620</height>
+                    <font>regular24</font>
+                    <pagecontrol>200001</pagecontrol>
+                    <label>$INFO[ListItem.Property(Album_Description)]</label>
+                </control>
+                <include content="scrollbar">
+                    <param name="controlled_id" value="200" />
+                    <param name="onleft_id" value="200001" />
+                    <param name="onright_id" value="200001" />
+                    <param name="left" value="600" />
+                    <param name="top" value="400" />
+                    <param name="height" value="620" />
+                </include>
+            </control>
+        </control>
+        <control type="group">
+            <visible>String.IsEqual(Container.Content,songs)</visible>
+            <visible>!String.IsEmpty(ListItem.Property(Album_Description))</visible>
+            <top>780</top>
+            <left>10</left>
+            <width>760</width>
+            <height>290</height>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="textbox" id="300">
+                <top>10</top>
                 <left>20</left>
-                <right>50</right>
-                <height>620</height>
+                <right>40</right>
+                <height>270</height>
                 <font>regular24</font>
-                <pagecontrol>200001</pagecontrol>
+                <pagecontrol>300001</pagecontrol>
                 <label>$INFO[ListItem.Property(Album_Description)]</label>
             </control>
             <include content="scrollbar">
-                <param name="visible" value="!String.IsEmpty(ListItem.Property(Album_Description))" />
-                <param name="controlled_id" value="200" />
-                <param name="onleft_id" value="200" />
-                <param name="onright_id" value="200" />
-                <param name="left" value="600" />
-                <param name="top" value="400" />
-                <param name="height" value="620" />
+                <param name="controlled_id" value="300" />
+                <param name="onleft_id" value="100001" />
+                <param name="onright_id" value="100001" />
+                <param name="left" value="740" />
+                <param name="top" value="10" />
+                <param name="height" value="270" />
             </include>
         </control>
     </controls>

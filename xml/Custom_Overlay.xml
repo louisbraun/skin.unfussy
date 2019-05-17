@@ -1296,9 +1296,7 @@
                 <param name="value12"  value="$INFO[ListItem.Property(Artist_Disbanded), [COLOR active][B]Property(Artist_Disbanded)[/B]:[/COLOR] , [CR]]" />
                 <param name="value13"  value="$INFO[ListItem.Property(Artist_YearsActive), [COLOR active][B]Property(Artist_YearsActive)[/B]:[/COLOR] , [CR]]" />
                 <param name="value14"  value="$INFO[ListItem.Property(Artist_Instrument), [COLOR active][B]Property(Artist_Instrument)[/B]:[/COLOR] , [CR]]" />
-                <!--
                 <param name="value15"  value="$INFO[ListItem.Property(Artist_Description), [COLOR active][B]Property(Artist_Description)[/B]:[/COLOR] , [CR]]" />
-                -->
                 <param name="value16"  value="$INFO[ListItem.Property(Artist_Mood), [COLOR active][B]Property(Artist_Mood)[/B]:[/COLOR] , [CR]]" />
                 <param name="value17"  value="$INFO[ListItem.Property(Artist_Style), [COLOR active][B]Property(Artist_Style)[/B]:[/COLOR] , [CR]]" />
                 <param name="value18"  value="$INFO[ListItem.Property(Artist_Genre), [COLOR active][B]Property(Artist_Genre)[/B]:[/COLOR] , [CR]]" />
