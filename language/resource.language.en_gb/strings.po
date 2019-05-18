@@ -442,3 +442,7 @@ msgstr ""
 msgctxt "#31105"
 msgid "darken posters of already watched media"
 msgstr ""
+
+msgctxt "#31106"
+msgid "set switch timer"
+msgstr ""

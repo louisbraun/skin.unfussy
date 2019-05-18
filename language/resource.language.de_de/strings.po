@@ -442,3 +442,7 @@ msgstr "Beim Abspielen eines Musik Titels Fullscreen aktivieren"
 msgctxt "#31105"
 msgid "darken posters of already watched media"
 msgstr "Poster bereits gesehener Medien abdunkeln"
+
+msgctxt "#31106"
+msgid "set switch timer"
+msgstr "Umschalttimer setzen"

@@ -238,8 +238,20 @@
                 </include>
                 <include content="button_round">
                     <param name="id">5</param>
-                    <param name="visible">!String.StartsWith(Container.FolderPath,pvr://recordings)</param>
+                    <param name="visible">!System.HasAddon(service.kn.switchtimer) | Window.IsActive(tvchannels)</param>
+                    <param name="visible2">!Window.IsActive(tvrecordings)</param>
                     <param name="onclick" value="Back" />
+                    <param name="icon">icons/buttons/launch.png</param>
+                    <param name="radius">100</param>
+                    <param name="iconsize">50</param>
+                    <param name="iconoffset">25</param>
+                </include>
+                <include content="button_round">
+                    <param name="id">108</param>
+                    <param name="visible">!Window.IsActive(tvrecordings) + !Window.IsActive(tvchannels)</param>
+                    <param name="visible2">System.HasAddon(service.kn.switchtimer)</param>
+                    <param name="onclick" value="Back" />
+                    <param name="onclick2" value="RunScript(service.kn.switchtimer,action=add,channel=$INFO[ListItem.ChannelName],icon=$INFO[ListItem.Icon],date=$INFO[ListItem.Date],title=$INFO[ListItem.Title])" />
                     <param name="icon">icons/buttons/launch.png</param>
                     <param name="radius">100</param>
                     <param name="iconsize">50</param>
@@ -297,6 +309,7 @@
             </control>
         </control>
         <control type="label">
+            <include>openclose_slight_left</include>
             <visible>ControlGroup(101).HasFocus(0)</visible>
             <top>1020</top>
             <left>0</left>
