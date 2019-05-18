@@ -56,7 +56,7 @@
                 </control>
                 <!-- Current Schedule -->
                 <control type="label">
-                    <top>10</top>
+                    <top>5</top>
                     <left>350</left>
                     <width>850</width>
                     <height>70</height>
@@ -91,7 +91,7 @@
                     <label>$INFO[VideoPlayer.Genre]</label>
                 </control>
                 <control type="label">
-                    <top>10</top>
+                    <top>5</top>
                     <right>380</right>
                     <width>300</width>
                     <height>70</height>

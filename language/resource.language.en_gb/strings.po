@@ -438,3 +438,7 @@ msgstr ""
 msgctxt "#31104"
 msgid "activate fullscreen when startimg music song"
 msgstr ""
+
+msgctxt "#31105"
+msgid "darken posters of already watched media"
+msgstr ""

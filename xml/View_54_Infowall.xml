@@ -85,9 +85,28 @@
                 <left>1</left>
                 <width>248</width>
                 <height>372</height>
-                <aspectratio>keep</aspectratio>
+                <aspectratio>scale</aspectratio>
                 <texture background="true">$INFO[ListItem.Art(poster)]</texture>
             </control>
+            <control type="group">
+                <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
+                <control type="image">
+                    <visible>Skin.HasSetting(darken_watched)</visible>
+                    <top>11</top>
+                    <left>1</left>
+                    <width>248</width>
+                    <height>372</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture colordiffuse="darkenposters">colors/white.png</texture>
+                </control>
+                <control type="image">
+                    <top>15</top>
+                    <right>20</right>
+                    <width>32</width>
+                    <height>32</height>
+                    <texture>overlays/$INFO[ListItem.Overlay]</texture>
+                </control>
+            </control>            
             <control type="image">
                 <visible>String.IsEqual(ListItem.Label,..)</visible>
                 <left>10</left>

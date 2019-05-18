@@ -24,7 +24,7 @@
             <control type="grouplist" id="1000">
                 <top>10</top>
                 <left>20</left>
-                <bottom>10</bottom>
+                <bottom>60</bottom>
                 <right>20</right>
                 <control type="label" id="1001">
                     <height>60</height>
@@ -92,6 +92,13 @@
                     <label>$LOCALIZE[31101]</label>
                     <selected>Skin.HasSetting(use_animations_fanart)</selected>
                     <onclick>Skin.ToggleSetting(use_animations_fanart)</onclick>
+                </control>
+                <control type="radiobutton" id="1010">
+                    <include>button_settings</include>
+                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                    <label>$LOCALIZE[31105]</label>
+                    <selected>Skin.HasSetting(darken_watched)</selected>
+                    <onclick>Skin.ToggleSetting(darken_watched)</onclick>
                 </control>
                 <control type="label" id="1100">
                     <height>60</height>
