@@ -15,38 +15,42 @@
     </expression>
 
     <expression name="AllowedViewList">
-        Container.Content(movies) | 
-        Container.Content(tvshows) | 
-        Container.Content(seasons) | 
-        Container.Content(episodes) |
-        Container.Content(musicvideos) |
-        Container.Content(artists) |
-        Container.Content(albums)
+        [ Container.Content(movies) | 
+          Container.Content(tvshows) | 
+          Container.Content(seasons) | 
+          Container.Content(episodes) |
+          Container.Content(musicvideos) |
+          Container.Content(artists) |
+          Container.Content(albums) ]
+        + !String.StartsWith(Container.FolderPath,plugin)
     </expression>
 
     <expression name="AllowedViewFanart">
-        Container.Content(movies) | 
-        Container.Content(tvshows) | 
-        Container.Content(musicvideos)
+        [ Container.Content(movies) | 
+          Container.Content(tvshows) | 
+          Container.Content(musicvideos) ]
+        + !String.StartsWith(Container.FolderPath,plugin)          
     </expression>
 
     <expression name="AllowedViewWall">
-        Container.Content(movies) | 
-        Container.Content(tvshows) | 
-        Container.Content(musicvideos) | 
-        Container.Content(addons) |
-        Container.Content(artists) |
-        Container.Content(albums) |
-        Container.Content(images)
+        [ Container.Content(movies) | 
+          Container.Content(tvshows) | 
+          Container.Content(musicvideos) | 
+          Container.Content(addons) |
+          Container.Content(artists) |
+          Container.Content(albums) |
+          Container.Content(images) ]
+        + !String.StartsWith(Container.FolderPath,plugin)
     </expression>
 
     <expression name="AllowedViewInfoWall">
-        Container.Content(movies) | 
-        Container.Content(musicvideos) | 
-        Container.Content(addons) |
-        Container.Content(artists) |
-        Container.Content(albums) |
-        Container.Content(images)
+        [ Container.Content(movies) | 
+          Container.Content(musicvideos) | 
+          Container.Content(addons) |
+          Container.Content(artists) |
+          Container.Content(albums) |
+          Container.Content(images) ]
+        + !String.StartsWith(Container.FolderPath,plugin)
     </expression>
 
     <variable name="ImageLeftView50">
@@ -54,6 +58,13 @@
         <value condition="!String.IsEqual(Container(50).ListItem.DBTYPE,episode)">$INFO[Container(50).ListItem.Art(poster)]</value>
         <value condition="String.IsEqual(Container(50).ListItem.DBTYPE,episode)">$INFO[Container(50).ListItem.Art(season.poster)]</value>
         <value></value>
+    </variable>
+
+    <variable name="View52ContentpanelDefault_Image">
+        <value condition="!String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+        <value>$INFO[ListItem.ActualIcon]</value>
     </variable>
 
     <!-- Breadcrumbs -->

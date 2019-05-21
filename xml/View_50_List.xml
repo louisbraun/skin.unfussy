@@ -125,7 +125,9 @@
 
     <include name="view_50_contentpanel_left_movies">
         <control type="group">
-            <visible>![String.IsEqual(Container(50).ListItem.DBType,artist) | String.IsEqual(Container(50).ListItem.DBType,album)]+ !String.IsEmpty(Container(50).ListItem.DBID)</visible>
+            <visible>![ String.IsEqual(Container(50).ListItem.DBType,artist) | 
+                        String.IsEqual(Container(50).ListItem.DBType,album) ] 
+                     + !String.IsEmpty(Container(50).ListItem.DBID)</visible>
             <visible>!String.IsEqual(Container(50).ListItem.Label,..)</visible>
             <control type="group">
                 <control type="image">

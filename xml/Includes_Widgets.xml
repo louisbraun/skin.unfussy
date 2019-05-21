@@ -77,11 +77,14 @@
                 <orientation>horizontal</orientation>
                 <scrolltime tween="sine" easing="out">200</scrolltime>
                 <itemlayout width="$PARAM[itemwidth]" height="$PARAM[height]">
-                    <include content="widget_item_$PARAM[type]" />
+                    <include content="widget_item_$PARAM[type]">
+                        <param name="id">$PARAM[id]</param>
+                    </include>
                 </itemlayout>
                 <focusedlayout width="$PARAM[itemwidth]" height="$PARAM[height]">
                     <include content="widget_item_$PARAM[type]">
                         <param name="active">true</param>
+                        <param name="id">$PARAM[id]</param>
                     </include>
                 </focusedlayout>
                 <include condition="$PARAM[static_content]">$PARAM[path]</include>
@@ -804,6 +807,140 @@
                 </control>
                 <control type="label">
                     <top>200</top>
+                    <left>10</left>
+                    <width>230</width>
+                    <height>50</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/play" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_addonpath_thumb">
+        <param name="active">false</param>
+        <param name="id"></param>
+        <definition>
+            <control type="group">
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="heightactive">75</param>
+                </include>
+                <control type="image">
+                    <top>1</top>
+                    <left>1</left>
+                    <width>248</width>
+                    <height>186</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="textbox">
+                    <visible>$PARAM[active]</visible>
+                    <top>186</top>
+                    <left>10</left>
+                    <width>230</width>
+                    <height>70</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                    <autoscroll delay="1000" time="1000" repeat="2000">Control.HasFocus($PARAM[id])</autoscroll>
+                </control>
+                <control type="textbox">
+                    <visible>!$PARAM[active]</visible>
+                    <top>186</top>
+                    <left>10</left>
+                    <width>230</width>
+                    <height>70</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/play" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_addonpath_thumb_large">
+        <param name="active">false</param>
+        <param name="id"></param>
+        <definition>
+            <control type="group">
+                <width>300</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="heightactive">75</param>
+                </include>
+                <control type="image">
+                    <top>1</top>
+                    <left>1</left>
+                    <width>298</width>
+                    <height>223</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="textbox">
+                    <visible>$PARAM[active]</visible>
+                    <top>225</top>
+                    <left>10</left>
+                    <width>280</width>
+                    <height>70</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                    <autoscroll delay="1000" time="1000" repeat="2000">Control.HasFocus($PARAM[id])</autoscroll>
+                </control>
+                <control type="textbox">
+                    <visible>!$PARAM[active]</visible>
+                    <top>225</top>
+                    <left>10</left>
+                    <width>280</width>
+                    <height>70</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/play" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="widget_item_addonpath_poster">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>250</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="heightactive">70</param>
+                </include>
+                <control type="image">
+                    <left>1</left>
+                    <top>1</top>
+                    <width>248</width>
+                    <height>373</height>
+                    <aspectratio>scale</aspectratio>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <top>375</top>
                     <left>10</left>
                     <width>230</width>
                     <height>50</height>

@@ -782,32 +782,33 @@
                 </control>
                 <include>images_infolist</include>
             </control>
-
-
         </control>
     </include>
 
     <include name="view_52_contentpanel_default">
         <control type="group">
-            <visible>!String.IsEqual(ListItem.DBType,movie)</visible>
-            <visible>!String.IsEqual(ListItem.DBType,tvshow)</visible>
-            <visible>!String.IsEqual(ListItem.DBType,episode)</visible>
-            <visible>!String.IsEqual(ListItem.DBType,season)</visible>
-            <visible>!String.IsEqual(ListItem.DBType,musicvideo)</visible>
-            <visible>!String.IsEqual(ListItem.DBType,actor)</visible>
-            <visible>!String.IsEqual(ListItem.DBType,set)</visible>
-            <visible>!String.IsEqual(ListItem.DBType,director)</visible>
-            <visible>!String.IsEqual(ListItem.DBType,genre)</visible>
-            <visible>!String.IsEqual(ListItem.DBType,artist)</visible>
-            <visible>!String.IsEqual(ListItem.DBType,album)</visible>
-            <visible>!String.IsEqual(ListItem.DBType,song)</visible>
+            <visible>
+                ![[String.IsEqual(ListItem.DBType,movie) | 
+                  String.IsEqual(ListItem.DBType,tvshow) |
+                  String.IsEqual(ListItem.DBType,musicvideo) | 
+                  String.IsEqual(ListItem.DBType,set) |
+                  String.IsEqual(ListItem.DBType,season) |
+                  String.IsEqual(ListItem.DBType,episode) |
+                  String.IsEqual(ListItem.DBType,actor) | 
+                  String.IsEqual(ListItem.DBType,director) |
+                  String.IsEqual(ListItem.DBType,genre) |
+                  String.IsEqual(ListItem.DBType,artist) |
+                  String.IsEqual(ListItem.DBType,album) |
+                  String.IsEqual(ListItem.DBType,song)]
+                 + !String.IsEmpty(ListItem.DBID)]
+            </visible>
             <visible>!String.StartsWith(Container.FolderPath,addons)</visible>
             <visible>!Container.Content(images)</visible>
             <control type="image">
                 <left>50</left>
                 <right>50</right>
                 <aspectratio>keep</aspectratio>
-                <texture>$INFO[ListItem.ActualIcon]</texture>
+                <texture>$VAR[View52ContentpanelDefault_Image]</texture>
             </control>
         </control>
     </include>
