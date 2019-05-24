@@ -4,8 +4,15 @@
         <control type="group">
             <include>openclose_slight_left</include>
             <visible>Control.IsVisible(53)</visible>
+            <include content="scrollbar">
+                <param name="controlled_id" value="53" />
+                <param name="onleft_id" value="53" />
+                <param name="onright_id" value="53" />
+                <param name="top" value="70" />
+                <param name="left" value="1900" />
+            </include>
             <control type="panel" id="53">
-                <visible>$EXP[AllowedViewWall]</visible>
+                <visible>$EXP[ContentTypesView53_Wall]</visible>
                 <top>65</top>
                 <left>20</left>
                 <bottom>20</bottom>
@@ -22,13 +29,6 @@
                 <include content="view_53_itemlayout" />
                 <include content="view_53_focusedlayout" />
             </control>
-            <include content="scrollbar">
-                <param name="controlled_id" value="53" />
-                <param name="onleft_id" value="53" />
-                <param name="onright_id" value="53" />
-                <param name="top" value="70" />
-                <param name="left" value="1900" />
-            </include>
         </control>
     </include>
 
@@ -81,55 +81,69 @@
     <include name="view_53_listitem_movies">
         <param name="active">false</param>
         <definition>
-            <include content="listitem_background">
-                <param name="active">$PARAM[active]</param>
-                <param name="top">10</param>
-                <param name="width">252</param>
-                <param name="height">425</param>
-            </include>
-            <control type="image">
-                <top>11</top>
-                <left>1</left>
-                <width>250</width>
-                <height>375</height>
-                <aspectratio>scale</aspectratio>
-                <texture background="true">$INFO[ListItem.Art(poster)]</texture>
-            </control>
             <control type="group">
-                <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
+                <animation effect="zoom" start="100,100" end="120,120" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Focus</animation>
+                <animation effect="zoom" start="120,120" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Unfocus</animation>
+                <include content="listitem_background">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="top">10</param>
+                    <param name="width">252</param>
+                    <param name="height">425</param>
+                </include>
                 <control type="image">
-                    <visible>Skin.HasSetting(darken_watched)</visible>
+                    <visible>!String.IsEmpty(ListItem.Art(poster))</visible>
                     <top>11</top>
                     <left>1</left>
                     <width>250</width>
                     <height>375</height>
                     <aspectratio>scale</aspectratio>
-                    <texture colordiffuse="darkenposters">colors/white.png</texture>
+                    <texture background="true">$INFO[ListItem.Art(poster)]</texture>
                 </control>
                 <control type="image">
-                    <top>15</top>
-                    <right>20</right>
-                    <width>32</width>
-                    <height>32</height>
-                    <texture>overlays/$INFO[ListItem.Overlay]</texture>
+                    <visible>String.IsEmpty(ListItem.Art(poster))</visible>
+                    <top>11</top>
+                    <left>1</left>
+                    <width>250</width>
+                    <height>375</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
-            </control>
-            <control type="image">
-                <visible>String.IsEqual(ListItem.Label,..)</visible>
-                <left>10</left>
-                <right>10</right>
-                <aspectratio>keep</aspectratio>
-                <texture background="true">$INFO[ListItem.ActualIcon]</texture>
-            </control>
-            <control type="label">
-                <top>386</top>
-                <left>10</left>
-                <width>230</width>
-                <height>50</height>
-                <align>center</align>
-                <aligny>center</aligny>
-                <font>regular24</font>
-                <label>$INFO[ListItem.Label]</label>
+                <control type="group">
+                    <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
+                    <control type="image">
+                        <visible>Skin.HasSetting(darken_watched)</visible>
+                        <top>11</top>
+                        <left>1</left>
+                        <width>250</width>
+                        <height>375</height>
+                        <aspectratio>scale</aspectratio>
+                        <texture colordiffuse="darkenposters">colors/white.png</texture>
+                    </control>
+                    <control type="image">
+                        <top>15</top>
+                        <right>20</right>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture>overlays/$INFO[ListItem.Overlay]</texture>
+                    </control>
+                </control>
+                <control type="image">
+                    <visible>String.IsEmpty(ListItem.DBTYPE)</visible>
+                    <left>10</left>
+                    <right>10</right>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.ActualIcon]</texture>
+                </control>
+                <control type="label">
+                    <top>386</top>
+                    <left>10</left>
+                    <width>230</width>
+                    <height>50</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
             </control>
         </definition>
     </include>
@@ -137,78 +151,92 @@
     <include name="view_53_listitem_tvshows">
         <param name="active">false</param>
         <definition>
-            <include content="listitem_background">
-                <param name="active">$PARAM[active]</param>
-                <param name="top">10</param>
-                <param name="width">932</param>
-                <param name="height">260</param>
-            </include>
-            <control type="image">
-                <top>11</top>
-                <left>1</left>
-                <width>930</width>
-                <height>172</height>
-                <aspectratio>keep</aspectratio>
-                <texture background="true">$INFO[ListItem.Art(banner)]</texture>
-            </control>
             <control type="group">
-                <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
+                <animation effect="zoom" start="100,100" end="105,105" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Focus</animation>
+                <animation effect="zoom" start="105,105" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Unfocus</animation>
+                <include content="listitem_background">
+                    <param name="active">$PARAM[active]</param>
+                    <param name="top">10</param>
+                    <param name="width">932</param>
+                    <param name="height">260</param>
+                </include>
                 <control type="image">
-                    <visible>Skin.HasSetting(darken_watched)</visible>
+                    <visible>!String.IsEmpty(ListItem.Art(banner))</visible>
                     <top>11</top>
                     <left>1</left>
                     <width>930</width>
                     <height>172</height>
-                    <aspectratio>scale</aspectratio>
-                    <texture colordiffuse="darkenposters">colors/white.png</texture>
-                </control>
-                <control type="image">
-                    <top>15</top>
-                    <right>20</right>
-                    <width>32</width>
-                    <height>32</height>
-                    <texture>overlays/$INFO[ListItem.Overlay]</texture>
-                </control>
-            </control>
-            <control type="group">
-                <visible>String.IsEqual(ListItem.Label,..)</visible>
-                <control type="image">
-                    <top>-60</top>
-                    <left>10</left>
-                    <right>10</right>
                     <aspectratio>keep</aspectratio>
-                    <texture background="true">$INFO[ListItem.ActualIcon]</texture>
+                    <texture background="true">$INFO[ListItem.Art(banner)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEmpty(ListItem.Art(banner))</visible>
+                    <top>12</top>
+                    <left>1</left>
+                    <width>930</width>
+                    <height>180</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="group">
+                    <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
+                    <control type="image">
+                        <visible>Skin.HasSetting(darken_watched)</visible>
+                        <top>11</top>
+                        <left>1</left>
+                        <width>930</width>
+                        <height>172</height>
+                        <aspectratio>scale</aspectratio>
+                        <texture colordiffuse="darkenposters">colors/white.png</texture>
+                    </control>
+                    <control type="image">
+                        <top>15</top>
+                        <right>20</right>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture>overlays/$INFO[ListItem.Overlay]</texture>
+                    </control>
+                </control>
+                <control type="group">
+                    <visible>String.IsEqual(ListItem.Label,..)</visible>
+                    <control type="image">
+                        <top>-60</top>
+                        <left>10</left>
+                        <right>10</right>
+                        <aspectratio>keep</aspectratio>
+                        <texture background="true">$INFO[ListItem.ActualIcon]</texture>
+                    </control>
+                    <control type="label">
+                        <top>190</top>
+                        <left>10</left>
+                        <width>910</width>
+                        <height>50</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>light70</font>
+                        <label>$INFO[ListItem.Label]</label>
+                    </control>
                 </control>
                 <control type="label">
+                    <visible>!String.IsEqual(ListItem.Label,..)</visible>
                     <top>190</top>
                     <left>10</left>
                     <width>910</width>
-                    <height>50</height>
-                    <align>center</align>
+                    <height>70</height>
                     <aligny>center</aligny>
-                    <font>light70</font>
+                    <font>light44</font>
                     <label>$INFO[ListItem.Label]</label>
                 </control>
-            </control>
-            <control type="label">
-                <visible>!String.IsEqual(ListItem.Label,..)</visible>
-                <top>190</top>
-                <left>10</left>
-                <width>910</width>
-                <height>70</height>
-                <aligny>center</aligny>
-                <font>light44</font>
-                <label>$INFO[ListItem.Label]</label>
-            </control>
-            <control type="label">
-                <right>20</right>
-                <bottom>0</bottom>
-                <height>30</height>
-                <align>right</align>
-                <aligny>center</aligny>
-                <font>light24</font>
-                <textcolor>active</textcolor>
-                <label>$INFO[ListItem.Property(TotalSeasons),[COLOR white]$LOCALIZE[33054]:[/COLOR] , / ]$INFO[ListItem.Property(TotalEpisodes),[COLOR white]$LOCALIZE[36907]:[/COLOR] ,]$INFO[ListItem.Property(WatchedEpisodes), / [COLOR white]$LOCALIZE[16102]:[/COLOR] ,]</label>
+                <control type="label">
+                    <right>20</right>
+                    <bottom>0</bottom>
+                    <height>30</height>
+                    <align>right</align>
+                    <aligny>center</aligny>
+                    <font>light24</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[ListItem.Property(TotalSeasons),[COLOR white]$LOCALIZE[33054]:[/COLOR] , / ]$INFO[ListItem.Property(TotalEpisodes),[COLOR white]$LOCALIZE[36907]:[/COLOR] ,]$INFO[ListItem.Property(WatchedEpisodes), / [COLOR white]$LOCALIZE[16102]:[/COLOR] ,]</label>
+                </control>
             </control>
         </definition>
     </include>
@@ -217,6 +245,8 @@
         <param name="active">false</param>
         <definition>
             <control type="group">
+                <animation effect="zoom" start="100,100" end="120,120" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Focus</animation>
+                <animation effect="zoom" start="120,120" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Unfocus</animation>
                 <top>10</top>
                 <include content="listitem_background">
                     <param name="active">$PARAM[active]</param>
@@ -275,6 +305,8 @@
         <param name="active">false</param>
         <definition>
             <control type="group">
+                <animation effect="zoom" start="100,100" end="120,120" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Focus</animation>
+                <animation effect="zoom" start="120,120" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Unfocus</animation>
                 <top>10</top>
                 <include content="listitem_background">
                     <param name="active">$PARAM[active]</param>
@@ -314,6 +346,8 @@
         <param name="active">false</param>
         <definition>
             <control type="group">
+                <animation effect="zoom" start="100,100" end="120,120" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Focus</animation>
+                <animation effect="zoom" start="120,120" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Unfocus</animation>
                 <top>10</top>
                 <control type="image">
                     <visible>!$PARAM[active]</visible>

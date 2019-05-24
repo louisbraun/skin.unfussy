@@ -15,7 +15,7 @@
                 <bordersize>1</bordersize>
             </control>
             <control type="list" id="50">
-                <visible>$EXP[AllowedViewList]</visible>
+                <visible>$EXP[ContentTypesView50_List]</visible>
                 <top>71</top>
                 <left>611</left>
                 <width>678</width>
@@ -100,7 +100,17 @@
                 <bordertexture colordiffuse="border">colors/white.png</bordertexture>
                 <bordersize>1</bordersize>
             </control>
+            <control type="image">
+                <visible>String.IsEmpty(Container(50).ListItem.DBTYPE)</visible>
+                <centertop>500</centertop>
+                <centerleft>295</centerleft>
+                <width>500</width>
+                <height>500</height>
+                <aspectratio>keep</aspectratio>
+                <texture background="true">$INFO[Container(50).ListItem.Icon]</texture>
+            </control>
             <include>view_50_contentpanel_left_movies</include>
+            <include>view_50_contentpanel_left_moviesets</include>
             <include>view_50_contentpanel_left_artists</include>
             <include>view_50_contentpanel_left_albums</include>
         </control>
@@ -111,7 +121,8 @@
             <width>590</width>
             <height>1000</height>
             <control type="image">
-                <visible>!String.IsEqual(Container(50).ListItem.Label,..)</visible>
+                <visible>!String.IsEmpty(Container(50).ListItem.DBTYPE)</visible>
+                <visible>!String.IsEqual(Container(50).ListItem.Label,$LOCALIZE[20366])</visible>
                 <aspectratio>stretch</aspectratio>
                 <texture colordiffuse="backgrounddark">colors/white.png</texture>
                 <bordertexture colordiffuse="border">colors/white.png</bordertexture>
@@ -125,10 +136,7 @@
 
     <include name="view_50_contentpanel_left_movies">
         <control type="group">
-            <visible>![ String.IsEqual(Container(50).ListItem.DBType,artist) | 
-                        String.IsEqual(Container(50).ListItem.DBType,album) ] 
-                     + !String.IsEmpty(Container(50).ListItem.DBID)</visible>
-            <visible>!String.IsEqual(Container(50).ListItem.Label,..)</visible>
+            <visible>$EXP[DBTypesView50_Movie]</visible>
             <control type="group">
                 <control type="image">
                     <centertop>500</centertop>
@@ -147,23 +155,58 @@
                 </include>
             </control>
         </control>
+    </include>
+
+    <include name="view_50_contentpanel_left_moviesets">
         <control type="group">
-            <visible>String.IsEqual(Container(50).ListItem.Label,..)</visible>
-            <control type="image">
-                <centertop>500</centertop>
-                <centerleft>295</centerleft>
-                <width>500</width>
-                <height>500</height>
-                <aspectratio>keep</aspectratio>
-                <texture background="true">$INFO[Container(50).ListItem.Icon]</texture>
+            <visible>String.IsEqual(Container(50).ListItem.DBType,set)</visible>
+            <control type="panel" id="10002">
+                <top>50</top>
+                <left>20</left>
+                <width>550</width>
+                <height>900</height>
+                <itemlayout width="275" height="450">
+                    <include>view_50_movieset_item</include>
+                </itemlayout>                
+                <focusedlayout height="275" width="450">
+                    <include>view_50_movieset_item</include>
+                </focusedlayout>
+                <content sortby="year" sortorder="ascending">$INFO[Container(50).ListItem.FolderPath]</content>
             </control>
+            <control type="image">
+                <top>960</top>
+                <left>10</left>
+                <width>116</width>
+                <height>30</height>
+                <aspectratio>keep</aspectratio>
+                <texture>flags/cadre2.png</texture>
+            </control>
+            <control type="label">
+                <top>960</top>
+                <left>10</left>
+                <width>116</width>
+                <height>30</height>
+                <align>center</align>
+                <font>bold20</font>
+                <label>$INFO[Container(10002).NumItems] $LOCALIZE[36901]</label>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_50_movieset_item">
+        <control type="image">
+            <top>33</top>
+            <left>10</left>
+            <width>255</width>
+            <height>383</height>
+            <aspectratio>keep</aspectratio>
+            <texture>$INFO[ListItem.Art(poster)]</texture>
         </control>
     </include>
 
     <include name="view_50_contentpanel_right_movies">
         <control type="group">
-            <visible>![String.IsEqual(Container(50).ListItem.DBType,artist) | String.IsEqual(Container(50).ListItem.DBType,album)]+ !String.IsEmpty(Container(50).ListItem.DBID)</visible>
-            <visible>!String.IsEqual(Container(50).ListItem.Label,..)</visible>
+            <visible>$EXP[DBTypesView50_Movie] | String.IsEqual(Container(50).ListItem.DBType,set)</visible>
             <visible>!String.IsEqual(Container(50).ListItem.Label,$LOCALIZE[20366])</visible>
             <control type="grouplist">
                 <top>10</top>
@@ -276,19 +319,26 @@
 
     <include name="view_50_contentpanel_left_artists">
         <control type="group">
-            <visible>String.IsEqual(Container(50).ListItem.DBType,artist) + !String.IsEmpty(Container(50).ListItem.DBID)</visible>
-            <visible>!String.IsEqual(Container(50).ListItem.Label,..)</visible>
+            <visible>String.IsEqual(Container(50).ListItem.DBType,artist)</visible>
             <control type="grouplist">
                 <left>20</left>
                 <right>20</right>
                 <height>440</height>
                 <control type="label">
+                    <visible>String.IsEmpty(Container(50).ListItem.Art(clearlogo))</visible>
                     <height>90</height>
                     <align>center</align>
                     <aligny>center</aligny>
                     <font>light50</font>
                     <textcolor>active</textcolor>
-                    <label>$INFO[ListItem.Artist]</label>
+                    <label>$INFO[Container(50).ListItem.Artist]</label>
+                </control>
+                <control type="image">
+                    <visible>!String.IsEmpty(Container(50).ListItem.Art(clearlogo))</visible>
+                    <width>560</width>
+                    <height>217</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[Container(50).ListItem.Art(clearlogo)]</texture>
                 </control>
                 <control type="label">
                     <visible>!String.IsEmpty(ListItem.Genre)</visible>
@@ -332,8 +382,7 @@
 
     <include name="view_50_contentpanel_right_artists">
         <control type="group">
-            <visible>String.IsEqual(Container(50).ListItem.DBType,artist) + !String.IsEmpty(Container(50).ListItem.DBID)</visible>
-            <visible>!String.IsEqual(Container(50).ListItem.Label,..)</visible>
+            <visible>String.IsEqual(Container(50).ListItem.DBType,artist)</visible>
             <control type="panel" id="10000">
                 <left>0</left>
                 <width>590</width>
@@ -386,8 +435,7 @@
 
     <include name="view_50_contentpanel_left_albums">
         <control type="group">
-            <visible>String.IsEqual(Container(50).ListItem.DBType,album) + !String.IsEmpty(Container(50).ListItem.DBID)</visible>
-            <visible>!String.IsEqual(Container(50).ListItem.Label,..)</visible>
+            <visible>String.IsEqual(Container(50).ListItem.DBType,album)</visible>
             <control type="label">
                 <visible>String.IsEmpty(Container(50).ListItem.Art(artist.clearlogo))</visible>
                 <height>90</height>
@@ -399,7 +447,7 @@
             </control>
             <control type="image">
                 <visible>!String.IsEmpty(Container(50).ListItem.Art(artist.clearlogo))</visible>
-                <left>1</left>
+                <left>20</left>
                 <width>560</width>
                 <height>217</height>
                 <aspectratio>keep</aspectratio>
@@ -434,8 +482,7 @@
 
     <include name="view_50_contentpanel_right_albums">
         <control type="group">
-            <visible>String.IsEqual(Container(50).ListItem.DBType,album) + !String.IsEmpty(Container(50).ListItem.DBID)</visible>
-            <visible>!String.IsEqual(Container(50).ListItem.Label,..)</visible>
+            <visible>String.IsEqual(Container(50).ListItem.DBType,album)</visible>
             <control type="label">
                 <top>30</top>
                 <left>20</left>

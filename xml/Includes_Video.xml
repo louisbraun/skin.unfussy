@@ -1018,6 +1018,7 @@
 
     <include name="mediaflags">
         <param name="source">ListItem</param>
+        <param name="showduration">true</param>
         <param name="top">0</param>
         <param name="left">0</param>
         <param name="width">1000</param>
@@ -1026,6 +1027,7 @@
         <param name="iconwidth1">44</param>
         <param name="iconwidth2">65</param>
         <param name="iconwidth3">78</param>
+        <param name="iconwidth4">106</param>
         <definition>
             <control type="grouplist">
                 <top>$PARAM[top]</top>
@@ -1037,29 +1039,52 @@
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>5</itemgap>
                 <control type="image">
+                    <visible>!String.IsEmpty($PARAM[source].VideoResolution)</visible>
                     <width>$PARAM[iconwidth1]</width>
                     <height>$PARAM[height]</height>
                     <texture>$INFO[$PARAM[source].VideoResolution,flags/videoresolution/,.png]</texture>
                 </control>
                 <control type="image">
+                    <visible>!String.IsEmpty($PARAM[source].VideoCodec)</visible>
                     <width>$PARAM[iconwidth3]</width>
                     <height>$PARAM[height]</height>
                     <texture>$INFO[$PARAM[source].VideoCodec,flags/videocodec/,.png]</texture>
                 </control>
                 <control type="image">
+                    <visible>!String.IsEmpty($PARAM[source].VideoAspect)</visible>
                     <width>$PARAM[iconwidth2]</width>
                     <height>$PARAM[height]</height>
                     <texture>$INFO[$PARAM[source].VideoAspect,flags/aspectratio/,.png]</texture>
                 </control>
                 <control type="image">
+                    <visible>!String.IsEmpty($PARAM[source].AudioCodec)</visible>
                     <width>$PARAM[iconwidth3]</width>
                     <height>$PARAM[height]</height>
                     <texture>$INFO[$PARAM[source].AudioCodec,flags/audiocodec/,.png]</texture>
                 </control>
                 <control type="image">
+                    <visible>!String.IsEmpty($PARAM[source].AudioChannels)</visible>
                     <width>$PARAM[iconwidth3]</width>
                     <height>$PARAM[height]</height>
                     <texture>$INFO[$PARAM[source].AudioChannels,flags/audiochannel/,.png]</texture>
+                </control>
+                <control type="group">
+                    <visible>$PARAM[showduration]</visible>
+                    <visible>!String.IsEmpty($PARAM[source].Duration)</visible>
+                    <width>$PARAM[iconwidth4]</width>
+                    <control type="image">
+                        <width>$PARAM[iconwidth4]</width>
+                        <height>$PARAM[height]</height>
+                        <texture>flags/time.png</texture>
+                    </control>
+                    <control type="label">
+                        <top>-2</top>
+                        <left>30</left>
+                        <width>76</width>
+                        <align>center</align>
+                        <font>bold24</font>
+                        <label>$VAR[DurationVar]</label>
+                    </control>
                 </control>
             </control>
         </definition>

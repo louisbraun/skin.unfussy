@@ -446,3 +446,7 @@ msgstr ""
 msgctxt "#31106"
 msgid "set switch timer"
 msgstr ""
+
+msgctxt "#31107"
+msgid "Use zoom effects in wall views"
+msgstr ""

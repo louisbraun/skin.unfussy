@@ -191,6 +191,7 @@
                     </control>
                 </control>
                 <include content="mediaflags">
+                    <param name="showduration">false</param>
                     <param name="top">540</param>
                     <param name="width">1450</param>
                     <param name="height">50</param>

@@ -5,7 +5,7 @@
             <include>openclose_slight_bottom</include>
             <visible>Control.IsVisible(55)</visible>
             <control type="fixedlist" id="55">
-                <visible>$EXP[AllowedViewFanart]</visible>
+                <visible>$EXP[ContentTypesView51_Fanart]</visible>
                 <top>705</top>
                 <left>20</left>
                 <width>1880</width>
@@ -45,12 +45,22 @@
                 <param name="height">300</param>
             </include>
             <control type="image">
+                <visible>!String.IsEmpty(ListItem.Art(poster))</visible>
                 <top>51</top>
                 <left>1</left>
                 <width>168</width>
                 <height>252</height>
                 <aspectratio>scale</aspectratio>
                 <texture background="true">$INFO[ListItem.Art(poster)]</texture>
+            </control>
+            <control type="image">
+                <visible>String.IsEmpty(ListItem.Art(poster))</visible>
+                <top>51</top>
+                <left>1</left>
+                <width>168</width>
+                <height>252</height>
+                <aspectratio>keep</aspectratio>
+                <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
             </control>
             <control type="group">
                 <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
@@ -96,12 +106,22 @@
                     <param name="height">350</param>
                 </include>
                 <control type="image">
+                    <visible>!String.IsEmpty(ListItem.Art(poster))</visible>
                     <top>1</top>
                     <left>1</left>
                     <width>218</width>
                     <height>300</height>
                     <aspectratio>scale</aspectratio>
                     <texture background="true">$INFO[ListItem.Art(poster)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEmpty(ListItem.Art(poster))</visible>
+                    <top>1</top>
+                    <left>1</left>
+                    <width>218</width>
+                    <height>300</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
                 <control type="group">
                     <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
@@ -138,7 +158,8 @@
 
     <include name="view_55_contentpanel">
        <control type="group">
-            <visible>Control.IsVisible(55) + !String.IsEqual(Container(55).ListItem.Label,..)</visible>                
+            <visible>Control.IsVisible(55)</visible>                
+            <visible>!String.IsEmpty(Container(55).ListItem.DBTYPE)</visible>                
             <include>openclose_slight_left</include>
             <control type="image">
                 <left>20</left>
@@ -237,7 +258,8 @@
             </control>
         </control>
         <control type="group">
-            <visible>Control.IsVisible(55) + String.IsEqual(Container(55).ListItem.Label,..)</visible>
+            <visible>Control.IsVisible(55)</visible>                
+            <visible>String.IsEmpty(Container(55).ListItem.DBTYPE)</visible>                
             <include>openclose_slight_left</include>
             <control type="group">
                 <left>20</left>

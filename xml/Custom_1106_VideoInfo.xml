@@ -197,6 +197,7 @@
                     </control>
                 </control>
                 <include content="mediaflags">
+                    <param name="showduration">false</param>
                     <param name="source">VideoPlayer</param>
                     <param name="top">540</param>
                     <param name="width">1450</param>

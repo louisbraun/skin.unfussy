@@ -14,50 +14,59 @@
         Window.IsVisible(MusicVisualisation.xml)
     </expression>
 
-    <expression name="AllowedViewList">
-        [ Container.Content(movies) | 
-          Container.Content(tvshows) | 
-          Container.Content(seasons) | 
-          Container.Content(episodes) |
-          Container.Content(musicvideos) |
-          Container.Content(artists) |
-          Container.Content(albums) ]
-        + !String.StartsWith(Container.FolderPath,plugin)
+    <expression name="ContentTypesView50_List">
+          Container.Content(movies) 
+        | Container.Content(tvshows)
+        | Container.Content(seasons) 
+        | Container.Content(episodes)
+        | Container.Content(musicvideos)
+        | Container.Content(artists)
+        | Container.Content(albums)
+        | Container.Content(videos)
     </expression>
 
-    <expression name="AllowedViewFanart">
-        [ Container.Content(movies) | 
-          Container.Content(tvshows) | 
-          Container.Content(musicvideos) ]
-        + !String.StartsWith(Container.FolderPath,plugin)          
+    <expression name="DBTypesView50_Movie">
+          String.IsEqual(Container(50).ListItem.DBType,movie)
+        | String.IsEqual(Container(50).ListItem.DBType,tvshow)
+        | String.IsEqual(Container(50).ListItem.DBType,season)
+        | String.IsEqual(Container(50).ListItem.DBType,episode)
+        | String.IsEqual(Container(50).ListItem.DBType,musicvideo)
+        | String.IsEqual(Container(50).ListItem.DBType,video)
     </expression>
 
-    <expression name="AllowedViewWall">
-        [ Container.Content(movies) | 
-          Container.Content(tvshows) | 
-          Container.Content(musicvideos) | 
-          Container.Content(addons) |
-          Container.Content(artists) |
-          Container.Content(albums) |
-          Container.Content(images) ]
-        + !String.StartsWith(Container.FolderPath,plugin)
+    <expression name="ContentTypesView51_Fanart">
+          Container.Content(movies) 
+        | Container.Content(tvshows) 
+        | Container.Content(musicvideos)
+        | Container.Content(videos)
     </expression>
 
-    <expression name="AllowedViewInfoWall">
-        [ Container.Content(movies) | 
-          Container.Content(musicvideos) | 
-          Container.Content(addons) |
-          Container.Content(artists) |
-          Container.Content(albums) |
-          Container.Content(images) ]
-        + !String.StartsWith(Container.FolderPath,plugin)
+    <expression name="ContentTypesView53_Wall">
+          Container.Content(movies)
+        | Container.Content(tvshows)
+        | Container.Content(musicvideos)
+        | Container.Content(videos)
+        | Container.Content(addons)
+        | Container.Content(artists)
+        | Container.Content(albums)
+        | Container.Content(images)
+    </expression>
+
+    <expression name="ContentTypesView54_InfoWall">
+          Container.Content(movies)
+        | Container.Content(musicvideos)
+        | Container.Content(videos)
+        | Container.Content(addons)
+        | Container.Content(artists)
+        | Container.Content(albums)
+        | Container.Content(images)
     </expression>
 
     <variable name="ImageLeftView50">
         <value condition="String.IsEqual(Container(50).ListItem.DBTYPE,season) + String.IsEqual(Container(50).ListItem.Label,$LOCALIZE[20366])">$INFO[Container(50).Art(tvshow.fanart)]</value>
-        <value condition="!String.IsEqual(Container(50).ListItem.DBTYPE,episode)">$INFO[Container(50).ListItem.Art(poster)]</value>
-        <value condition="String.IsEqual(Container(50).ListItem.DBTYPE,episode)">$INFO[Container(50).ListItem.Art(season.poster)]</value>
-        <value></value>
+        <value condition="String.IsEqual(Container(50).ListItem.DBTYPE,episode) + !String.IsEmpty(Container(50).ListItem.Art(season.poster))">$INFO[Container(50).ListItem.Art(season.poster)]</value>
+        <value condition="!String.IsEmpty(Container(50).ListItem.Art(poster))">$INFO[Container(50).ListItem.Art(poster)]</value>
+        <value>$INFO[Container(50).ListItem.Art(thumb)]</value>
     </variable>
 
     <variable name="View52ContentpanelDefault_Image">
@@ -1389,126 +1398,126 @@
         <value condition="String.StartsWith(Container.ListItem.Duration,05:57:)">5h57</value>
         <value condition="String.StartsWith(Container.ListItem.Duration,05:58:)">5h58</value>
         <value condition="String.StartsWith(Container.ListItem.Duration,05:59:)">5h59</value>
-        <value condition="String.StartsWith(ListItem.Duration,00:)">1 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,01:)">1 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,02:)">2 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,03:)">3 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,04:)">4 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,05:)">5 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,06:)">6 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,07:)">7 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,08:)">8 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,09:)">9 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,10:)">10 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,11:)">11 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,12:)">12 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,13:)">13 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,14:)">14 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,15:)">15 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,16:)">16 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,17:)">17 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,18:)">18 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,19:)">19 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,20:)">20 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,21:)">21 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,22:)">22 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,23:)">23 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,24:)">24 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,25:)">25 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,26:)">26 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,27:)">27 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,28:)">28 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,29:)">29 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,30:)">30 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,31:)">31 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,32:)">32 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,33:)">33 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,34:)">34 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,35:)">35 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,36:)">36 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,37:)">37 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,38:)">38 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,39:)">39 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,40:)">40 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,41:)">41 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,42:)">42 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,43:)">43 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,44:)">44 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,45:)">45 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,46:)">46 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,47:)">47 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,48:)">48 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,49:)">49 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,50:)">50 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,51:)">51 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,52:)">52 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,53:)">53 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,54:)">54 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,55:)">55 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,56:)">56 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,57:)">57 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,58:)">58 min</value>
-        <value condition="String.StartsWith(ListItem.Duration,59:)">59 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,00:)">1 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,01:)">1 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,02:)">2 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,03:)">3 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,04:)">4 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,05:)">5 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,06:)">6 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,07:)">7 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,08:)">8 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,09:)">9 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,10:)">10 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,11:)">11 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,12:)">12 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,13:)">13 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,14:)">14 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,15:)">15 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,16:)">16 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,17:)">17 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,18:)">18 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,19:)">19 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,20:)">20 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,21:)">21 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,22:)">22 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,23:)">23 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,24:)">24 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,25:)">25 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,26:)">26 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,27:)">27 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,28:)">28 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,29:)">29 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,30:)">30 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,31:)">31 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,32:)">32 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,33:)">33 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,34:)">34 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,35:)">35 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,36:)">36 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,37:)">37 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,38:)">38 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,39:)">39 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,40:)">40 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,41:)">41 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,42:)">42 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,43:)">43 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,44:)">44 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,45:)">45 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,46:)">46 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,47:)">47 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,48:)">48 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,49:)">49 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,50:)">50 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,51:)">51 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,52:)">52 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,53:)">53 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,54:)">54 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,55:)">55 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,56:)">56 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,57:)">57 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,58:)">58 min</value>
-        <value condition="String.StartsWith(Container.ListItem.Duration,59:)">59 min</value>
+        <value condition="String.StartsWith(ListItem.Duration,00:)">1 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,01:)">1 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,02:)">2 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,03:)">3 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,04:)">4 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,05:)">5 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,06:)">6 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,07:)">7 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,08:)">8 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,09:)">9 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,10:)">10 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,11:)">11 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,12:)">12 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,13:)">13 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,14:)">14 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,15:)">15 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,16:)">16 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,17:)">17 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,18:)">18 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,19:)">19 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,20:)">20 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,21:)">21 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,22:)">22 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,23:)">23 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,24:)">24 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,25:)">25 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,26:)">26 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,27:)">27 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,28:)">28 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,29:)">29 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,30:)">30 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,31:)">31 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,32:)">32 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,33:)">33 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,34:)">34 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,35:)">35 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,36:)">36 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,37:)">37 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,38:)">38 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,39:)">39 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,40:)">40 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,41:)">41 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,42:)">42 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,43:)">43 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,44:)">44 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,45:)">45 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,46:)">46 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,47:)">47 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,48:)">48 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,49:)">49 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,50:)">50 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,51:)">51 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,52:)">52 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,53:)">53 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,54:)">54 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,55:)">55 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,56:)">56 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,57:)">57 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,58:)">58 m</value>
+        <value condition="String.StartsWith(ListItem.Duration,59:)">59 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,00:)">1 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,01:)">1 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,02:)">2 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,03:)">3 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,04:)">4 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,05:)">5 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,06:)">6 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,07:)">7 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,08:)">8 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,09:)">9 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,10:)">10 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,11:)">11 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,12:)">12 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,13:)">13 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,14:)">14 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,15:)">15 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,16:)">16 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,17:)">17 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,18:)">18 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,19:)">19 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,20:)">20 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,21:)">21 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,22:)">22 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,23:)">23 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,24:)">24 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,25:)">25 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,26:)">26 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,27:)">27 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,28:)">28 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,29:)">29 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,30:)">30 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,31:)">31 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,32:)">32 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,33:)">33 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,34:)">34 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,35:)">35 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,36:)">36 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,37:)">37 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,38:)">38 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,39:)">39 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,40:)">40 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,41:)">41 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,42:)">42 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,43:)">43 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,44:)">44 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,45:)">45 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,46:)">46 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,47:)">47 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,48:)">48 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,49:)">49 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,50:)">50 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,51:)">51 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,52:)">52 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,53:)">53 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,54:)">54 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,55:)">55 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,56:)">56 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,57:)">57 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,58:)">58 m</value>
+        <value condition="String.StartsWith(Container.ListItem.Duration,59:)">59 m</value>
     </variable>
 
     <variable name="ExtendedInfoRecommendedHeader">

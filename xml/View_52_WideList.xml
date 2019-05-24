@@ -144,6 +144,7 @@
                 <bordersize>1</bordersize>
             </control>
             <include content="view_52_contentpanel_movies" />
+            <include content="view_52_contentpanel_moviesets" />
             <include content="view_52_contentpanel_season" />
             <include content="view_52_contentpanel_episode" />
             <include content="view_52_contentpanel_actors" />
@@ -160,11 +161,11 @@
     <include name="view_52_contentpanel_movies">
         <control type="group">
             <visible>
-                [String.IsEqual(ListItem.DBType,movie) | 
-                 String.IsEqual(ListItem.DBType,tvshow) |
-                 String.IsEqual(ListItem.DBType,musicvideo) | 
-                 String.IsEqual(ListItem.DBType,set)]
-                + !String.IsEmpty(ListItem.DBID)</visible>
+                  String.IsEqual(ListItem.DBType,movie)
+                | String.IsEqual(ListItem.DBType,tvshow)
+                | String.IsEqual(ListItem.DBType,musicvideo)
+                | String.IsEqual(ListItem.DBType,video)
+            </visible>
             <control type="label">
                 <top>20</top>
                 <left>20</left>
@@ -188,10 +189,18 @@
                 <label>$INFO[ListItem.TagLine]</label>
             </control>
             <control type="image">
+                <visible>!String.IsEmpty(ListItem.Art(poster))</visible>
                 <left>100</left>
                 <right>100</right>
                 <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[ListItem.Art(poster)]</texture>
+            </control>
+            <control type="image">
+                <visible>String.IsEmpty(ListItem.Art(poster))</visible>
+                <left>20</left>
+                <right>20</right>
+                <aspectratio>keep</aspectratio>
+                <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
             </control>
             <include content="mediaflags">
                 <param name="top" value="960" />
@@ -203,9 +212,46 @@
         </control>
     </include>
 
+    <include name="view_52_contentpanel_moviesets">
+        <control type="group">
+            <visible>String.IsEqual(Container(52).ListItem.DBType,set)</visible>
+            <control type="panel" id="10006">
+                <top>50</top>
+                <left>30</left>
+                <width>600</width>
+                <height>900</height>
+                <itemlayout width="300" height="450">
+                    <include>view_50_movieset_item</include>
+                </itemlayout>                
+                <focusedlayout height="300" width="450">
+                    <include>view_50_movieset_item</include>
+                </focusedlayout>
+                <content sortby="year" sortorder="ascending">$INFO[Container(52).ListItem.FolderPath]</content>
+            </control>
+            <control type="image">
+                <top>960</top>
+                <left>10</left>
+                <width>116</width>
+                <height>30</height>
+                <aspectratio>keep</aspectratio>
+                <texture>flags/cadre2.png</texture>
+            </control>
+            <control type="label">
+                <top>960</top>
+                <left>10</left>
+                <width>116</width>
+                <height>30</height>
+                <align>center</align>
+                <font>bold20</font>
+                <label>$INFO[Container(10006).NumItems] $LOCALIZE[36901]</label>
+            </control>
+        </control>
+    </include>
+
     <include name="view_52_contentpanel_season">
         <control type="group">
-            <visible>String.IsEqual(Container(52).ListItem.DBType,season) + !String.IsEmpty(Container(52).ListItem.DBID)</visible>
+            <visible>String.IsEqual(Container(52).ListItem.DBType,season)</visible>
+            <visible>!String.IsEqual(Container(52).ListItem.Label,$LOCALIZE[20366])</visible>
             <control type="group">
                 <top>0</top>
                 <left>10</left>
@@ -307,9 +353,8 @@
 
     <include name="view_52_contentpanel_episode">
         <control type="group">
-            <visible>String.IsEqual(Container(52).ListItem.DBType,episode) + !String.IsEmpty(Container(52).ListItem.DBID)</visible>
+            <visible>String.IsEqual(Container(52).ListItem.DBType,episode)</visible>
             <control type="group">
-                <visible>!String.IsEqual(Container(52).ListItem.Label,..)</visible>
                 <visible>!String.IsEqual(Container(52).ListItem.Label,$LOCALIZE[20366])</visible>
                 <top>0</top>
                 <left>10</left>
@@ -389,7 +434,10 @@
 
     <include name="view_52_contentpanel_actors">
         <control type="group">
-            <visible>[String.IsEqual(ListItem.DBType,actor)  | String.IsEqual(ListItem.DBType,director)] + !String.IsEmpty(ListItem.DBID)</visible>
+            <visible>
+                  String.IsEqual(ListItem.DBType,actor)  
+                | String.IsEqual(ListItem.DBType,director)
+            </visible>
             <control type="label">
                 <top>20</top>
                 <left>20</left>
@@ -428,7 +476,7 @@
 
     <include name="view_52_contentpanel_genre">
         <control type="group">
-            <visible>String.IsEqual(ListItem.DBType,genre) + !String.IsEmpty(ListItem.DBID)</visible>
+            <visible>String.IsEqual(ListItem.DBType,genre)</visible>
             <control type="image">
                 <top>20</top>
                 <left>20</left>
@@ -499,7 +547,7 @@
 
     <include name="view_52_contentpanel_artists">
         <control type="group">
-            <visible>String.IsEqual(ListItem.DBType,artist) + !String.IsEmpty(ListItem.DBID)</visible>
+            <visible>String.IsEqual(ListItem.DBType,artist)</visible>
             <control type="list" id="10000">
                 <focusedlayout height="0" width="0">
                 </focusedlayout>
@@ -567,7 +615,7 @@
 
     <include name="view_52_contentpanel_albums">
         <control type="group">
-            <visible>String.IsEqual(ListItem.DBType,album) + !String.IsEmpty(ListItem.DBID)</visible>
+            <visible>String.IsEqual(ListItem.DBType,album)</visible>
             <control type="label">
                 <top>30</top>
                 <left>20</left>
@@ -650,7 +698,7 @@
 
     <include name="view_52_contentpanel_songs">
         <control type="group">
-            <visible>String.IsEqual(ListItem.DBType,song) + !String.IsEmpty(ListItem.DBID)</visible>
+            <visible>String.IsEqual(ListItem.DBType,song)</visible>
             <control type="label">
                 <top>30</top>
                 <left>20</left>
@@ -788,19 +836,21 @@
     <include name="view_52_contentpanel_default">
         <control type="group">
             <visible>
-                ![[String.IsEqual(ListItem.DBType,movie) | 
-                  String.IsEqual(ListItem.DBType,tvshow) |
-                  String.IsEqual(ListItem.DBType,musicvideo) | 
-                  String.IsEqual(ListItem.DBType,set) |
-                  String.IsEqual(ListItem.DBType,season) |
-                  String.IsEqual(ListItem.DBType,episode) |
-                  String.IsEqual(ListItem.DBType,actor) | 
-                  String.IsEqual(ListItem.DBType,director) |
-                  String.IsEqual(ListItem.DBType,genre) |
-                  String.IsEqual(ListItem.DBType,artist) |
-                  String.IsEqual(ListItem.DBType,album) |
-                  String.IsEqual(ListItem.DBType,song)]
-                 + !String.IsEmpty(ListItem.DBID)]
+                ![
+                     String.IsEqual(ListItem.DBType,movie)
+                   | String.IsEqual(ListItem.DBType,tvshow)
+                   | String.IsEqual(ListItem.DBType,musicvideo)
+                   | String.IsEqual(ListItem.DBType,video)
+                   | String.IsEqual(ListItem.DBType,set)
+                   | String.IsEqual(ListItem.DBType,season)
+                   | String.IsEqual(ListItem.DBType,episode)
+                   | String.IsEqual(ListItem.DBType,actor)
+                   | String.IsEqual(ListItem.DBType,director)
+                   | String.IsEqual(ListItem.DBType,genre)
+                   | String.IsEqual(ListItem.DBType,artist)
+                   | String.IsEqual(ListItem.DBType,album)
+                   | String.IsEqual(ListItem.DBType,song)
+                ]
             </visible>
             <visible>!String.StartsWith(Container.FolderPath,addons)</visible>
             <visible>!Container.Content(images)</visible>
