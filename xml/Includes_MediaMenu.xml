@@ -186,6 +186,40 @@
                     <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
                     <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
                 </control>
+                <control type="togglebutton" id="1006">
+                    <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(musicvideos)</visible>
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <textoffsetx>20</textoffsetx>
+                    <radioposx>370</radioposx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <alttexturefocus colordiffuse="active">backgrounds/overlay_background.png</alttexturefocus>
+                    <alttexturenofocus colordiffuse="backgroundtransparent">colors/white.png</alttexturenofocus>
+                    <label>$LOCALIZE[653]</label>
+                    <altlabel>$LOCALIZE[13353]</altlabel>
+                    <usealttexture>Library.IsScanningVideo</usealttexture>
+                    <onclick>UpdateLibrary(video)</onclick>
+                </control>
+                <control type="togglebutton" id="1007">
+                    <visible>Container.Content(songs) | Container.Content(artists) | Container.Content(albums)</visible>
+                    <height>60</height>
+                    <aligny>center</aligny>
+                    <textoffsetx>20</textoffsetx>
+                    <radioposx>370</radioposx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <alttexturefocus colordiffuse="active">backgrounds/overlay_background.png</alttexturefocus>
+                    <alttexturenofocus colordiffuse="backgroundtransparent">colors/white.png</alttexturenofocus>
+                    <label>$LOCALIZE[653]</label>
+                    <altlabel>$LOCALIZE[13353]</altlabel>
+                    <usealttexture>Library.IsScanningMusic</usealttexture>
+                    <onclick>UpdateLibrary(music)</onclick>
+                </control>
             </control>
             <control type="image">
                 <top>15</top>
