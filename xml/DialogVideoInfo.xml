@@ -206,11 +206,11 @@
         <control type="grouplist" id="200">
             <defaultcontrol always="true">300</defaultcontrol>
             <top>2</top>
-            <right>50</right>
+            <right>30</right>
             <height>100</height>
             <orientation>horizontal</orientation>
             <align>right</align>
-            <itemgap>10</itemgap>
+            <itemgap>5</itemgap>
             <onup>50</onup>
             <ondown condition="Container(100).HasNext | Container(100).HasPrevious">100001</ondown>
             <ondown condition="!Container(100).HasNext + !Container(100).HasPrevious">50</ondown>
@@ -220,22 +220,22 @@
                 <param name="onclick">Back</param>
                 <param name="onclick2"></param>
                 <param name="icon">icons/buttons/close.png</param>
-                <param name="radius">100</param>
-                <param name="iconsize">60</param>
-                <param name="iconoffset">20</param>
+                <param name="radius">80</param>
+                <param name="iconsize">50</param>
+                <param name="iconoffset">15</param>
             </include>
             <include content="button_round">
                 <param name="id">8</param>
                 <param name="icon">icons/buttons/play.png</param>
-                <param name="radius">100</param>
-                <param name="iconsize">80</param>
+                <param name="radius">80</param>
+                <param name="iconsize">60</param>
                 <param name="iconoffset">10</param>
             </include>
             <include content="button_round">
                 <param name="id">9</param>
                 <param name="icon">icons/buttons/play.png</param>
-                <param name="radius">100</param>
-                <param name="iconsize">80</param>
+                <param name="radius">80</param>
+                <param name="iconsize">60</param>
                 <param name="iconoffset">10</param>
                 <param name="visible">Control.IsEnabled(9)</param>
             </include>
@@ -246,9 +246,9 @@
                 <param name="onclick2" value="SetProperty(custombusyreason,trailer,home)" />
                 <param name="onclick3" value="SetProperty(custombusylabel,$INFO[ListItem.Title],home)" />
                 <param name="icon">icons/buttons/trailer.png</param>
-                <param name="radius">100</param>
-                <param name="iconsize">60</param>
-                <param name="iconoffset">20</param>
+                <param name="radius">80</param>
+                <param name="iconsize">50</param>
+                <param name="iconoffset">15</param>
             </include>
             <include content="button_round">
                 <param name="id">302</param>
@@ -259,13 +259,36 @@
                 <param name="onclick4" value="SetProperty(custombusylabel,$INFO[ListItem.Title],home)" />
                 <param name="onclick5" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Title])" />
                 <param name="icon">icons/buttons/tmdb.png</param>
-                <param name="radius">100</param>
-                <param name="iconsize">70</param>
-                <param name="iconoffset">15</param>
+                <param name="radius">80</param>
+                <param name="iconsize">60</param>
+                <param name="iconoffset">10</param>
+            </include>
+            <include content="button_round">
+                <param name="id">13</param>
+                <param name="visible">!String.IsEmpty(ListItem.Director)</param>
+                <param name="icon">icons/buttons/director.png</param>
+                <param name="radius">80</param>
+                <param name="iconsize">60</param>
+                <param name="iconoffset">10</param>
+            </include>
+            <include content="button_round">
+                <param name="id">10</param>
+                <param name="icon">icons/buttons/choose_image.png</param>
+                <param name="radius">80</param>
+                <param name="iconsize">60</param>
+                <param name="iconoffset">10</param>
+            </include>
+            <include content="button_round">
+                <param name="visible" value="Control.IsEnabled(6)" />
+                <param name="id">6</param>
+                <param name="icon">icons/buttons/update.png</param>
+                <param name="radius">80</param>
+                <param name="iconsize">60</param>
+                <param name="iconoffset">10</param>
             </include>
         </control>
         <control type="label">
-            <top>100</top>
+            <top>80</top>
             <width>400</width>
             <align>center</align>
             <textcolor>active</textcolor>

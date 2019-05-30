@@ -450,3 +450,7 @@ msgstr "Umschalttimer setzen"
 msgctxt "#31107"
 msgid "Use zoom effects in wall views"
 msgstr "Zoom Effekte in Wall Views benutzen"
+
+msgctxt "#31108"
+msgid "Same director"
+msgstr "Filme dieses Regisseurs"
