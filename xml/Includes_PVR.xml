@@ -136,6 +136,7 @@
                     </control>
                     <control type="group">
                         <visible>Player.SeekEnabled</visible>
+                        <visible>String.IsEmpty(PVR.ChannelNumberInput)</visible>
                         <visible>
                             !String.IsEmpty(Player.Duration(ss)) + 
                             ![ String.IsEqual(Player.Duration(mm),00) 
