@@ -454,3 +454,8 @@ msgstr ""
 msgctxt "#31108"
 msgid "Same director"
 msgstr ""
+
+msgctxt "#31109"
+msgid "Use alternative Channel List with broadcasts per channel"
+msgstr ""
+

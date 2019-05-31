@@ -1527,4 +1527,5 @@
         <value condition="String.IsEqual(Window.Property(Type),tvshow)">$LOCALIZE[31083]</value>
         <value>$LOCALIZE[31026]</value>
     </variable>
+
 </includes>

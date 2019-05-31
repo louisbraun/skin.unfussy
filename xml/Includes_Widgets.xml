@@ -327,6 +327,15 @@
                     <texture>$INFO[ListItem.EPGEventIcon]</texture>
                 </control>
                 <control type="image">
+                    <visible>String.IsEmpty(ListItem.EPGEventIcon)</visible>
+                    <top>1</top>
+                    <left>1</left>
+                    <width>248</width>
+                    <height>349</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="image">
                     <left>10</left>
                     <top>350</top>
                     <width>100</width>

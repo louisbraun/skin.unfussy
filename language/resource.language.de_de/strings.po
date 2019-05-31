@@ -454,3 +454,8 @@ msgstr "Zoom Effekte in Wall Views benutzen"
 msgctxt "#31108"
 msgid "Same director"
 msgstr "Filme dieses Regisseurs"
+
+msgctxt "#31109"
+msgid "Use alternative Channel List with broadcasts per channel"
+msgstr "Alternative Kanalliste mit Sendungen pro Kanal benutzen"
+

@@ -652,10 +652,18 @@
                     <include content="pvr_channellist_view50_item" />
                 </itemlayout>
             </control>
-            <include content="scrollbar">
+            <include condition="!Skin.HasSetting(use_broadcast_list)" content="scrollbar">
                 <param name="controlled_id" value="50" />
                 <param name="onleft_id" value="50" />
                 <param name="onright_id" value="50" />
+                <param name="left" value="1040" />
+                <param name="top" value="120" />
+                <param name="height" value="880" />
+            </include>
+            <include condition="Skin.HasSetting(use_broadcast_list)" content="scrollbar">
+                <param name="controlled_id" value="50" />
+                <param name="onleft_id" value="50" />
+                <param name="onright_id" value="100" />
                 <param name="left" value="1040" />
                 <param name="top" value="120" />
                 <param name="height" value="880" />
@@ -706,9 +714,27 @@
     <include name="pvr_channellist_view50_item">
         <param name="active">false</param>
         <definition>
-            <include content="pvr_listitem_back">
-                <param name="active" value="$PARAM[active]" />
-            </include>
+            <control type="image">
+                <visible>$PARAM[active] + Control.HasFocus(50)</visible>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active] + !Control.HasFocus(50)</visible>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="activedialog">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <bottom>0</bottom>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
             <control type="group">
                 <visible>!Skin.HasSetting(hide_channelnumbers)</visible>
                 <control type="label">
@@ -939,6 +965,7 @@
         <param name="container_id">50</param>
         <definition>
             <control type="group">
+                <visible>!Skin.HasSetting(use_broadcast_list)</visible>
                 <top>120</top>
                 <left>1080</left>
                 <width>760</width>
@@ -1175,9 +1202,179 @@
                     <label>$INFO[Container($PARAM[container_id]).ListItem.NextGenre]</label>
                 </control>
             </control>
+            <control type="group">
+                <visible>Skin.HasSetting(use_broadcast_list)</visible>
+                <top>120</top>
+                <left>1080</left>
+                <width>760</width>
+                <height>880</height>
+                <control type="label">
+                    <top>0</top>
+                    <height>40</height>
+                    <aligny>center</aligny>
+                    <font>regular50</font>
+                    <textcolor>active</textcolor>
+                    <label>$LOCALIZE[19030]:</label>
+                </control>
+                <control type="label">
+                    <top>60</top>
+                    <height>40</height>
+                    <aligny>center</aligny>
+                    <font>regular30</font>
+                    <textcolor>white</textcolor>
+                    <label>$INFO[Container($PARAM[container_id]).ListItem.StartTime] $INFO[Container($PARAM[container_id]).ListItem.EndTime,- ,]</label>
+                </control>
+                <control type="group">
+                    <visible>!String.IsEmpty(Container($PARAM[container_id]).ListItem.EPGEventIcon)</visible>
+                    <control type="label">
+                        <top>100</top>
+                        <width>600</width>
+                        <height>70</height>
+                        <textcolor>active</textcolor>
+                        <font>light50</font>
+                        <aligny>center</aligny>
+                        <label>$INFO[Container($PARAM[container_id]).ListItem.Title]</label>
+                    </control>
+                    <control type="label">
+                        <top>170</top>
+                        <width>600</width>
+                        <height>40</height>
+                        <aligny>center</aligny>
+                        <font>light36</font>
+                        <label>$INFO[Container($PARAM[container_id]).ListItem.EpisodeName]</label>
+                    </control>
+                </control>
+                <control type="group">
+                    <visible>String.IsEmpty(Container($PARAM[container_id]).ListItem.EPGEventIcon)</visible>
+                    <control type="label">
+                        <top>100</top>
+                        <height>70</height>
+                        <textcolor>active</textcolor>
+                        <font>light50</font>
+                        <aligny>center</aligny>
+                        <label>$INFO[Container($PARAM[container_id]).ListItem.Title]</label>
+                    </control>
+                    <control type="label">
+                        <top>170</top>
+                        <height>40</height>
+                        <aligny>center</aligny>
+                        <font>light36</font>
+                        <label>$INFO[Container($PARAM[container_id]).ListItem.EpisodeName]</label>
+                    </control>
+                </control>
+                <control type="image">
+                    <top>0</top>
+                    <right>0</right>
+                    <width>140</width>
+                    <height>210</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[Container($PARAM[container_id]).ListItem.EPGEventIcon]</texture>
+                </control>
+                <control type="image">
+                    <top>220</top>
+                    <height>1</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="border">colors/white.png</texture>
+                </control>
+                <control type="group">
+                    <visible>!String.IsEqual(Window.Property(channel_change),true)</visible>
+                    <control type="list" id="100">
+                        <top>220</top>
+                        <height>650</height>
+                        <orientation>vertical</orientation>
+                        <onleft>50</onleft>
+                        <onright>100001</onright>
+                        <scrolltime tween="sine" easing="out">200</scrolltime>
+                        <pagecontrol>100001</pagecontrol>
+                        <itemlayout height="80">
+                            <include content="pvr_channellist_broadcast_item" />
+                        </itemlayout>
+                        <focusedlayout height="80">
+                            <include content="pvr_channellist_broadcast_item">
+                                <param name="active">true</param>
+                            </include>
+                        </focusedlayout>
+                        <content target="video">plugin://script.unfussy.helper/?info=getbroadcasts&amp;channelnum=$INFO[Container($PARAM[container_id]).ListItem.ChannelNumberLabel]&amp;channelids=$INFO[Window.Property(channel_ids)]</content>
+                        <onclick>RunScript(script.unfussy.helper,action=info_runningat&bc_id=$INFO[ListItem.Property(broadcastid)]&c_id=$INFO[ListItem.Property(channelid)])</onclick>
+                    </control>
+                    <include content="scrollbar">
+                        <param name="controlled_id" value="100" />
+                        <param name="onleft_id" value="100" />
+                        <param name="onright_id" value="100" />
+                        <param name="left" value="770" />
+                        <param name="top" value="220" />
+                        <param name="height" value="650" />
+                    </include>
+                </control>
+                <control type="group">
+                    <visible>String.IsEqual(Window.Property(channel_change),true)</visible>
+                    <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+                    <control type="image">
+                        <centerleft>50%</centerleft>
+                        <centertop>50%</centertop>
+                        <width>100</width>
+                        <height>100</height>
+                        <visible>true</visible>
+                        <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                        <texture colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                    </control>
+                    <control type="image">
+                        <centerleft>50%</centerleft>
+                        <centertop>50%</centertop>
+                        <width>70</width>
+                        <height>70</height>
+                        <visible>true</visible>
+                        <animation effect="rotate" end="360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                        <texture flipx="true" colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                    </control>
+                </control>
+            </control>
         </definition>
     </include>
 
+    <include name="pvr_channellist_broadcast_item">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <visible>$PARAM[active] + Control.HasFocus(100)</visible>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active] + Control.HasFocus(100001)</visible>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="activedialog">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="label">
+                <top>10</top>
+                <left>10</left>
+                <right>10</right>
+                <height>30</height>
+                <aligny>center</aligny>
+                <font>regular24</font>
+                <label>$INFO[ListItem.Property(date)] $INFO[ListItem.Property(starttime)] - $INFO[ListItem.Property(endtime)]</label>
+            </control>
+            <control type="label">
+                <top>40</top>
+                <left>10</left>
+                <right>10</right>
+                <height>30</height>
+                <aligny>center</aligny>
+                <font>regular30</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="image">
+                <bottom>1</bottom>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+        </definition>
+    </include>
 <!-- PVR RECORDINGS -->
 
     <include name="pvr_recordings_view50">

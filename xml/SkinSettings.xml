@@ -61,46 +61,53 @@
                 <control type="radiobutton" id="1005">
                     <include>button_settings</include>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                    <label>$LOCALIZE[31109]</label>
+                    <selected>Skin.HasSetting(use_broadcast_list)</selected>
+                    <onclick>Skin.ToggleSetting(use_broadcast_list)</onclick>
+                </control>
+                <control type="radiobutton" id="1006">
+                    <include>button_settings</include>
+                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <label>$LOCALIZE[31095]</label>
                     <selected>Skin.HasSetting(tvguide_show_detail)</selected>
                     <onclick>Skin.ToggleSetting(tvguide_show_detail)</onclick>
                 </control>
-                <control type="radiobutton" id="1006">
+                <control type="radiobutton" id="1007">
                     <include>button_settings</include>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <label>$LOCALIZE[31102]</label>
                     <selected>Skin.HasSetting(hide_channelnumbers)</selected>
                     <onclick>Skin.ToggleSetting(hide_channelnumbers)</onclick>
                 </control>
-                <control type="radiobutton" id="1007">
+                <control type="radiobutton" id="1008">
                     <include>button_settings</include>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <label>$LOCALIZE[31096]</label>
                     <selected>Skin.HasSetting(start_live_tv)</selected>
                     <onclick>Skin.ToggleSetting(start_live_tv)</onclick>
                 </control>
-                <control type="radiobutton" id="1008">
+                <control type="radiobutton" id="1009">
                     <include>button_settings</include>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <label>$LOCALIZE[31104]</label>
                     <selected>Skin.HasSetting(start_music_fullscreen)</selected>
                     <onclick>Skin.ToggleSetting(start_music_fullscreen)</onclick>
                 </control>
-                <control type="radiobutton" id="1009">
+                <control type="radiobutton" id="1010">
                     <include>button_settings</include>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <label>$LOCALIZE[31101]</label>
                     <selected>Skin.HasSetting(use_animations_fanart)</selected>
                     <onclick>Skin.ToggleSetting(use_animations_fanart)</onclick>
                 </control>
-                <control type="radiobutton" id="1010">
+                <control type="radiobutton" id="1011">
                     <include>button_settings</include>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <label>$LOCALIZE[31107]</label>
                     <selected>Skin.HasSetting(use_animations_wall)</selected>
                     <onclick>Skin.ToggleSetting(use_animations_wall)</onclick>
                 </control>
-                <control type="radiobutton" id="1011">
+                <control type="radiobutton" id="1012">
                     <include>button_settings</include>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <label>$LOCALIZE[31105]</label>
