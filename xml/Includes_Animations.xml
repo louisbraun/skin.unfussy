@@ -408,11 +408,11 @@
             <effect type="slide" end="975,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
-        <animation type="Conditional" condition="Control.HasFocus(102) + Window.IsVisible(tvrecordings) + !Pvr.IsPlayingRecording" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(102) + [Window.IsVisible(tvrecordings) | String.StartsWith(Container.FolderPath,pvr://recordings) | String.StartsWith(ListItem.FolderPath,pvr://recordings)] + !Pvr.IsPlayingRecording" reversible="false">
             <effect type="slide" end="1290,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
-        <animation type="Conditional" condition="Control.HasFocus(102) + !Window.IsVisible(pvrguideinfo) + !Window.IsVisible(tvrecordings) + !Pvr.IsPlayingRecording" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(102) + !Window.IsVisible(pvrguideinfo) + ![Window.IsVisible(tvrecordings) | String.StartsWith(Container.FolderPath,pvr://recordings) | String.StartsWith(ListItem.FolderPath,pvr://recordings)] + !Pvr.IsPlayingRecording" reversible="false">
             <effect type="slide" end="1185,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>

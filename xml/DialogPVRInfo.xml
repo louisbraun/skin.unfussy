@@ -20,7 +20,7 @@
                 <texture colordiffuse="border">colors/white.png</texture>
             </control>
             <control type="group">
-                <visible>!String.StartsWith(Container.FolderPath,pvr://recordings)</visible>
+                <visible>!String.StartsWith(ListItem.FolderPath,pvr://recordings)</visible>
                 <control type="textbox">
                     <visible>!String.IsEmpty(ListItem.EPGEventIcon)</visible>
                     <top>10</top>
@@ -45,7 +45,7 @@
                 </control>
             </control>
             <control type="group">
-                <visible>String.StartsWith(Container.FolderPath,pvr://recordings)</visible>
+                <visible>String.StartsWith(ListItem.FolderPath,pvr://recordings)</visible>
                 <control type="textbox">
                     <visible>String.IsEmpty(ListItem.ActualIcon) | String.IsEqual(ListItem.ActualIcon,ListItem.Icon)</visible>
                     <visible></visible>
@@ -114,7 +114,7 @@
             </control>
 
             <control type="group">
-                <visible>!String.StartsWith(Container.FolderPath,pvr://recordings)</visible>
+                <visible>!String.StartsWith(ListItem.FolderPath,pvr://recordings)</visible>
                 <control type="group">
                     <visible>String.IsEmpty(ListItem.EPGEventIcon)</visible>
                     <control type="textbox" id="100">
@@ -175,10 +175,10 @@
             </control>
 
             <control type="group">
-                <visible>String.StartsWith(Container.FolderPath,pvr://recordings)</visible>
+                <visible>String.StartsWith(ListItem.FolderPath,pvr://recordings)</visible>
                 <control type="group">
-                    <control type="textbox" id="100">
-                        <pagecontrol>100001</pagecontrol>
+                    <control type="textbox" id="200">
+                        <pagecontrol>200001</pagecontrol>
                         <top>230</top>
                         <height>600</height>
                         <left>30</left>
@@ -191,7 +191,7 @@
                         <param name="left">750</param>
                         <param name="width">15</param>
                         <param name="height">600</param>
-                        <param name="controlled_id">100</param>
+                        <param name="controlled_id">200</param>
                         <param name="onright_id">101</param>
                     </include>
                     <include content="pvr_info_detail_list">
@@ -218,7 +218,8 @@
                 <usecontrolcoords>true</usecontrolcoords>
                 <defaultcontrol always="true">102</defaultcontrol>
                 <onleft>100001</onleft>
-                <onup>100001</onup>
+                <onup condition="!String.StartsWith(ListItem.FolderPath,pvr://recordings)">100001</onup>
+                <onup condition="String.StartsWith(ListItem.FolderPath,pvr://recordings)">200001</onup>
                 <include content="button_round">
                     <param name="id">102</param>
                     <param name="onclick">Back</param>
@@ -230,7 +231,7 @@
                 </include>
                 <include content="button_round">
                     <param name="id">6</param>
-                    <param name="visible">!String.StartsWith(Container.FolderPath,pvr://recordings)</param>
+                    <param name="visible">![String.StartsWith(Container.FolderPath,pvr://recordings) | String.StartsWith(ListItem.FolderPath,pvr://recordings)]</param>
                     <param name="icon">icons/buttons/record.png</param>
                     <param name="radius">100</param>
                     <param name="iconsize">60</param>
@@ -248,7 +249,7 @@
                 </include>
                 <include content="button_round">
                     <param name="id">108</param>
-                    <param name="visible">!Window.IsActive(tvrecordings) + !Window.IsActive(tvchannels)</param>
+                    <param name="visible">!Window.IsActive(tvrecordings) + !Window.IsActive(tvchannels) + ![String.StartsWith(Container.FolderPath,pvr://recordings) | String.StartsWith(ListItem.FolderPath,pvr://recordings)]</param>
                     <param name="visible2">System.HasAddon(service.kn.switchtimer)</param>
                     <param name="onclick" value="Back" />
                     <param name="onclick2" value="RunScript(service.kn.switchtimer,action=add,channel=$INFO[ListItem.ChannelName],icon=$INFO[ListItem.Icon],date=$INFO[ListItem.Date],title=$INFO[ListItem.Title])" />
@@ -259,7 +260,7 @@
                 </include>
                 <include content="button_round">
                     <param name="id">4</param>
-                    <param name="visible">!String.StartsWith(Container.FolderPath,pvr://recordings)</param>
+                    <param name="visible">![String.StartsWith(Container.FolderPath,pvr://recordings) | String.StartsWith(ListItem.FolderPath,pvr://recordings)]</param>
                     <param name="icon">icons/buttons/similar.png</param>
                     <param name="radius">100</param>
                     <param name="iconsize">50</param>
