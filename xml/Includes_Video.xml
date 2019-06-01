@@ -134,7 +134,7 @@
                     <width>100%</width>
                     <height>26</height>
                     <texturesliderbar colordiffuse="00FFFFFF">progress/nub_bar.png</texturesliderbar>
-                    <textureslidernib>progress/nub_bar.png</textureslidernib>
+                    <textureslidernib colordiffuse="active">progress/nub_bar.png</textureslidernib>
                     <textureslidernibfocus colordiffuse="active">colors/white.png</textureslidernibfocus>
                 </control>
             </control>
