@@ -8,17 +8,17 @@
     <color name="backgroundtransparentdark">EE111111</color>
     <color name="backgroundtransparentbright">DD333333</color>
     <color name="darkenposters">CC111111</color>
-    <color name="active">FF00AC00</color>
-    <color name="activedialog">FF077807</color>
-    <color name="activedialogdark">FF035003</color>
-    <color name="activetransparent">3300AC00</color>
+    <color name="active">FFff4b00</color>
+    <color name="activedialog">FFdd4b00</color>
+    <color name="activedialogdark">FFaa4b00</color>
+    <color name="activetransparent">33ff6600</color>
     <color name="timeshiftbar">FF8B0000</color>
     <color name="border">FF505050</color>
     <color name="borderdark">FF353535</color>
     <color name="inactive">FF777777</color>
     <color name="white">FFFFFFFF</color>
-	<color name="black">FF000000</color>
-	<color name="red">FFFF0000</color>
-	<color name="green">FF00FF00</color>
-	<color name="blue">FF0000FF</color>
+    <color name="black">FF000000</color>
+    <color name="red">FFFF0000</color>
+    <color name="green">FF00FF00</color>
+    <color name="blue">FF0000FF</color>
 </colors>

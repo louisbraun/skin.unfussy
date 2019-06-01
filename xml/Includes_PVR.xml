@@ -162,7 +162,7 @@
                             <info2>PVR.TimeshiftProgressBufferStart</info2>
                             <info>PVR.TimeshiftProgressBufferEnd</info>
                             <texturebg colordiffuse="00FFFFFF">colors/white.png</texturebg>
-                            <midtexture colordiffuse="FF8B0000">colors/white.png</midtexture>
+                            <midtexture colordiffuse="timeshiftbar">colors/white.png</midtexture>
                         </control>
                         <control type="slider" id="403">
                             <top>109</top>
