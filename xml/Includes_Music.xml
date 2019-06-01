@@ -369,8 +369,8 @@
                 <width>100%</width>
                 <height>26</height>
                 <texturesliderbar colordiffuse="00FFFFFF">progress/nub_leftright.png</texturesliderbar>
-                <textureslidernib>progress/nub_leftright_active.png</textureslidernib>
-                <textureslidernibfocus>progress/nub_leftright_active.png</textureslidernibfocus>
+                <textureslidernib colordiffuse="active">progress/nub_leftright.png</textureslidernib>
+                <textureslidernibfocus colordiffuse="active">progress/nub_leftright.png</textureslidernibfocus>
                 <info>Player.Progress</info>
                 <action>seek</action>
                 <visible>Control.HasFocus(87)</visible>

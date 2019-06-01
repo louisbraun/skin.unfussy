@@ -322,9 +322,9 @@
                 <left>0</left>
                 <width>1190</width>
                 <height>26</height>
-                <texturesliderbar colordiffuse="00FFFFFF">progress/nub_leftright_active.png</texturesliderbar>
-                <textureslidernib>progress/nub_leftright_active.png</textureslidernib>
-                <textureslidernibfocus>progress/nub_leftright_active.png</textureslidernibfocus>
+                <texturesliderbar colordiffuse="00FFFFFF">progress/nub_leftright.png</texturesliderbar>
+                <textureslidernib colordiffuse="active">progress/nub_leftright.png</textureslidernib>
+                <textureslidernibfocus colordiffuse="active">progress/nub_leftright.png</textureslidernibfocus>
                 <info>PVR.TimeshiftProgressPlayPos</info>
                 <action>pvr.seek</action>
                 <visible>Control.HasFocus(88)</visible>
