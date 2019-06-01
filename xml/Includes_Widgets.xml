@@ -13,11 +13,12 @@
             <itemgap>0</itemgap>
             <onup>9001</onup>
             <usecontrolcoords>true</usecontrolcoords>
-            <defaultcontrol>10</defaultcontrol>
+            <defaultcontrol>500</defaultcontrol>
             <include>home_widget_content</include>
         </control>
+        <include>home_widget_anchors</include>
         <control type="group">
-            <visible>ControlGroup(9002).HasFocus</visible>
+            <include>cond_show_updown_arrows</include>
             <control type="image">
                 <visible>Container(9002).HasPrevious</visible>
                 <animation effect="zoom" start="100,0" end="100,100" center="auto" time="200" delay="10">VisibleChange</animation>
@@ -71,7 +72,7 @@
                 <left>300</left>
                 <right>40</right>
                 <height>$PARAM[height]</height>
-                <onleft>9001</onleft>
+                <onleft>$PARAM[id]777</onleft>
                 <onfocus>SetProperty(active_channel, $PARAM[id])</onfocus>
                 <onunfocus>SetProperty(active_channel, 0)</onunfocus>
                 <orientation>horizontal</orientation>
@@ -123,7 +124,7 @@
                 <visible>$PARAM[visible]</visible>
                 <top>10</top>
                 <control type="group">
-                    <visible>String.IsEqual(Window(Home).Property(active_channel), $PARAM[id])</visible>
+                    <visible>String.IsEqual(Window(Home).Property(active_channel), $PARAM[id]) | Control.HasFocus($PARAM[id]777)</visible>
                     <control type="image">
                         <description>left scroll arrow</description>
                         <visible>Container($PARAM[id]).HasPrevious</visible>
@@ -175,9 +176,27 @@
                         <textcolor>active</textcolor>
                         <label>$INFO[Container($PARAM[id]).CurrentItem]/$INFO[Container($PARAM[id]).NumItems]</label>
                     </control>
+                    <control type="group">
+                        <visible>Control.HasFocus($PARAM[id]777)</visible>
+                        <left>50</left>
+                        <top>10</top>
+                        <control type="image">
+                            <width>60</width>
+                            <height>60</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture colordiffuse="active">buttons/button_round_3d.png</texture>
+                        </control>
+                        <control type="image">
+                            <left>2</left>
+                            <width>60</width>
+                            <height>60</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture colordiffuse="white">icons/folder.png</texture>
+                        </control>
+                    </control>
                 </control>
                 <control type="group">
-                    <visible>!String.IsEqual(Window(Home).Property(active_channel), $PARAM[id])</visible>
+                    <visible>!String.IsEqual(Window(Home).Property(active_channel), $PARAM[id]) + !Control.HasFocus($PARAM[id]777)</visible>
                     <control type="image">
                         <description>background</description>
                         <left>40</left>
