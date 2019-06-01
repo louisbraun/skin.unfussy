@@ -7,7 +7,7 @@
     <controls>
         <include>background</include>
         <include content="info_header">
-            <param name="title" value="$LOCALIZE[2]" />
+            <param name="title" value="$LOCALIZE[2] $INFO[Container.FolderName, / ]" />
             <param name="showicon" value="true" />
             <param name="icon" value="icons/mainmenu/music.png" />
         </include>
