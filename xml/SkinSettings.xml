@@ -1,138 +1,306 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-    <defaultcontrol>1000</defaultcontrol>
+    <defaultcontrol>100</defaultcontrol>
     <backgroundcolor>0</backgroundcolor>
     <controls>
         <include>background</include>
         <include content="info_header">
-            <param name="title">$LOCALIZE[5] / $LOCALIZE[10035]</param>
+            <param name="title">$LOCALIZE[5] / $LOCALIZE[31110]</param>
             <param name="showicon" value="true" />
             <param name="icon" value="icons/buttons/settings.png" />
         </include>
         <control type="group">
             <include>openclose_slight_left</include>
-            <top>100</top>
-            <left>20</left>
-            <width>1880</width>
             <control type="image">
+                <visible>!ControlGroup(100).HasFocus</visible>
+                <top>100</top>
+                <left>10</left>
+                <width>500</width>
                 <height>940</height>
                 <aspectratio>stretch</aspectratio>
                 <texture colordiffuse="backgrounddark">colors/white.png</texture>
                 <bordertexture colordiffuse="border" border="1">colors/white.png</bordertexture>
                 <bordersize>1</bordersize>
             </control>
-            <control type="grouplist" id="1000">
-                <top>10</top>
-                <left>20</left>
-                <bottom>60</bottom>
-                <right>20</right>
-                <control type="label" id="1001">
-                    <height>60</height>
+            <control type="image">
+                <visible>ControlGroup(100).HasFocus</visible>
+                <top>100</top>
+                <left>10</left>
+                <width>500</width>
+                <height>940</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="activedialog" border="1">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <width>300</width>
+                <height>300</height>
+                <left>100</left>
+                <bottom>10</bottom>
+                <texture colordiffuse="activedialog">icons/settings/unfussy.png</texture>
+            </control>
+            <control type="grouplist" id="100">
+                <description>menu</description>
+                <left>11</left>
+                <top>101</top>
+                <width>498</width>
+                <height>800</height>
+                <itemgap>1</itemgap>
+                <usecontrolcoords>true</usecontrolcoords>
+                <onleft condition="Control.HasFocus(101)">200</onleft>
+                <onleft condition="Control.HasFocus(102)">300</onleft>
+                <onleft condition="Control.HasFocus(103)">400</onleft>
+                <onright condition="Control.HasFocus(101)">200</onright>
+                <onright condition="Control.HasFocus(102)">300</onright>
+                <onright condition="Control.HasFocus(103)">400</onright>
+                <control type="button" id="101">
+                    <visible allowhiddenfocus="true">!ControlGroup(200).HasFocus</visible>
+                    <height>90</height>
+                    <width>500</width>
+                    <textoffsetx>20</textoffsetx>
                     <aligny>center</aligny>
                     <font>light36</font>
-                    <textcolor>active</textcolor>
-                    <shadowcolor>border</shadowcolor>
-                    <label>$LOCALIZE[31093]</label>
-                </control>
-                <control type="radiobutton" id="1002">
-                    <include>button_settings</include>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                    <label>$LOCALIZE[31094]</label>
-                    <selected>Skin.HasSetting(hide_widgets)</selected>
-                    <onclick>Skin.ToggleSetting(hide_widgets)</onclick>
+                    <label>$LOCALIZE[31111]</label>
                 </control>
-                <control type="radiobutton" id="1003">
-                    <include>button_settings</include>
-                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                    <label>$LOCALIZE[31097]</label>
-                    <selected>Skin.HasSetting(use_channelgroups)</selected>
-                    <onclick>Skin.ToggleSetting(use_channelgroups)</onclick>
-                </control>
-                <control type="radiobutton" id="1004">
-                    <visible>Skin.HasSetting(use_channelgroups)</visible>
-                    <include content="button_settings">
-                        <param name="textoffsetx">70</param>
-                    </include>
-                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                    <label>$LOCALIZE[31103]</label>
-                    <selected>Skin.HasSetting(hide_all_channels)</selected>
-                    <onclick>Skin.ToggleSetting(hide_all_channels)</onclick>
-                </control>
-                <control type="radiobutton" id="1005">
-                    <include>button_settings</include>
-                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                    <label>$LOCALIZE[31109]</label>
-                    <selected>Skin.HasSetting(use_broadcast_list)</selected>
-                    <onclick>Skin.ToggleSetting(use_broadcast_list)</onclick>
-                </control>
-                <control type="radiobutton" id="1006">
-                    <include>button_settings</include>
-                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                    <label>$LOCALIZE[31095]</label>
-                    <selected>Skin.HasSetting(tvguide_show_detail)</selected>
-                    <onclick>Skin.ToggleSetting(tvguide_show_detail)</onclick>
-                </control>
-                <control type="radiobutton" id="1007">
-                    <include>button_settings</include>
-                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                    <label>$LOCALIZE[31102]</label>
-                    <selected>Skin.HasSetting(hide_channelnumbers)</selected>
-                    <onclick>Skin.ToggleSetting(hide_channelnumbers)</onclick>
-                </control>
-                <control type="radiobutton" id="1008">
-                    <include>button_settings</include>
-                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                    <label>$LOCALIZE[31096]</label>
-                    <selected>Skin.HasSetting(start_live_tv)</selected>
-                    <onclick>Skin.ToggleSetting(start_live_tv)</onclick>
-                </control>
-                <control type="radiobutton" id="1009">
-                    <include>button_settings</include>
-                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                    <label>$LOCALIZE[31104]</label>
-                    <selected>Skin.HasSetting(start_music_fullscreen)</selected>
-                    <onclick>Skin.ToggleSetting(start_music_fullscreen)</onclick>
-                </control>
-                <control type="radiobutton" id="1010">
-                    <include>button_settings</include>
-                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                    <label>$LOCALIZE[31101]</label>
-                    <selected>Skin.HasSetting(use_animations_fanart)</selected>
-                    <onclick>Skin.ToggleSetting(use_animations_fanart)</onclick>
-                </control>
-                <control type="radiobutton" id="1011">
-                    <include>button_settings</include>
-                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                    <label>$LOCALIZE[31107]</label>
-                    <selected>Skin.HasSetting(use_animations_wall)</selected>
-                    <onclick>Skin.ToggleSetting(use_animations_wall)</onclick>
-                </control>
-                <control type="radiobutton" id="1012">
-                    <include>button_settings</include>
-                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                    <label>$LOCALIZE[31105]</label>
-                    <selected>Skin.HasSetting(darken_watched)</selected>
-                    <onclick>Skin.ToggleSetting(darken_watched)</onclick>
-                </control>
-                <control type="label" id="1100">
-                    <height>60</height>
+                <control type="button" id="104">
+                    <visible>ControlGroup(200).HasFocus</visible>
+                    <height>90</height>
+                    <width>500</width>
+                    <textoffsetx>20</textoffsetx>
                     <aligny>center</aligny>
                     <font>light36</font>
-                    <textcolor>active</textcolor>
-                    <shadowcolor>border</shadowcolor>
-                    <label>$LOCALIZE[31098]</label>
+                    <texturenofocus colordiffuse="activedialogdark">colors/white.png</texturenofocus>
+                    <label>$LOCALIZE[31111]</label>
                 </control>
-                <control type="button" id="1101">
-                    <include>button_settings</include>
+                <control type="button" id="102">
+                    <visible allowhiddenfocus="true">!Control.HasFocus(300)</visible>
+                    <height>90</height>
+                    <width>500</width>
+                    <textoffsetx>20</textoffsetx>
+                    <aligny>center</aligny>
+                    <font>light36</font>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                    <label>$LOCALIZE[31099]</label>
-                    <onclick>RunScript(script.unfussy.helper,action=configure_menu)</onclick>
+                    <label>$LOCALIZE[31112]</label>
                 </control>
-                <control type="button" id="1102">
-                    <include>button_settings</include>
+                <control type="button" id="105">
+                    <visible>Control.HasFocus(300)</visible>
+                    <height>90</height>
+                    <width>500</width>
+                    <textoffsetx>20</textoffsetx>
+                    <aligny>center</aligny>
+                    <font>light36</font>
+                    <texturenofocus colordiffuse="activedialogdark">colors/white.png</texturenofocus>
+                    <label>$LOCALIZE[31112]</label>
+                </control>
+                <control type="button" id="103">
+                    <visible allowhiddenfocus="true">!ControlGroup(400).HasFocus</visible>
+                    <height>90</height>
+                    <width>500</width>
+                    <textoffsetx>20</textoffsetx>
+                    <aligny>center</aligny>
+                    <font>light36</font>
                     <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                    <label>$LOCALIZE[31100]</label>
-                    <onclick>RunScript(script.unfussy.helper,action=configure_widgets)</onclick>
+                    <label>$LOCALIZE[31113]</label>
+                </control>
+                <control type="button" id="106">
+                    <visible>ControlGroup(400).HasFocus</visible>
+                    <height>90</height>
+                    <width>500</width>
+                    <textoffsetx>20</textoffsetx>
+                    <aligny>center</aligny>
+                    <font>light36</font>
+                    <texturenofocus colordiffuse="activedialogdark">colors/white.png</texturenofocus>
+                    <label>$LOCALIZE[31113]</label>
+                </control>
+            </control>
+        </control>
+        <control type="group">
+            <include>openclose_slight_right</include>
+            <top>100</top>
+            <left>540</left>
+            <width>1335</width>
+            <height>940</height>
+            <control type="image">
+                <visible>Control.HasFocus(101) | Control.HasFocus(103)</visible>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border" border="1">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="image">
+                <visible>ControlGroup(200).HasFocus | ControlGroup(400).HasFocus</visible>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="activedialog" border="1">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+            </control>
+            <control type="group">
+                <visible>Control.HasFocus(101) | ControlGroup(200).HasFocus</visible>
+                <control type="grouplist" id="200">
+                    <onleft>101</onleft>
+                    <onright>101</onright>
+                    <control type="radiobutton" id="201">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31094]</label>
+                        <selected>Skin.HasSetting(hide_widgets)</selected>
+                        <onclick>Skin.ToggleSetting(hide_widgets)</onclick>
+                    </control>
+                    <control type="radiobutton" id="202">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31104]</label>
+                        <selected>Skin.HasSetting(start_music_fullscreen)</selected>
+                        <onclick>Skin.ToggleSetting(start_music_fullscreen)</onclick>
+                    </control>
+                    <control type="radiobutton" id="203">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31101]</label>
+                        <selected>Skin.HasSetting(use_animations_fanart)</selected>
+                        <onclick>Skin.ToggleSetting(use_animations_fanart)</onclick>
+                    </control>
+                    <control type="radiobutton" id="204">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31107]</label>
+                        <selected>Skin.HasSetting(use_animations_wall)</selected>
+                        <onclick>Skin.ToggleSetting(use_animations_wall)</onclick>
+                    </control>
+                    <control type="radiobutton" id="205">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31105]</label>
+                        <selected>Skin.HasSetting(darken_watched)</selected>
+                        <onclick>Skin.ToggleSetting(darken_watched)</onclick>
+                    </control>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Control.HasFocus(102) | Control.HasFocus(300)</visible>
+                <control type="panel" id="300">
+                    <top>0</top>
+                    <left>0</left>
+                    <width>1280</width>
+                    <height>600</height>
+                    <onleft>102</onleft>
+                    <onright>102</onright>
+                    <itemlayout width="320" height="300">
+                        <control type="image">
+                            <width>300</width>
+                            <aspectratio>stretch</aspectratio>
+                            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                            <bordertexture colordiffuse="border" border="1">colors/white.png</bordertexture>
+                            <bordersize>1</bordersize>
+                        </control>
+                        <control type="image">
+                            <top>30</top>
+                            <left>70</left>
+                            <width>160</width>
+                            <height>160</height>
+                            <aspectratio>keep</aspectratio>
+                            <texture colordiffuse="white">$INFO[ListItem.Icon]</texture>
+                        </control>
+                        <control type="label">
+                            <top>210</top>
+                            <right>20</right>
+                            <align>center</align>
+                            <font>regular30</font>
+                            <wrapmultiline>true</wrapmultiline>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="320" height="300">
+                        <control type="image">
+                            <width>300</width>
+                            <aspectratio>stretch</aspectratio>
+                            <texture colordiffuse="activedialog">colors/white.png</texture>
+                            <bordertexture colordiffuse="active" border="1">colors/white.png</bordertexture>
+                            <bordersize>1</bordersize>
+                        </control>
+                        <control type="image">
+                            <top>30</top>
+                            <left>70</left>
+                            <width>160</width>
+                            <height>160</height>
+                            <aspectratio>keep</aspectratio>
+                            <texture colordiffuse="white">$INFO[ListItem.Icon]</texture>
+                        </control>
+                        <control type="label">
+                            <top>210</top>
+                            <right>20</right>
+                            <align>center</align>
+                            <font>regular30</font>
+                            <wrapmultiline>true</wrapmultiline>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </focusedlayout>
+                    <content>
+                        <item>
+                            <label>$LOCALIZE[31099]</label>
+                            <onclick>RunScript(script.unfussy.helper,action=configure_menu)</onclick>
+                            <icon>icons/logo.png</icon>
+                        </item>
+                        <item>
+                            <label>$LOCALIZE[31100]</label>
+                            <onclick>RunScript(script.unfussy.helper,action=configure_widgets)</onclick>
+                            <icon>icons/settings/widget.png</icon>
+                        </item>
+                    </content>
+                </control>
+            </control>
+            <control type="group">
+                <visible>Control.HasFocus(103) | ControlGroup(400).HasFocus</visible>
+                <control type="grouplist" id="400">
+                    <onleft>103</onleft>
+                    <onright>103</onright>
+                    <control type="radiobutton" id="401">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31097]</label>
+                        <selected>Skin.HasSetting(use_channelgroups)</selected>
+                        <onclick>Skin.ToggleSetting(use_channelgroups)</onclick>
+                    </control>
+                    <control type="radiobutton" id="402">
+                        <visible>Skin.HasSetting(use_channelgroups)</visible>
+                        <include content="button_settings">
+                            <param name="textoffsetx">70</param>
+                        </include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31103]</label>
+                        <selected>Skin.HasSetting(hide_all_channels)</selected>
+                        <onclick>Skin.ToggleSetting(hide_all_channels)</onclick>
+                    </control>
+                    <control type="radiobutton" id="403">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31109]</label>
+                        <selected>Skin.HasSetting(use_broadcast_list)</selected>
+                        <onclick>Skin.ToggleSetting(use_broadcast_list)</onclick>
+                    </control>
+                    <control type="radiobutton" id="404">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31095]</label>
+                        <selected>Skin.HasSetting(tvguide_show_detail)</selected>
+                        <onclick>Skin.ToggleSetting(tvguide_show_detail)</onclick>
+                    </control>
+                    <control type="radiobutton" id="405">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31102]</label>
+                        <selected>Skin.HasSetting(hide_channelnumbers)</selected>
+                        <onclick>Skin.ToggleSetting(hide_channelnumbers)</onclick>
+                    </control>
+                    <control type="radiobutton" id="406">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31096]</label>
+                        <selected>Skin.HasSetting(start_live_tv)</selected>
+                        <onclick>Skin.ToggleSetting(start_live_tv)</onclick>
+                    </control>
                 </control>
             </control>
         </control>

@@ -416,11 +416,11 @@ msgid "Home"
 msgstr ""
 
 msgctxt "#31099"
-msgid "Configure Home Menu"
+msgid "Configure\nMenu"
 msgstr ""
 
 msgctxt "#31100"
-msgid "Configure Home Widgets"
+msgid "Configure\nWidgets"
 msgstr ""
 
 msgctxt "#31101"
@@ -459,3 +459,18 @@ msgctxt "#31109"
 msgid "Use alternative Channel List with broadcasts per channel"
 msgstr ""
 
+msgctxt "#31110"
+msgid "Configure Unfussy"
+msgstr ""
+
+msgctxt "#31111"
+msgid "Common Settings"
+msgstr ""
+
+msgctxt "#31112"
+msgid "Customize Home Menu"
+msgstr ""
+
+msgctxt "#31113"
+msgid "Live TV Settings"
+msgstr ""

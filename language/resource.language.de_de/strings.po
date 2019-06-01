@@ -416,12 +416,12 @@ msgid "Home"
 msgstr "Home"
 
 msgctxt "#31099"
-msgid "Configure Home Menu"
-msgstr "Home Menü konfigurieren"
+msgid "Configure\nMenu"
+msgstr "Menü\nkonfigurieren"
 
 msgctxt "#31100"
-msgid "Configure Home Widgets"
-msgstr "Home Widgets konfigurieren"
+msgid "Configure\nWidgets"
+msgstr "Widgets\nkonfigurieren"
 
 msgctxt "#31101"
 msgid "Use animations in fanart views"
@@ -459,3 +459,18 @@ msgctxt "#31109"
 msgid "Use alternative Channel List with broadcasts per channel"
 msgstr "Alternative Kanalliste mit Sendungen pro Kanal benutzen"
 
+msgctxt "#31110"
+msgid "Configure Unfussy"
+msgstr "Unfussy konfigurieren"
+
+msgctxt "#31111"
+msgid "Common Settings"
+msgstr "Allgemeine Einstellungen"
+
+msgctxt "#31112"
+msgid "Customize Home Menu"
+msgstr "Home Menü anpassen"
+
+msgctxt "#31113"
+msgid "Live TV Settings"
+msgstr "Live TV Einstellungen"

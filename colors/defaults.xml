@@ -10,6 +10,7 @@
     <color name="darkenposters">CC111111</color>
     <color name="active">FF00AC00</color>
     <color name="activedialog">FF077807</color>
+    <color name="activedialogdark">FF035003</color>
     <color name="activetransparent">3300AC00</color>
     <color name="border">FF505050</color>
     <color name="borderdark">FF353535</color>
