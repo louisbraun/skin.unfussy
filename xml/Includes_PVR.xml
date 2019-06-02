@@ -260,32 +260,18 @@
                 </control>
                 <include>media_icons</include>
             </control>
-            <control type="group">
+            <!-- Event Icon -->
+            <control type="image">
                 <visible>!String.IsEmpty(Pvr.EpgEventIcon)</visible>
                 <visible>String.IsEmpty(PVR.ChannelNumberInput)</visible>
                 <bottom>220</bottom>
-                <width>320</width>
-                <height>480</height>
-                <control type="image">
-                    <aspectratio>stretch</aspectratio>
-                    <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
-                </control>
-                <!-- EPG Icon -->
-                <control type="image">
-                    <top>10</top>
-                    <left>10</left>
-                    <width>300</width>
-                    <height>450</height>
-                    <aspectratio>keep</aspectratio>
-                    <texture>$INFO[Pvr.EpgEventIcon]</texture>
-                </control>
-                <!-- Border -->
-                <control type="image">
-                    <left>320</left>
-                    <width>1</width>
-                    <aspectratio>scale</aspectratio>
-                    <texture colordiffuse="border">colors/white.png</texture>
-                </control> 
+                <left>0</left>
+                <width>450</width>
+                <height>450</height>
+                <aspectratio align="left" aligny="bottom">keep</aspectratio>
+                <texture border="5">$INFO[Pvr.EpgEventIcon]</texture>
+                <bordertexture colordiffuse="backgroundtransparent" border="5">colors/white.png</bordertexture>
+                <bordersize>5</bordersize>
             </control>
         </control>
     </include>
@@ -970,6 +956,14 @@
                 <left>1080</left>
                 <width>760</width>
                 <height>880</height>
+                <control type="image">
+                    <top>420</top>
+                    <right>0</right>
+                    <width>360</width>
+                    <height>360</height>
+                    <aspectratio align="right" aligny="bottom">keep</aspectratio>
+                    <texture>$INFO[Container($PARAM[container_id]).ListItem.EPGEventIcon]</texture>
+                </control>
                 <control type="grouplist">
                     <top>10</top>
                     <right>250</right>
@@ -1170,14 +1164,6 @@
                             <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
                         </control>
                     </control>
-                </control>
-                <control type="image">
-                    <top>420</top>
-                    <right>0</right>
-                    <width>240</width>
-                    <height>360</height>
-                    <aspectratio>keep</aspectratio>
-                    <texture>$INFO[Container($PARAM[container_id]).ListItem.EPGEventIcon]</texture>
                 </control>
                 <control type="image">
                     <bottom>90</bottom>
@@ -2322,25 +2308,27 @@
         <control type="group">
             <visible>Skin.HasSetting(tvguide_show_detail)</visible>
             <top>-160</top>
-            <centerleft>50%</centerleft>
-            <width>800</width>
             <height>200</height>
             <control type="image">
+                <top>0</top>
+                <left>320</left>
+                <width>400</width>
+                <height>200</height>
+                <aspectratio align="right">keep</aspectratio>
+                <texture>$INFO[ListItem.Icon]</texture>
+                <bordertexture colordiffuse="backgroundtransparent" border="5">colors/white.png</bordertexture>
+                <bordersize>5</bordersize>
+            </control>
+            <control type="image">
+                <left>720</left>
+                <width>800</width>
                 <aspectratio>stretch</aspectratio>
                 <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
             </control>
-            <control type="image">
-                <top>5</top>
-                <left>5</left>
-                <width>127</width>
-                <height>190</height>
-                <aspectratio>keep</aspectratio>
-                <texture>$INFO[ListItem.Icon]</texture>
-            </control>
             <control type="grouplist">
                 <top>5</top>
-                <left>140</left>
-                <right>5</right>
+                <left>730</left>
+                <width>780</width>
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
                 <control type="label">
@@ -3414,23 +3402,23 @@
                     <height>30</height>
                     <label>[COLOR active][B]$LOCALIZE[345]:[/B][/COLOR] $INFO[$PARAM[source].Year]</label>
                 </control>
-                <control type="textbox">
-                    <top>10</top>
-                    <visible>!String.IsEmpty($PARAM[source].Cast)</visible>
-                    <label>[COLOR active][B]$LOCALIZE[206]:[/B][/COLOR][CR]$INFO[$PARAM[source].Cast]</label>
-                    <height>auto</height>
-                </control>
                 <control type="label">
+                    <visible>!String.IsEmpty($PARAM[source].Director)</visible>
                     <top>10</top>
                     <height>30</height>
-                    <visible>!String.IsEmpty($PARAM[source].Director)</visible>
                     <label>[COLOR active][B]$LOCALIZE[20339]:[/B][/COLOR] $INFO[$PARAM[source].Director]</label>
                 </control>
                 <control type="textbox">
-                    <top>10</top>
                     <visible>!String.IsEmpty($PARAM[source].Genre)</visible>
+                    <top>10</top>
                     <label>[COLOR active][B]$LOCALIZE[515]:[/B][/COLOR] $INFO[$PARAM[source].Genre]</label>
                     <height>auto</height>
+                </control>
+                <control type="textbox">
+                    <visible>!String.IsEmpty($PARAM[source].Cast)</visible>
+                    <top>10</top>
+                    <height>430</height>
+                    <label>[COLOR active][B]$LOCALIZE[206]:[/B][/COLOR][CR]$INFO[$PARAM[source].Cast]</label>
                 </control>
             </control>
         </definition>

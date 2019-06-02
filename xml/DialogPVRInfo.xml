@@ -158,19 +158,19 @@
                         <param name="width">15</param>
                         <param name="height">600</param>
                         <param name="controlled_id">100</param>
-                        <param name="onright_id">101</param>
-                    </include>
-                    <include content="pvr_info_detail_list">
-                        <param name="source">ListItem</param>
+                        <param name="onright_id">300001</param>
                     </include>
                     <control type="image">
                         <top>230</top>
                         <right>30</right>
-                        <width>380</width>
+                        <width>600</width>
                         <height>570</height>
-                        <aspectratio>keep</aspectratio>
+                        <aspectratio align="right" aligny="bottom">keep</aspectratio>
                         <texture>$INFO[ListItem.EPGEventIcon]</texture>
                     </control>
+                    <include content="pvr_info_detail_list">
+                        <param name="source">ListItem</param>
+                    </include>
                 </control>
             </control>
 
@@ -194,17 +194,17 @@
                         <param name="controlled_id">200</param>
                         <param name="onright_id">101</param>
                     </include>
-                    <include content="pvr_info_detail_list">
-                        <param name="source">ListItem</param>
-                    </include>
                     <control type="image">
                         <top>230</top>
                         <right>30</right>
-                        <width>380</width>
+                        <width>600</width>
                         <height>570</height>
-                        <aspectratio>keep</aspectratio>
+                        <aspectratio align="right" aligny="bottom">keep</aspectratio>
                         <texture>$INFO[ListItem.Icon]</texture>
                     </control>
+                    <include content="pvr_info_detail_list">
+                        <param name="source">ListItem</param>
+                    </include>
                 </control>
             </control>
 

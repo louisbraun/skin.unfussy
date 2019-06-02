@@ -116,15 +116,15 @@
                     <param name="onright_id">101</param>
                     <param name="ondown_id">101</param>
                 </include>
-                <include content="pvr_info_detail_list" />
                 <control type="image">
                     <top>230</top>
                     <right>30</right>
-                    <width>380</width>
+                    <width>600</width>
                     <height>570</height>
-                    <aspectratio>keep</aspectratio>
+                    <aspectratio align="right" aligny="bottom">keep</aspectratio>
                     <texture>$INFO[Pvr.EPGEventIcon]</texture>
                 </control>
+                <include content="pvr_info_detail_list" />
             </control>
             <control type="group">
                 <visible>Pvr.IsPlayingRecording + !String.IsEmpty(Player.Art(thumb))</visible>
@@ -151,9 +151,9 @@
                 <control type="image">
                     <top>230</top>
                     <right>30</right>
-                    <width>380</width>
+                    <width>600</width>
                     <height>570</height>
-                    <aspectratio>keep</aspectratio>
+                    <aspectratio align="right" aligny="bottom">keep</aspectratio>
                     <texture>$INFO[Player.Art(thumb)]</texture>
                 </control>
             </control>
