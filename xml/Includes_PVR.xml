@@ -959,7 +959,7 @@
                 <control type="image">
                     <top>420</top>
                     <right>0</right>
-                    <width>360</width>
+                    <width>480</width>
                     <height>360</height>
                     <aspectratio align="right" aligny="bottom">keep</aspectratio>
                     <texture>$INFO[Container($PARAM[container_id]).ListItem.EPGEventIcon]</texture>
@@ -1068,6 +1068,7 @@
                             <width>500</width>
                             <height>410</height>
                             <font>regular30</font>
+                            <shadowcolor>black</shadowcolor>
                             <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
                             <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
                         </control>
@@ -1076,6 +1077,7 @@
                             <top>20</top>
                             <width>500</width>
                             <height>470</height>
+                            <shadowcolor>black</shadowcolor>
                             <font>regular30</font>
                             <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
                             <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
@@ -1088,6 +1090,7 @@
                             <top>20</top>
                             <width>760</width>
                             <height>410</height>
+                            <shadowcolor>black</shadowcolor>
                             <font>regular30</font>
                             <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
                             <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
@@ -1097,6 +1100,7 @@
                             <top>20</top>
                             <width>760</width>
                             <height>470</height>
+                            <shadowcolor>black</shadowcolor>
                             <font>regular30</font>
                             <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
                             <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
@@ -1131,6 +1135,7 @@
                             <top>20</top>
                             <width>500</width>
                             <height>350</height>
+                            <shadowcolor>black</shadowcolor>
                             <font>regular30</font>
                             <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
                             <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
@@ -1139,6 +1144,7 @@
                             <visible>String.IsEmpty(Container($PARAM[container_id]).ListItem.EPGEventIcon)</visible>
                             <top>20</top>
                             <height>350</height>
+                            <shadowcolor>black</shadowcolor>
                             <font>regular30</font>
                             <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
                             <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
@@ -1151,6 +1157,7 @@
                             <top>20</top>
                             <width>500</width>
                             <height>390</height>
+                            <shadowcolor>black</shadowcolor>
                             <font>regular30</font>
                             <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
                             <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
@@ -1160,6 +1167,7 @@
                             <top>20</top>
                             <height>390</height>
                             <font>regular30</font>
+                            <shadowcolor>black</shadowcolor>
                             <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
                             <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
                         </control>

@@ -133,6 +133,7 @@
                         <param name="width">15</param>
                         <param name="height">600</param>
                         <param name="controlled_id">100</param>
+                        <param name="onleft_id">101</param>
                         <param name="onright_id">101</param>
                     </include>
                     <include content="pvr_info_detail_list">
@@ -158,7 +159,8 @@
                         <param name="width">15</param>
                         <param name="height">600</param>
                         <param name="controlled_id">100</param>
-                        <param name="onright_id">300001</param>
+                        <param name="onleft_id">101</param>
+                        <param name="onright_id">101</param>
                     </include>
                     <control type="image">
                         <top>230</top>
@@ -192,6 +194,7 @@
                         <param name="width">15</param>
                         <param name="height">600</param>
                         <param name="controlled_id">200</param>
+                        <param name="onleft_id">101</param>
                         <param name="onright_id">101</param>
                     </include>
                     <control type="image">
