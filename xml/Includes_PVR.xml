@@ -2981,7 +2981,7 @@
             <control type="group">
                 <visible>$PARAM[visible]</visible>
                 <visible>String.IsEqual(Window.Property(showdetail),true)</visible>
-                <animation effect="fade" time="200" reversible="true" condition="String.IsEqual(Window.Property(showdetail),true)">Conditional</animation>
+                <animation effect="fade" time="200" condition="String.IsEqual(Window.Property(showdetail),true)">Conditional</animation>
                 <top>200</top>
                 <left>$PARAM[left]</left>
                 <width>1000</width>
@@ -2991,67 +2991,63 @@
                     <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
                 </control>
                 <control type="grouplist">
-                    <visible>String.IsEmpty(ListItem.EPGEventIcon)</visible>
                     <top>20</top>
                     <left>30</left>
                     <right>20</right>
-                    <height>640</height>
-                    <include>pvr_osd_detail_details</include>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="label">
+                        <height>60</height>
+                        <aligny>center</aligny>
+                        <font>light50</font>
+                        <textcolor>active</textcolor>
+                        <label>$INFO[ListItem.Title]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(ListItem.EpisodeName)</visible>
+                        <top>0</top>
+                        <height>40</height>
+                        <aligny>center</aligny>
+                        <font>regular30</font>
+                        <textcolor>active</textcolor>
+                        <label>$VAR[PVRListitemEpisodeName]</label>
+                    </control>
+                    <control type="label">
+                        <top>0</top>
+                        <height>40</height>
+                        <aligny>center</aligny>
+                        <font>regular30</font>
+                        <label>$INFO[ListItem.Genre]</label>
+                    </control>
+                </control>
+                <control type="textbox">
+                    <visible>String.IsEmpty(ListItem.EPGEventIcon)</visible>
+                    <top>180</top>
+                    <left>30</left>
+                    <right>20</right>
+                    <height>500</height>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Plot]</label>
                 </control>
                 <control type="group">
                     <visible>!String.IsEmpty(ListItem.EPGEventIcon)</visible>
-                    <control type="image">
-                        <top>10</top>
-                        <right>10</right>
-                        <height>360</height>
-                        <width>240</width>
-                        <aspectratio>keep</aspectratio>
-                        <texture>$INFO[ListItem.EPGEventIcon]</texture>
-                    </control>
-                    <control type="grouplist">
-                        <top>20</top>
+                    <top>180</top>
+                    <control type="textbox">
                         <left>30</left>
-                        <right>270</right>
-                        <height>640</height>
-                        <include>pvr_osd_detail_details</include>
+                        <width>500</width>
+                        <height>500</height>
+                        <font>regular24</font>
+                        <label>$INFO[ListItem.Plot]</label>
+                    </control>
+                    <control type="image">
+                        <left>550</left>
+                        <width>440</width>
+                        <height>490</height>
+                        <aspectratio align="center" aligny="center">keep</aspectratio>
+                        <texture>$INFO[ListItem.EPGEventIcon]</texture>
                     </control>
                 </control>
             </control>
         </definition>
-    </include>
-
-    <include name="pvr_osd_detail_details">
-        <orientation>vertical</orientation>
-        <usecontrolcoords>true</usecontrolcoords>
-        <control type="textbox">
-            <height>auto</height>
-            <aligny>center</aligny>
-            <font>light50</font>
-            <textcolor>active</textcolor>
-            <label>$INFO[ListItem.Title]</label>
-        </control>
-        <control type="label">
-            <top>-10</top>
-            <visible>!String.IsEmpty(ListItem.EpisodeName)</visible>
-            <height>40</height>
-            <aligny>center</aligny>
-            <font>regular30</font>
-            <textcolor>active</textcolor>
-            <label>$VAR[PVRListitemEpisodeName]</label>
-        </control>
-        <control type="label">
-            <height>40</height>
-            <aligny>center</aligny>
-            <font>regular30</font>
-            <label>$INFO[ListItem.Genre]</label>
-        </control>
-        <control type="textbox">
-            <top>10</top>
-            <height>auto</height>
-            <visible>!String.IsEmpty(ListItem.Plot)</visible>
-            <font>regular24</font>
-            <label>$INFO[ListItem.Plot]</label>
-        </control>
     </include>
 
     <include name="pvr_osd_groups_detail">
