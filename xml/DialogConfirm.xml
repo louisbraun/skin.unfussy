@@ -53,7 +53,7 @@
                     <textcolor>white</textcolor>
                     <focusedcolor>white</focusedcolor>
                     <shadowcolor>black</shadowcolor>
-                    <texturefocus colordiffuse="activedialog">backgrounds/overlay_background.png</texturefocus>
+                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <texturenofocus colordiffuse="background">colors/white.png</texturenofocus>
                 </control>
                 <control type="button" id="10">
@@ -67,7 +67,7 @@
                     <textcolor>white</textcolor>
                     <focusedcolor>white</focusedcolor>
                     <shadowcolor>black</shadowcolor>
-                    <texturefocus colordiffuse="activedialog">backgrounds/overlay_background.png</texturefocus>
+                    <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                     <texturenofocus colordiffuse="background">colors/white.png</texturenofocus>
                 </control>
             </control>

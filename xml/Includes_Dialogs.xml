@@ -39,7 +39,7 @@
         <height>50</height>
         <textoffsetx>10</textoffsetx>
         <aligny>center</aligny>
-        <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
         <texturenofocus />
     </include>
 
@@ -77,7 +77,7 @@
                 <aligny>center</aligny>
                 <textcolor>white</textcolor>
                 <focusedcolor>white</focusedcolor>
-                <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                 <texturenofocus colordiffuse="$PARAM[background]">colors/white.png</texturenofocus>
                 <onclick>$PARAM[onclick]</onclick>
             </control>

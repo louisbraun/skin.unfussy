@@ -27,7 +27,7 @@
         <shadowcolor>black</shadowcolor>
         <font>regular24</font>
         <aligny>center</aligny>
-        <texturefocus colordiffuse="active" border="1">backgrounds/overlay_background_border.png</texturefocus>
+        <texturefocus colordiffuse="activedialog" border="1">colors/white.png</texturefocus>
         <texturenofocus colordiffuse="backgrounddark">colors/white.png</texturenofocus>
     </default>
     <default type="togglebutton">
@@ -40,13 +40,13 @@
         <font>regular24</font>
         <aligny>center</aligny>
         <pulseonselect>no</pulseonselect>
-        <texturefocus colordiffuse="active" border="1">backgrounds/overlay_background_border.png</texturefocus>
+        <texturefocus colordiffuse="activedialog" border="1">colors/white.png</texturefocus>
         <texturenofocus colordiffuse="backgrounddark">colors/white.png</texturenofocus>
     </default>
     <default type="radiobutton">
         <radiowidth>120</radiowidth>
         <radioheight>76</radioheight>
-        <texturefocus colordiffuse="active" border="1">backgrounds/overlay_background_border.png</texturefocus>
+        <texturefocus colordiffuse="activedialog" border="1">colors/white.png</texturefocus>
         <texturenofocus colordiffuse="backgrounddark">colors/white.png</texturenofocus>
         <textureradioonfocus>buttons/radio-button-on.png</textureradioonfocus>
         <textureradioonnofocus>buttons/radio-button-on.png</textureradioonnofocus>
@@ -68,7 +68,7 @@
     <default type="spincontrolex">
         <spinwidth>32</spinwidth>
         <spinheight>60</spinheight>
-        <texturefocus colordiffuse="active" border="1">backgrounds/overlay_background_border.png</texturefocus>
+        <texturefocus colordiffuse="activedialog" border="1">colors/white.png</texturefocus>
         <texturenofocus colordiffuse="backgrounddark">colors/white.png</texturenofocus>
         <textureup colordiffuse="white">buttons/spinctrl/arrow-light-up.png</textureup>
         <texturedown colordiffuse="white">buttons/spinctrl/arrow-light-down.png</texturedown>
@@ -118,7 +118,7 @@
         <textcolor>white</textcolor>
         <shadowcolor>black</shadowcolor>
         <disabledcolor>disabled</disabledcolor>
-        <texturefocus colordiffuse="active" border="1">backgrounds/overlay_background_border.png</texturefocus>
+        <texturefocus colordiffuse="activedialog" border="1">colors/white.png</texturefocus>
         <texturenofocus colordiffuse="backgrounddark">colors/white.png</texturenofocus>
     </default>
     <default type="progress">
