@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <window>
     <onload>ClearProperty(showdetail)</onload>
+    <onload>ClearProperty(noslide)</onload>
     <onload condition="Skin.HasSetting(use_channelgroups)">SetProperty(loadingchannels,true)</onload>
     <onload condition="Skin.HasSetting(use_channelgroups)">RunScript(script.unfussy.helper,action=channelguide)</onload>
     <defaultcontrol>11</defaultcontrol>
@@ -8,7 +9,12 @@
         <control type="group">
             <width>780</width>
             <visible>Skin.HasSetting(use_channelgroups)</visible>
-            <include>openclose_slight_left</include>
+            <animation type="WindowOpen">
+                <effect type="slide" start="-320" end="0" time="300" tween="cubic" easing="out" />
+            </animation>
+            <animation type="WindowClose" condition="!String.IsEqual(Window.Property(noslide),true)">
+                <effect type="slide" start="0" end="-320" time="300" tween="cubic" easing="out" />
+            </animation>
             <control type="image">
                 <aspectratio>stretch</aspectratio>
                 <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
