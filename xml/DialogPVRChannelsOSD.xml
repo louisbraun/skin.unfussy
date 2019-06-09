@@ -44,6 +44,10 @@
         </control>
         <control type="group">
             <visible>!Skin.HasSetting(use_channelgroups)</visible>
+            <include content="pvr_osd_detail" />
+        </control>
+        <control type="group">
+            <visible>!Skin.HasSetting(use_channelgroups)</visible>
             <include>openclose_slight_left</include>
             <width>680</width>
             <control type="image">
@@ -52,9 +56,9 @@
                 <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
             </control>
             <control type="fixedlist" id="11">
+                <onright>SetProperty(showdetail,true)</onright>
                 <onleft condition="!String.IsEqual(Window.Property(showdetail),true)">Close</onleft>
                 <onleft condition="String.IsEqual(Window.Property(showdetail),true)">ClearProperty(showdetail)</onleft>
-                <onright>SetProperty(showdetail,true)</onright>
                 <onup>11</onup>
                 <ondown>11</ondown>
                 <orientation>vertical</orientation>
@@ -71,8 +75,5 @@
                 </focusedlayout>
             </control>
         </control>
-        <include content="pvr_osd_detail">
-            <param name="visible">!Skin.HasSetting(use_channelgroups)</param>
-        </include>
     </controls>
 </window>

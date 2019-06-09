@@ -2975,15 +2975,15 @@
     </include>
 
     <include name="pvr_osd_detail">
-        <param name="visible">true</param>
-        <param name="left">680</param>
+        <param name="startpos">-1000</param>
+        <param name="endpos">1680</param>
         <definition>
             <control type="group">
-                <visible>$PARAM[visible]</visible>
-                <visible>String.IsEqual(Window.Property(showdetail),true)</visible>
-                <animation effect="fade" time="200" condition="String.IsEqual(Window.Property(showdetail),true)">Conditional</animation>
+                <animation effect="fade" start="0" end="100" time="200" condition="String.IsEqual(Window.Property(showdetail),true)">Conditional</animation>
+                <animation effect="slide" start="0,0" end="$PARAM[endpos],0" time="200" condition="String.IsEqual(Window.Property(showdetail),true)">Conditional</animation>
+                <animation effect="slide" start="0,0" end="$PARAM[startpos],0" time="200">WindowClose</animation>
                 <top>200</top>
-                <left>$PARAM[left]</left>
+                <left>$PARAM[startpos]</left>
                 <width>1000</width>
                 <height>680</height>
                 <control type="image">
@@ -3053,10 +3053,11 @@
     <include name="pvr_osd_groups_detail">
         <definition>
             <control type="group">
-                <visible>String.IsEqual(Window.Property(showdetail),true)</visible>
-                <animation effect="fade" time="200" condition="String.IsEqual(Window.Property(showdetail),true)">Conditional</animation>
+                <animation effect="fade" start="0" end="100" time="100" condition="String.IsEqual(Window.Property(showdetail),true)">Conditional</animation>
+                <animation effect="slide" start="0,0" end="1780,0" time="200" condition="String.IsEqual(Window.Property(showdetail),true)">Conditional</animation>
+                <animation effect="slide" start="0,0" end="-1000,0" time="200">WindowClose</animation>
                 <top>100</top>
-                <left>780</left>
+                <left>-1000</left>
                 <width>700</width>
                 <height>880</height>
                 <control type="image">

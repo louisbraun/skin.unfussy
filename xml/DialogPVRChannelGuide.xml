@@ -3,6 +3,10 @@
     <onload>ClearProperty(showdetail)</onload>
     <defaultcontrol>11</defaultcontrol>
     <controls>
+        <include content="pvr_osd_detail">
+            <param name="startpos">1920</param>
+            <param name="endpos">-1680</param>
+        </include>
         <control type="group">
             <include>openclose_slight_right</include>
             <left>1240</left>
@@ -28,9 +32,9 @@
             </control>
             <control type="fixedlist" id="11">
                 <top>100</top>
+                <onleft>SetProperty(showdetail,true)</onleft>
                 <onright condition="!String.IsEqual(Window.Property(showdetail),true)">Close</onright>
                 <onright condition="String.IsEqual(Window.Property(showdetail),true)">ClearProperty(showdetail)</onright>
-                <onleft>SetProperty(showdetail,true)</onleft>
                 <onup>11</onup>
                 <ondown>11</ondown>
                 <orientation>vertical</orientation>
@@ -53,8 +57,5 @@
                 <texture colordiffuse="border">colors/white.png</texture>
             </control>
         </control>
-        <include content="pvr_osd_detail">
-            <param name="left">240</param>
-        </include>
     </controls>
 </window>
