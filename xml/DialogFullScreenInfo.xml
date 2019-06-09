@@ -28,8 +28,8 @@
             <visible>VideoPlayer.Content(livetv)</visible>
             <visible>!String.IsEmpty(Pvr.EPGEventIcon)</visible>
             <top>660</top>
-            <left>300</left>
-            <width>1620</width>
+            <left>450</left>
+            <width>1470</width>
             <height>200</height>
             <control type="image">
                 <aspectratio>stretch</aspectratio>
