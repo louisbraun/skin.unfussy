@@ -20,7 +20,7 @@ msgid "Sorted by"
 msgstr ""
 
 msgctxt "#31001"
-msgid "items"
+msgid "page"
 msgstr ""
 
 msgctxt "#31002"

@@ -30,8 +30,8 @@
         <height>80</height>
         <align>center</align>
         <aligny>center</aligny>
-        <font>light36</font>
-        <textcolor>active</textcolor>
+        <font>regular36</font>
+        <textcolor>white</textcolor>
         <shadowcolor>black</shadowcolor>
     </include>
 
@@ -87,15 +87,9 @@
     <include name="dialogselect_menuitem">
         <param name="active">false</param>
         <definition>
-            <control type="image">
-                <visible>Control.HasFocus(3) + $PARAM[active]</visible>
-                <left>0</left>
-                <top>0</top>
-                <right>0</right>
-                <bottom>0</bottom>
-                <aspectratio>stretch</aspectratio>
-                <texture colordiffuse="activedialog">colors/white.png</texture>
-            </control>
+            <include content="dialogselect_menuitem_background">
+                <param name="active">$PARAM[active]</param>
+            </include>
             <control type="label">
                 <left>20</left>
                 <top>0</top>
@@ -113,15 +107,10 @@
     <include name="dialogselect_menuitem_details">
         <param name="active">false</param>
         <definition>
-            <control type="image">
-                <left>0</left>
-                <top>0</top>
-                <right>0</right>
-                <bottom>0</bottom>
-                <aspectratio>stretch</aspectratio>
-                <texture colordiffuse="activedialog">colors/white.png</texture>
-                <visible>Control.HasFocus(6) + $PARAM[active]</visible>
-            </control>
+            <include content="dialogselect_menuitem_background">
+                <param name="active">$PARAM[active]</param>
+                <param name="container">6</param>
+            </include>
             <control type="group">
                 <visible>!String.IsEmpty(ListItem.Art(thumb))</visible>
                 <control type="image">
@@ -184,6 +173,57 @@
                     <selectedcolor>selected</selectedcolor>
                     <label>$INFO[ListItem.Label2]</label>
                 </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="dialogselect_menuitem_background">
+        <param name="active">false</param>
+        <param name="container">3</param>
+        <definition>
+            <control type="group">
+                <visible>$PARAM[active]</visible>
+                <control type="image">
+                    <visible>Control.HasFocus($PARAM[container])</visible>
+                    <left>10</left>
+                    <top>2</top>
+                    <right>0</right>
+                    <bottom>2</bottom>
+                    <aspectratio>stretch</aspectratio>
+                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                    <texture colordiffuse="activedialog">colors/white.png</texture>
+                    <animation type="Focus" condition="Container($PARAM[container]).OnNext" reversible="false">
+                        <effect type="Fade" start="40" end="100" time="500" tween="back" easing="in"/>
+                        <effect type="slide" start="0,-35" time="200" tween="sine" easing="out"/>
+                    </animation>
+                    <animation type="Focus" condition="Container($PARAM[container]).OnPrevious" reversible="false">
+                        <effect type="Fade" start="40" end="100" time="500" tween="back" easing="in"/>
+                        <effect type="slide" start="0,35" time="200" tween="sine" easing="out"/>
+                    </animation>
+                </control>
+                <control type="image">
+                    <visible>!Control.HasFocus($PARAM[container])</visible>
+                    <left>10</left>
+                    <top>2</top>
+                    <right>0</right>
+                    <bottom>2</bottom>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="activedialogdark">colors/white.png</texture>
+                    <bordertexture colordiffuse="activedialog">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+            </control>
+            <control type="image">
+                <visible>!$PARAM[active]</visible>
+                <left>10</left>
+                <top>2</top>
+                <right>0</right>
+                <bottom>2</bottom>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="background">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
             </control>
         </definition>
     </include>
@@ -411,14 +451,14 @@
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="background">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <control type="image">
             <height>80</height>
             <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <control type="image">
             <visible>!Control.HasFocus(20) + !Control.HasFocus(20001)</visible>
@@ -592,14 +632,14 @@
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="background">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <control type="image">
             <height>80</height>
             <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- border buttons left -->
         <control type="image">
@@ -821,14 +861,14 @@
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="background">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <control type="image">
             <height>80</height>
             <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- bordersearch box -->
         <control type="image">
@@ -922,23 +962,23 @@
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="background">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- header -->
         <control type="image">
             <width>800</width>
             <height>80</height>
             <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- button background -->
         <control type="image">
-            <left>2</left>
-            <top>330</top>
-            <width>796</width>
-            <height>98</height>
+            <left>3</left>
+            <top>331</top>
+            <width>794</width>
+            <height>96</height>
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="backgrounddark">colors/white.png</texture>
         </control>
@@ -947,7 +987,7 @@
             <left>1</left>
             <top>330</top>
             <width>798</width>
-            <height>2</height>
+            <height>3</height>
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="border">colors/white.png</texture>
         </control>
@@ -1007,15 +1047,15 @@
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="background">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- header -->
         <control type="image">
             <height>80</height>
             <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- sources box -->
         <control type="image">
@@ -1180,15 +1220,15 @@
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="background">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- header  -->
         <control type="image">
             <height>80</height>
             <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- border buttons right  -->
         <control type="image">
@@ -1307,7 +1347,6 @@
         <param name="active">false</param>
         <definition>
             <control type="image">
-                <visible>Control.HasFocus($PARAM[list_id])</visible>
                 <visible>$PARAM[active]</visible>
                 <texture colordiffuse="activedialog">colors/white.png</texture>
             </control>
@@ -1380,7 +1419,7 @@
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="background">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- header  -->
         <control type="image">
@@ -1389,16 +1428,16 @@
             <width>1220</width>
             <height>80</height>
             <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- background right  -->
         <control type="image">
             <top>80</top>
-            <left>930</left>
-            <width>288</width>
-            <height>668</height>
+            <left>931</left>
+            <width>286</width>
+            <height>667</height>
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="backgrounddark">colors/white.png</texture>
         </control>
@@ -1406,7 +1445,7 @@
         <control type="image">
             <top>80</top>
             <left>930</left>
-            <width>2</width>
+            <width>3</width>
             <height>668</height>
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="border">colors/white.png</texture>
@@ -1457,15 +1496,15 @@
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="background">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- header  -->
         <control type="image">
             <height>80</height>
             <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- background left  -->
         <control type="image">
@@ -1628,15 +1667,15 @@
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="backgrounddark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- header  -->
         <control type="image">
             <height>80</height>
             <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- left -->
         <control type="image">
@@ -1778,15 +1817,15 @@
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="background">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- header  -->
         <control type="image">
             <height>80</height>
             <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- left -->
         <control type="image">
@@ -1852,15 +1891,15 @@
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="background">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- header  -->
         <control type="image">
             <height>80</height>
             <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- content -->
         <control type="image">
@@ -2064,7 +2103,7 @@
             <top>0</top>
             <width>510</width>
             <height>80</height>
-            <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
             <bordersize>2</bordersize>
         </control>        
@@ -2075,15 +2114,15 @@
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="background">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
         <!-- header  -->
         <control type="image">
             <height>80</height>
             <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="background">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
-            <bordersize>2</bordersize>
+            <bordersize>3</bordersize>
         </control>
     </include>
 

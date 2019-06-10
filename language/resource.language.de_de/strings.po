@@ -20,8 +20,8 @@ msgid "Sorted by"
 msgstr "Sortierung"
 
 msgctxt "#31001"
-msgid "items"
-msgstr "Einträge"
+msgid "page"
+msgstr "Seite"
 
 msgctxt "#31002"
 msgid "Event log"

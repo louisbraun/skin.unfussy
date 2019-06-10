@@ -97,6 +97,15 @@
                     <param name="background">background</param>
                 </include>
             </control>
+            <control type="image">
+                <visible>Control.IsVisible(6)</visible>
+                <left>940</left>
+                <top>350</top>
+                <width>270</width>
+                <height>270</height>
+                <aspectratio>keep</aspectratio>
+                <texture>$INFO[Container(6).ListItem.Art(thumb)]</texture>
+            </control>
             <control type="label">
                 <left>930</left>
                 <bottom>0</bottom>
@@ -105,8 +114,7 @@
                 <font>regular20</font>
                 <align>right</align>
                 <textcolor>white</textcolor>
-                <visible>Control.IsVisible(3)</visible>
-                <label>$INFO[Container(3).NumItems] $LOCALIZE[31001] - $INFO[Container(3).CurrentPage]/$INFO[Container(3).NumPages]</label>
+                <label>$VAR[DialogSelectInfoLine]</label>
             </control>
         </control>        
     </controls>
