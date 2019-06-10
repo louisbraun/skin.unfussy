@@ -2,7 +2,7 @@
 <includes>
     <include name="view_50_list">
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <visible>Control.IsVisible(50)</visible>
             <control type="image">
                 <top>70</top>
@@ -41,6 +41,9 @@
                 <param name="onright_id" value="50" />
                 <param name="left" value="1297" />
             </include>
+        </control>
+        <control type="group">
+            <visible>Control.IsVisible(50)</visible>
             <include content="view_50_contentpanel" />
         </control>
     </include>
@@ -90,6 +93,7 @@
     <include name="view_50_contentpanel">
         <!-- left panel -->
         <control type="group">
+            <include>openclose_fade_slight_left</include>
             <top>70</top>
             <left>10</left>
             <width>590</width>
@@ -116,6 +120,7 @@
         </control>
         <!-- right panel -->
         <control type="group">
+            <include>openclose_fade_slight_right</include>
             <top>70</top>
             <right>10</right>
             <width>590</width>

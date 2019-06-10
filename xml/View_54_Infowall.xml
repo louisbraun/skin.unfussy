@@ -2,7 +2,7 @@
 <includes>
     <include name="view_54_infowall">
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <visible>Control.IsVisible(54)</visible>
             <include content="scrollbar">
                 <param name="controlled_id" value="54" />
@@ -29,6 +29,10 @@
                 <include content="view_54_itemlayout" />
                 <include content="view_54_focusedlayout" />
             </control>
+        </control>
+        <control type="group">
+            <include>openclose_fade_slight_right</include>
+            <visible>Control.IsVisible(54)</visible>
             <include content="view_54_contentpanel" />
         </control>
     </include>

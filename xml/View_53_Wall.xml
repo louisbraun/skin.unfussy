@@ -2,7 +2,7 @@
 <includes>
     <include name="view_53_wall">
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <visible>Control.IsVisible(53)</visible>
             <include content="scrollbar">
                 <param name="controlled_id" value="53" />

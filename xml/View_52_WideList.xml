@@ -2,7 +2,7 @@
 <includes>
     <include name="view_52_widelist">
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_right</include>
             <visible>Control.IsVisible(52)</visible>
             <control type="image">
                 <top>70</top>
@@ -14,43 +14,45 @@
                 <bordertexture colordiffuse="border">colors/white.png</bordertexture>
                 <bordersize>1</bordersize>
             </control>
-            <control type="group">
-                <control type="list" id="52">
-                    <top>71</top>
-                    <right>41</right>
-                    <width>1198</width>
-                    <height>998</height>
-                    <viewtype label="WideList">list</viewtype>
-                    <orientation>vertical</orientation>
-                    <scrolltime tween="sine" easing="out">200</scrolltime>
-                    <pagecontrol>52001</pagecontrol>
-                    <onleft>9000</onleft>
-                    <onright>52001</onright>
-                    <itemlayout condition="!Container.Content(songs)" width="1198" height="80">
-                        <include content="view_52_listitem" />
-                    </itemlayout>
-                    <itemlayout condition="Container.Content(songs)" width="1198" height="80">
-                        <include content="view_52_listitem_songs" />
-                    </itemlayout>
-                    <focusedlayout condition="!Container.Content(songs)" width="1198" height="80">
-                        <include content="view_52_listitem">
-                            <param name="active" value="true" />
-                        </include>
-                    </focusedlayout>
-                    <focusedlayout condition="Container.Content(songs)" width="1198" height="80">
-                        <include content="view_52_listitem_songs">
-                            <param name="active" value="true" />
-                        </include>
-                    </focusedlayout>
-                </control>
-                <include content="scrollbar">
-                    <param name="controlled_id" value="52" />
-                    <param name="onleft_id" value="52" />
-                    <param name="onright_id" value="52" />
-                    <param name="left" value="1895" />
-                </include>
-                <include content="view_52_contentpanel" />
+            <control type="list" id="52">
+                <top>71</top>
+                <right>41</right>
+                <width>1198</width>
+                <height>998</height>
+                <viewtype label="WideList">list</viewtype>
+                <orientation>vertical</orientation>
+                <scrolltime tween="sine" easing="out">200</scrolltime>
+                <pagecontrol>52001</pagecontrol>
+                <onleft>9000</onleft>
+                <onright>52001</onright>
+                <itemlayout condition="!Container.Content(songs)" width="1198" height="80">
+                    <include content="view_52_listitem" />
+                </itemlayout>
+                <itemlayout condition="Container.Content(songs)" width="1198" height="80">
+                    <include content="view_52_listitem_songs" />
+                </itemlayout>
+                <focusedlayout condition="!Container.Content(songs)" width="1198" height="80">
+                    <include content="view_52_listitem">
+                        <param name="active" value="true" />
+                    </include>
+                </focusedlayout>
+                <focusedlayout condition="Container.Content(songs)" width="1198" height="80">
+                    <include content="view_52_listitem_songs">
+                        <param name="active" value="true" />
+                    </include>
+                </focusedlayout>
             </control>
+            <include content="scrollbar">
+                <param name="controlled_id" value="52" />
+                <param name="onleft_id" value="52" />
+                <param name="onright_id" value="52" />
+                <param name="left" value="1895" />
+            </include>
+        </control>
+        <control type="group">
+            <include>openclose_fade_slight_left</include>
+            <visible>Control.IsVisible(52)</visible>
+            <include content="view_52_contentpanel" />
         </control>
     </include>
 

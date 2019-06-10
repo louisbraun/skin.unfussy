@@ -2,7 +2,7 @@
 <includes>
     <include name="view_51_fanart">
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <visible>Control.IsVisible(51)</visible>
             <control type="fixedlist" id="51">
                 <visible>$EXP[ContentTypesView51_Fanart]</visible>
@@ -156,7 +156,7 @@
     <include name="view_51_contentpanel">
         <control type="group">
             <visible>Control.IsVisible(51)</visible>
-            <include>openclose_slight_right</include>
+            <include>openclose_fade_slight_right</include>
             <control type="group">
                 <visible>!String.IsEmpty(Container(51).ListItem.DBTYPE)</visible>                
                 <control type="image">

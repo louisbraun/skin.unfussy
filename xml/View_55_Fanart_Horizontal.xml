@@ -160,7 +160,7 @@
        <control type="group">
             <visible>Control.IsVisible(55)</visible>                
             <visible>!String.IsEmpty(Container(55).ListItem.DBTYPE)</visible>                
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <control type="image">
                 <left>20</left>
                 <top>70</top>
@@ -260,7 +260,7 @@
         <control type="group">
             <visible>Control.IsVisible(55)</visible>                
             <visible>String.IsEmpty(Container(55).ListItem.DBTYPE)</visible>                
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <control type="group">
                 <left>20</left>
                 <top>70</top>
