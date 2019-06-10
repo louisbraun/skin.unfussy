@@ -12,11 +12,14 @@
 	<controls>
 		<include>background</include>
 		<include content="widgets_mainmenu" />
+		<include content="info_header" />
 		<control type="group">
-			<include condition="Player.HasVideo">openclose_slight_top</include>
-			<include content="info_header" />
+			<include>openclose_slight_top</include>
 			<include content="home_buttons" />
-			<include content="home_mainmenu" />
+		</control>
+		<include content="home_mainmenu" />
+		<control type="group">
+			<include>openclose_slight_top</include>
 			<include content="home_homebutton" />
 		</control>
 	</controls>

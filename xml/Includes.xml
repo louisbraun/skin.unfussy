@@ -258,24 +258,27 @@
                 <texture colordiffuse="border">colors/white.png</texture>
                 <visible>!Player.HasVideo</visible>
             </control>
-            <control type="image">
-                <visible>$PARAM[showicon]</visible>
-                <top>0</top>
-                <left>0</left>
-                <width>60</width>
-                <height>60</height>
-                <aspectratio aligny="center" align="left">keep</aspectratio>
-                <texture>$PARAM[icon]</texture>
+            <control type="group">
+                <include>openclose_slight_top</include>
+                <control type="image">
+                    <visible>$PARAM[showicon]</visible>
+                    <top>0</top>
+                    <left>0</left>
+                    <width>60</width>
+                    <height>60</height>
+                    <aspectratio aligny="center" align="left">keep</aspectratio>
+                    <texture>$PARAM[icon]</texture>
+                </control>
+                <include condition="$PARAM[showicon]" content="info_header_label">
+                    <param name="title" value="$PARAM[title]" />
+                    <param name="left" value="70" />
+                </include>
+                <include condition="!$PARAM[showicon]" content="info_header_label">
+                    <param name="title" value="$PARAM[title]" />
+                </include>
+                <include>info_header_sortletter</include>
+                <include>info_header_listinfo</include>
             </control>
-            <include condition="$PARAM[showicon]" content="info_header_label">
-                <param name="title" value="$PARAM[title]" />
-                <param name="left" value="70" />
-            </include>
-            <include condition="!$PARAM[showicon]" content="info_header_label">
-                <param name="title" value="$PARAM[title]" />
-            </include>
-            <include>info_header_sortletter</include>
-            <include>info_header_listinfo</include>
             <include>info_header_weather</include>
             <include>info_header_time</include>
         </definition>

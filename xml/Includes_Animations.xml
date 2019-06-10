@@ -13,9 +13,20 @@
     </include>
 
     <include name="openclose_homemenu">
+        <animation condition="String.IsEqual(Window.Property(menu_active),true)" type="Conditional">
+            <effect type="slide" start="0,-200" end="400,0" time="200" />
+            <effect type="fade" start="40" end="100" time="200" />
+        </animation>
+        <animation type="WindowClose">
+            <effect type="slide" start="0,0" end="-400,-200" time="200" />
+            <effect type="fade" start="100" end="40" time="200" />
+        </animation>
+    </include>
+
+    <include name="openclose_homesubmenu">
         <animation type="VisibleChange">
             <effect type="fade" start="0" end="100" time="200" tween="sine" easing="out" />
-            <effect type="zoom" start="50,50" end="100,100" time="200" tween="sine" easing="out" />
+            <effect type="zoom" start="100,0" end="100,100" time="200" tween="sine" easing="out" />
         </animation>
     </include>
 
@@ -78,11 +89,11 @@
 
     <include name="dialogpopup_openclose">
         <animation type="WindowOpen" reversible="false">
-            <effect type="zoom" start="80" end="100" center="50%,50%" delay="160" tween="back" time="240" />
-            <effect type="fade" delay="160" end="100" time="240" />
+            <effect type="zoom" start="60" end="100" center="50%,50%" tween="back" time="240" />
+            <effect type="fade" end="100" time="240" />
         </animation>
         <animation type="WindowClose" reversible="false">
-            <effect type="zoom" start="100" end="80" center="50%,50%" easing="in" tween="back" time="240" />
+            <effect type="zoom" start="100" end="60" center="50%,50%" easing="in" tween="back" time="240" />
             <effect type="fade" start="100" end="0" time="240" />
         </animation>
     </include>

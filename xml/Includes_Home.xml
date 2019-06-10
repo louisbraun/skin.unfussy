@@ -78,9 +78,8 @@
 <!-- Main Menu -->
 	<include name="home_mainmenu">
 		<control type="group">
-			<left>0</left>
+			<left>-400</left>
 			<width>400</width>
-			<visible>String.IsEqual(Window(Home).Property(menu_active), true)</visible>
 		    <include>openclose_homemenu</include>
 		    <include>home_mainmenu_decoration</include>
 			<include>home_mainmenu_submenus</include>
@@ -88,9 +87,9 @@
 				<visible allowhiddenfocus="true">true</visible>
 				<top>80</top>
 				<height>640</height>
-				<onback>SetProperty(menu_active, false)</onback>
+				<onback>SetProperty(menu_active,false)</onback>
 				<onback>9001</onback>
-				<onleft>SetProperty(menu_active, false)</onleft>
+				<onleft>SetProperty(menu_active,false)</onleft>
 				<onleft>9001</onleft>
 				<onright condition="Integer.IsGreater(Container(9000).ListItem.Property(submenu_id),0)">SetProperty(active_submenu,$INFO[Container(9000).ListItem.Property(submenu_id)])</onright>
 				<onright condition="Integer.IsGreater(Container(9000).ListItem.Property(submenu_id),0)">SetFocus($INFO[Container(9000).ListItem.Property(submenu_id)],0)</onright>
@@ -269,7 +268,7 @@
 				<height>420</height>
 				<visible>Integer.IsEqual(Container(9000).ListItem.Property(submenu_id),$PARAM[id]) + Control.HasFocus($PARAM[id])</visible>
 				<include>position_submenu</include>
-				<include>openclose_homemenu</include>
+				<include>openclose_homesubmenu</include>
 				<control type="list" id="$PARAM[id]">
 					<left>400</left>
 					<top>0</top>
