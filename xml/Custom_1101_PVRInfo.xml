@@ -5,7 +5,7 @@
         <include>background</include>
         <include>info_header</include>
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <top>100</top>
             <bottom>100</bottom>
             <left>100</left>
@@ -239,7 +239,7 @@
             </control>
         </control>
         <control type="label">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <visible>ControlGroup(101).HasFocus(0)</visible>
             <top>1020</top>
             <left>0</left>

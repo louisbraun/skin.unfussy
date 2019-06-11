@@ -6,7 +6,7 @@
     <controls>
         <include>background</include>
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <control type="image">
                 <left>20</left>
                 <top>10</top>
@@ -17,7 +17,7 @@
             </control>
             <control type="group">
                 <visible>Container(99999).IsUpdating + !Integer.IsGreater(Container(99999).NumItems,0)</visible>
-                <include>openclose_slight_left</include>
+                <include>openclose_fade_slight_left</include>
                 <control type="group">
                     <animation effect="fade" time="320" delay="400">Visible</animation>
                     <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>

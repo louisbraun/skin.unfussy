@@ -10,7 +10,7 @@
             <param name="icon" value="icons/mainmenu/pictures.png" />
         </include>
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <top>80</top>
             <left>0</left>
             <width>1280</width>
@@ -52,7 +52,7 @@
             </control>
         </control>
         <control type="group">
-            <include>openclose_slight_right</include>
+            <include>openclose_fade_slight_right</include>
             <top>80</top>
             <left>1280</left>
             <width>620</width>

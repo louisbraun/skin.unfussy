@@ -6,7 +6,7 @@
             <top>60</top>
             <right>0</right>
             <width>800</width>
-            <include>openclose_slight_right</include>
+            <include>openclose_fade_slight_right</include>
             <visible>true</visible>
             <control type="image">
                 <left>0</left>

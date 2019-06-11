@@ -12,7 +12,7 @@
         </include>
         <control type="group">
             <!-- Main Menu (left) -->
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <left>10</left>
             <top>100</top>
             <width>500</width>
@@ -74,7 +74,7 @@
             </control>
         </control>
         <control type="group">
-            <include>openclose_slight_right</include>
+            <include>openclose_fade_slight_right</include>
             <top>100</top>
             <left>540</left>
             <width>1335</width>

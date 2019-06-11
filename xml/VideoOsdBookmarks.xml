@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-    <include>openclose_slight_left</include>
+    <include>openclose_fade_slight_left</include>
     <defaultcontrol always="true">100</defaultcontrol>
     <onunload>Control.SetFocus(200)</onunload>
     <zorder>1</zorder>

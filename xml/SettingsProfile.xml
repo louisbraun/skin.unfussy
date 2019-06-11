@@ -164,7 +164,7 @@
             </control>
         </control>
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <control type="image">
                 <visible>!ControlGroup(9100).HasFocus</visible>
                 <top>100</top>

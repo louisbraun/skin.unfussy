@@ -16,7 +16,7 @@
             <param name="icon" value="icons/mainmenu/$VAR[BreadcrumbsPVRIcon].png" />
         </include>
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <include>pvr_channellist_view50</include>
             <include condition="!Skin.HasSetting(use_broadcast_list)">pvr_channellist_view51</include>
         </control>

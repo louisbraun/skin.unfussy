@@ -8,7 +8,7 @@
             <param name="title" value="$LOCALIZE[10007]" />
         </include>
         <control type="group">
-            <include>openclose_slight_right</include>
+            <include>openclose_fade_slight_right</include>
             <control type="image">
                 <left>480</left>
                 <top>99</top>
@@ -210,7 +210,7 @@
             </control>
         </control>
         <control type="image">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <left>19</left>
             <top>99</top>
             <width>422</width>
@@ -222,7 +222,7 @@
         <control type="group">
             <left>20</left>
             <top>100</top>
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <control type="grouplist" id="9000">
                 <width>420</width>
                 <height>940</height>

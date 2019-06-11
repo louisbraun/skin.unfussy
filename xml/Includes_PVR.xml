@@ -625,7 +625,7 @@
     <include name="pvr_channellist_view50">
         <control type="group">
             <visible>Control.IsVisible(50)</visible>
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <include>pvr_window_background</include>
             <control type="list" id="50">
                 <include>pvr_window_list</include>
@@ -661,7 +661,7 @@
     <include name="pvr_channellist_view51">
         <control type="group">
             <visible>Control.IsVisible(51)</visible>
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <include>pvr_window_background</include>
             <control type="panel" id="51">
                 <top>120</top>
@@ -1373,7 +1373,7 @@
 
     <include name="pvr_recordings_view50">
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <include>pvr_window_background</include>
             <control type="list" id="50">
                 <include>pvr_window_list</include>
@@ -1591,7 +1591,7 @@
 
     <include name="pvr_timers_view50">
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <include>pvr_window_background</include>
             <control type="list" id="50">
                 <include>pvr_window_list</include>
@@ -1806,7 +1806,7 @@
 
     <include name="pvr_search_view50">
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <include>pvr_window_background</include>
             <control type="list" id="50">
                 <include>pvr_window_list</include>
@@ -2038,7 +2038,7 @@
         <definition>
             <control type="group">
                 <visible>Control.IsVisible($PARAM[view_id])</visible>
-                <include>openclose_slight_left</include>
+                <include>openclose_fade_slight_left</include>
                 <height>$PARAM[view_height]</height>
                 <bottom>0</bottom>
                 <control type="image">

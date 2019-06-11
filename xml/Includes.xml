@@ -243,12 +243,17 @@
         <param name="showicon">false</param>
         <param name="icon"></param>
         <definition>
-            <control type="image">
-                <top>0</top>
-                <left>0</left>
-                <width>1920</width>
-                <height>60</height>
-                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            <control type="group">
+                <include condition="Player.HasVideo">openclose_slight_top</include>
+                <control type="image">
+                    <top>0</top>
+                    <left>0</left>
+                    <width>1920</width>
+                    <height>60</height>
+                    <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+                </control>
+                <include>info_header_weather</include>
+                <include>info_header_time</include>
             </control>
             <control type="image">
                 <top>60</top>
@@ -279,8 +284,6 @@
                 <include>info_header_sortletter</include>
                 <include>info_header_listinfo</include>
             </control>
-            <include>info_header_weather</include>
-            <include>info_header_time</include>
         </definition>
     </include>
 

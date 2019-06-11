@@ -8,7 +8,7 @@
             <param name="endpos">-1680</param>
         </include>
         <control type="group">
-            <include>openclose_slight_right</include>
+            <include>openclose_fade_slight_right</include>
             <left>1240</left>
             <width>680</width>
             <control type="image">

@@ -19,7 +19,7 @@
         </control>
         <control type="group">
             <left>0</left>
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <include content="filemanager_panel_background">
                 <param name="left" value="20" />
             </include>
@@ -38,7 +38,7 @@
         </control>
         <control type="group">
             <right>0</right>
-            <include>openclose_slight_right</include>
+            <include>openclose_fade_slight_right</include>
             <include content="filemanager_panel_background">
                 <param name="left" value="1050" />
             </include>

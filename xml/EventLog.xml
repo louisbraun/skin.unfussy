@@ -13,7 +13,7 @@
         <control type="group">
             <control type="group">
                 <visible>Control.IsVisible(50)</visible>
-                <include>openclose_slight_right</include>
+                <include>openclose_fade_slight_right</include>
                 <top>80</top>
                 <left>520</left>
                 <width>1360</width>
@@ -124,7 +124,7 @@
                 </control>
             </control>
             <control type="group">
-                <include>openclose_slight_left</include>
+                <include>openclose_fade_slight_left</include>
                 <top>80</top>
                 <left>20</left>
                 <width>482</width>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1100" type="dialog">
-    <include>openclose_slight_left</include>
+    <include>openclose_fade_slight_left</include>
     <defaultcontrol always="true">300</defaultcontrol>
     <onunload>Control.SetFocus(200)</onunload>
     <zorder>1</zorder>

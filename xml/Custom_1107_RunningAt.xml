@@ -5,7 +5,7 @@
     <controls>
         <include>background</include>
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <control type="image">
                 <left>20</left>
                 <top>10</top>

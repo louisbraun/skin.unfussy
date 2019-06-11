@@ -12,7 +12,7 @@
             <param name="icon" value="icons/buttons/settings.png" />
         </include>
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <control type="image">
                 <visible>ControlGroup(5).HasFocus | Control.HasFocus(5001)</visible>
                 <top>100</top>
@@ -136,7 +136,7 @@
             <visible>true</visible>
         </control>
         <control type="group">
-            <include>openclose_slight_right</include>
+            <include>openclose_fade_slight_right</include>
             <control type="image">
                 <visible>!ControlGroup(5).HasFocus + !Control.HasFocus(5001)</visible>
                 <top>100</top>

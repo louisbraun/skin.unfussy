@@ -8,7 +8,7 @@
             <top>85</top>
             <right>0</right>
             <width>640</width>
-            <include>openclose_slight_right</include>
+            <include>openclose_fade_slight_right</include>
             <control type="image">
                 <left>0</left>
                 <top>0</top>

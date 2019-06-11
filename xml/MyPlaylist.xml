@@ -16,7 +16,7 @@
             <param name="icon" value="icons/mainmenu/music.png" />
         </include>
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <top>80</top>
             <left>20</left>
             <width>400</width>
@@ -148,7 +148,7 @@
             </control>
         </control>
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <top>80</top>
             <left>430</left>
             <width>800</width>
@@ -214,7 +214,7 @@
             </control>
         </control>
         <control type="group">
-            <include>openclose_slight_right</include>
+            <include>openclose_fade_slight_right</include>
             <top>80</top>
             <left>1240</left>
             <width>660</width>

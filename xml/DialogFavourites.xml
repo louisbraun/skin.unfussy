@@ -10,7 +10,7 @@
             <param name="icon" value="icons/mainmenu/favourites.png" />
         </include>
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <control type="panel" id="450">
                 <left>20</left>
                 <top>100</top>

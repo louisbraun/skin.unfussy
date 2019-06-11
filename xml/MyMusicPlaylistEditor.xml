@@ -11,7 +11,7 @@
             <param name="icon" value="icons/mainmenu/music.png" />
         </include>
         <control type="group">
-            <include>openclose_slight_left</include>
+            <include>openclose_fade_slight_left</include>
             <include>musicplaylisteditor_buttondecoration</include>
             <control type="grouplist" id="9000">
                 <left>20</left>
