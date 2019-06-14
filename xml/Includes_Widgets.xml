@@ -66,6 +66,8 @@
                 <param name="height">$PARAM[height]</param>
             </include>
             <control type="panel" id="$PARAM[id]">
+                <animation effect="Fade" start="0" end="100" time="300">WindowOpen</animation>
+                <animation effect="Fade" start="100" end="0" time="300">WindowClose</animation>
                 <visible>$PARAM[visible]</visible>
                 <visible>Container($PARAM[id]).IsUpdating | Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
                 <top>0</top>
@@ -120,6 +122,8 @@
         <param name="height">250</param>
         <definition>
             <control type="group" id="$PARAM[id]666">
+                <animation effect="Fade" start="0" end="100" time="300">WindowOpen</animation>
+                <animation effect="Fade" start="100" end="0" time="300">WindowClose</animation>
                 <visible>Container($PARAM[id]).IsUpdating | Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
                 <visible>$PARAM[visible]</visible>
                 <top>10</top>
