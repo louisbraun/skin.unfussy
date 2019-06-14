@@ -190,6 +190,14 @@
 				<texture colordiffuse="backgroundtransparent">colors/white.png</texture>
 			</control>
 			<control type="image">
+                <animation type="Focus" condition="Container(9000).OnNext" reversible="false">
+                    <effect type="slide" start="0,-35" time="200" tween="sine" easing="out"/>
+                    <effect type="Fade" start="0" end="100" time="400"/>
+                </animation>
+                <animation type="Focus" condition="Container(9000).OnPrevious" reversible="false">
+                    <effect type="slide" start="0,35" time="200" tween="sine" easing="out"/>
+                    <effect type="Fade" start="0" end="100" time="400"/>
+                </animation>
 				<visible>$PARAM[active] + Control.HasFocus(9000)</visible>
 				<texture colordiffuse="active">backgrounds/overlay_background.png</texture>
 				<bordertexture colordiffuse="active">colors/white.png</bordertexture>
@@ -238,6 +246,14 @@
 			</control>
 			<!-- submenu arrows -->
 			<control type="group">
+                <animation type="Focus" condition="Container(9000).OnNext" reversible="false">
+                    <effect type="slide" start="0,-35" time="200" tween="sine" easing="out"/>
+                    <effect type="Fade" start="0" end="100" time="400"/>
+                </animation>
+                <animation type="Focus" condition="Container(9000).OnPrevious" reversible="false">
+                    <effect type="slide" start="0,35" time="200" tween="sine" easing="out"/>
+                    <effect type="Fade" start="0" end="100" time="400"/>
+                </animation>
 				<visible>$PARAM[active]</visible>
 				<visible>Integer.IsGreater(ListItem.Property(submenu_id),0)</visible>
 				<top>20</top>
@@ -398,17 +414,7 @@
 		<param name="active">false</param>
 		<definition>
 			<control type="image">
-				<visible>$PARAM[active]</visible>
-				<left>0</left>
-				<top>0</top>
-				<height>60</height>
-				<aspectratio>scale</aspectratio>
-				<texture colordiffuse="active">backgrounds/overlay_background.png</texture>
-				<bordertexture colordiffuse="active">colors/white.png</bordertexture>
-				<bordersize>1</bordersize>
-			</control>
-			<control type="image">
-				<visible>!$PARAM[active] + !Player.HasVideo</visible>
+				<visible>!Player.HasVideo</visible>
 				<left>0</left>
 				<top>0</top>
 				<height>60</height>
@@ -418,12 +424,30 @@
 				<bordersize>1</bordersize>
 			</control>
 			<control type="image">
-				<visible>!$PARAM[active] + Player.HasVideo</visible>
+				<visible>Player.HasVideo</visible>
 				<left>0</left>
 				<top>0</top>
 				<height>60</height>
 				<aspectratio>scale</aspectratio>
 				<texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+			</control>
+			<control type="image">
+                <animation type="Focus" condition="Container($PARAM[id]).OnNext" reversible="false">
+                    <effect type="slide" start="0,-35" time="200" tween="sine" easing="out"/>
+                    <effect type="Fade" start="0" end="100" time="400"/>
+                </animation>
+                <animation type="Focus" condition="Container($PARAM[id]).OnPrevious" reversible="false">
+                    <effect type="slide" start="0,35" time="200" tween="sine" easing="out"/>
+                    <effect type="Fade" start="0" end="100" time="400"/>
+                </animation>
+				<visible>$PARAM[active]</visible>
+				<left>0</left>
+				<top>0</top>
+				<height>60</height>
+				<aspectratio>scale</aspectratio>
+				<texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+				<bordertexture colordiffuse="active">colors/white.png</bordertexture>
+				<bordersize>1</bordersize>
 			</control>
 			<control type="image">
 				<left>299</left>
