@@ -424,7 +424,7 @@ msgid "Configure\nWidgets"
 msgstr ""
 
 msgctxt "#31101"
-msgid "Use animations in fanart views"
+msgid "Use animations when navigating in views"
 msgstr ""
 
 msgctxt "#31102"
@@ -445,10 +445,6 @@ msgstr ""
 
 msgctxt "#31106"
 msgid "set switch timer"
-msgstr ""
-
-msgctxt "#31107"
-msgid "Use zoom effects in wall views"
 msgstr ""
 
 msgctxt "#31108"

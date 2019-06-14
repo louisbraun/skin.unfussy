@@ -21,6 +21,7 @@
                 <height>50</height>
                 <onup>Dialog.Close(playerprocessinfo)</onup>
                 <ondown>Dialog.Close(playerprocessinfo)</ondown>
+                <onleft>Dialog.Close(playerprocessinfo)</onleft>
                 <orientation>horizontal</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
                 <defaultcontrol always="true">501</defaultcontrol>

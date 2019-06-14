@@ -97,11 +97,15 @@
     <include name="view_55_focusedlayout">
         <focusedlayout width="230" height="350">
             <control type="group">
-                <animation effect="zoom" start="90,90" end="100,100" center="0,350"   time="500" tween="sine" easing="out" condition="Container(55).OnNext">focus</animation>
-                <animation effect="zoom" start="90,90" end="100,100" center="0,350" time="500" tween="sine" easing="out" condition="Container(55).OnPrevious">focus</animation>
+                <animation type="Focus" condition="Container(55).OnNext + Skin.HasSetting(use_view_animations)" reversible="false">
+                    <effect type="Zoom" start="90,90" end="100,100" center="0,350" time="500" tween="sine" easing="out"/>
+                </animation>
+                <animation type="Focus" condition="Container(55).OnPrevious + Skin.HasSetting(use_view_animations)" reversible="false">
+                    <effect type="Zoom" start="90,90" end="100,100" center="218,350" time="500" tween="sine" easing="out"/>
+                </animation>
                 <include content="listitem_background">
+                    <param name="container_id">55</param>
                     <param name="active">true</param>
-                    <param name="top">0</param>
                     <param name="width">220</param>
                     <param name="height">350</param>
                 </include>

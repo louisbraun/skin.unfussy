@@ -159,17 +159,10 @@
                         <include>button_settings</include>
                         <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                         <label>$LOCALIZE[31101]</label>
-                        <selected>Skin.HasSetting(use_animations_fanart)</selected>
-                        <onclick>Skin.ToggleSetting(use_animations_fanart)</onclick>
+                        <selected>Skin.HasSetting(use_view_animations)</selected>
+                        <onclick>Skin.ToggleSetting(use_view_animations)</onclick>
                     </control>
                     <control type="radiobutton" id="204">
-                        <include>button_settings</include>
-                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                        <label>$LOCALIZE[31107]</label>
-                        <selected>Skin.HasSetting(use_animations_wall)</selected>
-                        <onclick>Skin.ToggleSetting(use_animations_wall)</onclick>
-                    </control>
-                    <control type="radiobutton" id="205">
                         <include>button_settings</include>
                         <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                         <label>$LOCALIZE[31105]</label>

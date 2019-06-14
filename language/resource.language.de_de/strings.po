@@ -424,8 +424,8 @@ msgid "Configure\nWidgets"
 msgstr "Widgets\nkonfigurieren"
 
 msgctxt "#31101"
-msgid "Use animations in fanart views"
-msgstr "Animationen in Fanart Views benutzen"
+msgid "Use animations when navigating in views"
+msgstr "Animationen beim Navigieren in Views benutzen"
 
 msgctxt "#31102"
 msgid "Hide channel numbers in all PVR Views"
@@ -446,10 +446,6 @@ msgstr "Poster bereits gesehener Medien abdunkeln"
 msgctxt "#31106"
 msgid "set switch timer"
 msgstr "Umschalttimer setzen"
-
-msgctxt "#31107"
-msgid "Use zoom effects in wall views"
-msgstr "Zoom Effekte in Wall Views benutzen"
 
 msgctxt "#31108"
 msgid "Same director"

@@ -79,9 +79,10 @@
         <param name="active">false</param>
         <definition>
             <control type="group">
-                <animation effect="zoom" start="100,100" end="115,115" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Focus</animation>
-                <animation effect="zoom" start="115,115" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Unfocus</animation>
+                <animation effect="zoom" start="100,100" end="115,115" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_view_animations)" reversible="false">Focus</animation>
+                <animation effect="zoom" start="115,115" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_view_animations)" reversible="false">Unfocus</animation>
                 <include content="listitem_background">
+                    <param name="container_id">54</param>
                     <param name="active">$PARAM[active]</param>
                     <param name="top">10</param>
                     <param name="width">250</param>
@@ -149,10 +150,11 @@
         <param name="active">false</param>
         <definition>
             <control type="group">
-                <animation effect="zoom" start="100,100" end="115,115" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Focus</animation>
-                <animation effect="zoom" start="115,115" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Unfocus</animation>
+                <animation effect="zoom" start="100,100" end="115,115" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_view_animations)">Focus</animation>
+                <animation effect="zoom" start="115,115" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_view_animations)">Unfocus</animation>
                 <top>10</top>
                 <include content="listitem_background">
+                    <param name="container_id">54</param>
                     <param name="active">$PARAM[active]</param>
                     <param name="width">312</param>
                 </include>
@@ -198,10 +200,11 @@
         <param name="active">false</param>
         <definition>
             <control type="group">
-                <animation effect="zoom" start="100,100" end="115,115" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Focus</animation>
-                <animation effect="zoom" start="115,115" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Unfocus</animation>
+                <animation effect="zoom" start="100,100" end="115,115" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_view_animations)">Focus</animation>
+                <animation effect="zoom" start="115,115" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_view_animations)">Unfocus</animation>
                 <top>10</top>
                 <include content="listitem_background">
+                    <param name="container_id">54</param>
                     <param name="active">$PARAM[active]</param>
                     <param name="width">312</param>
                 </include>
@@ -250,8 +253,8 @@
         <param name="active">false</param>
         <definition>
             <control type="group">
-                <animation effect="zoom" start="100,100" end="115,115" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Focus</animation>
-                <animation effect="zoom" start="115,115" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_animations_wall)">Unfocus</animation>
+                <animation effect="zoom" start="100,100" end="115,115" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_view_animations)">Focus</animation>
+                <animation effect="zoom" start="115,115" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_view_animations)">Unfocus</animation>
                 <top>10</top>
                 <control type="image">
                     <visible>!$PARAM[active]</visible>

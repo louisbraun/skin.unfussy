@@ -95,9 +95,14 @@
     <include name="view_51_focusedlayout">
         <focusedlayout width="565" height="281">
             <control type="group">
-                <animation effect="zoom" start="90,90" end="100,100" center="0,0"   time="500" tween="sine" easing="out" condition="Container(51).OnNext + Skin.HasSetting(use_animations_fanart)">focus</animation>
-                <animation effect="zoom" start="90,90" end="100,100" center="0,281" time="500" tween="sine" easing="out" condition="Container(51).OnPrevious + Skin.HasSetting(use_animations_fanart)">focus</animation>
+                <animation type="Focus" condition="Container(51).OnNext + Skin.HasSetting(use_view_animations)" reversible="false">
+                    <effect type="Zoom" start="90,90" end="100,100" center="0,0" time="500" tween="sine" easing="out"/>
+                </animation>
+                <animation type="Focus" condition="Container(51).OnPrevious + Skin.HasSetting(use_view_animations)" reversible="false">
+                    <effect type="Zoom" start="90,90" end="100,100" center="0,281" time="500" tween="sine" easing="out"/>
+                </animation>
                 <include content="listitem_background">
+                    <param name="container_id">51</param>
                     <param name="active">true</param>
                     <param name="top">5</param>
                     <param name="height">276</param>

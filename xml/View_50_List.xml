@@ -10,7 +10,7 @@
                 <width>680</width>
                 <height>1000</height>
                 <aspectratio>stretch</aspectratio>
-                <texture colordiffuse="background">colors/white.png</texture>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
                 <bordertexture colordiffuse="border">colors/white.png</bordertexture>
                 <bordersize>1</bordersize>
             </control>
@@ -51,10 +51,16 @@
     <include name="view_50_listitem">
         <param name="active">false</param>
         <definition>
+            <control type="image">
+                <bottom>0</bottom>
+                <height>1</height>
+                <texture colordiffuse="background">colors/white.png</texture>
+            </control>
             <include content="listitem_background">
+                <param name="container_id">50</param>
+                <param name="slide">true</param>
                 <param name="active">$PARAM[active]</param>
                 <param name="simple">true</param>
-                <param name="top">1</param>
             </include>
             <control type="image">
                 <top>24</top>
@@ -525,6 +531,8 @@
     </include>
 
     <include name="listitem_background">
+        <param name="container_id">0</param>
+        <param name="slide">false</param>
         <param name="active">false</param>
         <param name="simple">false</param>
         <param name="top">0</param>
@@ -553,6 +561,15 @@
             </control>
             <control type="image">
                 <visible>$PARAM[active]</visible>
+                <animation type="Focus" condition="Container($PARAM[container_id]).OnNext + $PARAM[slide] + Skin.HasSetting(use_view_animations)" reversible="false">
+                    <effect type="slide" start="0,-35" time="200" tween="sine" easing="out"/>
+                </animation>
+                <animation type="Focus" condition="Container($PARAM[container_id]).OnPrevious + $PARAM[slide] + Skin.HasSetting(use_view_animations)" reversible="false">
+                    <effect type="slide" start="0,35" time="200" tween="sine" easing="out"/>
+                </animation>
+                <animation type="Focus" condition="[Container($PARAM[container_id]).OnNext | Container($PARAM[container_id]).OnPrevious] + Skin.HasSetting(use_view_animations)" reversible="false">
+                    <effect type="Fade" start="0" end="100" time="400"/>
+                </animation>
                 <top>$PARAM[top]</top>
                 <left>$PARAM[left]</left>
                 <width>$PARAM[width]</width>

@@ -193,11 +193,11 @@
                     <bordertexture colordiffuse="active">colors/white.png</bordertexture>
                     <bordersize>1</bordersize>
                     <texture colordiffuse="activedialog">colors/white.png</texture>
-                    <animation type="Focus" condition="Container($PARAM[container]).OnNext" reversible="false">
+                    <animation type="Focus" condition="Container($PARAM[container]).OnNext + Skin.HasSetting(use_view_animations)" reversible="false">
                         <effect type="Fade" start="40" end="100" time="500" tween="back" easing="in"/>
                         <effect type="slide" start="0,-35" time="200" tween="sine" easing="out"/>
                     </animation>
-                    <animation type="Focus" condition="Container($PARAM[container]).OnPrevious" reversible="false">
+                    <animation type="Focus" condition="Container($PARAM[container]).OnPrevious + Skin.HasSetting(use_view_animations)" reversible="false">
                         <effect type="Fade" start="40" end="100" time="500" tween="back" easing="in"/>
                         <effect type="slide" start="0,35" time="200" tween="sine" easing="out"/>
                     </animation>
