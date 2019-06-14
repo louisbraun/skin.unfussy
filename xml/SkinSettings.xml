@@ -294,6 +294,13 @@
                         <selected>Skin.HasSetting(start_live_tv)</selected>
                         <onclick>Skin.ToggleSetting(start_live_tv)</onclick>
                     </control>
+                    <control type="radiobutton" id="407">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31101]</label>
+                        <selected>Skin.HasSetting(use_pvr_view_animations)</selected>
+                        <onclick>Skin.ToggleSetting(use_pvr_view_animations)</onclick>
+                    </control>
                 </control>
             </control>
         </control>

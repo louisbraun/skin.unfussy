@@ -700,27 +700,9 @@
     <include name="pvr_channellist_view50_item">
         <param name="active">false</param>
         <definition>
-            <control type="image">
-                <visible>$PARAM[active] + Control.HasFocus(50)</visible>
-                <aspectratio>stretch</aspectratio>
-                <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
-                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
-                <bordersize>1</bordersize>
-            </control>
-            <control type="image">
-                <visible>$PARAM[active] + !Control.HasFocus(50)</visible>
-                <aspectratio>stretch</aspectratio>
-                <texture colordiffuse="activedialog">backgrounds/overlay_background.png</texture>
-                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
-                <bordersize>1</bordersize>
-            </control>
-            <control type="image">
-                <visible>!$PARAM[active]</visible>
-                <bottom>0</bottom>
-                <height>1</height>
-                <aspectratio>stretch</aspectratio>
-                <texture colordiffuse="border">colors/white.png</texture>
-            </control>
+            <include content="pvr_listitem_back">
+                <param name="active" value="$PARAM[active]" />
+            </include>
             <control type="group">
                 <visible>!Skin.HasSetting(hide_channelnumbers)</visible>
                 <control type="label">
@@ -851,98 +833,104 @@
         <param name="active">false</param>
         <definition>
             <control type="group">
-                <visible>$PARAM[active]</visible>
-                <control type="image">
-                    <top>5</top>
-                    <left>5</left>
-                    <width>227</width>
-                    <height>227</height>
-                    <aspectratio>stretch</aspectratio>
-                    <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
-                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
-                    <bordersize>1</bordersize>
+                <animation effect="zoom" start="100,100" end="106,106" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_pvr_view_animations)">Focus</animation>
+                <animation effect="zoom" start="106,106" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_pvr_view_animations)">Unfocus</animation>
+                <control type="group">
+                    <visible>$PARAM[active]</visible>
+                    <animation effect="Fade" start="0" end="100" time="300" condition="$PARAM[active] + Skin.HasSetting(use_pvr_view_animations)">Focus</animation>
+                    <animation effect="Fade" start="100" end="0" time="300" condition="$PARAM[active] + Skin.HasSetting(use_pvr_view_animations)">Unfocus</animation>
+                    <control type="image">
+                        <top>5</top>
+                        <left>5</left>
+                        <width>227</width>
+                        <height>227</height>
+                        <aspectratio>stretch</aspectratio>
+                        <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                        <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                        <bordersize>1</bordersize>
+                    </control>
+                    <control type="progress">
+                        <left>20</left>
+                        <top>150</top>
+                        <width>197</width>
+                        <height>12</height>
+                        <texturebg border="3" colordiffuse="FF808080">progress/texturebg_border_white.png</texturebg>
+                        <midtexture colordiffuse="backgrounddark" border="5,3,5,3">progress/texturebg_white.png</midtexture>
+                        <visible>ListItem.HasEpg</visible>
+                        <info>ListItem.Progress</info>
+                    </control>
                 </control>
-                <control type="progress">
+                <control type="group">
+                    <visible>!$PARAM[active]</visible>
+                    <control type="image">
+                        <top>5</top>
+                        <left>5</left>
+                        <width>227</width>
+                        <height>1</height>
+                        <aspectratio>stretch</aspectratio>
+                        <texture colordiffuse="border">colors/white.png</texture>
+                    </control>
+                    <control type="image">
+                        <top>5</top>
+                        <left>5</left>
+                        <width>1</width>
+                        <height>227</height>
+                        <aspectratio>stretch</aspectratio>
+                        <texture colordiffuse="border">colors/white.png</texture>
+                    </control>
+                    <control type="image">
+                        <top>5</top>
+                        <left>232</left>
+                        <width>1</width>
+                        <height>227</height>
+                        <aspectratio>stretch</aspectratio>
+                        <texture colordiffuse="border">colors/white.png</texture>
+                    </control>
+                    <control type="image">
+                        <top>232</top>
+                        <left>5</left>
+                        <width>227</width>
+                        <height>1</height>
+                        <aspectratio>stretch</aspectratio>
+                        <texture colordiffuse="border">colors/white.png</texture>
+                    </control>
+                    <control type="progress">
+                        <left>20</left>
+                        <top>150</top>
+                        <width>197</width>
+                        <height>12</height>
+                        <texturebg border="3" colordiffuse="border">progress/texturebg_border_white.png</texturebg>
+                        <midtexture colordiffuse="active" border="5,3,5,3">progress/texturebg_white.png</midtexture>
+                        <visible>ListItem.HasEpg</visible>
+                        <info>ListItem.Progress</info>
+                    </control>
+                </control>
+                <control type="image">
+                    <top>20</top>
+                    <left>10</left>
+                    <width>217</width>
+                    <height>110</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <top>130</top>
+                    <height>20</height>
                     <left>20</left>
-                    <top>150</top>
-                    <width>197</width>
-                    <height>12</height>
-                    <texturebg border="3" colordiffuse="FF808080">progress/texturebg_border_white.png</texturebg>
-                    <midtexture colordiffuse="backgrounddark" border="5,3,5,3">progress/texturebg_white.png</midtexture>
-                    <visible>ListItem.HasEpg</visible>
-                    <info>ListItem.Progress</info>
+                    <aligny>center</aligny>
+                    <font>light18</font>
+                    <label>$INFO[ListItem.StartTime] $INFO[ListItem.EndTime,- ,]</label>
                 </control>
-            </control>
-            <control type="group">
-                <visible>!$PARAM[active]</visible>
-                <control type="image">
-                    <top>5</top>
-                    <left>5</left>
-                    <width>227</width>
-                    <height>1</height>
-                    <aspectratio>stretch</aspectratio>
-                    <texture colordiffuse="border">colors/white.png</texture>
-                </control>
-                <control type="image">
-                    <top>5</top>
-                    <left>5</left>
-                    <width>1</width>
-                    <height>227</height>
-                    <aspectratio>stretch</aspectratio>
-                    <texture colordiffuse="border">colors/white.png</texture>
-                </control>
-                <control type="image">
-                    <top>5</top>
-                    <left>232</left>
-                    <width>1</width>
-                    <height>227</height>
-                    <aspectratio>stretch</aspectratio>
-                    <texture colordiffuse="border">colors/white.png</texture>
-                </control>
-                <control type="image">
-                    <top>232</top>
-                    <left>5</left>
-                    <width>227</width>
-                    <height>1</height>
-                    <aspectratio>stretch</aspectratio>
-                    <texture colordiffuse="border">colors/white.png</texture>
-                </control>
-                <control type="progress">
+                <control type="textbox">
+                    <top>160</top>
+                    <height>72</height>
                     <left>20</left>
-                    <top>150</top>
-                    <width>197</width>
-                    <height>12</height>
-                    <texturebg border="3" colordiffuse="border">progress/texturebg_border_white.png</texturebg>
-                    <midtexture colordiffuse="active" border="5,3,5,3">progress/texturebg_white.png</midtexture>
-                    <visible>ListItem.HasEpg</visible>
-                    <info>ListItem.Progress</info>
+                    <right>20</right>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[ListItem.Title]</label>
                 </control>
-            </control>
-            <control type="image">
-                <top>20</top>
-                <left>10</left>
-                <width>217</width>
-                <height>110</height>
-                <aspectratio>keep</aspectratio>
-                <texture>$INFO[ListItem.Icon]</texture>
-            </control>
-            <control type="label">
-                <top>130</top>
-                <height>20</height>
-                <left>20</left>
-                <aligny>center</aligny>
-                <font>light18</font>
-                <label>$INFO[ListItem.StartTime] $INFO[ListItem.EndTime,- ,]</label>
-            </control>
-            <control type="textbox">
-                <top>160</top>
-                <height>72</height>
-                <left>20</left>
-                <right>20</right>
-                <align>center</align>
-                <aligny>center</aligny>
-                <font>regular24</font>
-                <label>$INFO[ListItem.Title]</label>
             </control>
         </definition>
     </include>
@@ -2013,18 +2001,32 @@
         <param name="active">false</param>
         <definition>
             <control type="image">
-                <visible>$PARAM[active]</visible>
+                <bottom>0</bottom>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active] + Control.HasFocus(50)</visible>
+                <animation type="Focus" condition="Container(50).OnNext + Skin.HasSetting(use_pvr_view_animations)" reversible="false">
+                    <effect type="slide" start="0,-35" time="200" tween="sine" easing="out"/>
+                    <effect type="Fade" start="0" end="100" time="400"/>
+                </animation>
+                <animation type="Focus" condition="Container(50).OnPrevious + Skin.HasSetting(use_pvr_view_animations)" reversible="false">
+                    <effect type="slide" start="0,35" time="200" tween="sine" easing="out"/>
+                    <effect type="Fade" start="0" end="100" time="400"/>
+                </animation>
                 <aspectratio>stretch</aspectratio>
                 <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
                 <bordertexture colordiffuse="active">colors/white.png</bordertexture>
                 <bordersize>1</bordersize>
             </control>
             <control type="image">
-                <visible>!$PARAM[active]</visible>
-                <bottom>0</bottom>
-                <height>1</height>
+                <visible>$PARAM[active] + !Control.HasFocus(50)</visible>
                 <aspectratio>stretch</aspectratio>
-                <texture colordiffuse="border">colors/white.png</texture>
+                <texture colordiffuse="activedialog">backgrounds/overlay_background.png</texture>
+                <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
             </control>
         </definition>
     </include>
