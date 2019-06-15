@@ -476,8 +476,8 @@ msgid "Live TV Settings"
 msgstr "Live TV Einstellungen"
 
 msgctxt "#31114"
-msgid "none"
-msgstr "keine"
+msgid "not selected"
+msgstr "nicht ausgewählt"
 
 msgctxt "#31115"
 msgid "music genre iconset"

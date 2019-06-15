@@ -476,7 +476,7 @@ msgid "Live TV Settings"
 msgstr ""
 
 msgctxt "#31114"
-msgid "none"
+msgid "not selected"
 msgstr ""
 
 msgctxt "#31115"

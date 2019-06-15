@@ -944,14 +944,7 @@
                 <left>1080</left>
                 <width>760</width>
                 <height>880</height>
-                <control type="image">
-                    <top>420</top>
-                    <right>0</right>
-                    <width>480</width>
-                    <height>360</height>
-                    <aspectratio align="right" aligny="bottom">keep</aspectratio>
-                    <texture>$INFO[Container($PARAM[container_id]).ListItem.EPGEventIcon]</texture>
-                </control>
+                <!-- date and duration -->
                 <control type="grouplist">
                     <top>10</top>
                     <right>250</right>
@@ -976,6 +969,7 @@
                     <aspectratio>keep</aspectratio>
                     <texture>$INFO[Container($PARAM[container_id]).ListItem.Icon]</texture>
                 </control>
+                <!-- duration bar -->
                 <control type="group">
                     <top>120</top>
                     <left>4</left>
@@ -1000,6 +994,7 @@
                         </control>
                     </control>
                 </control>
+                <!-- title dummy-->
                 <control type="textbox" id="100">
                     <visible>!String.IsEmpty(Container($PARAM[container_id]).ListItem.Title)</visible>
                     <top>-10000</top>
@@ -1008,28 +1003,29 @@
                     <font>regular50</font>
                     <label>$INFO[Container($PARAM[container_id]).ListItem.Title]</label>
                 </control>
+                <!-- title -->
                 <control type="label">
                     <visible>!Container(100).HasNext</visible>
                     <top>170</top>
                     <width>760</width>
                     <height>80</height>
+                    <aligny>center</aligny>
                     <textcolor>active</textcolor>
                     <font>regular50</font>
-                    <aligny>center</aligny>
                     <label>$INFO[Container($PARAM[container_id]).ListItem.Title]</label>
                 </control>
-                <control type="textbox">
+                <control type="label">
                     <visible>Container(100).HasNext</visible>
                     <top>170</top>
                     <width>760</width>
-                    <height>130</height>
+                    <height>80</height>
+                    <aligny>center</aligny>
                     <textcolor>active</textcolor>
-                    <font>regular50</font>
+                    <font>regular36</font>
                     <label>$INFO[Container($PARAM[container_id]).ListItem.Title]</label>
                 </control>
                 <control type="grouplist">
-                    <visible>!Container(100).HasNext</visible>
-                    <top>260</top>
+                    <top>250</top>
                     <width>760</width>
                     <height>515</height>
                     <orientation>vertical</orientation>
@@ -1052,21 +1048,19 @@
                         <visible>!String.IsEmpty(Container($PARAM[container_id]).ListItem.EPGEventIcon)</visible>
                         <control type="textbox">
                             <visible>!String.IsEmpty(Container($PARAM[container_id]).ListItem.EpisodeName)</visible>
-                            <top>20</top>
-                            <width>500</width>
-                            <height>410</height>
-                            <font>regular30</font>
+                            <top>0</top>
+                            <height>110</height>
+                            <font>regular20</font>
                             <shadowcolor>black</shadowcolor>
                             <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
                             <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
                         </control>
                         <control type="textbox">
                             <visible>String.IsEmpty(Container($PARAM[container_id]).ListItem.EpisodeName)</visible>
-                            <top>20</top>
-                            <width>500</width>
-                            <height>470</height>
+                            <top>0</top>
+                            <height>140</height>
                             <shadowcolor>black</shadowcolor>
-                            <font>regular30</font>
+                            <font>regular20</font>
                             <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
                             <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
                         </control>
@@ -1079,7 +1073,7 @@
                             <width>760</width>
                             <height>410</height>
                             <shadowcolor>black</shadowcolor>
-                            <font>regular30</font>
+                            <font>regular24</font>
                             <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
                             <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
                         </control>
@@ -1089,99 +1083,33 @@
                             <width>760</width>
                             <height>470</height>
                             <shadowcolor>black</shadowcolor>
-                            <font>regular30</font>
+                            <font>regular24</font>
                             <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
                             <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
                         </control>
                     </control>
                 </control>
-                <control type="grouplist">
-                    <visible>Container(100).HasNext</visible>
-                    <top>320</top>
-                    <width>760</width>
-                    <height>455</height>
-                    <orientation>vertical</orientation>
-                    <usecontrolcoords>true</usecontrolcoords>
-                    <control type="label">
-                        <visible>!String.IsEmpty(Container($PARAM[container_id]).ListItem.EpisodeName)</visible>
-                        <height>40</height>
-                        <aligny>center</aligny>
-                        <font>light36</font>
-                        <label>$INFO[Container($PARAM[container_id]).ListItem.EpisodeName]</label>
-                    </control>
-                    <control type="label">
-                        <visible>!String.IsEmpty(Container($PARAM[container_id]).ListItem.Genre)</visible>
-                        <height>40</height>
-                        <aligny>center</aligny>
-                        <font>light36</font>
-                        <label>$INFO[Container($PARAM[container_id]).ListItem.Genre]</label>
-                    </control>
-                    <control type="group">
-                        <visible>!String.IsEmpty(Container($PARAM[container_id]).ListItem.EpisodeName)</visible>
-                        <control type="textbox">
-                            <visible>!String.IsEmpty(Container($PARAM[container_id]).ListItem.EPGEventIcon)</visible>
-                            <top>20</top>
-                            <width>500</width>
-                            <height>350</height>
-                            <shadowcolor>black</shadowcolor>
-                            <font>regular30</font>
-                            <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
-                            <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
-                        </control>
-                        <control type="textbox">
-                            <visible>String.IsEmpty(Container($PARAM[container_id]).ListItem.EPGEventIcon)</visible>
-                            <top>20</top>
-                            <height>350</height>
-                            <shadowcolor>black</shadowcolor>
-                            <font>regular30</font>
-                            <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
-                            <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
-                        </control>
-                    </control>
-                    <control type="group">
-                        <visible>String.IsEmpty(Container($PARAM[container_id]).ListItem.EpisodeName)</visible>
-                        <control type="textbox">
-                            <visible>!String.IsEmpty(Container($PARAM[container_id]).ListItem.EPGEventIcon)</visible>
-                            <top>20</top>
-                            <width>500</width>
-                            <height>390</height>
-                            <shadowcolor>black</shadowcolor>
-                            <font>regular30</font>
-                            <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
-                            <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
-                        </control>
-                        <control type="textbox">
-                            <visible>String.IsEmpty(Container($PARAM[container_id]).ListItem.EPGEventIcon)</visible>
-                            <top>20</top>
-                            <height>390</height>
-                            <font>regular30</font>
-                            <shadowcolor>black</shadowcolor>
-                            <label>$INFO[Container($PARAM[container_id]).ListItem.Plot]</label>
-                            <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
-                        </control>
-                    </control>
-                </control>
+                <!-- Event Icon -->
                 <control type="image">
-                    <bottom>90</bottom>
+                    <top>460</top>
+                    <height>370</height>
+                    <aspectratio align="center" aligny="bottom">keep</aspectratio>
+                    <texture>$INFO[Container($PARAM[container_id]).ListItem.EPGEventIcon]</texture>
+                </control>
+                <!-- Next Schedule -->
+                <control type="image">
+                    <bottom>45</bottom>
                     <height>1</height>
                     <aspectratio>stretch</aspectratio>
                     <texture colordiffuse="border">colors/white.png</texture>
                 </control>
                 <control type="label">
-                    <bottom>25</bottom>
-                    <height>60</height>
+                    <bottom>0</bottom>
+                    <height>36</height>
                     <aligny>center</aligny>
                     <font>light36</font>
                     <textcolor>white</textcolor>
                     <label>$INFO[Container($PARAM[container_id]).ListItem.NextStartTime] $INFO[Container($PARAM[container_id]).ListItem.NextEndTime,- ,] [COLOR active]$INFO[Container($PARAM[container_id]).ListItem.NextTitle][/COLOR]</label>
-                </control>
-                <control type="label">
-                    <bottom>0</bottom>
-                    <height>40</height>
-                    <aligny>center</aligny>
-                    <font>light30</font>
-                    <textcolor>white</textcolor>
-                    <label>$INFO[Container($PARAM[container_id]).ListItem.NextGenre]</label>
                 </control>
             </control>
             <control type="group">
@@ -1357,6 +1285,7 @@
             </control>
         </definition>
     </include>
+
 <!-- PVR RECORDINGS -->
 
     <include name="pvr_recordings_view50">
@@ -1488,16 +1417,35 @@
                 <aspectratio>keep</aspectratio>
                 <texture>$INFO[Container(50).ListItem.ActualIcon]</texture>
             </control>
+            <!-- title dummy -->
+            <control type="textbox" id="100">
+                <visible>!String.IsEmpty(Container(50).ListItem.Title)</visible>
+                <top>-10000</top>
+                <width>760</width>
+                <height>80</height>
+                <font>regular50</font>
+                <label>$INFO[Container(50).ListItem.Title]</label>
+            </control>
             <control type="label">
-                <top>150</top>
+                <visible>!Container(100).HasNext</visible>
+                <top>130</top>
                 <height>60</height>
                 <aligny>center</aligny>
                 <font>regular50</font>
                 <textcolor>active</textcolor>
                 <label>$INFO[Container(50).ListItem.Title]</label>
             </control>
+            <control type="label">
+                <visible>Container(100).HasNext</visible>
+                <top>130</top>
+                <height>60</height>
+                <aligny>center</aligny>
+                <font>regular36</font>
+                <textcolor>active</textcolor>
+                <label>$INFO[Container(50).ListItem.Title]</label>
+            </control>
             <control type="grouplist">
-                <top>220</top>
+                <top>200</top>
                 <width>760</width>
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
@@ -1520,55 +1468,71 @@
                 <visible>!String.IsEqual(Container(50).ListItem.ActualIcon,Container(50).ListItem.Icon)</visible>
                 <control type="textbox">
                     <visible>String.IsEmpty(Container(50).ListItem.EpisodeName)</visible>
-                    <top>300</top>
-                    <width>500</width>
-                    <height>470</height>
-                    <font>regular30</font>
+                    <top>250</top>
+                    <height>140</height>
+                    <font>regular20</font>
                     <label>$INFO[Container(50).ListItem.Plot]</label>
                     <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
                 </control>
                 <control type="textbox">
                     <visible>!String.IsEmpty(Container(50).ListItem.EpisodeName)</visible>
-                    <top>340</top>
-                    <width>500</width>
-                    <height>428</height>
-                    <font>regular30</font>
+                    <top>290</top>
+                    <height>110</height>
+                    <font>regular20</font>
+                    <label>$INFO[Container(50).ListItem.Plot]</label>
+                    <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(Container(50).ListItem.ActualIcon,Container(50).ListItem.Icon)</visible>
+                <control type="textbox">
+                    <visible>String.IsEmpty(Container(50).ListItem.EpisodeName)</visible>
+                    <top>260</top>
+                    <height>540</height>
+                    <font>regular24</font>
+                    <label>$INFO[Container(50).ListItem.Plot]</label>
+                    <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
+                </control>
+                <control type="textbox">
+                    <visible>!String.IsEmpty(Container(50).ListItem.EpisodeName)</visible>
+                    <top>300</top>
+                    <height>500</height>
+                    <font>regular24</font>
                     <label>$INFO[Container(50).ListItem.Plot]</label>
                     <autoscroll delay="10000" time="2000" repeat="10000">true</autoscroll>
                 </control>
             </control>
             <control type="image">
                 <visible>!String.IsEqual(Container(50).ListItem.ActualIcon,Container(50).ListItem.Icon)</visible>
-                <top>420</top>
-                <right>0</right>
-                <width>240</width>
-                <height>360</height>
+                <top>410</top>
+                <height>410</height>
                 <aspectratio>keep</aspectratio>
                 <texture>$INFO[Container(50).ListItem.Icon]</texture>
             </control>
             <control type="image">
                 <aspectratio>stretch</aspectratio>
                 <height>1</height>
-                <bottom>80</bottom>
+                <bottom>50</bottom>
                 <texture colordiffuse="border">colors/white.png</texture>
             </control>
             <control type="grouplist">
                 <orientation>horizontal</orientation>
                 <align>right</align>
-                <top>800</top>
+                <top>820</top>
                 <usecontrolcoords>true</usecontrolcoords>
                 <control type="label">
-                    <height>80</height>
+                    <height>60</height>
                     <width>auto</width>
                     <label>$INFO[PVR.backenddiskspace]</label>
                     <aligny>center</aligny>
-                    <font>regular30</font>
+                    <font>regular24</font>
                     <visible>!Integer.IsGreater(PVR.backenddiskspaceprogr,100)</visible>
                 </control>
                 <control type="image">
+                    <top>5</top>
                     <aspectratio>keep</aspectratio>
-                    <width>80</width>
-                    <height>80</height>
+                    <width>55</width>
+                    <height>55</height>
                     <texture>defaultharddisk.png</texture>
                 </control>
             </control>
@@ -1658,6 +1622,15 @@
     </include>
 
     <include name="pvr_timers_view50_contentpanel">
+        <control type="image">
+            <visible>String.IsEmpty(ListItem.FileName)</visible>
+            <top>400</top>
+            <left>1080</left>
+            <width>760</width>
+            <height>200</height>
+            <aspectratio>keep</aspectratio>
+            <texture>icons/pvr/timer.png</texture>
+        </control>
         <control type="group">
             <visible>!String.IsEmpty(ListItem.FileName)</visible>
             <top>120</top>
@@ -1669,41 +1642,60 @@
                 <width>500</width>
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
-                <control type="textbox">
-                    <height>auto</height>
+                <control type="label">
+                    <height>30</height>
                     <aligny>center</aligny>
-                    <font>regular24</font>
+                    <font>regular30</font>
                     <textcolor>active</textcolor>
                     <label>$INFO[Container(50).ListItem.Date]</label>
                 </control>
                 <control type="label">
                     <height>30</height>
-                    <font>regular24</font>
+                    <font>regular30</font>
                     <label>[COLOR active]$LOCALIZE[180]:[/COLOR] $INFO[Container(50).ListItem.Duration]</label>
                 </control>
             </control>
             <control type="image">
+                <top>-20</top>
                 <right>0</right>
                 <width>240</width>
                 <height>160</height>
                 <aspectratio>keep</aspectratio>
                 <texture>$INFO[Container(50).ListItem.Icon]</texture>
             </control>
+            <!-- title dummy-->
+            <control type="textbox" id="100">
+                <visible>!String.IsEmpty(Container(50).ListItem.Title)</visible>
+                <top>-10000</top>
+                <width>760</width>
+                <height>80</height>
+                <font>regular50</font>
+                <label>$INFO[Container(50).ListItem.Title]</label>
+            </control>
             <control type="grouplist">
-                <top>150</top>
+                <top>120</top>
                 <width>760</width>
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
-                <control type="textbox">
-                    <height>auto</height>
+                <control type="label">
+                    <visible>!Container(100).HasNext</visible>
+                    <height>80</height>
                     <aligny>center</aligny>
                     <font>regular50</font>
                     <textcolor>active</textcolor>
                     <label>$INFO[Container(50).ListItem.Title]</label>
                 </control>
-                <control type="textbox">
+                <control type="label">
+                    <visible>Container(100).HasNext</visible>
+                    <height>80</height>
+                    <aligny>center</aligny>
+                    <font>regular36</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[Container(50).ListItem.Title]</label>
+                </control>
+                <control type="label">
                     <visible>!String.IsEmpty(Container(50).ListItem.EpisodeName)</visible>
-                    <height>auto</height>
+                    <height>40</height>
                     <aligny>center</aligny>
                     <font>light36</font>
                     <label>$INFO[Container(50).ListItem.EpisodeName]</label>
@@ -1718,72 +1710,74 @@
             </control>
             <control type="group">
                 <visible>!String.IsEmpty(Container(50).ListItem.EPGEventIcon)</visible>
-                <top>360</top>
-                <width>500</width>
-                <height>410</height>
                 <control type="textbox">
                     <visible>String.IsEmpty(Container(50).ListItem.EpisodeName)</visible>
-                    <font>regular30</font>
+                    <top>260</top>
+                    <height>140</height>
+                    <font>regular20</font>
                     <label>$INFO[Container(50).ListItem.Plot]</label>
                     <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
                 </control>
                 <control type="textbox">
                     <visible>!String.IsEmpty(Container(50).ListItem.EpisodeName)</visible>
-                    <font>regular30</font>
+                    <top>300</top>
+                    <height>110</height>
+                    <font>regular20</font>
                     <label>$INFO[Container(50).ListItem.Plot]</label>
                     <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
                 </control>
             </control>
             <control type="group">
                 <visible>String.IsEmpty(Container(50).ListItem.EPGEventIcon)</visible>
-                <top>360</top>
                 <width>760</width>
-                <height>410</height>
                 <control type="textbox">
                     <visible>String.IsEmpty(Container(50).ListItem.EpisodeName)</visible>
-                    <font>regular30</font>
+                    <top>300</top>
+                    <height>520</height>
+                    <font>regular24</font>
                     <label>$INFO[Container(50).ListItem.Plot]</label>
                     <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
                 </control>
                 <control type="textbox">
                     <visible>!String.IsEmpty(Container(50).ListItem.EpisodeName)</visible>
-                    <font>regular30</font>
+                    <top>320</top>
+                    <height>500</height>
+                    <font>regular24</font>
                     <label>$INFO[Container(50).ListItem.Plot]</label>
                     <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
                 </control>
             </control>
             <control type="image">
                 <visible>!String.IsEmpty(Container(50).ListItem.EPGEventIcon)</visible>
-                <top>420</top>
-                <right>0</right>
-                <width>240</width>
-                <height>360</height>
+                <top>415</top>
+                <height>410</height>
                 <aspectratio>keep</aspectratio>
                 <texture>$INFO[Container(50).ListItem.EPGEventIcon]</texture>
             </control>
             <control type="image">
                 <aspectratio>stretch</aspectratio>
                 <height>1</height>
-                <bottom>80</bottom>
+                <bottom>45</bottom>
                 <texture colordiffuse="border">colors/white.png</texture>
             </control>
             <control type="grouplist">
                 <orientation>horizontal</orientation>
                 <align>right</align>
-                <top>800</top>
+                <top>830</top>
                 <usecontrolcoords>true</usecontrolcoords>
                 <control type="label">
-                    <height>80</height>
+                    <height>60</height>
                     <width>auto</width>
                     <label>$INFO[PVR.backenddiskspace]</label>
                     <aligny>center</aligny>
-                    <font>regular30</font>
+                    <font>regular24</font>
                     <visible>!Integer.IsGreater(PVR.backenddiskspaceprogr,100)</visible>
                 </control>
                 <control type="image">
+                    <top>5</top>
                     <aspectratio>keep</aspectratio>
-                    <width>80</width>
-                    <height>80</height>
+                    <width>55</width>
+                    <height>55</height>
                     <texture>defaultharddisk.png</texture>
                 </control>
             </control>
