@@ -130,15 +130,23 @@
                 <bordertexture colordiffuse="border" border="1">colors/white.png</bordertexture>
                 <bordersize>1</bordersize>
             </control> 
-            <control type="image">
+            <control type="group">
                 <visible>Container(9000).Hasfocus(1) + ControlGroup(9001).HasFocus</visible>
-                <width>1335</width>
-                <height>940</height>
-                <aspectratio>stretch</aspectratio>
-                <texture colordiffuse="backgrounddark">colors/white.png</texture>
-                <bordertexture colordiffuse="activedialog" border="1">colors/white.png</bordertexture>
-                <bordersize>1</bordersize>
-            </control> 
+                <control type="image">
+                    <width>1335</width>
+                    <height>940</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                </control>
+                <include content="panel_border">
+                    <param name="top">0</param>
+                    <param name="bottom">940</param>
+                    <param name="left">0</param>
+                    <param name="right">1335</param>
+                    <param name="width">1335</param>
+                    <param name="height">940</param>
+                </include>
+            </control>
             <control type="grouplist" id="9001">
                 <visible>Container(9000).Hasfocus(1)</visible>
                 <top>1</top>
@@ -165,16 +173,24 @@
         </control>
         <control type="group">
             <include>openclose_fade_slight_left</include>
-            <control type="image">
+            <control type="group">
                 <visible>!ControlGroup(9100).HasFocus</visible>
-                <top>100</top>
-                <left>10</left>
-                <width>500</width>
-                <height>940</height>
-                <aspectratio>stretch</aspectratio>
-                <texture colordiffuse="backgrounddark">colors/white.png</texture>
-                <bordertexture colordiffuse="active" border="1">colors/white.png</bordertexture>
-                <bordersize>1</bordersize>
+                <control type="image">
+                    <top>100</top>
+                    <left>10</left>
+                    <width>500</width>
+                    <height>940</height>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                </control>
+                <include content="panel_border">
+                    <param name="top">100</param>
+                    <param name="bottom">1040</param>
+                    <param name="left">10</param>
+                    <param name="right">509</param>
+                    <param name="width">500</param>
+                    <param name="height">940</param>
+                </include>
             </control>
             <control type="image">
                 <visible>ControlGroup(9100).HasFocus</visible>

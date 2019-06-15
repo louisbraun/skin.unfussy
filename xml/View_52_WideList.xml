@@ -559,7 +559,7 @@
     <include name="view_52_contentpanel_artists">
         <control type="group">
             <visible>String.IsEqual(ListItem.DBType,artist)</visible>
-            <control type="list" id="10000">
+            <control type="list" id="11">
                 <focusedlayout height="0" width="0">
                 </focusedlayout>
                 <itemlayout height="0" width="0">
@@ -582,7 +582,7 @@
                     <height>35</height>
                     <aligny>center</aligny>
                     <font>regular24</font>
-                    <label>$INFO[Container(10000).NumItems,[COLOR active]$LOCALIZE[36919]: [/COLOR]]</label>
+                    <label>$INFO[Container(11).NumItems,[COLOR active]$LOCALIZE[36919]: [/COLOR]]</label>
                 </control>
                 <control type="label">
                     <visible>!String.IsEmpty(ListItem.Genre)</visible>

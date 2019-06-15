@@ -81,7 +81,7 @@
                             <top>0</top>
                             <right>0</right>
                             <bottom>0</bottom>
-                            <texture colordiffuse="active">colors/white.png</texture>
+                            <texture colordiffuse="activedialog">colors/white.png</texture>
                             <visible>Control.HasFocus(50)</visible>
                         </control>
                         <control type="image">
@@ -153,7 +153,7 @@
                         <textoffsetx>20</textoffsetx>
                         <texturenofocus />
                         <alttexturenofocus></alttexturenofocus>
-                        <alttexturefocus colordiffuse="active">colors/white.png</alttexturefocus>
+                        <alttexturefocus colordiffuse="activedialog">colors/white.png</alttexturefocus>
                         <textoffsety>35</textoffsety>
                         <font>light36</font>
                         <label>$LOCALIZE[31039]: $LOCALIZE[584]</label>
@@ -164,7 +164,7 @@
                         <font>light36</font>
                         <textoffsetx>20</textoffsetx>
                         <aligny>center</aligny>
-                        <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                         <texturenofocus />
                     </control>
                     <control type="radiobutton" id="22">
@@ -173,7 +173,7 @@
                         <texturenofocus />
                         <textoffsetx>20</textoffsetx>
                         <font>light36</font>
-                        <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                         <radioposx>380</radioposx>
                     </control>
                     <control type="button" id="20">
@@ -182,7 +182,7 @@
                         <textoffsetx>20</textoffsetx>
                         <aligny>center</aligny>
                         <label>$LOCALIZE[192]</label>
-                        <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                         <texturenofocus />
                     </control>
                     <control type="button" id="501">
@@ -191,7 +191,7 @@
                         <textoffsetx>20</textoffsetx>
                         <aligny>center</aligny>
                         <label>$LOCALIZE[5]</label>
-                        <texturefocus colordiffuse="active">colors/white.png</texturefocus>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                         <texturenofocus />
                         <onclick>ActivateWindow(systemsettings,logging)</onclick>
                     </control>

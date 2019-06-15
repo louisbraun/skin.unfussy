@@ -536,7 +536,7 @@
                     <height>35</height>
                     <aligny>center</aligny>
                     <font>regular24</font>
-                    <label>$INFO[Container(10002).NumItems,[COLOR active]$LOCALIZE[36919]: [/COLOR]]</label>
+                    <label>$INFO[Container(12).NumItems,[COLOR active]$LOCALIZE[36919]: [/COLOR]]</label>
                 </control>
                 <control type="label">
                     <visible>!String.IsEmpty(ListItem.Genre)</visible>
@@ -567,7 +567,7 @@
                     <label>$INFO[ListItem.Property(Artist_Mood),[COLOR active]$LOCALIZE[31057]: [/COLOR]]</label>
                 </control>
             </control>
-            <control type="panel" id="10002">
+            <control type="panel" id="12">
                 <top>420</top>
                 <left>0</left>
                 <width>590</width>

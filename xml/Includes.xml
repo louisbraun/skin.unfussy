@@ -416,6 +416,49 @@
         </control>
     </include>
 
+    <include name="panel_border">
+        <param name="top">0</param>
+        <param name="bottom">0</param>
+        <param name="left">0</param>
+        <param name="right">0</param>
+        <param name="width">0</param>
+        <param name="height">0</param>
+        <definition>
+            <control type="image">
+                <top>$PARAM[top]</top>
+                <left>$PARAM[left]</left>
+                <width>1</width>
+                <height>$PARAM[height]</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <top>$PARAM[top]</top>
+                <left>$PARAM[left]</left>
+                <width>$PARAM[width]</width>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <top>$PARAM[bottom]</top>
+                <left>$PARAM[left]</left>
+                <width>$PARAM[width]</width>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <top>$PARAM[top]</top>
+                <left>$PARAM[right]</left>
+                <width>1</width>
+                <height>$PARAM[height]</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">colors/white.png</texture>
+            </control>
+        </definition>
+    </include>
+
 <!-- DEBUG PANEL -->
 
    <include name="debugcategory">
