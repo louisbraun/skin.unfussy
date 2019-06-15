@@ -447,6 +447,10 @@ msgctxt "#31106"
 msgid "set switch timer"
 msgstr "Umschalttimer setzen"
 
+msgctxt "#31107"
+msgid "movie genre iconset"
+msgstr "Iconset für Movie Genres"
+
 msgctxt "#31108"
 msgid "Same director"
 msgstr "Filme dieses Regisseurs"
@@ -470,3 +474,11 @@ msgstr "Home Menü anpassen"
 msgctxt "#31113"
 msgid "Live TV Settings"
 msgstr "Live TV Einstellungen"
+
+msgctxt "#31114"
+msgid "none"
+msgstr "keine"
+
+msgctxt "#31115"
+msgid "music genre iconset"
+msgstr "Iconset für Musik Genres"

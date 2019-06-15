@@ -185,6 +185,42 @@
                         <selected>Skin.HasSetting(darken_watched)</selected>
                         <onclick>Skin.ToggleSetting(darken_watched)</onclick>
                     </control>
+                    <control type="button" id="205">
+                        <visible>!String.IsEmpty(Skin.String(MovieGenreIcons.name))</visible>
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31107]</label>
+                        <label2>$INFO[Skin.String(MovieGenreIcons.name)]</label2>
+                        <onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
+                        <onclick>RunScript(script.image.resource.select,property=MovieGenreIcons&amp;type=resource.images.moviegenreicons)</onclick>
+                    </control>
+                    <control type="button" id="206">
+                        <visible>String.IsEmpty(Skin.String(MovieGenreIcons.name))</visible>
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31107]</label>
+                        <label2>$LOCALIZE[31114]</label2>
+                        <onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
+                        <onclick>RunScript(script.image.resource.select,property=MovieGenreIcons&amp;type=resource.images.moviegenreicons)</onclick>
+                    </control>
+                    <control type="button" id="207">
+                        <visible>!String.IsEmpty(Skin.String(MusicGenreIcons.name))</visible>
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31115]</label>
+                        <label2>$INFO[Skin.String(MusicGenreIcons.name)]</label2>
+                        <onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
+                        <onclick>RunScript(script.image.resource.select,property=MusicGenreIcons&amp;type=resource.images.musicgenreicons)</onclick>
+                    </control>
+                    <control type="button" id="208">
+                        <visible>String.IsEmpty(Skin.String(MusicGenreIcons.name))</visible>
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31115]</label>
+                        <label2>$LOCALIZE[31114]</label2>
+                        <onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
+                        <onclick>RunScript(script.image.resource.select,property=MusicGenreIcons&amp;type=resource.images.musicgenreicons)</onclick>
+                    </control>
                 </control>
             </control>
             <control type="group">

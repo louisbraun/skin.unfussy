@@ -137,7 +137,7 @@
                 <visible>String.IsEmpty(ListItem.Art(thumb))</visible>
                 <visible>String.IsEmpty(ListItem.Label2)</visible>
                 <control type="label">
-                    <left>10</left>
+                    <left>20</left>
                     <top>0</top>
                     <right>20</right>
                     <bottom>0</bottom>

@@ -489,11 +489,30 @@
         <control type="group">
             <visible>String.IsEqual(ListItem.DBType,genre)</visible>
             <control type="image">
+                <visible>!String.IsEmpty(Skin.String(MovieGenreIcons.name))</visible>
+                <visible>String.Contains(ListItem.FolderPath,videodb)</visible>
                 <top>20</top>
                 <left>20</left>
                 <right>20</right>
                 <aspectratio>keep</aspectratio>
-                <texture background="true">$INFO[ListItem.Label,resource://resource.images.moviegenreicons.white/,.jpg]</texture>
+                <texture fallback="defaultgenre.png" background="true">$INFO[Skin.String(MovieGenreIcons.path)]$INFO[ListItem.Label]$INFO[Skin.String(MovieGenreIcons.ext)]</texture>
+            </control>
+            <control type="image">
+                <visible>!String.IsEmpty(Skin.String(MusicGenreIcons.name))</visible>
+                <visible>String.Contains(ListItem.FolderPath,musicdb)</visible>
+                <top>20</top>
+                <left>20</left>
+                <right>20</right>
+                <aspectratio>keep</aspectratio>
+                <texture fallback="defaultgenre.png" background="true">$INFO[Skin.String(MusicGenreIcons.path)]$INFO[ListItem.Label]$INFO[Skin.String(MusicGenreIcons.ext)]</texture>
+            </control>
+            <control type="image">
+                <visible>[String.IsEmpty(Skin.String(MovieGenreIcons.name)) + String.Contains(ListItem.FolderPath,videodb)] | [String.IsEmpty(Skin.String(MusicGenreIcons.name)) + String.Contains(ListItem.FolderPath,musicdb)]</visible>
+                <top>20</top>
+                <left>20</left>
+                <right>20</right>
+                <aspectratio>keep</aspectratio>
+                <texture background="true">defaultgenre.png</texture>
             </control>
         </control>
     </include>

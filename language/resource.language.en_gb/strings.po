@@ -447,6 +447,10 @@ msgctxt "#31106"
 msgid "set switch timer"
 msgstr ""
 
+msgctxt "#31107"
+msgid "movie genre iconset"
+msgstr ""
+
 msgctxt "#31108"
 msgid "Same director"
 msgstr ""
@@ -470,3 +474,12 @@ msgstr ""
 msgctxt "#31113"
 msgid "Live TV Settings"
 msgstr ""
+
+msgctxt "#31114"
+msgid "none"
+msgstr ""
+
+msgctxt "#31115"
+msgid "music genre iconset"
+msgstr ""
+
