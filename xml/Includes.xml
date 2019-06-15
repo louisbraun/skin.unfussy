@@ -293,6 +293,7 @@
         <definition>
             <control type="grouplist">
                 <left>$PARAM[left]</left>
+                <width>1050</width>
                 <orientation>horizontal</orientation>
                 <control type="label">
                     <include>header_label_item</include>

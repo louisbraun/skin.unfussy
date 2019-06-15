@@ -159,12 +159,13 @@
                     <param name="width">312</param>
                 </include>
                 <control type="image">
+                    <visible>!String.IsEqual(ListItem.Label,..)</visible>
                     <top>1</top>
                     <left>1</left>
                     <width>310</width>
                     <height>310</height>
                     <aspectratio>keep</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+                    <texture fallback="DefaultAddon.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
                 <control type="image">
                     <visible>String.IsEqual(ListItem.Label,..)</visible>
@@ -586,17 +587,24 @@
     <include name="view_54_contentpanel_albums">
         <control type="group">
             <visible>String.IsEqual(Container(54).ListItem.DBType,album)</visible>
+            <control type="image">
+                <bottom>1</bottom>
+                <left>1</left>
+                <width>598</width>
+                <aspectratio aligny="bottom">keep</aspectratio>
+                <texture>$INFO[Container(54).ListItem.Art(fanart)]</texture>
+            </control>
             <control type="label">
                 <top>30</top>
                 <left>20</left>
                 <right>20</right>
                 <align>center</align>
-                <font>light50</font>
+                <font>light36</font>
                 <textcolor>active</textcolor>
-                <label>$LOCALIZE[182]</label>
+                <label>$INFO[Container(54).ListItem.Title]</label>
             </control>
             <control type="list" id="10001">
-                <top>130</top>
+                <top>100</top>
                 <left>20</left>
                 <right>20</right>
                 <height>700</height>
@@ -606,6 +614,7 @@
                         <height>20</height>
                         <aligny>center</aligny>
                         <font>regular20</font>
+                        <shadowcolor>black</shadowcolor>
                         <label>[COLOR active]$INFO[ListItem.TrackNumber][/COLOR] - $INFO[ListItem.Label] ($INFO[ListItem.Duration])</label>
                     </control>
                 </focusedlayout>
@@ -614,6 +623,7 @@
                         <height>20</height>
                         <aligny>center</aligny>
                         <font>regular20</font>
+                        <shadowcolor>black</shadowcolor>
                         <label>[COLOR active]$INFO[ListItem.TrackNumber][/COLOR] - $INFO[ListItem.Label] ($INFO[ListItem.Duration])</label>
                     </control>
                 </itemlayout>                

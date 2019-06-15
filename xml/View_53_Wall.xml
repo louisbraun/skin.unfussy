@@ -262,7 +262,7 @@
                     <width>300</width>
                     <height>300</height>
                     <aspectratio>keep</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+                    <texture fallback="DefaultAddon.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
                 <control type="image">
                     <visible>String.IsEqual(ListItem.Label,..)</visible>

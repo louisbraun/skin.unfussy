@@ -54,7 +54,7 @@
             <control type="image">
                 <bottom>0</bottom>
                 <height>1</height>
-                <texture colordiffuse="background">colors/white.png</texture>
+                <texture colordiffuse="borderdark">colors/white.png</texture>
             </control>
             <include content="listitem_background">
                 <param name="container_id">50</param>
@@ -331,26 +331,45 @@
     <include name="view_50_contentpanel_left_artists">
         <control type="group">
             <visible>String.IsEqual(Container(50).ListItem.DBType,artist)</visible>
-            <control type="grouplist">
+            <control type="textbox">
+                <visible>String.IsEmpty(Container(50).ListItem.Art(clearlogo))</visible>
+                <top>50</top>
                 <left>20</left>
                 <right>20</right>
-                <height>440</height>
-                <control type="label">
-                    <visible>String.IsEmpty(Container(50).ListItem.Art(clearlogo))</visible>
-                    <height>90</height>
-                    <align>center</align>
-                    <aligny>center</aligny>
-                    <font>light50</font>
-                    <textcolor>active</textcolor>
-                    <label>$INFO[Container(50).ListItem.Artist]</label>
-                </control>
-                <control type="image">
-                    <visible>!String.IsEmpty(Container(50).ListItem.Art(clearlogo))</visible>
-                    <width>560</width>
-                    <height>217</height>
-                    <aspectratio>keep</aspectratio>
-                    <texture>$INFO[Container(50).ListItem.Art(clearlogo)]</texture>
-                </control>
+                <height>90</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>light50</font>
+                <textcolor>active</textcolor>
+                <label>$INFO[Container(50).ListItem.Artist]</label>
+            </control>
+            <control type="image">
+                <visible>!String.IsEmpty(Container(50).ListItem.Art(clearlogo))</visible>
+                <top>50</top>
+                <left>20</left>
+                <width>560</width>
+                <height>217</height>
+                <aspectratio>keep</aspectratio>
+                <texture>$INFO[Container(50).ListItem.Art(clearlogo)]</texture>
+            </control>
+            <control type="image">
+                <bottom>1</bottom>
+                <left>1</left>
+                <width>588</width>
+                <height>588</height>
+                <aspectratio aligny="bottom">keep</aspectratio>
+                <texture background="true">$INFO[Container(50).ListItem.Art(thumb)]</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="view_50_contentpanel_right_artists">
+        <control type="group">
+            <visible>String.IsEqual(Container(50).ListItem.DBType,artist)</visible>
+            <control type="grouplist">
+                <top>10</top>
+                <left>20</left>
+                <right>20</right>
                 <control type="label">
                     <visible>!String.IsEmpty(ListItem.Genre)</visible>
                     <height>35</height>
@@ -379,25 +398,18 @@
                     <font>regular24</font>
                     <label>$INFO[ListItem.Property(Artist_Mood),[COLOR active]$LOCALIZE[31057]: [/COLOR]]</label>
                 </control>
+                <control type="label">
+                    <height>35</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <label>$INFO[Container(10000).NumItems,[COLOR active]$LOCALIZE[36919]: [/COLOR]]</label>
+                </control>
             </control>
-            <control type="image">
-                <bottom>1</bottom>
-                <left>1</left>
-                <width>588</width>
-                <height>588</height>
-                <aspectratio>keep</aspectratio>
-                <texture background="true">$INFO[Container(50).ListItem.Art(thumb)]</texture>
-            </control>
-        </control>
-    </include>
-
-    <include name="view_50_contentpanel_right_artists">
-        <control type="group">
-            <visible>String.IsEqual(Container(50).ListItem.DBType,artist)</visible>
             <control type="panel" id="10000">
+                <top>230</top>
                 <left>0</left>
                 <width>590</width>
-                <height>990</height>
+                <height>750</height>
                 <itemlayout width="295" height="300">
                     <include>view_50_albumlist_item</include>
                 </itemlayout>                
@@ -449,6 +461,7 @@
             <visible>String.IsEqual(Container(50).ListItem.DBType,album)</visible>
             <control type="label">
                 <visible>String.IsEmpty(Container(50).ListItem.Art(artist.clearlogo))</visible>
+                <top>50</top>
                 <height>90</height>
                 <align>center</align>
                 <aligny>center</aligny>
@@ -458,6 +471,7 @@
             </control>
             <control type="image">
                 <visible>!String.IsEmpty(Container(50).ListItem.Art(artist.clearlogo))</visible>
+                <top>50</top>
                 <left>20</left>
                 <width>560</width>
                 <height>217</height>
@@ -465,7 +479,7 @@
                 <texture>$INFO[Container(50).ListItem.Art(artist.clearlogo)]</texture>
             </control>
             <control type="image">
-                <top>250</top>
+                <top>490</top>
                 <left>15</left>
                 <width>566</width>
                 <height>500</height>
@@ -473,7 +487,7 @@
                 <texture background="true">backgrounds/cd_cover.jpg</texture>
             </control>
             <control type="image">
-                <top>252</top>
+                <top>492</top>
                 <left>78</left>
                 <width>496</width>
                 <height>496</height>
@@ -481,7 +495,7 @@
                 <texture background="true">colors/black.png</texture>
             </control>
             <control type="image">
-                <top>252</top>
+                <top>492</top>
                 <left>78</left>
                 <width>496</width>
                 <height>496</height>
@@ -494,26 +508,34 @@
     <include name="view_50_contentpanel_right_albums">
         <control type="group">
             <visible>String.IsEqual(Container(50).ListItem.DBType,album)</visible>
+            <control type="image">
+                <bottom>1</bottom>
+                <left>1</left>
+                <width>588</width>
+                <aspectratio aligny="bottom">keep</aspectratio>
+                <texture>$INFO[Container(50).ListItem.Art(fanart)]</texture>
+            </control>
             <control type="label">
                 <top>30</top>
                 <left>20</left>
                 <right>20</right>
                 <align>center</align>
-                <font>light50</font>
+                <font>light36</font>
                 <textcolor>active</textcolor>
-                <label>$LOCALIZE[182]</label>
+                <label>$INFO[Container(50).ListItem.Title]</label>
             </control>
             <control type="list" id="10001">
-                <top>130</top>
+                <top>100</top>
                 <left>20</left>
                 <right>20</right>
-                <height>700</height>
+                <height>800</height>
                 <orientation>vertical</orientation>
                 <focusedlayout height="30" width="560">
                     <control type="label">
                         <height>20</height>
                         <aligny>center</aligny>
                         <font>regular20</font>
+                        <shadowcolor>black</shadowcolor>
                         <label>[COLOR active]$INFO[ListItem.TrackNumber][/COLOR] - $INFO[ListItem.Label] ($INFO[ListItem.Duration])</label>
                     </control>
                 </focusedlayout>
@@ -522,6 +544,7 @@
                         <height>20</height>
                         <aligny>center</aligny>
                         <font>regular20</font>
+                        <shadowcolor>black</shadowcolor>
                         <label>[COLOR active]$INFO[ListItem.TrackNumber][/COLOR] - $INFO[ListItem.Label] ($INFO[ListItem.Duration])</label>
                     </control>
                 </itemlayout>                

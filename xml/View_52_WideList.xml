@@ -62,7 +62,7 @@
             <control type="image">
                 <bottom>0</bottom>
                 <height>1</height>
-                <texture colordiffuse="background">colors/white.png</texture>
+                <texture colordiffuse="borderdark">colors/white.png</texture>
             </control>
             <include content="listitem_background">
                 <param name="container_id">52</param>
@@ -108,12 +108,17 @@
     <include name="view_52_listitem_songs">
         <param name="active">false</param>
         <definition>
+            <control type="image">
+                <bottom>0</bottom>
+                <height>1</height>
+                <texture colordiffuse="borderdark">colors/white.png</texture>
+            </control>
             <include content="listitem_background">
                 <param name="container_id">52</param>
-                <param name="do_slide">true</param>
+                <param name="slide">true</param>
                 <param name="active">$PARAM[active]</param>
                 <param name="simple">true</param>
-                <param name="height">79</param>
+                <param name="height">80</param>
             </include>
             <control type="label">
                 <visible>String.IsEmpty(ListItem.Title)</visible>
@@ -589,13 +594,22 @@
                 <left>20</left>
                 <right>20</right>
                 <height>440</height>
+                <usecontrolcoords>true</usecontrolcoords>
                 <control type="label">
+                    <visible>String.IsEmpty(Container(52).ListItem.Art(clearlogo))</visible>
                     <height>90</height>
                     <align>center</align>
                     <aligny>center</aligny>
                     <font>light50</font>
                     <textcolor>active</textcolor>
                     <label>$INFO[ListItem.Artist]</label>
+                </control>
+                <control type="image">
+                    <top>10</top>
+                    <visible>!String.IsEmpty(Container(52).ListItem.Art(clearlogo))</visible>
+                    <height>120</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$INFO[Container(52).ListItem.Art(clearlogo)]</texture>
                 </control>
                 <control type="label">
                     <height>35</height>
@@ -729,31 +743,51 @@
     <include name="view_52_contentpanel_songs">
         <control type="group">
             <visible>String.IsEqual(ListItem.DBType,song)</visible>
-            <control type="label">
-                <top>30</top>
-                <left>20</left>
-                <right>20</right>
-                <height>70</height>
-                <align>center</align>
-                <aligny>center</aligny>
-                <font>light50</font>
-                <textcolor>active</textcolor>
-                <label>$INFO[Container(52).ListItem.Artist]</label>
+            <control type="group">
+                <visible>!String.IsEmpty(Container(52).ListItem.Art(artist.clearlogo))</visible>
+                <control type="image">
+                    <top>10</top>
+                    <height>150</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[Container(52).ListItem.Art(artist.clearlogo)]</texture>
+                </control>
+                <control type="textbox">
+                    <top>160</top>
+                    <left>20</left>
+                    <right>20</right>
+                    <height>150</height>
+                    <align>center</align>
+                    <font>light50</font>
+                    <label>$INFO[Container(52).ListItem.Album]</label>
+                </control>
             </control>
-            <control type="label">
-                <top>90</top>
-                <left>20</left>
-                <right>20</right>
-                <height>70</height>
-                <align>center</align>
-                <aligny>center</aligny>
-                <font>light36</font>
-                <label>$INFO[Container(52).ListItem.Album]</label>
+            <control type="group">
+                <visible>String.IsEmpty(Container(52).ListItem.Art(artist.clearlogo))</visible>
+                <control type="label">
+                    <top>40</top>
+                    <left>20</left>
+                    <right>20</right>
+                    <height>70</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>light50</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[Container(52).ListItem.Artist]</label>
+                </control>
+                <control type="textbox">
+                    <top>110</top>
+                    <left>20</left>
+                    <right>20</right>
+                    <height>150</height>
+                    <align>center</align>
+                    <font>light50</font>
+                    <label>$INFO[Container(52).ListItem.Album]</label>
+                </control>
             </control>
             <control type="group">
                 <visible>String.IsEmpty(ListItem.Art(album.discart))</visible>
                 <control type="image">
-                    <top>300</top>
+                    <top>490</top>
                     <left>50</left>
                     <width>566</width>
                     <height>500</height>
@@ -761,7 +795,7 @@
                     <texture background="true">backgrounds/cd_cover.jpg</texture>
                 </control>
                 <control type="image">
-                    <top>302</top>
+                    <top>492</top>
                     <left>113</left>
                     <width>496</width>
                     <height>496</height>
@@ -769,7 +803,7 @@
                     <texture background="true">colors/black.png</texture>
                 </control>
                 <control type="image">
-                    <top>302</top>
+                    <top>492</top>
                     <left>113</left>
                     <width>496</width>
                     <height>496</height>
@@ -780,7 +814,8 @@
             <control type="group">
                 <visible>!String.IsEmpty(ListItem.Art(album.discart))</visible>
                 <control type="image">
-                    <top>180</top>
+                    <animation effect="rotate" end="-360" center="auto" time="4800" loop="true" reversible="false" condition="Player.Playing">Conditional</animation>
+                    <top>240</top>
                     <left>113</left>
                     <width>496</width>
                     <height>496</height>
@@ -788,7 +823,7 @@
                     <texture background="true">$INFO[Container(52).ListItem.Art(album.discart)]</texture>
                 </control>
                 <control type="image">
-                    <top>430</top>
+                    <top>490</top>
                     <left>50</left>
                     <width>566</width>
                     <height>500</height>
@@ -796,7 +831,7 @@
                     <texture background="true">backgrounds/cd_cover.jpg</texture>
                 </control>
                 <control type="image">
-                    <top>432</top>
+                    <top>492</top>
                     <left>113</left>
                     <width>496</width>
                     <height>496</height>
@@ -804,7 +839,7 @@
                     <texture background="true">colors/black.png</texture>
                 </control>
                 <control type="image">
-                    <top>432</top>
+                    <top>492</top>
                     <left>113</left>
                     <width>496</width>
                     <height>496</height>
