@@ -24,8 +24,18 @@
 		<source>https://github.com/louisbraun/skin.unfussy</source>
 		<assets>
 			<icon>resources/icon.png</icon>
-			<fanart></fanart>
-			<screenshot></screenshot>
+			<fanart>resources/icon.png</fanart>
+			<screenshot>resources/home.png</screenshot>
+			<screenshot>resources/movies_fanart.png</screenshot>
+			<screenshot>resources/tvshows_fanart_hor.png</screenshot>
+			<screenshot>resources/tvshows_episodes_list.png</screenshot>
+			<screenshot>resources/music_artists_infowall.png</screenshot>
+			<screenshot>resources/music_albums_list.png</screenshot>
+			<screenshot>resources/pvr_channelguide.png</screenshot>
+			<screenshot>resources/pvr_channellist_wall.png</screenshot>
+			<screenshot>resources/pvr_guide.png</screenshot>
+			<screenshot>resources/pvr_info.png</screenshot>
+			<screenshot>resources/pvr_osd.png</screenshot>
 		</assets>
 	</extension>
 </addon>
