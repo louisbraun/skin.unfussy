@@ -15,10 +15,10 @@
 		<res width="2160" height="1080" aspect="18:9" default="false" folder="xml" />
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary lang="de_DE">Unfussy Skin made by Louis 2019</summary>
-		<summary lang="en_GB">unfussy skin made by Louis 2019</summary>
-		<description lang="de_DE">Ein "schnörkelloser" Skin, insbesondere auf die Benutzung von LiveTV ausgelegt.</description>
-		<description lang="en_GB">An "unfussy" skin, in particular designed for watching LiveTV.</description>
+		<summary lang="de_DE">Unfussy Skin by Louis 2019</summary>
+		<summary lang="en_GB">unfussy skin by Louis 2019</summary>
+		<description lang="de_DE">Ein "schnörkelloser" Skin, insbesondere auf die Benutzung von LiveTV ausgelegt. Features: Konfigurierbares Menü, große Anzahl kofigurierbarer Widgets im Hauptmenü, PVR Guide mit 4 - 10 Sendern, angepasste PVR Views und vieles mehr...</description>
+		<description lang="en_GB">An "unfussy" skin, in particular designed for watching LiveTV. Features: customizable menu, large number of configurable main menu widgets, pvr guide with 4 up to 10 channels, customized pvr views and much more...</description>
 		<platform>all</platform>
 		<license>CC BY-SA 4.0, GNU GENERAL PUBLIC LICENSE Version 2.0</license>
 		<source>https://github.com/louisbraun/skin.unfussy</source>
