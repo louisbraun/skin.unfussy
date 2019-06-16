@@ -516,6 +516,7 @@
                 <left>20</left>
                 <right>20</right>
                 <height>440</height>
+                <usecontrolcoords>true</usecontrolcoords>
                 <control type="label">
                     <visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
                     <height>150</height>
@@ -527,9 +528,10 @@
                 </control>
                 <control type="image">
                     <visible>!String.IsEmpty(ListItem.Art(clearlogo))</visible>
+                    <top>10</top>
                     <left>1</left>
                     <width>560</width>
-                    <height>217</height>
+                    <height>207</height>
                     <aspectratio>keep</aspectratio>
                     <texture>$INFO[ListItem.Art(clearlogo)]</texture>
                 </control>

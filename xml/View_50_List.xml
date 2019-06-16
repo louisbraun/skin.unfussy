@@ -448,11 +448,12 @@
         </control>
         <control type="label">
             <top>255</top>
-            <left>10</left>
-            <right>10</right>
+            <left>20</left>
+            <right>20</right>
             <font>regular20</font>
             <align>center</align>
-            <label>$INFO[ListItem.Label]</label>
+            <scroll>true</scroll>
+            <label>$INFO[ListItem.Label] $INFO[ListItem.Year,(,)]</label>
         </control>
     </include>
 
@@ -522,7 +523,8 @@
                 <align>center</align>
                 <font>light36</font>
                 <textcolor>active</textcolor>
-                <label>$INFO[Container(50).ListItem.Title]</label>
+                <scroll>true</scroll>
+                <label>$INFO[Container(50).ListItem.Title]  $INFO[Container(50).ListItem.Year,(,)]</label>
             </control>
             <control type="list" id="10001">
                 <top>100</top>

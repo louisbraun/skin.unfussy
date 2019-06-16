@@ -758,7 +758,7 @@
                     <height>150</height>
                     <align>center</align>
                     <font>light50</font>
-                    <label>$INFO[Container(52).ListItem.Album]</label>
+                    <label>$INFO[Container(52).ListItem.Album] $INFO[Container(52).ListItem.Year,(,)]</label>
                 </control>
             </control>
             <control type="group">

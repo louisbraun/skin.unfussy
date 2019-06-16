@@ -1998,7 +1998,7 @@
             <width>1300</width>
             <height>80</height>
             <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="backgrounddark">colors/white.png</texture>
+            <texture colordiffuse="activedialogdark">colors/white.png</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
             <bordersize>2</bordersize>
         </control>        
