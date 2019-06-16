@@ -1,4 +1,4 @@
-#skin.unfussy
+# skin.unfussy
 Unfussy is literaly an unfussy skin mainly designed for a pleasant PVR and LiveTV experience. 
 
 # Terms of use
@@ -8,7 +8,7 @@ I'm not associated with any available build and I won't give any support to blac
 # License
 This work has been released under GNU General Public License (GPL), Version 2.0
 
-#Features
+# Features
 
 - fully customizable home menu and home menu widgets (see below)
 - extendedinfo script (implemented in different views, in particular in the different pvr views it's possible to search for titles in tmdb)
