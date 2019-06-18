@@ -40,7 +40,7 @@ This is the default structure of the Home Menu after a fresh skin installation:
 
 The default menu structure is more or less similar to the Estuary menu structure. The main menu items are direct links to the different Kodi sections like "all titles" for Movies or "music artists" for Music. Where subsections are available, these different subsections can be reached via the corresponding submenu items.
 
-This menu is arbitrary customizable. Via Skin Setup it's possible to change the order of the menu items and to add or delete both main and submenu items. Menu items have to be assigned to an action that is executed when clicking on the item. Here a list of all actions currently available in Unfussy:
+This menu is arbitrary customizable. Via Skin Setup it's possible to change the label and the icon of an item, the order of the menu items and to add or delete both main and submenu items. Menu items have to be assigned to an action that is executed when clicking on the item. Here a list of all actions currently available in Unfussy:
 - **Open section in Video Database**: all titles, recently added, genres, years, actors, directors, studios, sets, countries, tags
 - **Open section in TV Show Database**: all titles, recently added episodes, genres, years, actors, directors, studios, sets, countries, tags
 - **Open section in Music Database**: artists, genres, albums, singles, songs, years, recently played albums, compilations
