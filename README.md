@@ -71,13 +71,13 @@ Because widgets are very individual per user, after Skin installation only some 
     - Recently added Movies
     - Movie Playlist - Type "Movie"
 
-- **TV Show Widgets**
+- **TV Show Widgets** (all in landscape layout)
     - Recently added TVShows
     - Inprogress TVShows - next Epsiode
     - Movie Playlist - Type "Series"
     - Movie Playlist - Type "Episode"
 
-- **Music Widgets**
+- **Music Widgets** (all in square layout)
     - unplayed albums
     - mostplayed albums
     - random albums
@@ -85,16 +85,16 @@ Because widgets are very individual per user, after Skin installation only some 
     - Music Playlist - Type "albums"
     - Music Playlist - Type "artists"
 
-- **Music Video Widgets**
+- **Music Video Widgets** (all in poster layout)
     - recent unwatched musicvideos
     - random musicvideos
     - Movie Playlist - Type "Music Videos"
 
 - **Addon Widgets**
-    - **Addons**: list of arbitrary executable addons, order in list is customizable
+    - **Addons**: list of arbitrary executable addons, order in list is customizable, square layout
     - **Addon Path**: this widget type allows to display content from any video or music addon. To define an "addon path" you have to navigate to the desired folder item inside the addon. With the new context menu option "use as widget path" this path is added to the list of widget paths. Now it is possible to define a widget for this path inside the "Configure Widgets" Skin Setup Menu. Addon Path Widgets can be displayed in the layouts landscape, landscape large and poster. 
-    - **Favorites**: list of all Kodi Favorites
+    - **Favorites**: list of all Kodi Favorites, square layout
 
 - **Weather Widgets**
-    - weather hourly
-    - weather daily
+    - weather hourly, square layout
+    - weather daily, square layout
