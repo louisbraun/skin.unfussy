@@ -252,8 +252,7 @@
                     <height>60</height>
                     <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
                 </control>
-                <include>info_header_weather</include>
-                <include>info_header_time</include>
+                <include>info_header_weather_time</include>
             </control>
             <control type="image">
                 <top>60</top>
@@ -293,7 +292,6 @@
         <definition>
             <control type="grouplist">
                 <left>$PARAM[left]</left>
-                <width>1050</width>
                 <orientation>horizontal</orientation>
                 <control type="label">
                     <include>header_label_item</include>
@@ -337,6 +335,7 @@
             <control type="group">
                 <visible>!Window.IsActive(tvguide) + !Window.IsActive(musicplaylisteditor)</visible>
                 <left>$PARAM[left]</left>
+                <width>1000</width>
                 <control type="label">
                     <top>6</top>
                     <width>350</width>
@@ -358,12 +357,11 @@
         </definition>
     </include>
 
-    <include name="info_header_weather">
+    <include name="info_header_weather_time">
         <control type="grouplist">
-            <right>180</right>
-            <width>200</width>
+            <right>10</right>
             <height>60</height>
-            <align>center</align>
+            <align>right</align>
             <orientation>horizontal</orientation>
             <itemgap>0</itemgap>
             <control type="label">
@@ -381,19 +379,13 @@
                 <texture>$INFO[Weather.FanartCode,weather/small/,.png]</texture>
                 <visible>Weather.IsFetched + ![String.IsEqual(Weather.FanartCode,na)]</visible>
             </control>
-        </control>
-    </include>
-
-    <include name="info_header_time">
-        <control type="label">
-            <top>0</top>
-            <right>10</right>
-            <height>60</height>
-            <align>right</align>
-            <aligny>center</aligny>
-            <label>$INFO[System.Time]</label>
-            <font>light60</font>
-            <textcolor>white</textcolor>
+            <control type="label">
+                <width>auto</width>
+                <aligny>center</aligny>
+                <label> $INFO[System.Time]</label>
+                <font>light60</font>
+                <textcolor>white</textcolor>
+            </control>
         </control>
     </include>
 

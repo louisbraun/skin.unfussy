@@ -30,10 +30,27 @@
             <control type="group">
                 <visible>String.IsEqual(ListItem.Property(is_visible),true)</visible>
                 <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(thumbsize), 0) | String.IsEmpty(ListItem.Property(thumbsize))</visible>
                     <top>3</top>
                     <left>3</left>
                     <width>74</width>
                     <height>74</height>
+                    <texture colordiffuse="white">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(thumbsize), 1)</visible>
+                    <top>12</top>
+                    <left>12</left>
+                    <width>54</width>
+                    <height>54</height>
+                    <texture colordiffuse="white">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(thumbsize), 2)</visible>
+                    <top>20</top>
+                    <left>20</left>
+                    <width>40</width>
+                    <height>40</height>
                     <texture colordiffuse="white">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
                 <control type="label">
@@ -47,10 +64,27 @@
             <control type="group">
                 <visible>!String.IsEqual(ListItem.Property(is_visible),true)</visible>
                 <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(thumbsize), 0) | String.IsEmpty(ListItem.Property(thumbsize))</visible>
                     <top>3</top>
                     <left>3</left>
                     <width>74</width>
                     <height>74</height>
+                    <texture colordiffuse="border">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(thumbsize), 1)</visible>
+                    <top>12</top>
+                    <left>12</left>
+                    <width>54</width>
+                    <height>54</height>
+                    <texture colordiffuse="border">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(thumbsize), 2)</visible>
+                    <top>20</top>
+                    <left>20</left>
+                    <width>40</width>
+                    <height>40</height>
                     <texture colordiffuse="border">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
                 <control type="label">
@@ -116,11 +150,28 @@
             <control type="group">
                 <visible>String.IsEqual(ListItem.Property(is_visible),true)</visible>
                 <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(thumbsize), 0) | String.IsEmpty(ListItem.Property(thumbsize))</visible>
                     <top>2</top>
                     <left>2</left>
                     <width>56</width>
                     <height>56</height>
-                    <texture colordiffuse="white">$INFO[ListItem.Icon]</texture>
+                    <texture colordiffuse="white">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(thumbsize), 1)</visible>
+                    <top>8</top>
+                    <left>8</left>
+                    <width>44</width>
+                    <height>44</height>
+                    <texture colordiffuse="white">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(thumbsize), 2)</visible>
+                    <top>12</top>
+                    <left>12</left>
+                    <width>36</width>
+                    <height>36</height>
+                    <texture colordiffuse="white">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
                 <control type="label">
                     <left>60</left>
@@ -133,11 +184,28 @@
             <control type="group">
                 <visible>!String.IsEqual(ListItem.Property(is_visible),true)</visible>
                 <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(thumbsize), 0) | String.IsEmpty(ListItem.Property(thumbsize))</visible>
                     <top>2</top>
                     <left>2</left>
                     <width>56</width>
                     <height>56</height>
-                    <texture colordiffuse="border">$INFO[ListItem.Icon]</texture>
+                    <texture colordiffuse="border">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(thumbsize), 1)</visible>
+                    <top>8</top>
+                    <left>8</left>
+                    <width>44</width>
+                    <height>44</height>
+                    <texture colordiffuse="border">$INFO[ListItem.Art(thumb)]</texture>
+                </control>
+                <control type="image">
+                    <visible>String.IsEqual(ListItem.Property(thumbsize), 2)</visible>
+                    <top>12</top>
+                    <left>12</left>
+                    <width>36</width>
+                    <height>36</height>
+                    <texture colordiffuse="border">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
                 <control type="label">
                     <visible>!String.IsEqual(ListItem.Property(is_visible),true)</visible>
@@ -547,7 +615,7 @@
     <include name="skinhelper_decoration_detail">
         <param name="active">false</param>
         <param name="top_line1">200</param>
-        <param name="top_line2">600</param>
+        <param name="top_line2">640</param>
         <definition>
             <control type="image">
                 <visible>!$PARAM[active]</visible>
