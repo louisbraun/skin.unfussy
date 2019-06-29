@@ -30,7 +30,7 @@
                 <aligny>center</aligny>
                 <height>30</height>
                 <font>regular30</font>
-                <label>$INFO[ListItem.AddonCreator,$LOCALIZE[21863]: [COLOR active],[/COLOR]] $INFO[ListItem.AddonOrigin, / [COLOR active]$LOCALIZE[31036]:[/COLOR] ]</label>
+                <label>$INFO[ListItem.AddonCreator,[COLOR active]$LOCALIZE[21863]:[/COLOR] ,] $INFO[ListItem.AddonOrigin, / [COLOR active]$LOCALIZE[31036]:[/COLOR] ] $INFO[ListItem.AddonVersion, / [COLOR active]$LOCALIZE[31116]:[/COLOR] ]</label>
             </control>
             <control type="image">
                 <top>150</top>

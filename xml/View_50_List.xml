@@ -250,6 +250,7 @@
                     <label>$INFO[Container(50).ListItem.TVShowTitle]$INFO[Container(50).ListItem.Season, - $LOCALIZE[20373] ,]</label>
                 </control>
                 <control type="label">
+                    <visible>String.IsEmpty(Container(50).ListItem.Art(clearlogo))</visible>
                     <left>10</left>
                     <right>10</right>
                     <height>40</height>
@@ -260,6 +261,14 @@
                     <scroll>true</scroll>
                     <label>$INFO[Container(50).ListItem.Label]$INFO[Container(50).ListItem.Year, (,)]</label>
                 </control>
+                <control type="image">
+                    <visible>!String.IsEmpty(Container(50).ListItem.Art(clearlogo))</visible>
+                    <left>10</left>
+                    <right>10</right>
+                    <height>150</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>$INFO[Container(50).ListItem.Art(clearlogo)]</texture>
+                </control>                
                 <control type="label" id="202">
                     <visible>!String.IsEmpty(Container(50).ListItem.Tagline)</visible>
                     <left>10</left>
@@ -268,7 +277,6 @@
                     <align>center</align>
                     <aligny>center</aligny>
                     <font>regular24</font>
-                    <textcolor>active</textcolor>
                     <scroll>true</scroll>
                     <label>$INFO[Container(50).ListItem.Tagline]</label>
                 </control>
@@ -285,10 +293,21 @@
                     <label>$INFO[Container(50).ListItem.Genre]</label>
                 </control>
                 <control type="textbox">
+                    <visible>String.IsEmpty(Container(50).ListItem.Art(clearlogo))</visible>
                     <top>20</top>
                     <left>10</left>
                     <right>10</right>
                     <height>456</height>
+                    <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
+                    <font>light24</font>
+                    <label>$INFO[Container(50).ListItem.Plot]</label>
+                </control>            
+                <control type="textbox">
+                    <visible>!String.IsEmpty(Container(50).ListItem.Art(clearlogo))</visible>
+                    <top>20</top>
+                    <left>10</left>
+                    <right>10</right>
+                    <height>400</height>
                     <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
                     <font>light24</font>
                     <label>$INFO[Container(50).ListItem.Plot]</label>
@@ -307,14 +326,26 @@
                     <label>$INFO[ListItem.Property(TotalSeasons),[COLOR white]$LOCALIZE[33054]:[/COLOR] , / ]$INFO[ListItem.Property(TotalEpisodes),[COLOR white]$LOCALIZE[36907]:[/COLOR] ,]$INFO[ListItem.Property(WatchedEpisodes), / [COLOR white]$LOCALIZE[16102]:[/COLOR] ,]</label>
                 </control>
             </control>
-            <control type="image">
+            <control type="group">
                 <visible>!String.IsEqual(Container(50).ListItem.DBTYPE,episode)</visible>
-                <bottom>1</bottom>
-                <left>1</left>
-                <width>588</width>
-                <height>332</height>
-                <aspectratio>keep</aspectratio>
-                <texture background="true">$INFO[Container(50).ListItem.Art(fanart)]</texture>
+                <control type="image">
+                    <visible>String.IsEmpty(Container(50).ListItem.Art(clearart))</visible>
+                    <bottom>1</bottom>
+                    <left>1</left>
+                    <width>588</width>
+                    <height>332</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[Container(50).ListItem.Art(fanart)]</texture>
+                </control>
+                <control type="image">
+                    <visible>!String.IsEmpty(Container(50).ListItem.Art(clearart))</visible>
+                    <bottom>1</bottom>
+                    <left>1</left>
+                    <width>588</width>
+                    <height>332</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[Container(50).ListItem.Art(clearart)]</texture>
+                </control>
             </control>
             <control type="image">
                 <visible>String.IsEqual(Container(50).ListItem.DBTYPE,episode)</visible>

@@ -22,6 +22,7 @@
 		<platform>all</platform>
 		<license>CC BY-SA 4.0, GNU GENERAL PUBLIC LICENSE Version 2.0</license>
 		<source>https://github.com/louisbraun/skin.unfussy</source>
+		<email>louis.braun@gmx.de</email>
 		<assets>
 			<icon>resources/icon.png</icon>
 			<fanart>resources/icon.png</fanart>

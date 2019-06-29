@@ -7,6 +7,16 @@
             <bottom>0</bottom>
             <height>200</height>
             <control type="image">
+                <visible>!String.IsEmpty(Player.Art(discart))</visible>
+                <animation effect="rotate" end="-360" center="auto" time="4800" loop="true" reversible="false" condition="Player.Playing">Conditional</animation>
+                <bottom>160</bottom>
+                <left>170</left>
+                <width>320</width>
+                <height>320</height>
+                <aspectratio>keep</aspectratio>
+                <texture>$INFO[Player.Art(discart)]</texture>
+            </control>
+            <control type="image">
                 <aspectratio>stretch</aspectratio>
                 <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
             </control>
@@ -216,6 +226,23 @@
                 <param name="left">1540</param>
                 <param name="width">380</param>
             </include>
+            <!-- clearart -->
+            <control type="image">
+                <bottom>200</bottom>
+                <right>0</right>
+                <width>500</width>
+                <height>281</height>
+                <aspectratio>keep</aspectratio>
+                <texture>$INFO[Player.Art(clearart)]</texture>
+            </control>
+            <control type="image">
+                <bottom>200</bottom>
+                <right>0</right>
+                <width>500</width>
+                <height>281</height>
+                <aspectratio>keep</aspectratio>
+                <texture>$INFO[Player.Art(tvshow.clearart)]</texture>
+            </control>
         </control>
     </include>
 

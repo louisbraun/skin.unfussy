@@ -19,6 +19,7 @@
     <include file="View_53_Wall.xml" />
     <include file="View_54_Infowall.xml" />
     <include file="View_55_Fanart_Horizontal.xml" />
+    <include file="View_56_Clearlogo.xml" />
 	<include file="Variables.xml" />
     <constant name="DepthDialog">0.50</constant>
     <constant name="DepthDialog+">0.52</constant>

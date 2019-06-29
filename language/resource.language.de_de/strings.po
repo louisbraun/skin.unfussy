@@ -482,3 +482,8 @@ msgstr "nicht ausgewählt"
 msgctxt "#31115"
 msgid "music genre iconset"
 msgstr "Iconset für Musik Genres"
+
+msgctxt "#31116"
+msgid "Version"
+msgstr "Version"
+

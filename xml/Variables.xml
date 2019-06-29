@@ -62,6 +62,11 @@
         | Container.Content(images)
     </expression>
 
+    <expression name="ContentTypesView56_Clearlogo">
+        Container.Content(movies) 
+    </expression>
+
+
     <variable name="ImageLeftView50">
         <value condition="String.IsEqual(Container(50).ListItem.DBTYPE,season) + String.IsEqual(Container(50).ListItem.Label,$LOCALIZE[20366])">$INFO[Container(50).Art(tvshow.fanart)]</value>
         <value condition="String.IsEqual(Container(50).ListItem.DBTYPE,episode) + !String.IsEmpty(Container(50).ListItem.Art(season.poster))">$INFO[Container(50).ListItem.Art(season.poster)]</value>

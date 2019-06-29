@@ -1413,6 +1413,7 @@
                 <param name="value10"  value="$INFO[ListItem.Art(clearart), [COLOR active][B]ListItem.Art(clearart)[/B]:[/COLOR] , [CR]]" />
                 <param name="value11" value="$INFO[ListItem.Art(clearlogo), [COLOR active][B]ListItem.Art(clearlogo)[/B]:[/COLOR] , [CR]]" />
                 <param name="value12" value="$INFO[ListItem.Art(landscape), [COLOR active][B]ListItem.Art(landscape)[/B]:[/COLOR] , [CR]]" />
+                <param name="value52" value="$INFO[ListItem.Art(discart), [COLOR active][B]ListItem.Art(discart)[/B]:[/COLOR] , [CR]]" />
                 <param name="value13" value="$INFO[ListItem.Art(poster), [COLOR active][B]ListItem.Art(poster)[/B]:[/COLOR] , [CR]]" />
                 <param name="value14" value="$INFO[ListItem.Art(banner), [COLOR active][B]ListItem.Art(banner)[/B]:[/COLOR] , [CR]]" />
                 <param name="value15" value="$INFO[ListItem.Art(fanart), [COLOR active][B]ListItem.Art(fanart)[/B]:[/COLOR] , [CR]]" />
@@ -1430,6 +1431,10 @@
                 <param name="value27" value="$INFO[ListItem.Art(artist.fanart), [COLOR active][B]ListItem.Art(artist.fanart)[/B]:[/COLOR] , [CR]]" />
                 <param name="value28" value="$INFO[ListItem.Art(album.thumb), [COLOR active][B]ListItem.Art(album.thumb)[/B]:[/COLOR] , [CR]]" />
                 <param name="value29" value="$INFO[ListItem.Art(album.discart), [COLOR active][B]ListItem.Art(album.discart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value53" value="$INFO[ListItem.Art(movieset-fanart), [COLOR active][B]ListItem.Art(movieset-fanart)[/B]:[/COLOR] , [CR]]" />
+                <param name="value54" value="$INFO[ListItem.Art(movieset-poster), [COLOR active][B]ListItem.Art(movieset-poster)[/B]:[/COLOR] , [CR]]" />
+                <param name="value55" value="$INFO[ListItem.Art(movieset-clearlogo), [COLOR active][B]ListItem.Art(movieset-clearlogo)[/B]:[/COLOR] , [CR]]" />
+                <param name="value56" value="$INFO[ListItem.Art(movieset-clearart), [COLOR active][B]ListItem.Art(movieset-clearart)[/B]:[/COLOR] , [CR]]" />
                 <param name="value30" value="$INFO[ListItem.Overlay, [COLOR active][B]ListItem.Overlay[/B]:[/COLOR] , [CR]]" />
                 <param name="value31" value="$INFO[ListItem.EPGEventIcon, [COLOR active][B]ListItem.EPGEventIcon[/B]:[/COLOR] , [CR]]" />
                 <param name="value32" value="$INFO[MusicPlayer.Cover, [COLOR active][B]MusicPlayer.Cover[/B]:[/COLOR] , [CR]]" />
