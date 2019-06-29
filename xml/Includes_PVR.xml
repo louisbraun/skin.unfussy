@@ -90,7 +90,8 @@
                     <scroll>true</scroll>
                     <label>$INFO[VideoPlayer.Genre]</label>
                 </control>
-                <control type="label">
+                <control type="textbox" id="2001">
+                    <visible>!Container(2001).HasNext</visible>
                     <top>5</top>
                     <right>380</right>
                     <width>300</width>
@@ -99,6 +100,18 @@
                     <aligny>center</aligny>
                     <textcolor>active</textcolor>
                     <font>regular50</font>
+                    <label>$INFO[VideoPlayer.StartTime] $INFO[VideoPlayer.EndTime,- ,]</label>
+                </control>
+                <control type="textbox">
+                    <visible>Container(2001).HasNext</visible>
+                    <top>5</top>
+                    <right>380</right>
+                    <width>300</width>
+                    <height>70</height>
+                    <align>right</align>
+                    <aligny>center</aligny>
+                    <textcolor>active</textcolor>
+                    <font>regular30</font>
                     <label>$INFO[VideoPlayer.StartTime] $INFO[VideoPlayer.EndTime,- ,]</label>
                 </control>
                 <!-- Running Recording -->
@@ -202,19 +215,29 @@
                     <width>950</width>
                     <height>50</height>
                     <aligny>center</aligny>
-                    <textcolor>white</textcolor>
                     <font>regular36</font>
                     <label>$INFO[VideoPlayer.NextTitle]</label>
                 </control>
-                <control type="label">
+                <control type="textbox" id="2002">
+                    <visible>!Container(2002).HasNext</visible>
                     <top>150</top>
                     <right>380</right>
                     <width>300</width>
                     <height>50</height>
                     <align>right</align>
                     <aligny>center</aligny>
-                    <textcolor>white</textcolor>
                     <font>regular36</font>
+                    <label>$INFO[VideoPlayer.NextStartTime] $INFO[VideoPlayer.NextEndTime,- ,]</label>
+                </control>
+                <control type="textbox">
+                    <visible>Container(2002).HasNext</visible>
+                    <top>150</top>
+                    <right>380</right>
+                    <width>300</width>
+                    <height>50</height>
+                    <align>right</align>
+                    <aligny>center</aligny>
+                    <font>regular30</font>
                     <label>$INFO[VideoPlayer.NextStartTime] $INFO[VideoPlayer.NextEndTime,- ,]</label>
                 </control>
                 <!-- Border -->
