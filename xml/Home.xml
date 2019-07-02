@@ -4,6 +4,7 @@
 	<onload>ClearProperty(menu_active)</onload>
 	<onload>SetProperty(active_submenu, 0)</onload>
 	<onload>SetProperty(active_channel, 0)</onload>
+	<onload>RunScript(script.unfussy.helper,action=check_includes)</onload>
 	<onload condition="String.IsEqual(Window(home).Property(closeonload),true) + VideoPlayer.Content(livetv)">ReplaceWindow(fullscreenvideo)</onload>
 	<onload condition="String.IsEqual(Window(home).Property(startlivetv),true) + !Player.HasVideo">Action(PlayPvrTV)</onload>
 	<onload condition="String.IsEqual(Window(home).Property(startlivetv),true) + !Player.HasVideo">ReplaceWindow(fullscreenvideo)</onload>

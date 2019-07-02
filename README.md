@@ -4,7 +4,7 @@ Unfussy is literaly an unfussy skin mainly designed for a pleasant PVR and LiveT
 
 ### Dependencies
 
-Unfussy is only dependend of the [Unfussy Helper script](https://github.com/louisbraun/script.unfussy.helper). The script gets automatically installed when installing the skin via my repository.
+Unfussy is only dependend on the [Unfussy Helper script](https://github.com/louisbraun/script.unfussy.helper). The script gets automatically installed when installing the skin via [my repository](https://github.com/louisbraun/repository.louis/archive/master.zip).
 
 # Terms of use
 
@@ -26,7 +26,7 @@ This work has been released under GNU General Public License (GPL), Version 2.0
 - customized "channel guide" view with simplified channel groups handling
 - customized "channel list" view with all broadcasts of highlighted channel
 - support of movie and music genre icon packs
-- enhanced music artwork like artisis clearlogo and album discart (has to be activated via advancedsettings.xml)
+- enhanced movie and music artwork like movie clearart and clearlogos, artisis clearlogo and album discart (has to be activated via advancedsettings.xml, see [Movie Artwork](https://kodi.wiki/view/Movie_artwork) and [Music Artwork](https://kodi.wiki/view/Music_artwork))
 
 # The "Home" concept
 
@@ -98,3 +98,42 @@ Because widgets are very individual per user, after Skin installation only some 
 - **Weather Widgets**
     - weather hourly, square layout
     - weather daily, square layout
+
+# Screenshots
+
+
+### Home Menu with some widgets
+[![Home Menu with default widgets](./resources/home.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/home.png)
+
+### Movies Fanart View
+[![Movies Fanart View](./resources/movies_fanart.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/movies_fanart.png)
+
+### Movieset List View
+[![Movieset List View](./resources/movieset_list.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/movieset_list.png)
+
+### TV Shows horizontal Fanart View
+[![TV Shows horizontal Fanart View](./resources/tvshows_fanart_hor.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/tvshows_fanart_hor.png)
+
+### TV Shows Episode List View
+[![TV Shows Episode List View](./resources/tvshows_episodes_list.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/tvshows_episodes_list.png)
+
+### Music Artists Infowall View
+[![Music Artists Infowall View](./resources/music_artists_infowall.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/music_artists_infowall.png)
+
+### Music Albums List View
+[![Music Albums List View](./resources/music_albums_list.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/music_albums_list.png)
+
+### PVR Channel Guide with enhanced Channel Group Support
+[![PVR Channel Guide](./resources/pvr_channelguide.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/pvr_channelguide.png)
+
+### PVR Channellist Wall View
+[![PVR Channellist Wall View](./resources/pvr_channellist_wall.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/pvr_channellist_wall.png)
+
+### PVR Guide (with 6 channels)
+[![PVR Guide](./resources/pvr_guide.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/pvr_guide.png)
+
+### PVR Detail Info View
+[![PVR Detail Info View](./resources/pvr_info.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/pvr_info.png)
+
+### PVR OSD
+[![PVR OSD](./resources/pvr_osd.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/pvr_osd.png)

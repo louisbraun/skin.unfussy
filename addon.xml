@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="skin.unfussy" version="0.2.0" name="Unfussy" provider-name="Louis">
+<addon id="skin.unfussy" version="0.3.0" name="Unfussy" provider-name="Louis">
 	<requires>
 		<import addon="xbmc.gui" version="5.14.0"/>
-		<import addon="script.unfussy.helper" version="0.2.0"/>
+		<import addon="script.unfussy.helper" version="0.3.0"/>
 	</requires>
 	<extension point="xbmc.gui.skin" debugging="false">
 		<res width="1920" height="1440" aspect="4:3" default="false" folder="xml" />
@@ -28,6 +28,7 @@
 			<fanart>resources/icon.png</fanart>
 			<screenshot>resources/home.png</screenshot>
 			<screenshot>resources/movies_fanart.png</screenshot>
+			<screenshot>resources/movieset_list.png</screenshot>
 			<screenshot>resources/tvshows_fanart_hor.png</screenshot>
 			<screenshot>resources/tvshows_episodes_list.png</screenshot>
 			<screenshot>resources/music_artists_infowall.png</screenshot>

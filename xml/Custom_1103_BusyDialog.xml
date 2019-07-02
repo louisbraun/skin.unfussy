@@ -131,15 +131,5 @@
                 <label>"$INFO[Window(home).Property(custombusylabel)]"</label>
             </control>
         </control>
-        <control type="group">
-            <visible>String.IsEqual(Window(home).Property(custombusyreason),checkincludes)</visible>
-            <control type="label">
-                <top>63%</top>
-                <align>center</align>
-                <textcolor>active</textcolor>
-                <font>light70</font>
-                <label>Creating menu and widgets...</label>
-            </control>
-        </control>
     </controls>
 </window>
