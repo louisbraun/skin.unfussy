@@ -27,6 +27,7 @@ This work has been released under GNU General Public License (GPL), Version 2.0
 - customized "channel list" view with all broadcasts of highlighted channel
 - support of movie and music genre icon packs
 - enhanced movie and music artwork like movie clearart and clearlogos, artisis clearlogo and album discart (has to be activated via advancedsettings.xml, see [Movie Artwork](https://kodi.wiki/view/Movie_artwork) and [Music Artwork](https://kodi.wiki/view/Music_artwork))
+- artistslideshow script support
 
 # The "Home" concept
 
