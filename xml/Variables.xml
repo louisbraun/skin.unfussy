@@ -7,7 +7,7 @@
         VideoPlayer.Content(musicvideos) |
         [VideoPlayer.Content(files) + !VideoPlayer.Content(livetv) + !Player.HasAudio] |
         Pvr.IsPlayingRecording |
-        Player.IsInternetStream
+        [ Player.IsInternetStream + !VideoPlayer.Content(livetv) ]
     </expression>
 
     <expression name="ShowMusicOsd">
