@@ -490,3 +490,7 @@ msgstr "Version"
 msgctxt "#31117"
 msgid "jump to prev/next channel group when reaching start/end of channels list"
 msgstr "Am Anfang/Ende der Liste zur vorherigen/nächsten Kanalgruppe springen"
+
+msgctxt "#31118"
+msgid "ends at"
+msgstr "Endet um"

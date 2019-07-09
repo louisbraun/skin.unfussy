@@ -105,7 +105,7 @@
                     <height>35</height>
                     <aligny>center</aligny>
                     <font>regular24</font>
-                    <label>$INFO[VideoPlayer.Genre,, \ ]$INFO[VideoPlayer.Year]</label>
+                    <label>$INFO[VideoPlayer.Genre,, / ]$INFO[VideoPlayer.Year]</label>
                 </control>
             </control>
             <!-- Progress Bar -->
@@ -158,6 +158,17 @@
                 <font>regular24</font>
                 <label>[COLOR active]$LOCALIZE[21396]: [/COLOR]$INFO[player.chapter]$INFO[player.chaptercount, / ]</label>
                 <visible>player.chaptercount</visible>
+            </control>
+            <!-- Ends at -->
+            <control type="label">
+                <bottom>65</bottom>
+                <right>420</right>
+                <width>400</width>
+                <height>30</height>
+                <align>right</align>
+                <aligny>center</aligny>
+                <font>regular24</font>
+                <label>$INFO[Player.FinishTime,[COLOR active]$LOCALIZE[31118]: [/COLOR],]</label>
             </control>
             <!-- Remaining Time -->
             <control type="label">

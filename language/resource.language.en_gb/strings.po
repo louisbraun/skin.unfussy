@@ -491,3 +491,6 @@ msgctxt "#31117"
 msgid "jump to prev/next channel group when reaching start/end of channels list"
 msgstr ""
 
+msgctxt "#31118"
+msgid "ends at"
+msgstr ""
