@@ -903,6 +903,40 @@
         </definition>
     </include>
 
+    <include name="widget_item_movies_landscape">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <width>346</width>
+                <include content="widget_item_back">
+                    <param name="active">$PARAM[active]</param>
+                </include>
+                <control type="image">
+                    <left>1</left>
+                    <top>1</top>
+                    <width>344</width>
+                    <height>198</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture>$INFO[ListItem.Art(fanart)]</texture>
+                </control>
+                <control type="label">
+                    <top>200</top>
+                    <left>10</left>
+                    <width>324</width>
+                    <height>50</height>
+                    <font>regular24</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <include content="widget_item_action">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="icon" value="buttons/play" />
+                </include>
+            </control>
+        </definition>
+    </include>
+
     <include name="widget_item_episode">
         <param name="active">false</param>
         <definition>
