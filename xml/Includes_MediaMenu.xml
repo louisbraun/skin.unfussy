@@ -10,19 +10,19 @@
 
     <include name="media_menu">
         <control type="group">
-            <left>-400</left>
+            <left>-450</left>
             <top>60</top>
             <animation type="Conditional" condition="ControlGroup(9000).HasFocus" reversible="true">
-                <effect type="slide" start="0" end="400" time="400" tween="cubic" easing="out" />
+                <effect type="slide" start="0" end="450" time="400" tween="cubic" easing="out" />
             </animation>
             <control type="image">
-                <width>400</width>
+                <width>450</width>
                 <height>60</height>
                 <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
             </control>
             <control type="grouplist" id="9000">
                 <top>60</top>
-                <width>400</width>
+                <width>450</width>
                 <onleft>50</onleft>
                 <onright>50</onright>
                 <onback>50</onback>
@@ -35,7 +35,7 @@
                     <radioposx>370</radioposx>
                     <font>regular24</font>
                     <textcolor>white</textcolor>
-                    <label>Ansicht</label>
+                    <label>$LOCALIZE[582]</label>
                     <label2>[B]$INFO[Container.Viewmode][/B]</label2>
                     <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
                     <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
@@ -78,7 +78,7 @@
                     <radioposx>370</radioposx>
                     <font>regular24</font>
                     <textcolor>white</textcolor>
-                    <label>Sortierung</label>
+                    <label>$LOCALIZE[21429]</label>
                     <label2>[B]$INFO[Container.SortMethod][/B]</label2>
                     <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
                     <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
@@ -91,7 +91,7 @@
                     <radioposx>370</radioposx>
                     <font>regular24</font>
                     <textcolor>white</textcolor>
-                    <label>Reihenfolge</label>
+                    <label>$LOCALIZE[580]</label>
                     <label2>[B]$INFO[Container.SortOrder][/B]</label2>
                     <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
                     <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>

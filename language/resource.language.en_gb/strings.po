@@ -494,3 +494,7 @@ msgstr ""
 msgctxt "#31118"
 msgid "ends at"
 msgstr ""
+
+msgctxt "#31119"
+msgid "use channelgroups in tv guide"
+msgstr ""

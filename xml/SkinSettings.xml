@@ -338,25 +338,32 @@
                     <control type="radiobutton" id="405">
                         <include>button_settings</include>
                         <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31119]</label>
+                        <selected>Skin.HasSetting(tvguide_show_channelgroups)</selected>
+                        <onclick>Skin.ToggleSetting(tvguide_show_channelgroups)</onclick>
+                    </control>
+                    <control type="radiobutton" id="406">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                         <label>$LOCALIZE[31095]</label>
                         <selected>Skin.HasSetting(tvguide_show_detail)</selected>
                         <onclick>Skin.ToggleSetting(tvguide_show_detail)</onclick>
                     </control>
-                    <control type="radiobutton" id="406">
+                    <control type="radiobutton" id="407">
                         <include>button_settings</include>
                         <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                         <label>$LOCALIZE[31102]</label>
                         <selected>Skin.HasSetting(hide_channelnumbers)</selected>
                         <onclick>Skin.ToggleSetting(hide_channelnumbers)</onclick>
                     </control>
-                    <control type="radiobutton" id="407">
+                    <control type="radiobutton" id="408">
                         <include>button_settings</include>
                         <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                         <label>$LOCALIZE[31096]</label>
                         <selected>Skin.HasSetting(start_live_tv)</selected>
                         <onclick>Skin.ToggleSetting(start_live_tv)</onclick>
                     </control>
-                    <control type="radiobutton" id="408">
+                    <control type="radiobutton" id="409">
                         <include>button_settings</include>
                         <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                         <label>$LOCALIZE[31101]</label>

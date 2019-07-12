@@ -2094,11 +2094,14 @@
                         </include>
                     </focusedchannellayout>
                     <itemlayout height="80" width="60">
-                        <include content="pvr_tvguide_griditem" />
+                        <include content="pvr_tvguide_griditem">
+                            <param name="view_id" value="$PARAM[view_id]" />
+                        </include>
                     </itemlayout>
                     <focusedlayout height="80" width="60">
                         <include content="pvr_tvguide_griditem">
                             <param name="active" value="true" />
+                            <param name="view_id" value="$PARAM[view_id]" />
                         </include>
                     </focusedlayout>
                 </control>
@@ -2106,6 +2109,7 @@
                 <include>pvr_tvguide_channelnumber_input</include>
                 <include>pvr_tvguide_detail</include>
             </control>
+            <include condition="Skin.HasSetting(tvguide_show_channelgroups)">pvr_tvguide_channelgroups</include>            
         </definition>
     </include>
 
@@ -2230,11 +2234,17 @@
 
     <include name="pvr_tvguide_griditem">
         <param name="active">false</param>
+        <param name="view_id">50</param>
         <definition>
             <control type="image" id="1">
-                <visible>$PARAM[active]</visible>
+                <visible>$PARAM[active] + Control.HasFocus($PARAM[view_id])</visible>
                 <aspectratio>stretch</aspectratio>
                 <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+            </control>
+            <control type="image" id="1">
+                <visible>$PARAM[active] + !Control.HasFocus($PARAM[view_id])</visible>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="activedialog">backgrounds/overlay_background.png</texture>
             </control>
             <control type="label" id="1">
                 <left>6</left>
@@ -2334,6 +2344,7 @@
     <include name="pvr_tvguide_detail">
         <control type="group">
             <visible>Skin.HasSetting(tvguide_show_detail)</visible>
+            <visible>!String.IsEqual(Container.ViewMode,$LOCALIZE[31066])</visible>
             <top>-160</top>
             <height>200</height>
             <control type="image">
@@ -2394,6 +2405,78 @@
         </control>
     </include>
 
+    <include name="pvr_tvguide_channelgroups">
+        <control type="list" id="11">
+            <include>openclose_slight_top</include>
+            <top>60</top>
+            <height>85</height>
+            <onup>50</onup>
+            <ondown>50</ondown>
+            <orientation>horizontal</orientation>
+            <scrolltime tween="sine" easing="out">200</scrolltime>
+            <itemlayout width="384">
+                <include content="pvr_tvguide_channelgroupitem"/>
+            </itemlayout>
+            <focusedlayout width="384">
+                <include content="pvr_tvguide_channelgroupitem">
+                    <param name="active">true</param>
+                </include>
+            </focusedlayout>
+        </control>
+    </include>
+
+    <include name="pvr_tvguide_channelgroupitem">
+        <param name="active">false</param>
+        <definition>
+            <control type="image">
+                <height>80</height>
+                <visible>!$PARAM[active]</visible>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active] + !Control.HasFocus(11)</visible>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="activedialog">backgrounds/overlay_background.png</texture>
+            </control>
+            <control type="image">
+                <visible>$PARAM[active] + Control.HasFocus(11)</visible>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+            </control>
+            <control type="image">
+                <height>1</height>
+                <top>0</top>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <width>1</width>
+                <height>80</height>
+                <right>0</right>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="label">
+                <visible>!$PARAM[active]</visible>
+                <height>80</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>white</textcolor>
+                <font>light36</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="label">
+                <visible>$PARAM[active]</visible>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>white</textcolor>
+                <font>light44</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </definition>
+    </include>
+
     <include name="pvr_tvguide_decoration">
         <control type="image">
             <width>200</width>
@@ -2426,7 +2509,8 @@
             <align>right</align>
             <orientation>horizontal</orientation>
             <itemgap>10</itemgap>
-            <onup>50</onup>
+            <onup condition="Skin.HasSetting(tvguide_show_channelgroups)">11</onup>
+            <onup condition="!Skin.HasSetting(tvguide_show_channelgroups)">50</onup>
             <ondown>50</ondown>
             <include content="button_round">
                 <param name="id" value="401" />

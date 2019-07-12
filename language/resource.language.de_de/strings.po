@@ -494,3 +494,7 @@ msgstr "Am Anfang/Ende der Liste zur vorherigen/nächsten Kanalgruppe springen"
 msgctxt "#31118"
 msgid "ends at"
 msgstr "Endet um"
+
+msgctxt "#31119"
+msgid "use channelgroups in tv guide"
+msgstr "Kanalgruppen im TV Guide benutzen"
