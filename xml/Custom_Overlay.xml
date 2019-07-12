@@ -1345,8 +1345,10 @@
                 <param name="value61" value="$INFO[ListItem.Duration, [COLOR active][B]Duration[/B]:[/COLOR] , [CR]]" />
                 <param name="value62" value="$INFO[ListItem.DBTYPE, [COLOR active][B]DBTYPE[/B]:[/COLOR] , [CR]]" />
                 <param name="value63" value="$INFO[ListItem.DBID, [COLOR active][B]DBID[/B]:[/COLOR] , [CR]]" />
+                <!--
                 <param name="value64" value="$INFO[ListItem.Cast, [COLOR active][B]Cast[/B]:[/COLOR] , [CR]]" />
                 <param name="value65" value="$INFO[ListItem.CastAndRole, [COLOR active][B]CastAndRole[/B]:[/COLOR] , [CR]]" />
+                -->
                 <param name="value66" value="$INFO[ListItem.Studio, [COLOR active][B]Studio[/B]:[/COLOR] , [CR]]" />
                 <param name="value67" value="$INFO[ListItem.Top250, [COLOR active][B]Top250[/B]:[/COLOR] , [CR]]" />
                 <param name="value68" value="$INFO[ListItem.Trailer, [COLOR active][B]Trailer[/B]:[/COLOR] , [CR]]" />

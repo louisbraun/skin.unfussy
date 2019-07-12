@@ -87,7 +87,7 @@
             <control type="group">
                 <left>1280</left>
                 <control type="grouplist">
-                    <top>150</top>
+                    <top>130</top>
                     <width>600</width>
                     <align>left</align>
                     <orientation>vertical</orientation>
@@ -153,6 +153,18 @@
                         <height>30</height>
                         <font>regular24</font>
                         <label>$INFO[ListItem.Status,[COLOR active]$LOCALIZE[126]:[/COLOR] ,]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(ListItem.PlayCount)</visible>
+                        <height>30</height>
+                        <font>regular24</font>
+                        <label>$INFO[ListItem.PlayCount,[COLOR active]$LOCALIZE[21441]:[/COLOR] ,]</label>
+                    </control>
+                    <control type="label">
+                        <visible>!String.IsEmpty(ListItem.LastPlayed)</visible>
+                        <height>30</height>
+                        <font>regular24</font>
+                        <label>$INFO[ListItem.LastPlayed,[COLOR active]$LOCALIZE[568]:[/COLOR] ,]</label>
                     </control>
                 </control>
                 <control type="group">

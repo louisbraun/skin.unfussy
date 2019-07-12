@@ -245,7 +245,7 @@ msgstr "Lade Trailer zu"
 
 msgctxt "#31056"
 msgid "Rated"
-msgstr "Bewertung"
+msgstr "Freigabe"
 
 msgctxt "#31057"
 msgid "Mood"
