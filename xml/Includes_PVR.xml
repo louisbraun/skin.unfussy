@@ -1621,7 +1621,7 @@
                 <height>30</height>
                 <aligny>center</aligny>
                 <font>regular24</font>
-                <label>$INFO[ListItem.EpisodeName]</label>
+                <label>$VAR[PVRListitemEpisodeName]</label>
             </control>
             <control type="label">
                 <right>20</right>
@@ -1721,7 +1721,7 @@
                     <height>40</height>
                     <aligny>center</aligny>
                     <font>light36</font>
-                    <label>$INFO[Container(50).ListItem.EpisodeName]</label>
+                    <label>$VAR[PVRListitemEpisodeName]</label>
                 </control>
                 <control type="label">
                     <visible>!String.IsEmpty(Container(50).ListItem.Genre)</visible>
