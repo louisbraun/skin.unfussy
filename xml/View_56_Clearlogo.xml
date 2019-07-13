@@ -241,7 +241,7 @@
                         <height>auto</height>
                     </control>
                 </control>
-                <control type="group">
+                <control type="grouplist">
                     <visible>String.IsEmpty(ListItem.Art(discart))</visible>
                     <top>20</top>
                     <left>400</left>
