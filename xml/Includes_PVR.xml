@@ -2085,7 +2085,7 @@
                     <rulerlayout height="50">
                         <include>pvr_tvguide_rulerlayout</include>
                     </rulerlayout>
-                    <channellayout height="80" width="200">
+                    <channellayout height="80" width="220">
                         <include content="pvr_tvguide_channelitem" />
                     </channellayout>
                     <focusedchannellayout height="80" width="200">
@@ -2171,6 +2171,7 @@
         <param name="active">false</param>
         <definition>
             <control type="image" id="2">
+                <width>220</width>
                 <visible>$PARAM[active]</visible>
                 <aspectratio>stretch</aspectratio>
                 <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
@@ -2203,9 +2204,9 @@
                     <label>$INFO[ListItem.ChannelNumberLabel]</label>
                 </control>
                 <control type="image">
-                    <left>35</left>
+                    <left>50</left>
                     <top>0</top>
-                    <width>150</width>
+                    <width>170</width>
                     <height>80</height>
                     <align>center</align>
                     <texture fallback="DefaultTVGuide.png">$INFO[ListItem.Icon]</texture>
@@ -2216,7 +2217,7 @@
                 <visible>Skin.HasSetting(hide_channelnumbers)</visible>
                 <left>10</left>
                 <top>0</top>
-                <width>180</width>
+                <width>200</width>
                 <height>80</height>
                 <align>center</align>
                 <texture fallback="DefaultTVGuide.png">$INFO[ListItem.Icon]</texture>
@@ -2225,7 +2226,7 @@
             <control type="image">
                 <left>0</left>
                 <top>80</top>
-                <width>200</width>
+                <width>220</width>
                 <height>1</height>
                 <texture colordiffuse="border">colors/white.png</texture>
             </control>
@@ -2479,7 +2480,7 @@
 
     <include name="pvr_tvguide_decoration">
         <control type="image">
-            <width>200</width>
+            <width>220</width>
             <height>1</height>
             <top>89</top>
             <aspectratio>stretch</aspectratio>
@@ -2488,7 +2489,7 @@
         <control type="image">
             <top>40</top>
             <width>1</width>
-            <left>200</left>
+            <left>220</left>
             <aspectratio>stretch</aspectratio>
             <texture colordiffuse="border">colors/white.png</texture>
         </control>
