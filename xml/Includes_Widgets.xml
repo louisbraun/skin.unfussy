@@ -58,6 +58,7 @@
         <param name="onclick"></param>
         <param name="useonclick">false</param>
         <param name="limit"></param>
+        <param name="showplaystatus">false</param>
         <definition>
             <include content="widget_header_mainmenu">
                 <param name="id">$PARAM[id]</param>
@@ -82,12 +83,14 @@
                 <itemlayout width="$PARAM[itemwidth]" height="$PARAM[height]">
                     <include content="widget_item_$PARAM[type]">
                         <param name="id">$PARAM[id]</param>
+                        <param name="showplaystatus">$PARAM[showplaystatus]</param>
                     </include>
                 </itemlayout>
                 <focusedlayout width="$PARAM[itemwidth]" height="$PARAM[height]">
                     <include content="widget_item_$PARAM[type]">
                         <param name="active">true</param>
                         <param name="id">$PARAM[id]</param>
+                        <param name="showplaystatus">$PARAM[showplaystatus]</param>
                     </include>
                 </focusedlayout>
                 <include condition="$PARAM[static_content]">$PARAM[path]</include>
@@ -188,7 +191,7 @@
                             <width>60</width>
                             <height>60</height>
                             <aspectratio>scale</aspectratio>
-                            <texture colordiffuse="active">buttons/button_round_3d.png</texture>
+                            <texture colordiffuse="active">buttons/badge.png</texture>
                         </control>
                         <control type="image">
                             <left>2</left>
@@ -871,6 +874,7 @@
 
     <include name="widget_item_movies">
         <param name="active">false</param>
+        <param name="showplaystatus">false</param>
         <definition>
             <control type="group">
                 <width>250</width>
@@ -895,6 +899,12 @@
                     <aligny>center</aligny>
                     <label>$INFO[ListItem.Label]</label>
                 </control>
+                <include content="widget_item_status">
+                    <param name="top" value="328" />
+                    <param name="top2" value="320" />
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="showplaystatus" value="$PARAM[showplaystatus]" />
+                </include>
                 <include content="widget_item_action">
                     <param name="active" value="$PARAM[active]" />
                     <param name="icon" value="buttons/play" />
@@ -905,6 +915,7 @@
 
     <include name="widget_item_movies_landscape">
         <param name="active">false</param>
+        <param name="showplaystatus">false</param>
         <definition>
             <control type="group">
                 <width>346</width>
@@ -929,6 +940,10 @@
                     <aligny>center</aligny>
                     <label>$INFO[ListItem.Label]</label>
                 </control>
+                <include content="widget_item_status">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="showplaystatus" value="$PARAM[showplaystatus]" />
+                </include>
                 <include content="widget_item_action">
                     <param name="active" value="$PARAM[active]" />
                     <param name="icon" value="buttons/play" />
@@ -939,6 +954,7 @@
 
     <include name="widget_item_episode">
         <param name="active">false</param>
+        <param name="showplaystatus">false</param>
         <definition>
             <control type="group">
                 <width>531</width>
@@ -960,7 +976,7 @@
                     <height>198</height>
                     <aspectratio>scale</aspectratio>
                     <texture>$INFO[ListItem.Art(thumb)]</texture>
-                </control>
+                </control>        
                 <control type="label">
                     <top>200</top>
                     <left>185</left>
@@ -981,6 +997,10 @@
                     <aligny>center</aligny>
                     <label>$INFO[ListItem.Label]</label>
                 </control>
+                <include content="widget_item_status">
+                    <param name="active" value="$PARAM[active]" />
+                    <param name="showplaystatus" value="$PARAM[showplaystatus]" />
+                </include>
                 <include content="widget_item_action">
                     <param name="active" value="$PARAM[active]" />
                     <param name="icon" value="buttons/play" />
@@ -1372,6 +1392,58 @@
         </definition>
     </include>
 
+    <include name="widget_item_status">
+        <param name="top">155</param>
+        <param name="top2">145</param>
+        <param name="active">false</param>
+        <param name="showplaystatus">false</param>
+        <definition>
+            <control type="group">
+                <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
+                <visible>!String.IsEqual(ListItem.DBTYPE,tvshow) | [String.IsEqual(ListItem.DBTYPE,tvshow) + Integer.IsEqual(ListItem.Property(UnWatchedEpisodes),0)]</visible>
+                <visible>$PARAM[showplaystatus]</visible>
+                <control type="image">
+                    <top>$PARAM[top2]</top>
+                    <right>5</right>
+                    <width>50</width>
+                    <height>50</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture colordiffuse="activedialog">buttons/badge.png</texture>
+                </control>
+                <control type="image">
+                    <top>$PARAM[top]</top>
+                    <right>14</right>
+                    <width>32</width>
+                    <height>32</height>
+                    <texture>overlays/$INFO[ListItem.Overlay]</texture>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(ListItem.DBTYPE,tvshow)</visible>
+                <visible>$PARAM[showplaystatus]</visible>
+                <visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
+                <control type="image">
+                    <top>$PARAM[top2]</top>
+                    <right>5</right>
+                    <width>50</width>
+                    <height>50</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture colordiffuse="activedialog">buttons/badge_new.png</texture>
+                </control>
+                <control type="label">
+                    <top>$PARAM[top2]</top>
+                    <right>5</right>
+                    <width>50</width>
+                    <height>50</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>bold16</font>
+                    <label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
     <include name="widget_item_action">
         <param name="active">false</param>
         <param name="icon"></param>
@@ -1386,7 +1458,7 @@
                     <width>60</width>
                     <height>60</height>
                     <aspectratio>scale</aspectratio>
-                    <texture colordiffuse="active">buttons/button_round_3d.png</texture>
+                    <texture colordiffuse="active">buttons/badge.png</texture>
                 </control>
                 <control type="image">
                     <right>5</right>
@@ -1397,6 +1469,7 @@
                 </control>
                 <control type="label">
                     <visible>$PARAM[showduration]</visible>
+                    <visible>!String.IsEqual(ListItem.DBTYPE,tvshow)</visible>
                     <top>0</top>
                     <left>5</left>
                     <height>20</height>
