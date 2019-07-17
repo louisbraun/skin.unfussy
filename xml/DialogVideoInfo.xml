@@ -98,7 +98,7 @@
                         <visible>!String.IsEmpty(VideoPlayer.Episode)</visible>
                         <height>30</height>
                         <font>regular24</font>
-                        <label>$INFO[VideoPlayer.Season,[COLOR active]$LOCALIZE[36904]:[/COLOR] ,] $INFO[VideoPlayer.Episode,[COLOR active]$LOCALIZE[36906]:[/COLOR] ,]</label>
+                        <label>$INFO[ListItem.Season,[COLOR active]$LOCALIZE[36904]:[/COLOR] ,] $INFO[ListItem.Episode,[COLOR active]$LOCALIZE[36906]:[/COLOR] ,]</label>
                     </control>
                     <control type="label">
                         <visible>!String.IsEmpty(ListItem.Director)</visible>
@@ -253,7 +253,7 @@
             </include>
             <include content="button_round">
                 <param name="id">11</param>
-                <param name="visible">System.HasAddon(plugin.video.youtube) + !String.IsEmpty(ListItem.Trailer)</param>
+                <param name="visible">!String.IsEmpty(ListItem.Trailer)</param>
                 <param name="onclick" value="SetProperty(custombusy,true,home)" />
                 <param name="onclick2" value="SetProperty(custombusyreason,trailer,home)" />
                 <param name="onclick3" value="SetProperty(custombusylabel,$INFO[ListItem.Title],home)" />

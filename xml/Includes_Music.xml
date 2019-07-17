@@ -131,7 +131,7 @@
                 </control>
                 <!-- songs -->
                 <control type="grouplist">
-                    <visible>!Pvr.IsPlayingRadio</visible>
+                    <visible>!Pvr.IsPlayingRadio + !Player.IsInternetStream</visible>
                     <visible>!String.IsEmpty(MusicPlayer.Offset(-1).Title)</visible>
                     <top>130</top>
                     <width>1100</width>
@@ -157,7 +157,7 @@
                     </control>
                 </control>
                 <control type="grouplist">
-                    <visible>!Pvr.IsPlayingRadio</visible>
+                    <visible>!Pvr.IsPlayingRadio + !Player.IsInternetStream</visible>
                     <visible>String.IsEmpty(MusicPlayer.Offset(-1).Title)</visible>
                     <top>130</top>
                     <width>1100</width>
