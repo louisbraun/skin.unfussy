@@ -13,9 +13,7 @@
             <visible>!Window.IsVisible(1104)</visible>
             <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)</visible>
             <include content="info_header">
-                <param name="title" value="$LOCALIZE[4]" />
-                <param name="showicon" value="true" />
-                <param name="icon" value="icons/pvr/epg.png" />
+                <param name="show_pvr_running" value="true" />
             </include>
             <include content="pvr_tvguide_view">
                 <param name="view_id">50</param>

@@ -400,7 +400,7 @@ msgid "hide home widgets when player is active"
 msgstr ""
 
 msgctxt "#31095"
-msgid "show detailed information for selected broadcast in tv guide"
+msgid "show detailed information for selected broadcast"
 msgstr ""
 
 msgctxt "#31096"
@@ -408,7 +408,7 @@ msgid "start live tv after watched a recording"
 msgstr ""
 
 msgctxt "#31097"
-msgid "use alternative channel guide with channel groups"
+msgid "use channel groups"
 msgstr ""
 
 msgctxt "#31098"
@@ -456,7 +456,7 @@ msgid "Same director"
 msgstr ""
 
 msgctxt "#31109"
-msgid "Use alternative Channel List with broadcasts per channel"
+msgid "Use List with broadcasts per channel"
 msgstr ""
 
 msgctxt "#31110"
@@ -495,6 +495,30 @@ msgctxt "#31118"
 msgid "ends at"
 msgstr ""
 
-msgctxt "#31119"
-msgid "use channelgroups in tv guide"
+msgctxt "#31120"
+msgid "use horizontal layout"
+msgstr ""
+
+msgctxt "#31121"
+msgid "Now Playing"
+msgstr ""
+
+msgctxt "#31122"
+msgid "till"
+msgstr ""
+
+msgctxt "#31123"
+msgid "Settings Channel Guide"
+msgstr ""
+
+msgctxt "#31124"
+msgid "Settings TV Guide"
+msgstr ""
+
+msgctxt "#31125"
+msgid "Settings Channel List"
+msgstr ""
+
+msgctxt "#31126"
+msgid "Common LiveTV Settings"
 msgstr ""

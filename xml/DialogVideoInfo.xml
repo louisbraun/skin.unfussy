@@ -253,7 +253,7 @@
             </include>
             <include content="button_round">
                 <param name="id">11</param>
-                <param name="visible">!String.IsEmpty(ListItem.Trailer)</param>
+                <param name="visible">Control.IsEnabled(11)</param>
                 <param name="onclick" value="SetProperty(custombusy,true,home)" />
                 <param name="onclick2" value="SetProperty(custombusyreason,trailer,home)" />
                 <param name="onclick3" value="SetProperty(custombusylabel,$INFO[ListItem.Title],home)" />

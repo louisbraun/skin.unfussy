@@ -11,9 +11,7 @@
     <controls>
         <include>background</include>
         <include content="info_header">
-            <param name="title" value="$VAR[BreadcrumbsPVRChannels]" />
-            <param name="showicon" value="true" />
-            <param name="icon" value="icons/mainmenu/$VAR[BreadcrumbsPVRIcon].png" />
+            <param name="show_pvr_running" value="true" />
         </include>
         <control type="group">
             <include>openclose_fade_slight_left</include>

@@ -2687,6 +2687,190 @@
         </control>
     </include>
 
+    <include name="pvr_channelosd_vertical">
+        <include content="pvr_osd_detail" />
+        <control type="group">
+            <include>openclose_fade_slight_left</include>
+            <width>680</width>
+            <control type="image">
+                <width>680</width>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="fixedlist" id="11">
+                <onright>SetProperty(showdetail,true)</onright>
+                <onleft condition="!String.IsEqual(Window.Property(showdetail),true)">Close</onleft>
+                <onleft condition="String.IsEqual(Window.Property(showdetail),true)">ClearProperty(showdetail)</onleft>
+                <onup>11</onup>
+                <ondown>11</ondown>
+                <orientation>vertical</orientation>
+                <movement>5</movement>
+                <focusposition>5</focusposition>
+                <scrolltime tween="cubic" easing="out">400</scrolltime>
+                <itemlayout width="680" height="100">
+                    <include content="pvr_channelsosd_item" />
+                </itemlayout>
+                <focusedlayout width="680" height="100">
+                    <include content="pvr_channelsosd_item">
+                        <param name="active" value="true" />
+                    </include>
+                </focusedlayout>
+            </control>
+        </control>
+    </include>
+
+    <include name="pvr_channelosd_horizontal">
+        <include content="info_header">
+            <param name="show_pvr_running">true</param>
+        </include>
+        <control type="group">
+            <include>openclose_slight_bottom</include>
+            <bottom>0</bottom>
+            <height>300</height>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="fixedlist" id="11">
+                <left>420</left>
+                <orientation>vertical</orientation>
+                <movement>1</movement>
+                <focusposition>1</focusposition>
+                <scrolltime tween="cubic" easing="out">400</scrolltime>
+                <itemlayout width="900" height="100">
+                    <include content="pvr_channelsosd_item" />
+                </itemlayout>
+                <focusedlayout width="900" height="100">
+                    <include content="pvr_channelsosd_item">
+                        <param name="active" value="true" />
+                    </include>
+                </focusedlayout>
+            </control>
+            <control type="image">
+                <left>10</left>
+                <top>10</top>
+                <width>390</width>
+                <height>280</height>
+                <aspectratio>keep</aspectratio>
+                <texture>$INFO[Container(11).ListItem.Icon]</texture>
+            </control>
+            <control type="grouplist">
+                <top>10</top>
+                <right>10</right>
+                <width>570</width>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+                <control type="label">
+                    <height>30</height>
+                    <aligny>center</aligny>
+                    <font>regular30</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[Container(11).ListItem.Title]</label>
+                </control>
+                <control type="label">
+                    <height>30</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[Container(11).ListItem.StartTime] - $INFO[Container(11).ListItem.EndTime] $INFO[Container(11).ListItem.Duration,(, min)]</label>
+                </control>
+                <control type="textbox">
+                    <top>10</top>
+                    <height>210</height>
+                    <font>regular20</font>
+                    <label>$INFO[Container(11).ListItem.Plot]</label>
+                    <autoscroll delay="3000" time="2000" repeat="3000">true</autoscroll>
+                </control>
+            </control>
+         </control>
+    </include>
+
+    <include name="pvr_channelosd_groupsback_vertical">
+        <control type="group">
+            <width>780</width>
+            <visible>Skin.HasSetting(use_channelgroups)</visible>
+            <visible>!Skin.HasSetting(use_channelgroups_fullwidth)</visible>
+            <animation type="WindowOpen">
+                <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out" />
+                <effect type="slide" start="-320" end="0" time="300" tween="cubic" easing="out" />
+            </animation>
+            <animation type="WindowClose" condition="!String.IsEqual(Window.Property(noslide),true)">
+                <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+                <effect type="slide" start="0" end="-320" time="300" tween="cubic" easing="out" />
+            </animation>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(Window.Property(loadingchannels),true)</visible>
+                <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+                <control type="image">
+                    <centerleft>50%</centerleft>
+                    <centertop>50%</centertop>
+                    <width>100</width>
+                    <height>100</height>
+                    <visible>true</visible>
+                    <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                </control>
+                <control type="image">
+                    <centerleft>50%</centerleft>
+                    <centertop>50%</centertop>
+                    <width>70</width>
+                    <height>70</height>
+                    <visible>true</visible>
+                    <animation effect="rotate" end="360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture flipx="true" colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+    
+    <include name="pvr_channelosd_groupsback_horizontal">
+        <include content="info_header">
+            <param name="show_pvr_running">true</param>
+        </include>
+        <control type="group">
+            <bottom>0</bottom>
+            <height>300</height>
+            <animation type="WindowOpen">
+                <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out" />
+                <effect type="slide" start="0,300" end="0,0" time="300" tween="cubic" easing="out" />
+            </animation>
+            <animation type="WindowClose" condition="!String.IsEqual(Window.Property(noslide),true)">
+                <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+                <effect type="slide" start="0,0" end="0,300" time="300" tween="cubic" easing="out" />
+            </animation>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(Window.Property(loadingchannels),true)</visible>
+                <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+                <control type="image">
+                    <centerleft>40%</centerleft>
+                    <centertop>50%</centertop>
+                    <width>100</width>
+                    <height>100</height>
+                    <visible>true</visible>
+                    <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                </control>
+                <control type="image">
+                    <centerleft>40%</centerleft>
+                    <centertop>50%</centertop>
+                    <width>70</width>
+                    <height>70</height>
+                    <visible>true</visible>
+                    <animation effect="rotate" end="360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture flipx="true" colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                </control>
+            </control>
+        </control>
+    </include>
+
     <include name="pvr_channelsosd_item">
         <param name="active">false</param>
         <definition>
@@ -2879,6 +3063,52 @@
                 <width>95</width>
                 <height>30</height>
                 <font>regular20</font>
+                <align>right</align>
+                <aligny>center</aligny>
+                <label>$INFO[ListItem.Property(numchannels)]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="pvr_channelsosd_groupitem_hor">
+        <param name="active">false</param>
+        <definition>
+            <control type="group">
+                <visible>$PARAM[active]</visible>
+                <control type="image">
+                    <visible>Control.HasFocus(12)</visible>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="active">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+                <control type="image">
+                    <visible>!Control.HasFocus(12)</visible>
+                    <aspectratio>stretch</aspectratio>
+                    <texture colordiffuse="activedialog">backgrounds/overlay_background.png</texture>
+                    <bordertexture colordiffuse="activedialog">colors/white.png</bordertexture>
+                    <bordersize>1</bordersize>
+                </control>
+            </control>
+            <control type="textbox">
+                <visible>!String.IsEqual(ListItem.Property(group_activechannel),true)</visible>
+                <font>regular24</font>
+                <align>center</align>
+                <aligny>center</aligny>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="textbox">
+                <visible>String.IsEqual(ListItem.Property(group_activechannel),true)</visible>
+                <font>regular24</font>
+                <textcolor>selected</textcolor>
+                <align>center</align>
+                <aligny>center</aligny>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="label">
+                <right>10</right>
+                <height>25</height>
+                <font>regular16</font>
                 <align>right</align>
                 <aligny>center</aligny>
                 <label>$INFO[ListItem.Property(numchannels)]</label>
@@ -3271,6 +3501,47 @@
                         <font>regular24</font>
                         <label>$INFO[ListItem.Property(next_plot)]</label>
                     </control>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="pvr_osd_groups_detail_hor">
+        <definition>
+            <control type="image">
+                <top>10</top>
+                <left>10</left>
+                <width>280</width>
+                <height>280</height>
+                <aspectratio>keep</aspectratio>
+                <texture>$INFO[Container(13).ListItem.Icon]</texture>
+            </control>
+            <control type="grouplist">
+                <top>10</top>
+                <right>10</right>
+                <width>570</width>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+                <control type="label">
+                    <height>30</height>
+                    <aligny>center</aligny>
+                    <font>regular30</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[Container(13).ListItem.Property(now_title)]</label>
+                </control>
+                <control type="label">
+                    <height>30</height>
+                    <aligny>center</aligny>
+                    <font>regular24</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[Container(13).ListItem.Property(now_starttime)] - $INFO[Container(13).ListItem.Property(now_endtime)] $INFO[Container(13).ListItem.Property(now_runtime),(, min)]</label>
+                </control>
+                <control type="textbox">
+                    <top>10</top>
+                    <height>210</height>
+                    <font>regular20</font>
+                    <label>$INFO[Container(13).ListItem.Property(now_plot)]</label>
+                    <autoscroll delay="3000" time="2000" repeat="3000">true</autoscroll>
                 </control>
             </control>
         </definition>

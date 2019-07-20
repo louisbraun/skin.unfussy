@@ -400,16 +400,16 @@ msgid "hide home widgets when player is active"
 msgstr "Home Widgets bei aktiver Wiedergabe ausblenden"
 
 msgctxt "#31095"
-msgid "show detailed information for selected broadcast in tv guide"
-msgstr "Detailinformationen der ausgewählten Sendung im TV Guide anzeigen"
+msgid "show detailed information for selected broadcast"
+msgstr "Detailinformationen der ausgewählten Sendung anzeigen"
 
 msgctxt "#31096"
 msgid "start live tv after watched a recording"
 msgstr "Live TV nach Beenden der Wiedergabe einer Aufzeichnung starten"
 
 msgctxt "#31097"
-msgid "use alternative channel guide with channel groups"
-msgstr "Alternativen Kanal Guide mit Kanalgruppen benutzen"
+msgid "use channel groups"
+msgstr "Kanalgruppen benutzen"
 
 msgctxt "#31098"
 msgid "Home"
@@ -456,8 +456,8 @@ msgid "Same director"
 msgstr "Filme dieses Regisseurs"
 
 msgctxt "#31109"
-msgid "Use alternative Channel List with broadcasts per channel"
-msgstr "Alternative Kanalliste mit Sendungen pro Kanal benutzen"
+msgid "Use List with broadcasts per channel"
+msgstr "Liste mit Sendungen pro Kanal benutzen"
 
 msgctxt "#31110"
 msgid "Configure Unfussy"
@@ -495,6 +495,30 @@ msgctxt "#31118"
 msgid "ends at"
 msgstr "Endet um"
 
-msgctxt "#31119"
-msgid "use channelgroups in tv guide"
-msgstr "Kanalgruppen im TV Guide benutzen"
+msgctxt "#31120"
+msgid "use horizontal layout"
+msgstr "Horizontales Layout benutzen"
+
+msgctxt "#31121"
+msgid "Now Playing"
+msgstr "Jetzt läuft"
+
+msgctxt "#31122"
+msgid "till"
+msgstr "bis"
+
+msgctxt "#31123"
+msgid "Settings Channel Guide"
+msgstr "Einstellungen Kanal Guide"
+
+msgctxt "#31124"
+msgid "Settings TV Guide"
+msgstr "Einstellungen TV Guide"
+
+msgctxt "#31125"
+msgid "Settings Channel List"
+msgstr "Einstellungen Kanalliste"
+
+msgctxt "#31126"
+msgid "Common LiveTV Settings"
+msgstr "Allgemeine LiveTV Einstellungen"
