@@ -522,3 +522,19 @@ msgstr ""
 msgctxt "#31126"
 msgid "Common LiveTV Settings"
 msgstr ""
+
+msgctxt "#31127"
+msgid "Settings Movies"
+msgstr ""
+
+msgctxt "#31128"
+msgid "Settings Music"
+msgstr ""
+
+msgctxt "#31129"
+msgid "Miscellaneous"
+msgstr ""
+
+msgctxt "#31130"
+msgid "hide lyrics background"
+msgstr ""

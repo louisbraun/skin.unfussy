@@ -12,6 +12,7 @@
 	<depth>0.50</depth>
 	<controls>
 		<control type="image">
+			<visible>!Skin.HasSetting(hide_lyrics_background)</visible>
 			<height>300</height>
 			<texture colordiffuse="backgroundtransparent">colors/white.png</texture>
 		</control>

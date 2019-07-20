@@ -157,35 +157,22 @@
                 <control type="grouplist" id="200">
                     <onleft>101</onleft>
                     <onright>101</onright>
-                    <control type="radiobutton" id="201">
-                        <include>button_settings</include>
-                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                        <label>$LOCALIZE[31094]</label>
-                        <selected>Skin.HasSetting(hide_widgets)</selected>
-                        <onclick>Skin.ToggleSetting(hide_widgets)</onclick>
+                    <control type="label" id="201">
+                        <height>50</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <textcolor>active</textcolor>
+                        <font>regular30</font>
+                        <label>$LOCALIZE[31127]</label>
                     </control>
                     <control type="radiobutton" id="202">
-                        <include>button_settings</include>
-                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                        <label>$LOCALIZE[31104]</label>
-                        <selected>Skin.HasSetting(start_music_fullscreen)</selected>
-                        <onclick>Skin.ToggleSetting(start_music_fullscreen)</onclick>
-                    </control>
-                    <control type="radiobutton" id="203">
-                        <include>button_settings</include>
-                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
-                        <label>$LOCALIZE[31101]</label>
-                        <selected>Skin.HasSetting(use_view_animations)</selected>
-                        <onclick>Skin.ToggleSetting(use_view_animations)</onclick>
-                    </control>
-                    <control type="radiobutton" id="204">
                         <include>button_settings</include>
                         <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
                         <label>$LOCALIZE[31105]</label>
                         <selected>Skin.HasSetting(darken_watched)</selected>
                         <onclick>Skin.ToggleSetting(darken_watched)</onclick>
                     </control>
-                    <control type="button" id="205">
+                    <control type="button" id="203">
                         <visible>!String.IsEmpty(Skin.String(MovieGenreIcons.name))</visible>
                         <include>button_settings</include>
                         <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
@@ -194,7 +181,7 @@
                         <onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
                         <onclick>RunScript(script.image.resource.select,property=MovieGenreIcons&amp;type=resource.images.moviegenreicons)</onclick>
                     </control>
-                    <control type="button" id="206">
+                    <control type="button" id="204">
                         <visible>String.IsEmpty(Skin.String(MovieGenreIcons.name))</visible>
                         <include>button_settings</include>
                         <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
@@ -203,7 +190,36 @@
                         <onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
                         <onclick>RunScript(script.image.resource.select,property=MovieGenreIcons&amp;type=resource.images.moviegenreicons)</onclick>
                     </control>
-                    <control type="button" id="207">
+                    <control type="group" id="205">
+                        <height>50</height>
+                        <control type="image">
+                            <height>1</height>
+                            <aspectratio>stretch</aspectratio>
+                            <texture colordiffuse="border">colors/white.png</texture>
+                        </control>
+                        <control type="label">
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <textcolor>active</textcolor>
+                            <font>regular30</font>
+                            <label>$LOCALIZE[31128]</label>
+                        </control>
+                    </control>
+                    <control type="radiobutton" id="206">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31104]</label>
+                        <selected>Skin.HasSetting(start_music_fullscreen)</selected>
+                        <onclick>Skin.ToggleSetting(start_music_fullscreen)</onclick>
+                    </control>
+                    <control type="radiobutton" id="207">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31130]</label>
+                        <selected>Skin.HasSetting(hide_lyrics_background)</selected>
+                        <onclick>Skin.ToggleSetting(hide_lyrics_background)</onclick>
+                    </control>
+                    <control type="button" id="208">
                         <visible>!String.IsEmpty(Skin.String(MusicGenreIcons.name))</visible>
                         <include>button_settings</include>
                         <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
@@ -212,7 +228,7 @@
                         <onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
                         <onclick>RunScript(script.image.resource.select,property=MusicGenreIcons&amp;type=resource.images.musicgenreicons)</onclick>
                     </control>
-                    <control type="button" id="208">
+                    <control type="button" id="209">
                         <visible>String.IsEmpty(Skin.String(MusicGenreIcons.name))</visible>
                         <include>button_settings</include>
                         <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
@@ -220,6 +236,35 @@
                         <label2>$LOCALIZE[31114]</label2>
                         <onclick condition="!System.HasAddon(script.image.resource.select)">InstallAddon(script.image.resource.select)</onclick>
                         <onclick>RunScript(script.image.resource.select,property=MusicGenreIcons&amp;type=resource.images.musicgenreicons)</onclick>
+                    </control>
+                    <control type="group" id="210">
+                        <height>50</height>
+                        <control type="image">
+                            <height>1</height>
+                            <aspectratio>stretch</aspectratio>
+                            <texture colordiffuse="border">colors/white.png</texture>
+                        </control>
+                        <control type="label">
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <textcolor>active</textcolor>
+                            <font>regular30</font>
+                            <label>$LOCALIZE[31129]</label>
+                        </control>
+                    </control>
+                    <control type="radiobutton" id="211">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31094]</label>
+                        <selected>Skin.HasSetting(hide_widgets)</selected>
+                        <onclick>Skin.ToggleSetting(hide_widgets)</onclick>
+                    </control>
+                    <control type="radiobutton" id="212">
+                        <include>button_settings</include>
+                        <texturefocus colordiffuse="activedialog">colors/white.png</texturefocus>
+                        <label>$LOCALIZE[31101]</label>
+                        <selected>Skin.HasSetting(use_view_animations)</selected>
+                        <onclick>Skin.ToggleSetting(use_view_animations)</onclick>
                     </control>
                 </control>
             </control>

@@ -522,3 +522,19 @@ msgstr "Einstellungen Kanalliste"
 msgctxt "#31126"
 msgid "Common LiveTV Settings"
 msgstr "Allgemeine LiveTV Einstellungen"
+
+msgctxt "#31127"
+msgid "Settings Movies"
+msgstr "Einstellungen Filme"
+
+msgctxt "#31128"
+msgid "Settings Music"
+msgstr "Einstellungen Musik"
+
+msgctxt "#31129"
+msgid "Miscellaneous"
+msgstr "Verschiedenes"
+
+msgctxt "#31130"
+msgid "hide lyrics background"
+msgstr "Hintergrund bei Songtexten verbergen"

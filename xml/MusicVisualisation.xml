@@ -14,6 +14,8 @@
             <texture>$INFO[Player.Art(artist.fanart)]</texture>
         </control>
         <control type="multiimage">
+            <visible>System.HasAddon(script.artistslideshow)</visible>
+            <visible>Skin.HasSetting(music_background_fanart)</visible>
             <top>0</top>
             <left>0</left>
             <width>1920</width>
@@ -24,7 +26,6 @@
             <fadetime>600</fadetime>
             <loop>yes</loop>
             <imagepath background="true">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</imagepath>
-            <visible>System.HasAddon(script.artistslideshow)</visible>
         </control>
         <control type="image">
             <visible>Skin.HasSetting(music_background_fanart)</visible>
