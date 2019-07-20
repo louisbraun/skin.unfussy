@@ -285,6 +285,7 @@
                 <include condition="$PARAM[show_pvr_running]" content="info_header_pvr_running" />
                 <include>info_header_sortletter</include>
                 <include>info_header_listinfo</include>
+                <include>info_header_music_running</include>
             </control>
         </definition>
     </include>
@@ -294,8 +295,39 @@
         <param name="left">10</param>
         <definition>
             <control type="grouplist">
+                <visible>!String.IsEmpty(MusicPlayer.Title)</visible>
                 <left>$PARAM[left]</left>
                 <orientation>horizontal</orientation>
+                <width>700</width>
+                <control type="label">
+                    <include>header_label_item</include>
+                    <label>$PARAM[title]</label>
+                </control>
+                <control type="label">
+                    <visible>Window.IsActive(videos)</visible>
+                    <visible>!String.IsEqual(Container.Content,episodes)</visible>
+                    <visible>!String.IsEqual(Container.FolderName,Control.GetLabel(1))</visible>
+                    <include>header_label_item</include>
+                    <label>$INFO[Container.FolderName, / ]</label>
+                </control>
+                <control type="label">
+                    <visible>Window.IsActive(videos)</visible>
+                    <visible>String.IsEqual(Container.Content,episodes)</visible>
+                    <include>header_label_item</include>
+                    <label>$INFO[ListItem.TVShowTitle, / ]$INFO[Container.FolderName, / ]</label>
+                </control>
+                <control type="label">
+                    <visible>Window.IsActive(addonbrowser)</visible>
+                    <visible>!String.IsEqual(Container.FolderPath,addons://)</visible>
+                    <include>header_label_item</include>
+                    <label>$INFO[Container.FolderName, / ]</label>
+                </control>
+            </control>
+            <control type="grouplist">
+                <visible>String.IsEmpty(MusicPlayer.Title)</visible>
+                <left>$PARAM[left]</left>
+                <orientation>horizontal</orientation>
+                <width>1000</width>
                 <control type="label">
                     <include>header_label_item</include>
                     <label>$PARAM[title]</label>
@@ -332,6 +364,26 @@
         <textcolor>white</textcolor>
     </include>
 
+    <include name="info_header_sortletter">
+        <control type="label">
+            <top>0</top>
+            <left>1090</left>
+            <width>100</width>
+            <height>60</height>
+            <align>center</align>
+            <aligny>center</aligny>
+            <label>$INFO[ListItem.SortLetter]</label>
+            <font>light50</font>
+            <textcolor>active</textcolor>
+            <visible>!System.HasActiveModalDialog</visible>
+            <visible>Container.Scrolling</visible>
+            <visible>!Container.Content(seasons)</visible>
+            <visible>String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[563])</visible>
+            <animation effect="fade" start="0" end="100" time="200" reversible="true">VisibleChange</animation>
+            <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+        </control>
+    </include>
+
     <include name="info_header_listinfo">
         <param name="left">1180</param>
         <definition>
@@ -340,7 +392,7 @@
                 <left>$PARAM[left]</left>
                 <width>1000</width>
                 <control type="label">
-                    <top>6</top>
+                    <top>4</top>
                     <width>350</width>
                     <height>30</height>
                     <aligny>center</aligny>
@@ -349,7 +401,7 @@
                     <label>$INFO[Container.SortMethod,$LOCALIZE[31000]: [COLOR active],[/COLOR]]</label>
                 </control>
                 <control type="label">
-                    <top>30</top>
+                    <top>28</top>
                     <height>30</height>
                     <aligny>center</aligny>
                     <font>light24</font>
@@ -358,6 +410,64 @@
                 </control>
             </control>
         </definition>
+    </include>
+
+    <include name="info_header_pvr_running">
+        <control type="image">
+            <top>15</top>
+            <left>10</left>
+            <width>30</width>
+            <height>30</height>
+            <aspectratio>keep</aspectratio>
+            <texture colordiffuse="active">icons/arrowright.png</texture>
+        </control>
+        <control type="image">
+            <top>1</top>
+            <left>45</left>
+            <width>100</width>
+            <height>58</height>
+            <aspectratio>keep</aspectratio>
+            <texture>$INFO[Player.Icon]</texture>
+        </control>
+        <control type="label">
+            <left>160</left>
+            <height>60</height>
+            <aligny>center</aligny>
+            <font>light30</font>
+            <label>$INFO[VideoPlayer.Title] $INFO[VideoPlayer.EndTime,($LOCALIZE[31122] ,)]</label>
+        </control>
+    </include>
+
+    <include name="info_header_music_running">
+        <control type="group">
+            <visible>!String.IsEmpty(MusicPlayer.Title)</visible>
+            <left>800</left>
+            <control type="image">
+                <top>35</top>
+                <width>15</width>
+                <height>15</height>
+                <aspectratio>keep</aspectratio>
+                <texture colordiffuse="active">icons/arrowright.png</texture>
+            </control>
+            <control type="label">
+                <top>4</top>
+                <width>350</width>
+                <height>30</height>
+                <aligny>center</aligny>
+                <font>light20</font>
+                <textcolor>white</textcolor>
+                <label>$INFO[MusicPlayer.Artist] - $INFO[MusicPlayer.Album]</label>
+            </control>
+            <control type="label">
+                <top>28</top>
+                <left>20</left>
+                <width>330</width>
+                <height>30</height>
+                <aligny>center</aligny>
+                <font>light20</font>
+                <label>$INFO[MusicPlayer.Time]/$INFO[MusicPlayer.Duration]  [COLOR active]$INFO[MusicPlayer.TrackNumber]. $INFO[MusicPlayer.Title][/COLOR]</label>
+            </control>
+        </control>
     </include>
 
     <include name="info_header_weather_time">
@@ -389,51 +499,6 @@
                 <font>light60</font>
                 <textcolor>white</textcolor>
             </control>
-        </control>
-    </include>
-
-    <include name="info_header_sortletter">
-        <control type="label">
-            <top>0</top>
-            <left>1000</left>
-            <width>100</width>
-            <height>60</height>
-            <align>center</align>
-            <aligny>center</aligny>
-            <label>$INFO[ListItem.SortLetter]</label>
-            <font>light50</font>
-            <textcolor>active</textcolor>
-            <visible>!System.HasActiveModalDialog</visible>
-            <visible>Container.Scrolling</visible>
-            <visible>!Container.Content(seasons)</visible>
-            <visible>String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[563])</visible>
-            <animation effect="fade" start="0" end="100" time="200" reversible="true">VisibleChange</animation>
-            <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
-        </control>
-    </include>
-
-    <include name="info_header_pvr_running">
-        <control type="image">
-            <top>1</top>
-            <width>120</width>
-            <height>58</height>
-            <aspectratio>keep</aspectratio>
-            <texture>$INFO[Player.Icon]</texture>
-        </control>
-        <control type="label">
-            <left>130</left>
-            <height>25</height>
-            <aligny>center</aligny>
-            <font>light20</font>
-            <label>$LOCALIZE[31121] $INFO[VideoPlayer.EndTime,($LOCALIZE[31122] ,)]:</label>
-        </control>
-        <control type="label">
-            <left>130</left>
-            <top>20</top>
-            <height>40</height>
-            <aligny>center</aligny>
-            <font>light30</font>
-            <label>$INFO[VideoPlayer.Title]</label>
         </control>
     </include>
 
