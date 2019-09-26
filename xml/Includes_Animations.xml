@@ -567,170 +567,252 @@
     </include>
 
     <include name="positioning_videoinfo_buttons">
-        <animation type="Conditional" condition="Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)" reversible="false">
+        <animation type="Conditional" condition="
+            Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)" reversible="false">
+            <effect type="slide" end="970,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="
+              [Control.HasFocus(301) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1055,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="
-              [Control.HasFocus(301) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+              [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + !Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1140,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="
-              [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + !Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+              [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1225,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="
-              [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(301) + !Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + !Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(301) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+              [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(303) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(303) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(303) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(303) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(303) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1310,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="
-              [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(301) + !Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+              [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(303) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(301) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(303) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1395,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
-        <animation type="Conditional" condition="!Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(301) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)" reversible="false">
             <effect type="slide" end="1480,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
 
-        <animation type="Conditional" condition="Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)" reversible="false">
+            <effect type="slide" end="1055,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="
+              [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1140,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="
-              [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+              [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1225,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="
-              [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+              [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1310,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="
-              [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+              [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1395,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="
-              [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+              [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(8) + !Control.IsVisible(9) + Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(8) + Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1480,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
-        <animation type="Conditional" condition="!Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(8) + !Control.IsVisible(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)" reversible="false">
             <effect type="slide" end="1565,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
 
-        <animation type="Conditional" condition="Control.HasFocus(9) + Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)" reversible="false">
+            <effect type="slide" end="1140,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="
+              [Control.HasFocus(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + !Control.IsVisible(303)+ Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + Control.IsVisible(303)+ !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + Control.IsVisible(303)+ Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + Control.IsVisible(303)+ Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1225,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="
-              [Control.HasFocus(9) + !Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(9) + Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(9) + Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(9) + Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+              [Control.HasFocus(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + !Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + !Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1310,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="
-              [Control.HasFocus(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(9) + !Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(9) + !Control.IsVisible(11) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(9) + Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(9) + Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(9) + Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+              [Control.HasFocus(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1395,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="
-              [Control.HasFocus(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(9) + !Control.IsVisible(11) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
-            | [Control.HasFocus(9) + Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+              [Control.HasFocus(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(9) + !Control.IsVisible(11) + Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(9) + Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1480,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
-        <animation type="Conditional" condition="Control.HasFocus(9) + !Control.IsVisible(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(9) + !Control.IsVisible(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)" reversible="false">
             <effect type="slide" end="1565,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
 
-        <animation type="Conditional" condition="Control.HasFocus(11) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)" reversible="false">
+            <effect type="slide" end="1225,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="
+              [Control.HasFocus(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(11) + Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1310,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="
-              [Control.HasFocus(11) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(11) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)] 
-            | [Control.HasFocus(11) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+              [Control.HasFocus(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(11) + !Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)] 
+            | [Control.HasFocus(11) + !Control.IsVisible(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)] 
+            | [Control.HasFocus(11) + Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)] 
+            | [Control.HasFocus(11) + Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)] 
+            | [Control.HasFocus(11) + Control.IsVisible(303) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)] " reversible="false">
             <effect type="slide" end="1395,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="
-              [Control.HasFocus(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
-            | [Control.HasFocus(11) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)] 
-            | [Control.HasFocus(11) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+              [Control.HasFocus(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)] 
+            | [Control.HasFocus(11) + Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1480,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
-        <animation type="Conditional" condition="Control.HasFocus(11) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(11) + !Control.IsVisible(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)" reversible="false">
+            <effect type="slide" end="1565,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+
+        <animation type="Conditional" condition="Control.HasFocus(303) + Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)" reversible="false">
+            <effect type="slide" end="1310,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="
+              [Control.HasFocus(303) + !Control.IsVisible(302) + Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(303) + Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(303) + Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+            <effect type="slide" end="1395,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="
+              [Control.HasFocus(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + Control.IsVisible(6)]
+            | [Control.HasFocus(303) + !Control.IsVisible(302) + Control.IsVisible(13) + !Control.IsVisible(6)]
+            | [Control.HasFocus(303) + Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
+            <effect type="slide" end="1480,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(303) + !Control.IsVisible(302) + !Control.IsVisible(13) + !Control.IsVisible(6)]" reversible="false">
             <effect type="slide" end="1565,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>

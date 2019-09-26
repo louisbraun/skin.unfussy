@@ -538,3 +538,7 @@ msgstr ""
 msgctxt "#31130"
 msgid "hide lyrics background"
 msgstr ""
+
+msgctxt "#31131"
+msgid "Special Features"
+msgstr ""

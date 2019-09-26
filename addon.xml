@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="skin.unfussy" version="0.4.0" name="Unfussy" provider-name="Louis">
+<addon id="skin.unfussy" version="0.4.1" name="Unfussy" provider-name="Louis">
 	<requires>
 		<import addon="xbmc.gui" version="5.14.0"/>
 		<import addon="script.unfussy.helper" version="0.4.0"/>

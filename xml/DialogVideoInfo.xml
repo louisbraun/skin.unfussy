@@ -263,6 +263,16 @@
                 <param name="iconoffset">15</param>
             </include>
             <include content="button_round">
+                <param name="id">303</param>
+                <param name="visible">String.IsEqual(Window(home).Property(SpecialFeatures.Visible),true)</param>
+                <param name="onclick" value="Action(close)" />
+                <param name="onclick2" value="RunScript(plugin.video.specialfeatures,listitem)" />
+                <param name="icon">icons/buttons/cinema.png</param>
+                <param name="radius">80</param>
+                <param name="iconsize">50</param>
+                <param name="iconoffset">15</param>
+            </include>
+            <include content="button_round">
                 <param name="id">302</param>
                 <param name="visible">System.HasAddon(script.extendedinfo)</param>
                 <param name="onclick" value="Action(close)" />
