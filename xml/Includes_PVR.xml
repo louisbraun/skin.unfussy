@@ -1877,7 +1877,7 @@
                     <right>10</right>
                     <aligny>center</aligny>
                     <font>regular24</font>
-                    <label>$INFO[ListItem.Label]</label>
+                    <label>$INFO[ListItem.Label] $VAR[PVRListitemEpisodeName]</label>
                 </control>
                 <control type="label">
                     <top>8</top>
@@ -1959,7 +1959,7 @@
                         <height>40</height>
                         <aligny>center</aligny>
                         <font>light36</font>
-                        <label>$INFO[Container(50).ListItem.EpisodeName]</label>
+                        <label>$VAR[PVRListitemEpisodeName]</label>
                     </control>
                     <control type="label">
                         <visible>!String.IsEmpty(Container(50).ListItem.Genre)</visible>
@@ -1973,7 +1973,7 @@
                     <visible>String.IsEmpty(Container(50).ListItem.EpisodeName)</visible>
                     <top>310</top>
                     <height>540</height>
-                    <font>light30</font>
+                    <font>regular30</font>
                     <label>$INFO[Container(50).ListItem.Plot]</label>
                     <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
                 </control>
@@ -1981,7 +1981,7 @@
                     <visible>!String.IsEmpty(Container(50).ListItem.EpisodeName)</visible>
                     <top>350</top>
                     <height>500</height>
-                    <font>light30</font>
+                    <font>regular30</font>
                     <label>$INFO[Container(50).ListItem.Plot]</label>
                     <autoscroll delay="10000" time="1500" repeat="10000">true</autoscroll>
                 </control>
