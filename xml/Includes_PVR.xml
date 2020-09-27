@@ -22,7 +22,7 @@
                     <aspectratio>keep</aspectratio>
                     <texture>$INFO[Player.Art(thumb)]</texture>
                 </control>
-                <control type="label">
+                <control type="textbox">
                     <visible>!Skin.HasSetting(hide_channelnumbers)</visible>
                     <top>10</top>
                     <left>10</left>
@@ -32,7 +32,7 @@
                     <font>regular24</font>
                     <label>$INFO[VideoPlayer.ChannelNumberLabel] - $INFO[VideoPlayer.ChannelName]</label>
                 </control>
-                <control type="label">
+                <control type="textbox">
                     <visible>Skin.HasSetting(hide_channelnumbers)</visible>
                     <top>10</top>
                     <left>10</left>
