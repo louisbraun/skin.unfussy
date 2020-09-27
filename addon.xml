@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="skin.unfussy" version="0.4.3" name="Unfussy" provider-name="Louis">
+<addon id="skin.unfussy" version="0.4.4" name="Unfussy" provider-name="Louis">
 	<requires>
 		<import addon="xbmc.gui" version="5.14.0"/>
-		<import addon="script.unfussy.helper" version="0.4.0"/>
+		<import addon="script.unfussy.helper" version="0.4.1"/>
 	</requires>
 	<extension point="xbmc.gui.skin" debugging="false">
 		<res width="1920" height="1440" aspect="4:3" default="false" folder="xml" />
