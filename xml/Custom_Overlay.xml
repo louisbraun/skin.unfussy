@@ -27,6 +27,16 @@
                 <shadowcolor>FF000000</shadowcolor>
                 <font>bold36</font>
                 <align>left</align>
+                <label>script-embuary-video.xml</label>
+                <visible>Window.IsVisible(script-embuary-video.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                <shadowcolor>FF000000</shadowcolor>
+                <font>bold36</font>
+                <align>left</align>
                 <label>script-NextAired-TVGuide.xml</label>
                 <visible>Window.IsVisible(script-NextAired-TVGuide.xml)</visible>
             </control>

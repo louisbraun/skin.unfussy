@@ -409,87 +409,164 @@
     </include>
 
     <include name="positioning_pvrinfo_buttons">
-        <animation type="Conditional" condition="Control.HasFocus(102) + Window.IsVisible(pvrguideinfo) + !Pvr.IsPlayingRecording" reversible="false">
-            <effect type="slide" end="975,0" time="0" />
-            <effect type="fade" start="0" end="100" time="200" />
-        </animation>
-        <animation type="Conditional" condition="Control.HasFocus(102) + [Window.IsVisible(tvrecordings) | String.StartsWith(Container.FolderPath,pvr://recordings) | String.StartsWith(ListItem.FolderPath,pvr://recordings)] + !Pvr.IsPlayingRecording" reversible="false">
+        <!-- custom 1101 livetv -->
+        <animation type="Conditional" condition="Window.IsVisible(1101) + !Pvr.IsPlayingRecording + System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(102)" reversible="false">
             <effect type="slide" end="1290,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
-        <animation type="Conditional" condition="Control.HasFocus(102) + !Window.IsVisible(pvrguideinfo) + ![Window.IsVisible(tvrecordings) | String.StartsWith(Container.FolderPath,pvr://recordings) | String.StartsWith(ListItem.FolderPath,pvr://recordings)] + !Pvr.IsPlayingRecording" reversible="false">
-            <effect type="slide" end="1185,0" time="0" />
-            <effect type="fade" start="0" end="100" time="200" />
-        </animation>
-        <animation type="Conditional" condition="Control.HasFocus(102) + Pvr.IsPlayingRecording" reversible="false">
-            <effect type="slide" end="1290,0" time="0" />
-            <effect type="fade" start="0" end="100" time="200" />
-        </animation>
-        <animation type="Conditional" condition="Control.HasFocus(6) + Window.IsVisible(pvrguideinfo)" reversible="false">
-            <effect type="slide" end="1080,0" time="0" />
-            <effect type="fade" start="0" end="100" time="200" />
-        </animation>
-        <animation type="Conditional" condition="Control.HasFocus(6) + !Window.IsVisible(pvrguideinfo)" reversible="false">
-            <effect type="slide" end="1290,0" time="0" />
-            <effect type="fade" start="0" end="100" time="200" />
-        </animation>
-        <animation type="Conditional" condition="Control.HasFocus(103) + Window.IsVisible(pvrguideinfo)" reversible="false">
-            <effect type="slide" end="1080,0" time="0" />
-            <effect type="fade" start="0" end="100" time="200" />
-        </animation>
-        <animation type="Conditional" condition="[Control.HasFocus(103) | Control.HasFocus(104)] + !Window.IsVisible(pvrguideinfo)" reversible="false">
-            <effect type="slide" end="1290,0" time="0" />
-            <effect type="fade" start="0" end="100" time="200" />
-        </animation>
-        <animation type="Conditional" condition="Control.HasFocus(5)" reversible="false">
-            <effect type="slide" end="1185,0" time="0" />
-            <effect type="fade" start="0" end="100" time="200" />
-        </animation>
-        <animation type="Conditional" condition="Control.HasFocus(108)" reversible="false">
-            <effect type="slide" end="1185,0" time="0" />
-            <effect type="fade" start="0" end="100" time="200" />
-        </animation>
-        <animation type="Conditional" condition="Control.HasFocus(4)" reversible="false">
-            <effect type="slide" end="1290,0" time="0" />
-            <effect type="fade" start="0" end="100" time="200" />
-        </animation>
-        <animation type="Conditional" condition="Control.HasFocus(105) | Control.HasFocus(106)" reversible="false">
+        <animation type="Conditional" condition="Window.IsVisible(1101) + !Pvr.IsPlayingRecording + !System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(102)" reversible="false">
             <effect type="slide" end="1395,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
-        <animation type="Conditional" condition="Control.HasFocus(107)" reversible="false">
+        <animation type="Conditional" condition="Window.IsVisible(1101) + !Pvr.IsPlayingRecording + !System.AddonIsEnabled(script.embuary.info) + [Control.HasFocus(103) | Control.HasFocus(104)]" reversible="false">
+            <effect type="slide" end="1500,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Window.IsVisible(1101) + !Pvr.IsPlayingRecording + System.AddonIsEnabled(script.embuary.info) + [Control.HasFocus(103) | Control.HasFocus(104)]" reversible="false">
+            <effect type="slide" end="1395,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <!-- custom 1101 recordings -->
+        <animation type="Conditional" condition="Window.IsVisible(1101) + Pvr.IsPlayingRecording + System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(102)" reversible="false">
+            <effect type="slide" end="1395,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Window.IsVisible(1101) + Pvr.IsPlayingRecording + !System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(102)" reversible="false">
+            <effect type="slide" end="1500,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <!-- DialogPVRInfo embuaryinfo enabled -->
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + Control.IsVisible(6) + Control.IsVisible(11) + System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(102)" reversible="false">
+            <effect type="slide" end="975,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + Control.IsVisible(6) + !Control.IsVisible(11) + System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(102)" reversible="false">
+            <effect type="slide" end="1080,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + !Control.IsVisible(6) + System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(102)" reversible="false">
+            <effect type="slide" end="1395,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + Control.IsVisible(11) + System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(6)" reversible="false">
+            <effect type="slide" end="1080,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + !Control.IsVisible(11) + System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(6)" reversible="false">
+            <effect type="slide" end="1185,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + Control.IsVisible(11) + System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(5)" reversible="false">
+            <effect type="slide" end="1185,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + !Control.IsVisible(11) + System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(5)" reversible="false">
+            <effect type="slide" end="1290,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(11)" reversible="false">
+            <effect type="slide" end="1290,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(4)" reversible="false">
+            <effect type="slide" end="1395,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <!-- DialogPVRInfo embuaryinfo disabled -->
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + Control.IsVisible(6) + Control.IsVisible(11) + !System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(102)" reversible="false">
+            <effect type="slide" end="1080,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + Control.IsVisible(6) + !Control.IsVisible(11) + !System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(102)" reversible="false">
+            <effect type="slide" end="1195,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + !Control.IsVisible(6) + !System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(102)" reversible="false">
+            <effect type="slide" end="1500,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + Control.IsVisible(11) + !System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(6)" reversible="false">
+            <effect type="slide" end="1185,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + !Control.IsVisible(11) + !System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(6)" reversible="false">
+            <effect type="slide" end="1290,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + Control.IsVisible(11) + !System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(5)" reversible="false">
+            <effect type="slide" end="1290,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + !Control.IsVisible(11) + !System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(5)" reversible="false">
+            <effect type="slide" end="1395,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + !System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(11)" reversible="false">
+            <effect type="slide" end="1395,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="!Window.IsVisible(1101) + !System.AddonIsEnabled(script.embuary.info) + Control.HasFocus(4)" reversible="false">
+            <effect type="slide" end="1500,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <!-- moviedb always last button -->
+        <animation type="Conditional" condition="[Control.HasFocus(105) | Control.HasFocus(106)]" reversible="false">
             <effect type="slide" end="1500,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
     </include>
 
     <include name="positioning_addoninfo_buttons">
-        <animation type="Conditional" condition="Control.HasFocus(12)" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(12) + Control.IsVisible(8)" reversible="false">
             <effect type="slide" end="430,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
-        <animation type="Conditional" condition="Control.HasFocus(9)" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(12) + !Control.IsVisible(8)" reversible="false">
+            <effect type="slide" end="485,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(9) + Control.IsVisible(8)" reversible="false">
             <effect type="slide" end="540,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(9) + !Control.IsVisible(8)" reversible="false">
+            <effect type="slide" end="595,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
         <animation type="Conditional" condition="Control.HasFocus(8)" reversible="false">
             <effect type="slide" end="650,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
-        <animation type="Conditional" condition="Control.HasFocus(13)" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(13) + Control.IsVisible(8)" reversible="false">
             <effect type="slide" end="760,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
-        <animation type="Conditional" condition="Control.HasFocus(10)" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(13) + !Control.IsVisible(8)" reversible="false">
+            <effect type="slide" end="720,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(10) + Control.IsVisible(8)" reversible="false">
             <effect type="slide" end="870,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
-        <animation type="Conditional" condition="Control.HasFocus(7)" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(10) + !Control.IsVisible(8)" reversible="false">
+            <effect type="slide" end="815,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(7) + Control.IsVisible(8)" reversible="false">
             <effect type="slide" end="980,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
-        <animation type="Conditional" condition="Control.HasFocus(6)" reversible="false">
+        <animation type="Conditional" condition="Control.HasFocus(7) + !Control.IsVisible(8)" reversible="false">
+            <effect type="slide" end="925,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(6) + Control.IsVisible(8)" reversible="false">
             <effect type="slide" end="1090,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(6) + !Control.IsVisible(8)" reversible="false">
+            <effect type="slide" end="1035,0" time="0" />
             <effect type="fade" start="0" end="100" time="200" />
         </animation>
     </include>

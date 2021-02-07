@@ -4,41 +4,44 @@
     <animation effect="fade" start="100" end="0" time="240">WindowClose</animation>
     <onunload condition="Player.HasAudio + Skin.HasSetting(start_music_fullscreen)">Action(FullScreen)</onunload>
     <controls>
-        <control type="image">
-            <visible>!String.IsEmpty(Player.Art(fanart))</visible>
-            <width>$INFO[System.ScreenWidth]</width>
-            <height>$INFO[System.ScreenHeight]</height>
-            <aspectratio>scale</aspectratio>
-            <texture>$INFO[Player.Art(fanart)]</texture>
-        </control>
-        <include>background_dialog</include>
         <control type="group">
-            <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+            <visible>!String.IsEqual(Window(home).Property(custombusy),true)</visible>
             <control type="image">
-                <centerleft>50%</centerleft>
-                <centertop>50%</centertop>
-                <width>100</width>
-                <height>100</height>
-                <visible>true</visible>
-                <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
-                <texture colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                <visible>!String.IsEmpty(Player.Art(fanart))</visible>
+                <width>$INFO[System.ScreenWidth]</width>
+                <height>$INFO[System.ScreenHeight]</height>
+                <aspectratio>scale</aspectratio>
+                <texture>$INFO[Player.Art(fanart)]</texture>
             </control>
-            <control type="image">
-                <centerleft>50%</centerleft>
-                <centertop>50%</centertop>
-                <width>70</width>
-                <height>70</height>
-                <visible>true</visible>
-                <animation effect="rotate" end="360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
-                <texture flipx="true" colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+            <include>background_dialog</include>
+            <control type="group">
+                <animation effect="fade" start="70" time="1200" condition="true" pulse="true">Conditional</animation>
+                <control type="image">
+                    <centerleft>50%</centerleft>
+                    <centertop>50%</centertop>
+                    <width>100</width>
+                    <height>100</height>
+                    <visible>true</visible>
+                    <animation effect="rotate" end="-360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                </control>
+                <control type="image">
+                    <centerleft>50%</centerleft>
+                    <centertop>50%</centertop>
+                    <width>70</width>
+                    <height>70</height>
+                    <visible>true</visible>
+                    <animation effect="rotate" end="360" center="auto" time="2000" loop="true" reversible="false" condition="true">Conditional</animation>
+                    <texture flipx="true" colordiffuse="FFFAFAFA">icons/spinner.png</texture>
+                </control>
             </control>
-        </control>
-        <control type="label">
-            <top>650</top>
-            <align>center</align>
-            <font>light60</font>
-            <label>$INFO[Player.Title]</label>
-            <shadowcolor>black</shadowcolor>
+            <control type="label">
+                <top>650</top>
+                <align>center</align>
+                <font>light60</font>
+                <label>$INFO[Player.Title]</label>
+                <shadowcolor>black</shadowcolor>
+            </control>
         </control>
     </controls>
 </window>

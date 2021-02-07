@@ -198,12 +198,12 @@
                 <include content="button_round">
                     <param name="id">105</param>
                     <param name="visible">String.IsEqual(PVR.EpgEventDuration(hh),00)</param>
-                    <param name="visible2">System.HasAddon(script.extendedinfo)</param>
+                    <param name="visible2">System.AddonIsEnabled(script.embuary.info)</param>
                     <param name="onclick" value="Action(close)" />
                     <param name="onclick2" value="SetProperty(custombusy,true,home)" />
                     <param name="onclick3" value="SetProperty(custombusyreason,tmdbtvshow,home)" />
                     <param name="onclick4" value="SetProperty(custombusylabel,$INFO[VideoPlayer.Title],home)" />
-                    <param name="onclick5" value="RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[VideoPlayer.Title])" />
+                    <param name="onclick5" value="RunScript(script.embuary.info,call=tv,query='$ESCINFO[VideoPlayer.Title]')" />
                     <param name="icon">icons/buttons/tmdb.png</param>
                     <param name="radius">100</param>
                     <param name="iconsize">70</param>
@@ -212,26 +212,13 @@
                 <include content="button_round">
                     <param name="id">106</param>
                     <param name="visible">!String.IsEqual(PVR.EpgEventDuration(hh),00)</param>
-                    <param name="visible2">System.HasAddon(script.extendedinfo)</param>
+                    <param name="visible2">System.AddonIsEnabled(script.embuary.info)</param>
                     <param name="onclick" value="Action(close)" />
                     <param name="onclick2" value="SetProperty(custombusy,true,home)" />
                     <param name="onclick3" value="SetProperty(custombusyreason,tmdbmovie,home)" />
                     <param name="onclick4" value="SetProperty(custombusylabel,$INFO[VideoPlayer.Title],home)" />
-                    <param name="onclick5" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[VideoPlayer.Title])" />
+                    <param name="onclick5" value="RunScript(script.embuary.info,call=movie,query='$ESCINFO[VideoPlayer.Title]')" />
                     <param name="icon">icons/buttons/tmdb.png</param>
-                    <param name="radius">100</param>
-                    <param name="iconsize">70</param>
-                    <param name="iconoffset">15</param>
-                </include>
-                <include content="button_round">
-                    <param name="visible">System.HasAddon(plugin.video.youtube) + System.HasAddon(script.extendedinfo)</param>
-                    <param name="id">107</param>
-                    <param name="onclick" value="Back" />
-                    <param name="onclick2" value="SetProperty(custombusy,true,home)" />
-                    <param name="onclick3" value="SetProperty(custombusyreason,youtube,home)" />
-                    <param name="onclick4" value="SetProperty(custombusylabel,$INFO[VideoPlayer.Title],home)" />
-                    <param name="onclick5" value="RunScript(script.extendedinfo,info=youtubebrowser,id=$INFO[VideoPlayer.Title])" />
-                    <param name="icon">icons/buttons/youtube.png</param>
                     <param name="radius">100</param>
                     <param name="iconsize">70</param>
                     <param name="iconoffset">15</param>

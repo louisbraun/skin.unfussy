@@ -1624,13 +1624,31 @@
                 <label>$VAR[PVRListitemEpisodeName]</label>
             </control>
             <control type="label">
-                <right>20</right>
+                <right>50</right>
                 <align>right</align>
                 <height>40</height>
                 <aligny>center</aligny>
                 <font>regular20</font>
                 <textcolor>red</textcolor>
                 <label>$INFO[ListItem.Comment]</label>
+            </control>
+            <control type="image">
+                <visible>ListItem.HasReminder</visible>
+                <top>5</top>
+                <right>5</right>
+                <width>30</width>
+                <height>30</height>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="red">icons/buttons/launch.png</texture>
+            </control>
+            <control type="image">
+                <visible>!ListItem.HasReminder + !String.IsEmpty(ListItem.Title)</visible>
+                <top>5</top>
+                <right>-5</right>
+                <width>50</width>
+                <height>30</height>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="red">icons/pvr/recording_small.png</texture>
             </control>
             <control type="label">
                 <top>43</top>
@@ -2272,7 +2290,16 @@
                 <height>40</height>
                 <aspectratio>scale</aspectratio>
                 <texture colordiffuse="red">overlays/overlayunwatched.png</texture>
-                <visible>ListItem.HasTimer | ListItem.HasTimerSchedule | ListItem.IsRecording</visible>
+                <visible>[ ListItem.HasTimer | ListItem.HasTimerSchedule | ListItem.IsRecording ] + !ListItem.HasReminder</visible>
+            </control>
+            <control type="image">
+                <top>5</top>
+                <left>0</left>
+                <width>30</width>
+                <height>30</height>
+                <aspectratio>scale</aspectratio>
+                <texture colordiffuse="red">icons/buttons/launch.png</texture>
+                <visible>ListItem.HasReminder</visible>
             </control>
             <control type="label" id="1">
                 <left>6</left>

@@ -11,7 +11,8 @@
         <control type="group">
             <visible>!Window.IsVisible(1103)</visible>
             <visible>!Window.IsVisible(1104)</visible>
-            <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)</visible>
+            <visible>!Window.IsVisible(script-embuary-video.xml)</visible>
+            <visible>!Window.IsVisible(script-embuary-person.xml)</visible>
             <include content="info_header">
                 <param name="show_pvr_running" value="true" />
             </include>

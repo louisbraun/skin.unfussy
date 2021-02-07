@@ -242,8 +242,7 @@
                 </include>
                 <include content="button_round">
                     <param name="id">5</param>
-                    <param name="visible">!System.HasAddon(service.kn.switchtimer) | Window.IsActive(tvchannels)</param>
-                    <param name="visible2">!Window.IsActive(tvrecordings)</param>
+                    <param name="visible">![String.StartsWith(Container.FolderPath,pvr://recordings) | String.StartsWith(ListItem.FolderPath,pvr://recordings)]</param>
                     <param name="onclick" value="Back" />
                     <param name="icon">icons/buttons/launch.png</param>
                     <param name="radius">100</param>
@@ -251,12 +250,10 @@
                     <param name="iconoffset">25</param>
                 </include>
                 <include content="button_round">
-                    <param name="id">108</param>
-                    <param name="visible">!Window.IsActive(tvrecordings) + !Window.IsActive(tvchannels) + ![String.StartsWith(Container.FolderPath,pvr://recordings) | String.StartsWith(ListItem.FolderPath,pvr://recordings)]</param>
-                    <param name="visible2">System.HasAddon(service.kn.switchtimer)</param>
+                    <param name="id">11</param>
+                    <param name="visible">!Window.IsActive(tvrecordings) + ![String.StartsWith(Container.FolderPath,pvr://recordings) | String.StartsWith(ListItem.FolderPath,pvr://recordings)]</param>
                     <param name="onclick" value="Back" />
-                    <param name="onclick2" value="RunScript(service.kn.switchtimer,action=add,channel=$INFO[ListItem.ChannelName],icon=$INFO[ListItem.Icon],date=$INFO[ListItem.Date],title=$INFO[ListItem.Title])" />
-                    <param name="icon">icons/buttons/launch.png</param>
+                    <param name="icon">icons/buttons/pvrreminder.png</param>
                     <param name="radius">100</param>
                     <param name="iconsize">50</param>
                     <param name="iconoffset">25</param>
@@ -271,13 +268,13 @@
                 </include>
                 <include content="button_round">
                     <param name="id">105</param>
-                    <param name="visible">Integer.IsLess(ListItem.Duration(hh),1)</param>
-                    <param name="visible2">System.HasAddon(script.extendedinfo)</param>
+                    <param name="visible">String.IsEqual(ListItem.Duration(hh),00)</param>
+                    <param name="visible2">System.AddonIsEnabled(script.embuary.info)</param>
                     <param name="onclick" value="Action(close)" />
                     <param name="onclick2" value="SetProperty(custombusy,true,home)" />
                     <param name="onclick3" value="SetProperty(custombusyreason,tmdbtvshow,home)" />
                     <param name="onclick4" value="SetProperty(custombusylabel,$INFO[ListItem.Title],home)" />
-                    <param name="onclick5" value="RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[ListItem.Title])" />
+                    <param name="onclick5" value="RunScript(script.embuary.info,call=tv,query='$ESCINFO[ListItem.Title]')" />
                     <param name="icon">icons/buttons/tmdb.png</param>
                     <param name="radius">100</param>
                     <param name="iconsize">70</param>
@@ -285,27 +282,14 @@
                 </include>
                 <include content="button_round">
                     <param name="id">106</param>
-                    <param name="visible">Integer.IsGreater(ListItem.Duration(hh),0)</param>
-                    <param name="visible2">System.HasAddon(script.extendedinfo)</param>
+                    <param name="visible">!String.IsEqual(ListItem.Duration(hh),00)</param>
+                    <param name="visible2">System.AddonIsEnabled(script.embuary.info)</param>
                     <param name="onclick" value="Action(close)" />
                     <param name="onclick2" value="SetProperty(custombusy,true,home)" />
                     <param name="onclick3" value="SetProperty(custombusyreason,tmdbmovie,home)" />
                     <param name="onclick4" value="SetProperty(custombusylabel,$INFO[ListItem.Title],home)" />
-                    <param name="onclick5" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Title])" />
+                    <param name="onclick5" value="RunScript(script.embuary.info,call=movie,query='$ESCINFO[ListItem.Title]')" />
                     <param name="icon">icons/buttons/tmdb.png</param>
-                    <param name="radius">100</param>
-                    <param name="iconsize">70</param>
-                    <param name="iconoffset">15</param>
-                </include>
-                <include content="button_round">
-                    <param name="id">107</param>
-                    <param name="visible">System.HasAddon(plugin.video.youtube) + System.HasAddon(script.extendedinfo)</param>
-                    <param name="onclick" value="Action(close)" />
-                    <param name="onclick2" value="SetProperty(custombusy,true,home)" />
-                    <param name="onclick3" value="SetProperty(custombusyreason,youtube,home)" />
-                    <param name="onclick4" value="SetProperty(custombusylabel,$INFO[ListItem.Title],home)" />
-                    <param name="onclick5" value="RunScript(script.extendedinfo,info=youtubebrowser,id=$INFO[ListItem.Title])" />
-                    <param name="icon">icons/buttons/youtube.png</param>
                     <param name="radius">100</param>
                     <param name="iconsize">70</param>
                     <param name="iconoffset">15</param>
