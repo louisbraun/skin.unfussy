@@ -542,3 +542,31 @@ msgstr "Hintergrund bei Songtexten verbergen"
 msgctxt "#31131"
 msgid "Special Features"
 msgstr "Special Features"
+
+msgctxt "#31132"
+msgid "24h back"
+msgstr "24h zurück"
+
+msgctxt "#31133"
+msgid "12h back"
+msgstr "12h zurück"
+
+msgctxt "#31134"
+msgid "current program"
+msgstr "laufende Sendung"
+
+msgctxt "#31135"
+msgid "12h forward"
+msgstr "12h vorwärts"
+
+msgctxt "#31136"
+msgid "24h forward"
+msgstr "24h vorwärts"
+
+msgctxt "#31137"
+msgid "first channel"
+msgstr "erster Sender"
+
+msgctxt "#31138"
+msgid "last channel"
+msgstr "letzter Sender"

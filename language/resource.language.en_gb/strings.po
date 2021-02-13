@@ -542,3 +542,31 @@ msgstr ""
 msgctxt "#31131"
 msgid "Special Features"
 msgstr ""
+
+msgctxt "#31132"
+msgid "24h back"
+msgstr ""
+
+msgctxt "#31133"
+msgid "12h back"
+msgstr ""
+
+msgctxt "#31134"
+msgid "current program"
+msgstr ""
+
+msgctxt "#31135"
+msgid "12h forward"
+msgstr ""
+
+msgctxt "#31136"
+msgid "24h forward"
+msgstr ""
+
+msgctxt "#31137"
+msgid "first channel"
+msgstr ""
+
+msgctxt "#31138"
+msgid "last channel"
+msgstr ""

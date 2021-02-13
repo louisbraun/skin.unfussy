@@ -516,6 +516,37 @@
         </animation>
     </include>
 
+    <include name="positioning_guidecontrol_buttons">
+        <animation type="Conditional" condition="Control.HasFocus(300)" reversible="false">
+            <effect type="slide" end="380,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(301)" reversible="false">
+            <effect type="slide" end="460,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(302)" reversible="false">
+            <effect type="slide" end="540,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(303)" reversible="false">
+            <effect type="slide" end="620,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(304)" reversible="false">
+            <effect type="slide" end="700,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(400)" reversible="false">
+            <effect type="slide" end="980,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+        <animation type="Conditional" condition="Control.HasFocus(401)" reversible="false">
+            <effect type="slide" end="1060,0" time="0" />
+            <effect type="fade" start="0" end="100" time="200" />
+        </animation>
+    </include>
+
     <include name="positioning_addoninfo_buttons">
         <animation type="Conditional" condition="Control.HasFocus(12) + Control.IsVisible(8)" reversible="false">
             <effect type="slide" end="430,0" time="0" />

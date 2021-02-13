@@ -98,6 +98,8 @@
         <param name="iconsize">40</param>
         <param name="iconoffset">15</param>
         <param name="useanimations">false</param>
+        <param name="rotate90">false</param>
+        <param name="rotate180">false</param>
         <definition>
             <control type="radiobutton" id="$PARAM[id]">
                 <top>$PARAM[top]</top>
@@ -142,6 +144,8 @@
                     <effect type="zoom" start="100" end="115" time="100" tween="sine" easing="out" center="auto" />
                     <effect type="zoom" start="100" end="89"  time="100" tween="sine" easing="out" center="auto" delay="100" />
                 </animation>
+                <animation effect="rotate" start="0" end="-90" center="auto" condition="$PARAM[rotate90]">Conditional</animation>
+                <animation effect="rotate" start="0" end="-180" center="auto" condition="$PARAM[rotate180]">Conditional</animation>
             </control>
         </definition>
     </include>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window>
+    <defaultcontrol>303</defaultcontrol>
+    <include>openclose_slight_bottom</include>
+    <controls>
+        <control type="group">
+            <bottom>0</bottom>
+            <width>1920</width>
+            <height>130</height>
+            <control type="image">
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="backgroundtransparent">colors/white.png</texture>
+            </control>
+            <control type="label">
+                <top>5</top>
+                <left>0</left>
+                <width>300</width>
+                <height>30</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <shadowcolor>black</shadowcolor>
+                <font>regular24</font>
+                <label>$VAR[TVGuideControlHelpText]</label>
+                <include>positioning_guidecontrol_buttons</include>
+            </control>
+            <control type="grouplist" id="1000">
+                <defaultcontrol always="true">300</defaultcontrol>
+                <top>30</top>
+                <height>90</height>
+                <left>500</left>
+                <orientation>horizontal</orientation>
+                <itemgap>10</itemgap>
+                <onup>Action(close)</onup>
+                <ondown>Action(close)</ondown>
+                <onright>400</onright>
+                <onleft>401</onleft>
+                <usecontrolcoords>true</usecontrolcoords>
+                <include content="button_round">
+                    <param name="id" value="300" />
+                    <param name="onclick" value="PVR.EpgGridControl(-24)" />
+                    <param name="icon" value="icons/buttons/rewind.png" />
+                    <param name="useanimations" value="true" />
+                </include>
+                <include content="button_round">
+                    <param name="id" value="301" />
+                    <param name="onclick" value="PVR.EpgGridControl(-12)" />
+                    <param name="icon" value="icons/buttons/play.png" />
+                    <param name="useanimations" value="true" />
+                    <param name="rotate180" value="true" />
+                </include>
+                <include content="button_round">
+                    <param name="id" value="302" />
+                    <param name="onclick" value="PVR.EpgGridControl(CurrentProgramme)" />
+                    <param name="icon" value="icons/buttons/play.png" />
+                    <param name="useanimations" value="true" />
+                    <param name="rotate90" value="true" />
+                </include>
+                <include content="button_round">
+                    <param name="id" value="303" />
+                    <param name="onclick" value="PVR.EpgGridControl(+12)" />
+                    <param name="icon" value="icons/buttons/play.png" />
+                    <param name="useanimations" value="true" />
+                </include>
+                <include content="button_round">
+                    <param name="id" value="304" />
+                    <param name="onclick" value="PVR.EpgGridControl(+24)" />
+                    <param name="icon" value="icons/buttons/forward.png" />
+                    <param name="useanimations" value="true" />
+                </include>
+            </control>
+            <control type="grouplist" id="2000">
+                <defaultcontrol always="true">400</defaultcontrol>
+                <top>30</top>
+                <height>90</height>
+                <left>1100</left>
+                <orientation>horizontal</orientation>
+                <itemgap>10</itemgap>
+                <onup>Action(close)</onup>
+                <ondown>Action(close)</ondown>
+                <onleft>304</onleft>
+                <onright>300</onright>
+                <usecontrolcoords>true</usecontrolcoords>
+                <include content="button_round">
+                    <param name="id" value="400" />
+                    <param name="onclick" value="PVR.EpgGridControl(FirstChannel)" />
+                    <param name="icon" value="icons/buttons/previous.png" />
+                    <param name="useanimations" value="true" />
+                </include>
+                <include content="button_round">
+                    <param name="id" value="401" />
+                    <param name="onclick" value="PVR.EpgGridControl(LastChannel)" />
+                    <param name="icon" value="icons/buttons/next.png" />
+                    <param name="useanimations" value="true" />
+                </include>
+            </control>
+
+        </control>
+    </controls>
+</window>
