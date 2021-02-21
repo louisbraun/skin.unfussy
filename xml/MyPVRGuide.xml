@@ -2,7 +2,7 @@
 <window>
     <defaultcontrol always="true">50</defaultcontrol>
     <backgroundcolor>black</backgroundcolor>
-    <views>50,51,52,53</views>
+    <views>50,51,52,53,54</views>
     <menucontrol>9000</menucontrol>
     <onunload condition="VideoPlayer.Content(livetv)">SetProperty(closeonload,true,home)</onunload>
     <onunload>RunScript(script.unfussy.helper,action=refresh_timers)</onunload>
@@ -13,7 +13,7 @@
             <visible>!Window.IsVisible(1104)</visible>
             <visible>!Window.IsVisible(script-embuary-video.xml)</visible>
             <visible>!Window.IsVisible(script-embuary-person.xml)</visible>
-            <include content="info_header">
+            <include condition="!Skin.HasSetting(tvguide_show_channelgroups)" content="info_header">
                 <param name="show_pvr_running" value="true" />
             </include>
             <include content="pvr_tvguide_view">
@@ -24,16 +24,25 @@
                 <param name="view_id">51</param>
                 <param name="view_name">$LOCALIZE[31064]</param>
                 <param name="view_height">572</param>
-            </include>        
+            </include>
             <include content="pvr_tvguide_view">
                 <param name="view_id">52</param>
                 <param name="view_name">$LOCALIZE[31065]</param>
                 <param name="view_height">732</param>
-            </include>        
+            </include>
             <include content="pvr_tvguide_view">
                 <param name="view_id">53</param>
                 <param name="view_name">$LOCALIZE[31066]</param>
                 <param name="view_height">892</param>
+            </include>
+            <include content="pvr_tvguide_view">
+                <param name="view_id">54</param>
+                <param name="view_name">$LOCALIZE[31139]</param>
+                <param name="view_height">830</param>
+                <param name="view_orientation">Horizontal</param>
+                <param name="ruler_width">120</param>
+                <param name="channel_width">300</param>
+                <param name="channel_height">100</param>
             </include>
             <include>media_menu</include>
             <control type="label" id="30">

@@ -444,7 +444,7 @@
 
     <include name="info_header_music_running">
         <control type="group">
-            <visible>!String.IsEmpty(MusicPlayer.Title)</visible>
+            <visible>Integer.IsGreater(MusicPlayer.TrackNumber,0)</visible>
             <left>800</left>
             <control type="image">
                 <top>35</top>

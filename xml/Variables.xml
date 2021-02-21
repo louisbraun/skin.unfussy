@@ -349,15 +349,7 @@
         <value condition="Control.HasFocus(304)">$LOCALIZE[31136]</value>
         <value condition="Control.HasFocus(400)">$LOCALIZE[31137]</value>
         <value condition="Control.HasFocus(401)">$LOCALIZE[31138]</value>
-        <value></value>
-    </variable>
-
-    <variable name="TVGuideHelpText">
-        <value condition="Control.HasFocus(401)">$INFO[Skin.String(runningat_name_0)]</value>
-        <value condition="Control.HasFocus(402)">$INFO[Skin.String(runningat_name_1)]</value>
-        <value condition="Control.HasFocus(403)">$INFO[Skin.String(runningat_name_2)]</value>
-        <value condition="Control.HasFocus(404)">$LOCALIZE[31053]</value>
-        <value condition="Control.HasFocus(405)">$LOCALIZE[31073]</value>
+        <value condition="Control.HasFocus(500)">$INFO[Skin.String(runningat_name_0)]</value>
         <value></value>
     </variable>
 

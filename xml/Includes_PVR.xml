@@ -2072,6 +2072,10 @@
         <param name="view_id">50</param>
         <param name="view_name"></param>
         <param name="view_height">412</param>
+        <param name="view_orientation">Vertical</param>
+        <param name="ruler_width">0</param>
+        <param name="channel_width">220</param>
+        <param name="channel_height">80</param>
         <definition>
             <control type="group">
                 <visible>Control.IsVisible($PARAM[view_id])</visible>
@@ -2096,17 +2100,18 @@
                     <progresstexture colordiffuse="activetransparent">colors/white.png</progresstexture>
                     <viewtype label="$PARAM[view_name]">list</viewtype>
                     <onleft>9000</onleft>
-                    <onup>400</onup>
+                    <onup>11</onup>
+                    <orientation>$PARAM[view_orientation]</orientation>
                     <rulerdatelayout height="40">
                         <include>pvr_tvguide_rulerdatelayout</include>
                     </rulerdatelayout>
-                    <rulerlayout height="50">
+                    <rulerlayout height="50" width="$PARAM[ruler_width]">
                         <include>pvr_tvguide_rulerlayout</include>
                     </rulerlayout>
-                    <channellayout height="80" width="220">
+                    <channellayout height="$PARAM[channel_height]" width="$PARAM[channel_width]">
                         <include content="pvr_tvguide_channelitem" />
                     </channellayout>
-                    <focusedchannellayout height="80" width="200">
+                    <focusedchannellayout height="$PARAM[channel_height]" width="$PARAM[channel_width]">
                         <include content="pvr_tvguide_channelitem">
                             <param name="active" value="true" />
                         </include>
@@ -2144,44 +2149,84 @@
     </include>
 
     <include name="pvr_tvguide_rulerlayout">
-        <control type="label">
-            <left>-34</left>
-            <top>12</top>
-            <width>200</width>
-            <font>regular20</font>
-            <label>$INFO[ListItem.Label]</label>
-            <textcolor>active</textcolor>
-            <textoffsetx>10</textoffsetx>
+        <control type="group">
+            <visible>!String.IsEqual(Container.ViewMode,$LOCALIZE[31139])</visible>
+            <control type="label">
+                <left>-34</left>
+                <top>12</top>
+                <width>200</width>
+                <font>regular20</font>
+                <label>$INFO[ListItem.Label]</label>
+                <textcolor>active</textcolor>
+                <textoffsetx>10</textoffsetx>
+            </control>
+            <control type="image">
+                <bottom>0</bottom>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <left>-1</left>
+                <bottom>0</bottom>
+                <width>2</width>
+                <height>10</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <left>57</left>
+                <bottom>0</bottom>
+                <width>1</width>
+                <height>7</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <left>115</left>
+                <bottom>0</bottom>
+                <width>1</width>
+                <height>7</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
         </control>
-        <control type="image">
-            <bottom>0</bottom>
-            <height>1</height>
-            <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="border">colors/white.png</texture>
-        </control>
-        <control type="image">
-            <left>-1</left>
-            <bottom>0</bottom>
-            <width>2</width>
-            <height>10</height>
-            <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="border">colors/white.png</texture>
-        </control>
-        <control type="image">
-            <left>57</left>
-            <bottom>0</bottom>
-            <width>1</width>
-            <height>7</height>
-            <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="border">colors/white.png</texture>
-        </control>
-        <control type="image">
-            <left>115</left>
-            <bottom>0</bottom>
-            <width>1</width>
-            <height>7</height>
-            <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="border">colors/white.png</texture>
+        <control type="group">
+            <visible>String.IsEqual(Container.ViewMode,$LOCALIZE[31139])</visible>
+            <control type="label">
+                <width>120</width>
+                <top>-21</top>
+                <left>5</left>
+                <top>0</top>
+                <font>regular30</font>
+                <label>$INFO[ListItem.Label]</label>
+                <textcolor>active</textcolor>
+                <textoffsetx>10</textoffsetx>
+            </control>
+            <control type="image">
+                <right>0</right>
+                <top>0</top>
+                <width>15</width>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <right>0</right>
+                <top>22</top>
+                <width>10</width>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <right>0</right>
+                <top>44</top>
+                <width>10</width>
+                <height>1</height>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
         </control>
     </include>
 
@@ -2189,64 +2234,130 @@
         <param name="active">false</param>
         <definition>
             <control type="image" id="2">
-                <width>220</width>
                 <visible>$PARAM[active]</visible>
                 <aspectratio>stretch</aspectratio>
                 <texture colordiffuse="active">backgrounds/overlay_background.png</texture>
             </control>
             <control type="group">
-                <visible>!Skin.HasSetting(hide_channelnumbers)</visible>
-                <control type="label">
-                    <visible>Integer.IsLess(ListItem.ChannelNumberLabel,100)</visible>
-                    <width>50</width>
-                    <align>center</align>
-                    <aligny>center</aligny>
-                    <font>light30</font>
-                    <label>$INFO[ListItem.ChannelNumberLabel]</label>
-                </control>
-                <control type="label">
-                    <visible>Integer.IsGreater(ListItem.ChannelNumberLabel,99)</visible>
-                    <visible>Integer.IsLess(ListItem.ChannelNumberLabel,1000)</visible>
-                    <width>50</width>
-                    <align>center</align>
-                    <aligny>center</aligny>
-                    <font>regular24</font>
-                    <label>$INFO[ListItem.ChannelNumberLabel]</label>
-                </control>
-                <control type="label">
-                    <visible>Integer.IsGreater(ListItem.ChannelNumberLabel,999)</visible>
-                    <width>50</width>
-                    <align>center</align>
-                    <aligny>center</aligny>
-                    <font>regular20</font>
-                    <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                <visible>!String.IsEqual(Container.ViewMode,$LOCALIZE[31139])</visible>
+                <control type="group">
+                    <visible>!Skin.HasSetting(hide_channelnumbers)</visible>
+                    <control type="label">
+                        <visible>Integer.IsLess(ListItem.ChannelNumberLabel,100)</visible>
+                        <width>50</width>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>light30</font>
+                        <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                    </control>
+                    <control type="label">
+                        <visible>Integer.IsGreater(ListItem.ChannelNumberLabel,99)</visible>
+                        <visible>Integer.IsLess(ListItem.ChannelNumberLabel,1000)</visible>
+                        <width>50</width>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular24</font>
+                        <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                    </control>
+                    <control type="label">
+                        <visible>Integer.IsGreater(ListItem.ChannelNumberLabel,999)</visible>
+                        <width>50</width>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular20</font>
+                        <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                    </control>
+                    <control type="image">
+                        <left>50</left>
+                        <top>0</top>
+                        <width>170</width>
+                        <height>80</height>
+                        <align>center</align>
+                        <texture fallback="DefaultTVGuide.png">$INFO[ListItem.Icon]</texture>
+                        <aspectratio align="center" aligny="center">keep</aspectratio>
+                    </control>
                 </control>
                 <control type="image">
-                    <left>50</left>
+                    <visible>Skin.HasSetting(hide_channelnumbers)</visible>
+                    <left>10</left>
                     <top>0</top>
-                    <width>170</width>
+                    <width>200</width>
                     <height>80</height>
                     <align>center</align>
                     <texture fallback="DefaultTVGuide.png">$INFO[ListItem.Icon]</texture>
                     <aspectratio align="center" aligny="center">keep</aspectratio>
                 </control>
+                <control type="image">
+                    <left>0</left>
+                    <top>80</top>
+                    <width>220</width>
+                    <height>1</height>
+                    <texture colordiffuse="border">colors/white.png</texture>
+                </control>
             </control>
-            <control type="image">
-                <visible>Skin.HasSetting(hide_channelnumbers)</visible>
-                <left>10</left>
-                <top>0</top>
-                <width>200</width>
-                <height>80</height>
-                <align>center</align>
-                <texture fallback="DefaultTVGuide.png">$INFO[ListItem.Icon]</texture>
-                <aspectratio align="center" aligny="center">keep</aspectratio>
-            </control>
-            <control type="image">
-                <left>0</left>
-                <top>80</top>
-                <width>220</width>
-                <height>1</height>
-                <texture colordiffuse="border">colors/white.png</texture>
+            <control type="group">
+                <visible>String.IsEqual(Container.ViewMode,$LOCALIZE[31139])</visible>
+                <control type="group">
+                    <visible>!Skin.HasSetting(hide_channelnumbers)</visible>
+                    <control type="label">
+                        <visible>Integer.IsLess(ListItem.ChannelNumberLabel,100)</visible>
+                        <width>60</width>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>light44</font>
+                        <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                    </control>
+                    <control type="label">
+                        <visible>Integer.IsGreater(ListItem.ChannelNumberLabel,99)</visible>
+                        <visible>Integer.IsLess(ListItem.ChannelNumberLabel,1000)</visible>
+                        <width>60</width>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>light30</font>
+                        <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                    </control>
+                    <control type="label">
+                        <visible>Integer.IsGreater(ListItem.ChannelNumberLabel,999)</visible>
+                        <width>60</width>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>regular20</font>
+                        <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                    </control>
+                    <control type="image">
+                        <left>50</left>
+                        <top>0</top>
+                        <width>240</width>
+                        <height>100</height>
+                        <align>center</align>
+                        <texture fallback="DefaultTVGuide.png">$INFO[ListItem.Icon]</texture>
+                        <aspectratio align="center" aligny="center">keep</aspectratio>
+                    </control>
+                </control>
+                <control type="image">
+                    <visible>Skin.HasSetting(hide_channelnumbers)</visible>
+                    <left>0</left>
+                    <top>0</top>
+                    <width>300</width>
+                    <height>100</height>
+                    <align>center</align>
+                    <texture fallback="DefaultTVGuide.png">$INFO[ListItem.Icon]</texture>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                </control>
+                <control type="image">
+                    <left>0</left>
+                    <top>100</top>
+                    <width>300</width>
+                    <height>1</height>
+                    <texture colordiffuse="border">colors/white.png</texture>
+                </control>
+                <control type="image">
+                    <left>0</left>
+                    <top>0</top>
+                    <width>1</width>
+                    <height>100</height>
+                    <texture colordiffuse="border">colors/white.png</texture>
+                </control>
             </control>
         </definition>
     </include>
@@ -2302,10 +2413,20 @@
                 <visible>ListItem.HasReminder</visible>
             </control>
             <control type="label" id="1">
+                <visible>!String.IsEqual(Container.ViewMode,$LOCALIZE[31139])</visible>
                 <left>6</left>
                 <top>35</top>
                 <width>50</width>
                 <height>36</height>
+                <font>regular30</font>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="textbox" id="1">
+                <visible>String.IsEqual(Container.ViewMode,$LOCALIZE[31139])</visible>
+                <left>6</left>
+                <top>35</top>
+                <scrolltime>200</scrolltime>
+                <autoscroll delay="1000" time="1000" repeat="1000">$PARAM[active]</autoscroll>
                 <font>regular30</font>
                 <label>$INFO[ListItem.Label]</label>
             </control>
@@ -2316,19 +2437,39 @@
                 <height>20</height>
                 <texture>$VAR[PVRTimerIcon]</texture>
             </control>
-            <control type="image">
-                <left>0</left>
-                <top>0</top>
-                <width>1</width>
-                <height>80</height>
-                <texture colordiffuse="border">colors/white.png</texture>
+            <control type="group">
+                <visible>!String.IsEqual(Container.ViewMode,$LOCALIZE[31139])</visible>
+                <control type="image">
+                    <left>0</left>
+                    <top>0</top>
+                    <width>1</width>
+                    <height>80</height>
+                    <texture colordiffuse="border">colors/white.png</texture>
+                </control>
+                <control type="image">
+                    <left>0</left>
+                    <top>80</top>
+                    <width>3000</width>
+                    <height>1</height>
+                    <texture colordiffuse="border">colors/white.png</texture>
+                </control>
             </control>
-            <control type="image">
-                <left>0</left>
-                <top>80</top>
-                <width>3000</width>
-                <height>1</height>
-                <texture colordiffuse="border">colors/white.png</texture>
+            <control type="group">
+                <visible>String.IsEqual(Container.ViewMode,$LOCALIZE[31139])</visible>
+                <control type="image">
+                    <left>0</left>
+                    <top>0</top>
+                    <width>300</width>
+                    <height>1</height>
+                    <texture colordiffuse="border">colors/white.png</texture>
+                </control>
+                <control type="image">
+                    <left>0</left>
+                    <top>0</top>
+                    <width>1</width>
+                    <height>3000</height>
+                    <texture colordiffuse="border">colors/white.png</texture>
+                </control>
             </control>
         </definition>
     </include>
@@ -2372,7 +2513,7 @@
     <include name="pvr_tvguide_detail">
         <control type="group">
             <visible>Skin.HasSetting(tvguide_show_detail)</visible>
-            <visible>!String.IsEqual(Container.ViewMode,$LOCALIZE[31066])</visible>
+            <visible>Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(54)</visible>
             <top>-160</top>
             <height>200</height>
             <control type="image">
@@ -2436,7 +2577,7 @@
     <include name="pvr_tvguide_channelgroups">
         <control type="list" id="11">
             <include>openclose_slight_top</include>
-            <top>60</top>
+            <top>0</top>
             <height>85</height>
             <onup>50</onup>
             <ondown>50</ondown>
@@ -2506,104 +2647,61 @@
     </include>
 
     <include name="pvr_tvguide_decoration">
-        <control type="image">
-            <width>220</width>
-            <height>1</height>
-            <top>89</top>
-            <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="border">colors/white.png</texture>
+        <control type="group">
+            <visible>!String.IsEqual(Container.ViewMode,$LOCALIZE[31139])</visible>
+            <control type="image">
+                <width>220</width>
+                <height>1</height>
+                <top>89</top>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <top>40</top>
+                <width>1</width>
+                <left>220</left>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="label">
+                <top>40</top>
+                <width>200</width>
+                <height>50</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <font>light36</font>
+                <label>$INFO[System.Time(hh:mm:ss)]</label>
+            </control>
         </control>
-        <control type="image">
-            <top>40</top>
-            <width>1</width>
-            <left>220</left>
-            <aspectratio>stretch</aspectratio>
-            <texture colordiffuse="border">colors/white.png</texture>
-        </control>
-        <control type="label">
-            <top>40</top>
-            <width>200</width>
-            <height>50</height>
-            <align>center</align>
-            <aligny>center</aligny>
-            <textcolor>active</textcolor>
-            <font>light36</font>
-            <label>$INFO[System.Time(hh:mm:ss)]</label>
-        </control>
-        <control type="grouplist" id="400">
-            <top>-20</top>
-            <left>0</left>
-            <right>20</right>
-            <align>right</align>
-            <orientation>horizontal</orientation>
-            <itemgap>10</itemgap>
-            <onup condition="Skin.HasSetting(tvguide_show_channelgroups)">11</onup>
-            <onup condition="!Skin.HasSetting(tvguide_show_channelgroups)">50</onup>
-            <ondown>50</ondown>
-            <include content="button_round">
-                <param name="id" value="401" />
-                <param name="visible">!String.IsEmpty(Skin.String(runningat_name_0))</param>
-                <param name="onclick" value="SetProperty(runningat_active,0,home)" />
-                <param name="onclick2" value="ActivateWindow(1107)" />
-                <param name="icon" value="icons/buttons/guide.png" />
-                <param name="useanimations" value="true" />
-                <param name="radius">80</param>
-                <param name="iconsize">60</param>
-                <param name="iconoffset">10</param>
-            </include>
-            <include content="button_round">
-                <param name="id" value="402" />
-                <param name="visible">!String.IsEmpty(Skin.String(runningat_name_1))</param>
-                <param name="onclick" value="SetProperty(runningat_active,1,home)" />
-                <param name="onclick2" value="ActivateWindow(1107)" />
-                <param name="icon" value="icons/buttons/guide.png" />
-                <param name="useanimations" value="true" />
-                <param name="radius">80</param>
-                <param name="iconsize">60</param>
-                <param name="iconoffset">10</param>
-            </include>
-            <include content="button_round">
-                <param name="id" value="403" />
-                <param name="visible">!String.IsEmpty(Skin.String(runningat_name_2))</param>
-                <param name="onclick" value="SetProperty(runningat_active,2,home)" />
-                <param name="onclick2" value="ActivateWindow(1107)" />
-                <param name="icon" value="icons/buttons/guide.png" />
-                <param name="useanimations" value="true" />
-                <param name="radius">80</param>
-                <param name="iconsize">60</param>
-                <param name="iconoffset">10</param>
-            </include>
-            <include content="button_round">
-                <param name="id" value="404" />
-                <param name="visible">System.HasAddon(script.service.gto)</param>
-                <param name="onclick" value="ActivateWindow(1104)" />
-                <param name="icon" value="icons/buttons/tipp.png" />
-                <param name="useanimations" value="true" />
-                <param name="radius">80</param>
-                <param name="iconsize">60</param>
-                <param name="iconoffset">10</param>
-            </include>
-            <include content="button_round">
-                <param name="id" value="405" />
-                <param name="onclick" value="ActivateWindow(tvsearch)" />
-                <param name="icon" value="icons/buttons/search.png" />
-                <param name="useanimations" value="true" />
-                <param name="radius">80</param>
-                <param name="iconsize">50</param>
-                <param name="iconoffset">15</param>
-            </include>
-        </control>
-        <control type="label">
-            <include>positioning_tvguide_buttons</include>
-            <top>-60</top>
-            <width>300</width>
-            <height>50</height>
-            <align>center</align>
-            <aligny>center</aligny>
-            <textcolor>active</textcolor>
-            <shadowcolor>black</shadowcolor>
-            <font>regular24</font>
-            <label>$VAR[TVGuideHelpText]</label>
+        <control type="group">
+            <visible>String.IsEqual(Container.ViewMode,$LOCALIZE[31139])</visible>
+            <control type="image">
+                <width>120</width>
+                <height>1</height>
+                <top>140</top>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <left>120</left>
+                <width>1</width>
+                <height>100</height>
+                <top>40</top>
+                <aspectratio>stretch</aspectratio>
+                <texture colordiffuse="border">colors/white.png</texture>
+            </control>
+            <control type="label">
+                <left>-40</left>
+                <top>60</top>
+                <width>200</width>
+                <height>50</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textcolor>active</textcolor>
+                <font>light30</font>
+                <label>$INFO[System.Time(hh:mm:ss)]</label>
+            </control>
         </control>
     </include>
 

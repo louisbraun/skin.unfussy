@@ -272,20 +272,20 @@ msgid "Lyrics add-on"
 msgstr "Liedtexte-Addon"
 
 msgctxt "#31063"
-msgid "4 Channels"
-msgstr "4 Kanäle"
+msgid "4 Channels hor."
+msgstr "4 Kanäle hor."
 
 msgctxt "#31064"
-msgid "6 Channels"
-msgstr "6 Kanäle"
+msgid "6 Channels hor."
+msgstr "6 Kanäle hor."
 
 msgctxt "#31065"
-msgid "8 Channels"
-msgstr "8 Kanäle"
+msgid "8 Channels hor."
+msgstr "8 Kanäle hor."
 
 msgctxt "#31066"
-msgid "10 Channels"
-msgstr "10 Kanäle"
+msgid "10 Channels hor."
+msgstr "10 Kanäle hor."
 
 msgctxt "#31067"
 msgid "Next Location"
@@ -570,3 +570,8 @@ msgstr "erster Sender"
 msgctxt "#31138"
 msgid "last channel"
 msgstr "letzter Sender"
+
+msgctxt "#31139"
+msgid "Vertical"
+msgstr "Vertikal"
+

@@ -272,19 +272,19 @@ msgid "Lyrics add-on"
 msgstr ""
 
 msgctxt "#31063"
-msgid "4 Channels"
+msgid "4 Channels hor."
 msgstr ""
 
 msgctxt "#31064"
-msgid "6 Channels"
+msgid "6 Channels hor."
 msgstr ""
 
 msgctxt "#31065"
-msgid "8 Channels"
+msgid "8 Channels hor."
 msgstr ""
 
 msgctxt "#31066"
-msgid "10 Channels"
+msgid "10 Channels hor."
 msgstr ""
 
 msgctxt "#31067"
@@ -570,3 +570,8 @@ msgstr ""
 msgctxt "#31138"
 msgid "last channel"
 msgstr ""
+
+msgctxt "#31139"
+msgid "Vertical"
+msgstr ""
+

@@ -34,7 +34,7 @@
                 <onup>Action(close)</onup>
                 <ondown>Action(close)</ondown>
                 <onright>400</onright>
-                <onleft>401</onleft>
+                <onleft>501</onleft>
                 <usecontrolcoords>true</usecontrolcoords>
                 <include content="button_round">
                     <param name="id" value="300" />
@@ -79,7 +79,8 @@
                 <onup>Action(close)</onup>
                 <ondown>Action(close)</ondown>
                 <onleft>304</onleft>
-                <onright>300</onright>
+                <onright condition="!String.IsEmpty(Skin.String(runningat_name_0))">500</onright>
+                <onright condition="String.IsEmpty(Skin.String(runningat_name_0))">501</onright>
                 <usecontrolcoords>true</usecontrolcoords>
                 <include content="button_round">
                     <param name="id" value="400" />
@@ -94,7 +95,33 @@
                     <param name="useanimations" value="true" />
                 </include>
             </control>
-
+            <control type="grouplist">
+                <top>30</top>
+                <height>90</height>
+                <left>1710</left>
+                <orientation>horizontal</orientation>
+                <itemgap>10</itemgap>
+                <onup>Action(close)</onup>
+                <ondown>Action(close)</ondown>
+                <onleft>401</onleft>
+                <onright>300</onright>
+                <usecontrolcoords>true</usecontrolcoords>
+                <include content="button_round">
+                    <param name="id" value="500" />
+                    <param name="visible">!String.IsEmpty(Skin.String(runningat_name_0))</param>
+                    <param name="onclick" value="SetProperty(runningat_active,0,home)" />
+                    <param name="onclick2" value="ActivateWindow(1107)" />
+                    <param name="icon" value="icons/buttons/guide.png" />
+                    <param name="useanimations" value="true" />
+                </include>
+                <include content="button_round">
+                    <param name="id" value="501" />
+                    <param name="onclick" value="Action(close)" />
+                    <param name="onclick2" value="ActivateWindow(tvsearch)" />
+                    <param name="icon" value="icons/buttons/search.png" />
+                    <param name="useanimations" value="true" />
+                </include>
+            </control>
         </control>
     </controls>
 </window>
