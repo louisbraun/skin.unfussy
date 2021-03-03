@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="view_510_poster">
+		<control type="button" id="20000">
+			<description>Dummy button to get animations right (hide focusedlayout on animations)</description>
+			<include>HiddenObject</include>
+			<animation effect="fade" delay="500" time="0" start="100" end="0">Visible</animation>
+			<animation effect="fade" delay="500" time="0" start="100" end="0">WindowOpen</animation>
+			<onclick>noop</onclick>
+			<visible>Control.IsVisible(510)</visible>
+		</control>
+		<control type="group">
+			<description>Poster Viewtype</description>
+			<centertop>50%</centertop>
+			<height>720</height>
+			<control type="image">
+				<left>0</left>
+				<top>4</top>
+				<width>100%</width>
+				<height>410</height>
+				<animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
+				<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
+				<animation effect="fade" time="200">VisibleChange</animation>
+                <texture colordiffuse="backgrounddark">colors/white.png</texture>
+                <bordertexture colordiffuse="border">colors/white.png</bordertexture>
+                <bordersize>1</bordersize>
+				<visible>Control.IsVisible(510)</visible>
+			</control>
+			<control type="group">
+				<visible>Control.IsVisible(510)</visible>
+<!-- 				<include>Visible_Right</include> -->
+				<include>openclose_fade_slight_right</include>
+				<control type="fixedlist" id="510">
+					<left>0</left>
+					<top>0</top>
+					<width>110%</width>
+					<height>704</height>
+					<focusposition>1</focusposition>
+					<movement>0</movement>
+					<pagecontrol>5199</pagecontrol>
+					<scrolltime tween="cubic" easing="out">500</scrolltime>
+					<orientation>horizontal</orientation>
+                    <onleft>510</onleft>
+					<onup>9000</onup>
+					<ondown>5199</ondown>
+                    <onright>510</onright>
+					<hitrect x="100" y="0" w="800" h="400" />
+					<visible>Container.Content(movies) | Container.Content(seasons) | Container.Content(sets) | Container.Content(tvshows)</visible>
+					<preloaditems>1</preloaditems>
+					<viewtype label="20021">icon</viewtype>
+					<itemlayout width="317">
+						<control type="group">
+							<left>-220</left>
+							<top>18</top>
+							<include>InfoWallMovieLayout</include>
+						</control>
+					</itemlayout>
+					<focusedlayout width="490">
+						<control type="group">
+							<control type="group">
+								<left>-220</left>
+								<top>18</top>
+								<visible>Container.OnScrollPrevious</visible>
+								<visible>Control.IsVisible(20000)</visible>
+								<animation effect="fade" time="200" start="100" end="0">Hidden</animation>
+								<include>InfoWallMovieLayout</include>
+							</control>
+							<control type="group">
+								<left>-40</left>
+								<top>18</top>
+								<visible>Container.OnScrollNext</visible>
+								<visible>Control.IsVisible(20000)</visible>
+								<animation effect="fade" time="200" start="100" end="0">Hidden</animation>
+								<include>InfoWallMovieLayout</include>
+							</control>
+						</control>
+					</focusedlayout>
+				</control>
+				<control type="group">
+					<top>25</top>
+					<control type="group">
+						<left>635</left>
+						<top>480</top>
+						<height>245</height>
+						<visible>ListItem.IsCollection + String.IsEmpty(ListItem.Plot)</visible>
+						<include content="InfoList">
+							<param name="bottom" value="0" />
+							<param name="sortby" value="year" />
+							<param name="sortorder" value="descending" />
+							<param name="font" value="regular20" />
+						</include>
+					</control>
+					<control type="image">
+						<left>645</left>
+						<top>415</top>
+						<width>32</width>
+						<height>32</height>
+						<texture>$VAR[WatchedOverlayVar]</texture>
+					</control>
+					<control type="label">
+						<left>695</left>
+						<top>400</top>
+						<right>50</right>
+						<height>40</height>
+						<label>$INFO[ListItem.Label]$VAR[ListSubLabelVar]</label>
+						<font>font45_title</font>
+						<shadowcolor>black</shadowcolor>
+					</control>
+					<control type="textbox">
+						<left>645</left>
+						<top>480</top>
+						<height>250</height>
+						<right>115</right>
+						<autoscroll time="3000" delay="7000" repeat="5000">!System.HasActiveModalDialog</autoscroll>
+						<label>$INFO[ListItem.Plot]</label>
+						<shadowcolor>black</shadowcolor>
+						<visible>!ListItem.IsCollection</visible>
+					</control>
+				</control>
+			</control>
+		</control>
+		<control type="group">
+			<centertop>50%</centertop>
+			<height>670</height>
+			<left>101</left>
+			<depth>DepthContentPopout</depth>
+			<visible>Control.IsVisible(510)</visible>
+			<include>openclose_fade_slight_left</include>
+<!-- 			<include>Visible_Left</include> -->
+			<control type="image">
+				<top>-16</top>
+				<left>-16</left>
+				<width>516</width>
+				<height>756</height>
+				<texture>colors/black.png</texture>
+				<bordertexture border="21">overlays/shadow.png</bordertexture>
+				<bordersize>20</bordersize>
+			</control>
+			<control type="image">
+				<left>4</left>
+				<top>4</top>
+				<width>476</width>
+				<height>716</height>
+				<fadetime>200</fadetime>
+				<aspectratio>scale</aspectratio>
+				<texture fallback="DefaultVideo.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+			</control>
+			<control type="image">
+				<left>1</left>
+				<top>1</top>
+				<width>482</width>
+				<height>721</height>
+				<visible>Control.HasFocus(510)</visible>
+				<animation effect="fade" time="100">VisibleChange</animation>
+				<texture border="8" colordiffuse="active">thumbnail_focused.png</texture>
+			</control>
+		</control>
+	</include>
+    <include name="InfoWallMovieLayout">
+        <param name="focused">false</param>
+        <definition>
+            <control type="group">
+                <visible>String.IsEmpty(ListItem.Art(poster))</visible>
+                <control type="image">
+                    <left>15</left>
+                    <top>-10</top>
+                    <width>290</width>
+                    <height>400</height>
+                    <texture>dialogs/dialog-bg-nobo.png</texture>
+                    <bordertexture border="21">overlays/shadow.png</bordertexture>
+                    <bordersize>20</bordersize>
+                </control>
+                <control type="image">
+                    <left>15</left>
+                    <top>-10</top>
+                    <width>290</width>
+                    <height>400</height>
+                    <texture colordiffuse="button_focus">colors/grey.png</texture>
+                    <bordersize>20</bordersize>
+                    <visible>$PARAM[focused]</visible>
+                    <include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+                </control>
+                <control type="textbox">
+                    <left>40</left>
+                    <top>244</top>
+                    <width>242</width>
+                    <height>120</height>
+                    <font>font27</font>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <label>$INFO[ListItem.Label]</label>
+                    <autoscroll time="2000" delay="3000" repeat="5000">$PARAM[focused]</autoscroll>
+                    <visible>!ListItem.IsParentFolder</visible>
+                </control>
+                <control type="image">
+                    <left>24</left>
+                    <top>-1</top>
+                    <width>272</width>
+                    <height>270</height>
+                    <texture fallback="DefaultMovies.png" background="true">$INFO[ListItem.Icon]</texture>
+                    <aspectratio>scale</aspectratio>
+                    <bordersize>20</bordersize>
+                </control>
+            </control>
+            <control type="group">
+                <visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+                <control type="image">
+                    <left>11</left>
+                    <top>-14</top>
+                    <width>298</width>
+                    <height>408</height>
+                    <texture colordiffuse="button_focus">colors/grey.png</texture>
+                    <bordertexture border="21">overlays/shadow.png</bordertexture>
+                    <bordersize>20</bordersize>
+                    <visible>$PARAM[focused]</visible>
+                    <include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+                </control>
+                <control type="image">
+                    <left>15</left>
+                    <top>-10</top>
+                    <width>290</width>
+                    <height>400</height>
+                    <texture background="true">$INFO[ListItem.Art(poster)]</texture>
+                    <aspectratio>scale</aspectratio>
+                    <bordertexture border="21">overlays/shadow.png</bordertexture>
+                    <bordersize>20</bordersize>
+                </control>
+                <control type="image">
+                    <left>35</left>
+                    <top>290</top>
+                    <width>80</width>
+                    <height>80</height>
+                    <texture>overlays/overlay-bg.png</texture>
+                    <visible>Listitem.IsCollection | ListItem.IsPlaying | Integer.IsGreater(ListItem.Playcount,0)</visible>
+                </control>
+            </control>
+            <control type="group">
+                <visible>String.IsEqual(ListItem.DBtype,tvshow)</visible>
+                <top>320</top>
+                <control type="image">
+                    <left>35</left>
+                    <top>0</top>
+                    <width>250</width>
+                    <height>50</height>
+                    <texture colordiffuse="CCFFFFFF">overlays/overlayfade.png</texture>
+                    <visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+                </control>
+                <control type="label">
+                    <left>0</left>
+                    <top>20</top>
+                    <width>288</width>
+                    <label>$INFO[ListItem.Property(WatchedEpisodes)]$INFO[ListItem.Property(TotalEpisodes), / ,]</label>
+                    <font>regular20</font>
+                    <shadowcolor>black</shadowcolor>
+                    <align>right</align>
+                </control>
+            </control>
+            <control type="image">
+                <left>35</left>
+                <top>338</top>
+                <width>32</width>
+                <height>32</height>
+                <texture>$VAR[WatchedOverlayVar]</texture>
+            </control>
+            <control type="progress">
+                <left>35</left>
+                <top>350</top>
+                <width>250</width>
+                <height>1</height>
+                <texturebg></texturebg>
+                <midtexture colordiffuse="button_focus" border="3">texturebg_alt_white.png</midtexture>
+                <info>ListItem.PercentPlayed</info>
+                <visible>!Integer.IsEqual(ListItem.PercentPlayed,0)</visible>
+            </control>
+        </definition>
+    </include>
+    <include name="InfoList">
+        <param name="item_label">$INFO[ListItem.Year,[COLOR button_focus],[/COLOR]  -  ]$INFO[ListItem.Label]</param>
+        <param name="path">$VAR[InfoListPathVar]</param>
+        <param name="item_height">40</param>
+        <param name="bottom">100</param>
+        <param name="width">1152</param>
+        <param name="list_id">5000</param>
+        <param name="font">regular20</param>
+        <param name="sortby"></param>
+        <param name="sortorder">ascending</param>
+        <param name="visible">true</param>
+        <definition>
+            <control type="panel" id="$PARAM[list_id]">
+                <top>0</top>
+                <width>$PARAM[width]</width>
+                <bottom>$PARAM[bottom]</bottom>
+                <orientation>vertical</orientation>
+                <visible>$PARAM[visible]</visible>
+                <focusedlayout height="$PARAM[item_height]" width="$PARAM[width]">
+                    <control type="label">
+                        <left>10</left>
+                        <height>$PARAM[item_height]</height>
+                        <width>$PARAM[width]</width>
+                        <aligny>center</aligny>
+                        <label>$PARAM[item_label]</label>
+                        <shadowcolor>black</shadowcolor>
+                        <font>$PARAM[font]</font>
+                    </control>
+                </focusedlayout>
+                <itemlayout height="$PARAM[item_height]" width="$PARAM[width]">
+                    <control type="label">
+                        <left>10</left>
+                        <height>$PARAM[item_height]</height>
+                        <width>$PARAM[width]</width>
+                        <aligny>center</aligny>
+                        <label>$PARAM[item_label]</label>
+                        <shadowcolor>black</shadowcolor>
+                        <font>$PARAM[font]</font>
+                    </control>
+                </itemlayout>
+                <content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]">$PARAM[path]</content>
+            </control>
+        </definition>
+    </include>
+</includes>

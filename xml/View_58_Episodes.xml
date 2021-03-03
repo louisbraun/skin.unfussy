@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <!-- Video Episode -->
+    <include name="view_58_episodes">
+        <control type="group">
+            <visible>Control.IsVisible(58)</visible>
+            <include>openclose_fade_slight_left</include>
+            <control type="image">
+                <top>63</top>
+                <width>1920</width>
+                <height>1080</height>
+                <aspectratio>stretch</aspectratio>
+                <texture background="true">$INFO[ListItem.Art(tvshow.fanart)]</texture>
+            </control>
+            <control type="image">
+                <top>70</top>
+                <left>20</left>
+                <width>1880</width>
+                <height>990</height>
+                <aspectratio>stretch</aspectratio>
+                <texture background="true" colordiffuse="ccffffff">colors/black.png</texture>
+            </control>
+            <control type="image">
+                <left>70</left>
+                <top>840</top>
+                <width>500</width>
+                <height>200</height>
+                <aspectratio aligny="bottom">keep</aspectratio>
+                <texture background="true">$INFO[ListItem.Art(tvshow.clearlogo)]</texture>
+                <animation effect="slide" end="1450" condition="Skin.HasSetting(alternatelayoutepisode)">Conditional</animation>
+            </control>
+            <control type="fixedlist" id="58">
+                <left>60</left>
+                <top>110</top>
+                <width>1820</width>
+                <height>980</height>
+                <movement>3</movement>
+                <focusposition>3</focusposition>
+                <onleft>9000</onleft>
+                <onright>58001</onright>
+<!--                 <onup>58</onup> -->
+<!--                 <ondown>58</ondown> -->
+                <pagecontrol>58001</pagecontrol>
+                <viewtype label="Episode">list</viewtype>
+                <scrolltime tween="quadratic" easing="out">200</scrolltime>
+                <visible>Container.Content(episodes)</visible>
+                <animation effect="slide" end="0,0" time="160" condition="Container(58).Row(0)">Conditional</animation>
+                <animation effect="slide" end="0,0" time="160" condition="Container(58).Row(1)">Conditional</animation>
+                <animation effect="slide" end="0,0" time="160" condition="Container(58).Row(2)">Conditional</animation>
+                <animation effect="slide" end="0,0" time="160" condition="Container(58).Row(3)">Conditional</animation>
+                <animation effect="slide" end="0,0" time="160" condition="Container(58).Row(4)">Conditional</animation>
+                <animation effect="slide" end="0,0" time="160" condition="Container(58).Row(5)">Conditional</animation>
+                <animation effect="slide" end="-113,0" condition="Skin.HasSetting(alternatelayoutepisode)">Conditional</animation>
+                <itemlayout height="100" width="1920" condition="Container.Content(episodes)">
+                    <control type="label">
+                        <left>920</left>
+                        <width>790</width>
+                        <height>70</height>
+                        <font>font30</font>
+                        <shadowcolor>shadow</shadowcolor>
+                        <align>right</align>
+                        <label>$INFO[ListItem.Label]</label>
+                    </control>
+                    <control type="image">
+                        <left>1750</left>
+                        <top>5</top>
+                        <width>64</width>
+                        <height>64</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture colordiffuse="active">$VAR[WatchedOverlayVar]</texture>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="275" width="1920" condition="Container.Content(episodes)">
+                    <control type="group">
+                        <control type="image">
+                            <visible>!String.IsEqual(ListItem.Plot,$LOCALIZE[20370])</visible>
+                            <left>1250</left>
+                            <top>0</top>
+                            <width>480</width>
+                            <height>270</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture background="true">$INFO[ListItem.Thumb]</texture>
+                            <fadetime>IconCrossfadeTime</fadetime>
+                            <bordertexture border="1" colordiffuse="active">colors/white.png</bordertexture>
+                            <bordersize>2</bordersize>
+                        </control>
+                        <control type="image">
+                            <visible>String.IsEqual(ListItem.Plot,$LOCALIZE[20370]) + !String.IsEmpty(ListItem.Art(tvshow.landscape)</visible>
+                            <left>1250</left>
+                            <top>0</top>
+                            <width>480</width>
+                            <height>270</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture background="true">$INFO[ListItem.Art(tvshow.landscape)]</texture>
+                            <fadetime>IconCrossfadeTime</fadetime>
+                            <bordertexture border="1" colordiffuse="active">colors/white.png</bordertexture>
+                            <bordersize>2</bordersize>
+                        </control>
+                        <control type="image">
+                            <visible>String.IsEqual(ListItem.Plot,$LOCALIZE[20370]) + String.IsEmpty(ListItem.Art(tvshow.landscape)</visible>
+                            <left>1250</left>
+                            <top>0</top>
+                            <width>480</width>
+                            <height>270</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture background="true">$INFO[ListItem.Art(tvshow.fanart)]</texture>
+                            <fadetime>IconCrossfadeTime</fadetime>
+                            <bordertexture border="1" colordiffuse="active">colors/white.png</bordertexture>
+                            <bordersize>2</bordersize>
+                        </control>
+                        
+                        
+                        
+                        <control type="image">
+                            <left>1270</left>
+                            <top>200</top>
+                            <width>444</width>
+                            <height>50</height>
+                            <texture background="true">black.png</texture>
+                            <colordiffuse>88ffffff</colordiffuse>
+                            <visible>!ListItem.IsParentFolder</visible>
+                        </control>
+                        <control type="label">
+                            <left>1271</left>
+                            <top>205</top>
+                            <width>444</width>
+                            <height>40</height>
+                            <align>right</align>
+                            <textoffsetx>10</textoffsetx>
+                            <textcolor>grey2</textcolor>
+                            <shadowcolor>shadow</shadowcolor>
+                            <label>$INFO[ListItem.Premiered]</label>
+                            <font>font14</font>
+                        </control>
+                    </control>
+                    <control type="group">
+                        <animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(58)">Conditional</animation>
+                        <control type="label">
+                            <width>1220</width>
+                            <height>70</height>
+                            <font>font30</font>
+                            <shadowcolor>black</shadowcolor>
+                            <align>right</align>
+                            <label>$INFO[ListItem.Label]</label>
+                            <textcolor>active</textcolor>
+                        </control>
+                        <control type="textbox">
+                            <label>$INFO[ListItem.Plot]</label>
+                            <top>70</top>
+                            <left>220</left>
+                            <width>1000</width>
+                            <height>180</height>
+                            <align>right</align>
+                            <shadowcolor>black</shadowcolor>
+                            <autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+                        </control>
+                    </control>
+                    <control type="image">
+                        <left>1750</left>
+                        <top>94</top>
+                        <width>64</width>
+                        <height>64</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture colordiffuse="active">$VAR[WatchedOverlayVar]</texture>
+                    </control>
+                </focusedlayout>
+            </control>
+            <include content="scrollbar">
+                <param name="controlled_id" value="58" />
+                <param name="onleft_id" value="58" />
+                <param name="onright_id" value="58" />
+                <param name="top" value="90" />
+                <param name="left" value="1877" />
+                <param name="height" value="950" />
+            </include>
+        </control>
+    </include>
+</includes> 

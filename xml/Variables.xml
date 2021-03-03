@@ -1300,4 +1300,34 @@
         <value>$LOCALIZE[31026]</value>
     </variable>
 
+    <variable name="ShiftLeftTextBoxVar">
+        <value condition="Window.IsActive(pictures)">$INFO[ListItem.Property(description),,[CR]]$INFO[ListItem.PictureDatetime,[COLOR active]$LOCALIZE[552]:  [/COLOR],[CR]]$INFO[ListItem.PictureResolution,[COLOR active]$LOCALIZE[169]:  [/COLOR],[CR]]$INFO[ListItem.PictureCamMake,[COLOR active]$LOCALIZE[31041]:  [/COLOR],[CR]]$INFO[ListItem.PictureCamModel,[COLOR active]$LOCALIZE[21823]:  [/COLOR],[CR]]</value>
+        <value condition="String.IsEqual(listitem.dbtype,artist)">$INFO[ListItem.Genre,[COLOR active]$LOCALIZE[515]:  [/COLOR],[CR]]$INFO[ListItem.Property(Artist_YearsActive),[COLOR active]$LOCALIZE[21898]:  [/COLOR],[CR]]$INFO[ListItem.Property(Artist_Style),[COLOR active]$LOCALIZE[736]:  [/COLOR],[CR]]</value>
+        <value condition="String.IsEqual(listitem.dbtype,album)">$INFO[ListItem.Year,[COLOR active]$LOCALIZE[345]:  [/COLOR],[CR]]$INFO[ListItem.Genre,[COLOR active]$LOCALIZE[515]:  [/COLOR],[CR]]$INFO[ListItem.Property(album_label),[COLOR active]$LOCALIZE[21899]:  [/COLOR],[CR]]$INFO[ListItem.Property(album_style),[COLOR active]$LOCALIZE[736]:  [/COLOR],[CR]]</value>
+        <value condition="String.IsEqual(Listitem.DBType,season) | String.IsEqual(Listitem.DBType,tvshow)">$INFO[ListItem.Genre,[COLOR active]$LOCALIZE[515]:  [/COLOR],[CR]]$INFO[ListItem.Premiered,[COLOR active]$LOCALIZE[20416]:  [/COLOR]]</value>
+        <value>$INFO[ListItem.Genre,[COLOR active]$LOCALIZE[515]:  [/COLOR],[CR]]$INFO[ListItem.Director,[COLOR active]$LOCALIZE[20339]:  [/COLOR],[CR]]$INFO[ListItem.Writer,[COLOR active]$LOCALIZE[20417]:  [/COLOR],[CR]]$INFO[ListItem.Premiered,[COLOR active]$LOCALIZE[20416]:  [/COLOR]]</value>
+    </variable>
+    <variable name="ShiftRightTextBoxVar">
+        <value condition="Window.IsActive(pictures)">$INFO[ListItem.Size,[COLOR active]$LOCALIZE[289]:  [/COLOR],[CR]]$INFO[ListItem.PictureAperture,[COLOR active]$LOCALIZE[21826]:  [/COLOR],[CR]]$INFO[ListItem.PictureFocalLen,[COLOR active]$LOCALIZE[21827]:  [/COLOR],[CR]]$INFO[ListItem.PictureExpTime,[COLOR active]$LOCALIZE[21830]:  [/COLOR],[CR]]$INFO[ListItem.Date,[COLOR active]$LOCALIZE[552]:  [/COLOR],[CR]]</value>
+        <value condition="String.IsEqual(listitem.dbtype,artist)">$INFO[ListItem.Property(artist_description)]</value>
+        <value condition="String.IsEqual(listitem.dbtype,album)">$INFO[ListItem.Property(album_description)]</value>
+        <value>$INFO[ListItem.Plot]</value>
+    </variable>
+    <variable name="WatchedOverlayVar">
+        <value condition="ListItem.IsRecording">windows/pvr/record.png</value>
+        <value condition="ListItem.IsPlaying">overlays/watched/OverlayPlaying-List.png</value>
+        <value condition="Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) + Integer.IsGreater(ListItem.Property(WatchedEpisodes),0)">overlays/resume.png</value>
+        <value condition="ListItem.IsResumable">overlays/resume.png</value>
+        <value condition="Integer.IsGreater(ListItem.PlayCount,0)">overlays/$INFO[ListItem.Overlay]</value>
+        <value condition="ListItem.IsResumable">overlays/resume.png</value>
+        <!--<value condition="ListItem.IsCollection">overlays/set.png</value>-->
+    </variable>
+    <variable name="SetOverlayVar">
+        <value condition="ListItem.IsCollection">overlays/set.png</value>
+    </variable>
+    <variable name="ListSubLabelVar">
+        <value condition="ListItem.IsCollection"></value>
+        <value>[COLOR grey]$INFO[ListItem.Year, (,)][/COLOR]</value>
+    </variable>
+    
 </includes>

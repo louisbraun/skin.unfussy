@@ -20,6 +20,12 @@
     <include file="View_54_Infowall.xml" />
     <include file="View_55_Fanart_Horizontal.xml" />
     <include file="View_56_Clearlogo.xml" />
+    <include file="View_57_Shift.xml" />
+    <include file="View_58_Episodes.xml" />
+    <include file="View_59_BannerWall.xml" />
+    <include file="View_503_Gallery.xml" />
+    <include file="View_510_Poster.xml" />
+    <include file="View_511_FanartPoster.xml" />
 	<include file="Variables.xml" />
     <constant name="DepthDialog">0.50</constant>
     <constant name="DepthDialog+">0.52</constant>

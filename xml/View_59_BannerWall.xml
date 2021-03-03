@@ -1,0 +1,152 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <includes>
+     <include name="view_59_bannerwall">
+         <control type="group">
+             <include>openclose_fade_slight_left</include>
+             <visible>Control.IsVisible(59)</visible>
+             <include content="scrollbar">
+                 <param name="controlled_id" value="59" />
+                 <param name="onleft_id" value="59" />
+                 <param name="onright_id" value="59" />
+                 <param name="top" value="70" />
+                 <param name="left" value="1900" />
+             </include>
+             <control type="panel" id="59">
+                 <visible>$EXP[ContentTypesView59_BannerWall]</visible>
+                 <top>65</top>
+                 <left>20</left>
+                 <bottom>20</bottom>
+                 <width>1880</width>
+                 <height>1000</height>
+                 <visible>true</visible>
+                 <focusposition>2</focusposition>
+                 <viewtype label="BannerWall">icon</viewtype>
+                 <orientation>vertical</orientation>
+                 <scrolltime tween="sine" easing="out">500</scrolltime>
+                 <pagecontrol>53001</pagecontrol>
+                 <onleft>9000</onleft>
+                 <onright>53001</onright>
+                 <include content="view_59_itemlayout" />
+                 <include content="view_59_focusedlayout" />
+             </control>
+         </control>
+     </include>
+     
+     <include name="view_59_itemlayout">
+         <itemlayout condition="Container.Content(movies) | Container.Content(tvshows)" width="940" height="270">
+             <include content="view_59_listitem_tvshows" />
+         </itemlayout>
+     </include>
+     
+     <include name="view_59_focusedlayout">
+         <focusedlayout condition="Container.Content(tvshows)" width="940" height="270">
+             <include content="view_59_listitem_tvshows">
+                 <param name="active">true</param>
+             </include>
+         </focusedlayout>
+     </include>
+     
+     
+     <include name="view_59_listitem_tvshows">
+         <param name="active">false</param>
+         <definition>
+             <control type="group">
+                 <animation effect="zoom" start="100,100" end="105,105" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_view_animations)">Focus</animation>
+                 <animation effect="zoom" start="105,105" end="100,100" center="auto" time="300" tween="sine" easing="out" condition="$PARAM[active] + Skin.HasSetting(use_view_animations)">Unfocus</animation>
+                 <include content="listitem_background">
+                     <param name="container_id">59</param>
+                     <param name="active">$PARAM[active]</param>
+                     <param name="top">10</param>
+                     <param name="width">932</param>
+                     <param name="height">260</param>
+                 </include>
+                 <control type="image">
+                     <visible>!String.IsEmpty(ListItem.Art(banner))</visible>
+                     <top>11</top>
+                     <left>1</left>
+                     <width>930</width>
+                     <height>172</height>
+                     <aspectratio>keep</aspectratio>
+                     <texture background="true">$INFO[ListItem.Art(banner)]</texture>
+                 </control>
+                 <control type="image">
+                     <visible>String.IsEmpty(ListItem.Art(banner))</visible>
+                     <top>12</top>
+                     <left>1</left>
+                     <width>930</width>
+                     <height>180</height>
+                     <aspectratio>keep</aspectratio>
+                     <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+                 </control>
+                 <control type="group">
+                     <control type="image">
+                         <visible>Skin.HasSetting(darken_watched)</visible>
+                         <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
+                         <top>11</top>
+                         <left>1</left>
+                         <width>930</width>
+                         <height>172</height>
+                         <aspectratio>scale</aspectratio>
+                         <texture colordiffuse="darkenposters">colors/white.png</texture>
+                     </control>
+                     <control type="image">
+                         <top>15</top>
+                         <right>20</right>
+                         <width>32</width>
+                         <height>32</height>
+                         <texture background="true">$VAR[WatchedOverlayVar]</texture>
+                     </control>
+                     <control type="image">
+                         <top>145</top>
+                         <right>20</right>
+                         <width>32</width>
+                         <height>32</height>
+                         <texture background="true">$VAR[SetOverlayVar]</texture>
+                     </control>
+                 </control>
+                 <control type="group">
+                     <visible>String.IsEqual(ListItem.Label,..)</visible>
+                     <control type="image">
+                         <top>-60</top>
+                         <left>10</left>
+                         <right>10</right>
+                         <aspectratio>keep</aspectratio>
+                         <texture background="true">$INFO[ListItem.ActualIcon]</texture>
+                     </control>
+                     <control type="label">
+                         <top>190</top>
+                         <left>10</left>
+                         <width>910</width>
+                         <height>50</height>
+                         <align>center</align>
+                         <aligny>center</aligny>
+                         <font>light70</font>
+                         <label>$INFO[ListItem.Label]</label>
+                     </control>
+                 </control>
+                 <!--### ToDo ###-->
+                 <control type="label">
+                     <visible>!String.IsEqual(ListItem.Label,..)</visible>
+                     <top>190</top>
+                     <left>10</left>
+                     <width>910</width>
+                     <height>70</height>
+                     <aligny>center</aligny>
+                     <font>light44</font>
+                     <label>$INFO[ListItem.Label]</label>
+                 </control>
+                 <control type="label">
+                     <right>20</right>
+                     <bottom>0</bottom>
+                     <height>30</height>
+                     <align>right</align>
+                     <aligny>center</aligny>
+                     <font>light24</font>
+                     <textcolor>active</textcolor>
+                     <label>$INFO[ListItem.Property(TotalSeasons),[COLOR white]$LOCALIZE[33054]:[/COLOR] , / ]$INFO[ListItem.Property(TotalEpisodes),[COLOR white]$LOCALIZE[36907]:[/COLOR] ,]$INFO[ListItem.Property(WatchedEpisodes), / [COLOR white]$LOCALIZE[16102]:[/COLOR] ,]</label>
+                 </control>
+             </control>
+         </definition>
+     </include>
+ </includes>
+ 
