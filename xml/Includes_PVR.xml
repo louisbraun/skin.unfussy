@@ -368,37 +368,37 @@
             </include>
             <include content="button_round">
                 <param name="id" value="302" />
+                <param name="onclick" value="PlayerControl(Stop)" />
+                <param name="onclick2" value="Action(Back)" />
+                <param name="icon" value="icons/buttons/stop.png" />
+                <param name="useanimations" value="true" />
+            </include>
+            <include content="button_round">
+                <param name="id" value="303" />
                 <param name="onclick" value="Action(Close)" />
                 <param name="onclick2" value="ActivateWindow(tvchannels)" />
                 <param name="icon" value="icons/buttons/channels.png" />
                 <param name="useanimations" value="true" />
             </include>
             <include content="button_round">
-                <param name="id" value="303" />
+                <param name="id" value="304" />
                 <param name="onclick" value="Action(Close)" />
                 <param name="onclick2" value="ActivateWindow(tvguide)" />
                 <param name="icon" value="icons/pvr/epg.png" />
                 <param name="useanimations" value="true" />
             </include>
             <include content="button_round">
-                <param name="id" value="304" />
+                <param name="id" value="305" />
                 <param name="onclick" value="Action(Close)" />
                 <param name="onclick2" value="ActivateWindow(tvrecordings)" />
                 <param name="icon" value="icons/pvr/recording.png" />
                 <param name="useanimations" value="true" />
             </include>
             <include content="button_round">
-                <param name="id" value="305" />
+                <param name="id" value="306" />
                 <param name="onclick" value="Action(Close)" />
                 <param name="onclick2" value="ActivateWindow(tvtimers)" />
                 <param name="icon" value="icons/pvr/timer.png" />
-                <param name="useanimations" value="true" />
-            </include>
-            <include content="button_round">
-                <param name="id" value="306" />
-                <param name="onclick" value="PlayerControl(Stop)" />
-                <param name="onclick2" value="Action(Back)" />
-                <param name="icon" value="icons/buttons/stop.png" />
                 <param name="useanimations" value="true" />
             </include>
             <!-- timeshift buttons -->

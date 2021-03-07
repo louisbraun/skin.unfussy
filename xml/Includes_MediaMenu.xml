@@ -174,17 +174,26 @@
                     <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
                     <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
                 </control>
-                <control type="radiobutton" id="9">
-                    <visible>Container.Content(images)</visible>
+                <control type="button" id="9">
+                    <visible>Container.Content(addons)</visible>
                     <height>60</height>
-                    <aligny>center</aligny>
-                    <radioposx>300</radioposx>
                     <textoffsetx>20</textoffsetx>
                     <font>regular24</font>
                     <textcolor>white</textcolor>
-                    <label>$LOCALIZE[13319]</label>
+                    <label>$LOCALIZE[24034]</label>
                     <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
                     <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                </control>
+                <control type="button" id="199">
+                    <height>60</height>
+                    <textoffsetx>20</textoffsetx>
+                    <font>regular24</font>
+                    <textcolor>white</textcolor>
+                    <label>$LOCALIZE[587]</label>
+                    <texturefocus colordiffuse="active">backgrounds/overlay_background.png</texturefocus>
+                    <texturenofocus colordiffuse="backgroundtransparent">colors/white.png</texturenofocus>
+                    <onclick>right</onclick>
+                    <onclick>Filter</onclick>
                 </control>
                 <control type="togglebutton" id="1006">
                     <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(musicvideos)</visible>

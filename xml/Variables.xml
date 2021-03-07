@@ -245,11 +245,11 @@
     <variable name="VideoOSDHelpText">
         <value condition="Control.HasFocus(300)">$LOCALIZE[15067]</value>
         <value condition="Control.HasFocus(301)">$LOCALIZE[19033]</value>
-        <value condition="Control.HasFocus(302)">$LOCALIZE[31018]</value>
-        <value condition="Control.HasFocus(303)">$LOCALIZE[4]</value>
-        <value condition="Control.HasFocus(304)">$LOCALIZE[10701]</value>
-        <value condition="Control.HasFocus(305)">$LOCALIZE[10703]</value>
-        <value condition="Control.HasFocus(306)">$LOCALIZE[13009]</value>
+        <value condition="Control.HasFocus(302)">$LOCALIZE[13009]</value>
+        <value condition="Control.HasFocus(303)">$LOCALIZE[31018]</value>
+        <value condition="Control.HasFocus(304)">$LOCALIZE[4]</value>
+        <value condition="Control.HasFocus(305)">$LOCALIZE[10701]</value>
+        <value condition="Control.HasFocus(306)">$LOCALIZE[10703]</value>
         <value condition="Control.HasFocus(307)">$LOCALIZE[36428]</value>
         <value condition="Control.HasFocus(308)">$LOCALIZE[10550]</value>
         <value condition="Control.HasFocus(309)">$LOCALIZE[31003]</value>
