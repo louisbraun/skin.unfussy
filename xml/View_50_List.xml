@@ -67,7 +67,7 @@
                 <left>10</left>
                 <width>32</width>
                 <height>32</height>
-                <texture>overlays/$INFO[ListItem.Overlay]</texture>
+                <texture background="true">$VAR[WatchedOverlayVar]</texture>
             </control>
             <control type="label">
                 <visible>!String.IsEmpty(ListItem.Overlay)</visible>
@@ -92,6 +92,13 @@
                 <aligny>center</aligny>
                 <font>light30</font>
                 <label>$VAR[ListLabel2]</label>
+            </control>
+            <control type="image">
+                <top>23</top>
+                <left>550</left>
+                <width>32</width>
+                <height>32</height>
+                <texture background="true">$VAR[SetOverlayVar]</texture>
             </control>
         </definition>
     </include>
@@ -190,7 +197,7 @@
                 <width>116</width>
                 <height>30</height>
                 <aspectratio>keep</aspectratio>
-                <texture>flags/cadre2.png</texture>
+                <texture background="true">flags/cadre2.png</texture>
             </control>
             <control type="label">
                 <top>960</top>
@@ -211,7 +218,7 @@
             <width>255</width>
             <height>383</height>
             <aspectratio>keep</aspectratio>
-            <texture>$INFO[ListItem.Art(poster)]</texture>
+            <texture background="true">$INFO[ListItem.Art(poster)]</texture>
         </control>
     </include>
 
@@ -267,7 +274,7 @@
                     <right>10</right>
                     <height>150</height>
                     <aspectratio>keep</aspectratio>
-                    <texture>$INFO[Container(50).ListItem.Art(clearlogo)]</texture>
+                    <texture background="true">$INFO[Container(50).ListItem.Art(clearlogo)]</texture>
                 </control>                
                 <control type="label" id="202">
                     <visible>!String.IsEmpty(Container(50).ListItem.Tagline)</visible>
@@ -348,13 +355,22 @@
                 </control>
             </control>
             <control type="image">
-                <visible>String.IsEqual(Container(50).ListItem.DBTYPE,episode)</visible>
+                <visible>String.IsEqual(Container(50).ListItem.DBTYPE,episode) + !String.IsEmpty(Container(50).ListItem.Art(thumb))</visible>
                 <bottom>1</bottom>
                 <left>1</left>
                 <width>588</width>
                 <height>332</height>
                 <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[Container(50).ListItem.Art(thumb)]</texture>
+            </control>
+            <control type="image">
+                <visible>String.IsEqual(Container(50).ListItem.DBTYPE,episode) + String.IsEmpty(Container(50).ListItem.Art(thumb))</visible>
+                <bottom>1</bottom>
+                <left>1</left>
+                <width>588</width>
+                <height>332</height>
+                <aspectratio>keep</aspectratio>
+                <texture background="true">$INFO[Container(50).ListItem.Art(tvshow.landscape)]</texture>
             </control>
         </control>
     </include>
@@ -381,7 +397,7 @@
                 <width>560</width>
                 <height>217</height>
                 <aspectratio>keep</aspectratio>
-                <texture>$INFO[Container(50).ListItem.Art(clearlogo)]</texture>
+                <texture background="true">$INFO[Container(50).ListItem.Art(clearlogo)]</texture>
             </control>
             <control type="image">
                 <bottom>1</bottom>
@@ -508,7 +524,7 @@
                 <width>560</width>
                 <height>217</height>
                 <aspectratio>keep</aspectratio>
-                <texture>$INFO[Container(50).ListItem.Art(artist.clearlogo)]</texture>
+                <texture background="true">$INFO[Container(50).ListItem.Art(artist.clearlogo)]</texture>
             </control>
             <control type="image">
                 <top>490</top>
@@ -545,7 +561,7 @@
                 <left>1</left>
                 <width>588</width>
                 <aspectratio aligny="bottom">keep</aspectratio>
-                <texture>$INFO[Container(50).ListItem.Art(fanart)]</texture>
+                <texture background="true">$INFO[Container(50).ListItem.Art(fanart)]</texture>
             </control>
             <control type="label">
                 <top>30</top>
