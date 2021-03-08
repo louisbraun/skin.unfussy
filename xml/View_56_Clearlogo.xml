@@ -44,7 +44,32 @@
                 <top>10</top>
                 <height>150</height>
                 <aspectratio>keep</aspectratio>
-                <texture>$INFO[ListItem.Art(clearlogo)]</texture>
+                <texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
+            </control>
+            
+            <control type="image">
+                <visible>Skin.HasSetting(darken_watched)</visible>
+                <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
+                <top>7</top>
+                <left>1</left>
+                <width>398</width>
+                <height>156</height>
+                <aspectratio>scale</aspectratio>
+                <texture background="true" colordiffuse="darkenposters">colors/white.png</texture>
+            </control>
+            <control type="image">
+                <top>5</top>
+                <right>5</right>
+                <width>32</width>
+                <height>32</height>
+                <texture background="true">$VAR[WatchedOverlayVar]</texture>
+            </control>
+            <control type="image">
+                <top>125</top>
+                <right>5</right>
+                <width>32</width>
+                <height>32</height>
+                <texture background="true">$VAR[SetOverlayVar]</texture>
             </control>
             <control type="textbox">
                 <visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
@@ -78,7 +103,7 @@
                     <top>10</top>
                     <height>190</height>
                     <aspectratio>keep</aspectratio>
-                    <texture>$INFO[ListItem.Art(clearlogo)]</texture>
+                    <texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
                 </control>
                 <control type="textbox">
                     <visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
@@ -88,6 +113,30 @@
                     <aligny>center</aligny>
                     <font>light36</font>
                     <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="image">
+                    <visible>Skin.HasSetting(darken_watched)</visible>
+                    <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
+                    <top>7</top>
+                    <left>1</left>
+                    <width>498</width>
+                    <height>196</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true" colordiffuse="darkenposters">colors/white.png</texture>
+                </control>
+                <control type="image">
+                    <top>5</top>
+                    <right>5</right>
+                    <width>32</width>
+                    <height>32</height>
+                    <texture background="true">$VAR[WatchedOverlayVar]</texture>
+                </control>
+                <control type="image">
+                    <top>165</top>
+                    <right>5</right>
+                    <width>32</width>
+                    <height>32</height>
+                    <texture background="true">$VAR[SetOverlayVar]</texture>
                 </control>
             </control>
         </focusedlayout>
@@ -124,7 +173,7 @@
                     <width>1000</width>
                     <height>562</height>
                     <aspectratio>keep</aspectratio>
-                    <texture>$INFO[ListItem.Art(clearart)]</texture>
+                    <texture background="true">$INFO[ListItem.Art(clearart)]</texture>
                 </control>
                 <control type="image">
                     <visible>String.IsEmpty(ListItem.Art(clearart))</visible>
@@ -133,8 +182,21 @@
                     <width>950</width>
                     <height>534</height>
                     <aspectratio>keep</aspectratio>
-                    <texture>$INFO[ListItem.Art(fanart)]</texture>
+                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
                 </control>
+                
+                <control type="label">
+                    <visible>String.IsEqual(Container(56).ListItem.DBTYPE,tvshow)</visible>
+                    <left>20</left>
+                    <bottom>1</bottom>
+                    <width>240</width>
+                    <height>135</height>
+                    <align>left</align>
+                    <font>regular30</font>
+                    <textcolor>active</textcolor>
+                    <label>$INFO[ListItem.Property(TotalSeasons),[COLOR white]$LOCALIZE[33054]: [/COLOR]][CR]$INFO[ListItem.Property(TotalEpisodes),[COLOR white]$LOCALIZE[36907]: [/COLOR]][CR]$INFO[ListItem.Property(WatchedEpisodes),[COLOR white]$LOCALIZE[16102]: [/COLOR]]</label>
+                </control>
+
                 <control type="image">
                     <visible>![Container(56).OnNext | Container(56).OnPrevious]</visible>
                     <animation type="VisibleChange">
@@ -146,7 +208,7 @@
                     <left>334</left>
                     <top>10</top>
                     <aspectratio>keep</aspectratio>
-                    <texture>$INFO[ListItem.Art(discart)]</texture>
+                    <texture background="true">$INFO[ListItem.Art(discart)]</texture>
                 </control>
                 <control type="group">
                     <visible>String.IsEqual(ListItem.VideoResolution,1080) | String.IsEqual(ListItem.VideoResolution,720)</visible>
@@ -164,7 +226,7 @@
                         <width>406</width>
                         <height>40</height>
                         <aspectratio>keep</aspectratio>
-                        <texture>icons/video/bluray.png</texture>
+                        <texture background="true">icons/video/bluray.png</texture>
                     </control>
                 </control>
                 <control type="group">
@@ -184,7 +246,7 @@
                         <width>406</width>
                         <height>40</height>
                         <aspectratio>keep</aspectratio>
-                        <texture>icons/video/dvd.png</texture>
+                        <texture background="true">icons/video/dvd.png</texture>
                     </control>
                 </control>
                 <control type="group">
@@ -202,7 +264,7 @@
                         <width>140</width>
                         <height>30</height>
                         <aspectratio>keep</aspectratio>
-                        <texture>flags/cadre2.png</texture>
+                        <texture background="true">flags/cadre2.png</texture>
                     </control>
                     <control type="label">
                         <top>25</top>
@@ -220,7 +282,7 @@
                     <width>320</width>
                     <height>480</height>
                     <aspectratio align="left" aligny="top">keep</aspectratio>
-                    <texture>$INFO[ListItem.Art(poster)]</texture>
+                    <texture background="true">$INFO[ListItem.Art(poster)]</texture>
                 </control>
                 <control type="grouplist">
                     <visible>!String.IsEmpty(ListItem.Art(discart))</visible>
@@ -271,17 +333,17 @@
                     <control type="image">
                         <visible>!String.IsEmpty(ListItem.VideoResolution)</visible>
                         <width>73</width>
-                        <texture>$INFO[ListItem.VideoResolution,flags/videoresolution/,.png]</texture>
+                        <texture background="true">$INFO[ListItem.VideoResolution,flags/videoresolution/,.png]</texture>
                     </control>
                     <control type="image">
                         <visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
                         <width>130</width>
-                        <texture>$INFO[ListItem.VideoCodec,flags/videocodec/,.png]</texture>
+                        <texture background="true">$INFO[ListItem.VideoCodec,flags/videocodec/,.png]</texture>
                     </control>
                     <control type="image">
                         <visible>!String.IsEmpty(ListItem.VideoAspect)</visible>
                         <width>108</width>
-                        <texture>$INFO[ListItem.VideoAspect,flags/aspectratio/,.png]</texture>
+                        <texture background="true">$INFO[ListItem.VideoAspect,flags/aspectratio/,.png]</texture>
                     </control>
                 </control>
                 <control type="grouplist">
@@ -295,12 +357,12 @@
                     <control type="image">
                         <visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
                         <width>130</width>
-                        <texture>$INFO[ListItem.AudioCodec,flags/audiocodec/,.png]</texture>
+                        <texture background="true">$INFO[ListItem.AudioCodec,flags/audiocodec/,.png]</texture>
                     </control>
                     <control type="image">
                         <visible>!String.IsEmpty(ListItem.AudioChannels)</visible>
                         <width>130</width>
-                        <texture>$INFO[ListItem.AudioChannels,flags/audiochannel/,.png]</texture>
+                        <texture background="true">$INFO[ListItem.AudioChannels,flags/audiochannel/,.png]</texture>
                     </control>
                 </control>
                 <control type="group">
@@ -310,7 +372,7 @@
                     <width>176</width>
                     <height>50</height>
                     <control type="image">
-                        <texture>flags/time.png</texture>
+                        <texture background="true">flags/time.png</texture>
                     </control>
                     <control type="label">
                         <top>0</top>
