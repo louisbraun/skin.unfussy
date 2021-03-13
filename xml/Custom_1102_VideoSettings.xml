@@ -124,6 +124,7 @@
                 <animation effect="rotate" start="0" end="-90" center="auto" time="200" condition="true">Visible</animation>
             </control>
             <control type="image">
+                <visible>System.HasCMS</visible>
                 <visible>!String.IsEqual(Window.Property(submenu),304)</visible>
                 <top>155</top>
                 <right>5</right>
@@ -133,6 +134,7 @@
                 <animation effect="rotate" start="-90" end="0" center="auto" time="200" condition="true">Visible</animation>
             </control>
             <control type="image">
+                <visible>System.HasCMS</visible>
                 <visible>String.IsEqual(Window.Property(submenu),304)</visible>
                 <top>155</top>
                 <right>5</right>
