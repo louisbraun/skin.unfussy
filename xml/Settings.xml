@@ -120,7 +120,7 @@
                         <label>CoreELEC</label>
                         <onclick>RunAddon(service.coreelec.settings)</onclick>
                         <icon>icons/settings/libreelec.png</icon>
-                        <visible>System.HasAddon(service.Coreelec.settings)</visible>
+                        <visible>System.HasAddon(service.coreelec.settings)</visible>
                     </item>
                     <item>
                         <label>$LOCALIZE[13200]</label>
