@@ -142,7 +142,7 @@
 				<width>476</width>
 				<height>716</height>
 				<fadetime>200</fadetime>
-				<aspectratio>scale</aspectratio>
+				<aspectratio>keep</aspectratio>
 				<texture fallback="DefaultVideo.png" background="true">$INFO[ListItem.Art(poster)]</texture>
 			</control>
 			<control type="image">
@@ -221,7 +221,7 @@
                     <width>290</width>
                     <height>400</height>
                     <texture background="true">$INFO[ListItem.Art(poster)]</texture>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio>keep</aspectratio>
                     <bordertexture border="21">overlays/shadow.png</bordertexture>
                     <bordersize>20</bordersize>
                 </control>

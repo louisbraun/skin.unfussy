@@ -3,9 +3,8 @@
     <include name="view_503_gallery">
         <control type="group">
             <visible>Control.IsVisible(503)</visible>
-            <!--<include>Visible_Right</include>-->
             <include>openclose_fade_slight_right</include>
-            <top>180</top>
+            <top>120</top>
             <left>20</left>
             <right>20</right>
             <height>700</height>
@@ -16,6 +15,135 @@
         </control>
         <include>view_503_content</include>
     </include>
+    
+    <include name="View_Gallery">
+        <control type="wraplist" id="$PARAM[id]">
+            <top>0</top>
+            <left>-88</left>
+            <width>2736</width>
+            <height>700</height>
+            <onleft>$PARAM[id]</onleft>
+            <onright>$PARAM[id]</onright>
+            <ondown>5199</ondown>
+            <onup condition="!Skin.HasSetting(KioskMode)">9000</onup>
+            <pagecontrol>5199</pagecontrol>
+            <focusposition>5</focusposition>
+            <movement>4</movement>
+            <preloaditems>2</preloaditems>
+            <orientation>horizontal</orientation>
+            <viewtype label="Gallery">bigwide</viewtype>
+            <scrolltime tween="cubic" easing="out">500</scrolltime>
+            <visible>$PARAM[visible]</visible>
+            <itemlayout height="700" width="88">
+                <control type="group">
+                    <left>0</left>
+                    <right>10</right>
+                    <control type="group">
+                        <visible>String.isEmpty(ListItem.VideoResolution)</visible>
+                        <control type="image">
+                            <left>0</left>
+                            <right>0</right>
+                            <top>0</top>
+                            <bottom>0</bottom>
+                            <texture  diffuse="backgrounds\overlay_cover.png" colordiffuse="black">colors/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <visible>String.IsEqual(ListItem.DBType,set)</visible>
+                            <top>-5</top>
+                            <left>4</left>
+                            <width>70</width>
+                            <height>70</height>
+                            <texture>defaultfolder.png</texture>
+                        </control>
+                    </control>
+                    <control type="group">
+                        <visible>Integer.IsEqual(ListItem.VideoResolution,576)</visible>
+                        <control type="image">
+                            <left>0</left>
+                            <right>0</right>
+                            <top>0</top>
+                            <bottom>0</bottom>
+                            <texture diffuse="backgrounds\overlay_cover.png" colordiffuse="black">colors/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <top>5</top>
+                            <left>4</left>
+                            <width>70</width>
+                            <height>50</height>
+                            <aspectratio>keep</aspectratio>
+                            <texture>icons\video\dvd.png</texture>
+                        </control>
+                    </control>
+                    <control type="group">
+                        <visible>Integer.IsEqual(ListItem.VideoResolution,720) | Integer.IsEqual(ListItem.VideoResolution,1080)</visible>
+                        <control type="image">
+                            <left>0</left>
+                            <right>0</right>
+                            <top>0</top>
+                            <bottom>0</bottom>
+                            <texture>backgrounds/cover_back_bluray.png</texture>
+                        </control>
+                        <control type="image">
+                            <top>5</top>
+                            <left>4</left>
+                            <width>70</width>
+                            <height>50</height>
+                            <aspectratio>keep</aspectratio>
+                            <texture>icons\video\bluray.png</texture>
+                        </control>
+                    </control>
+                    <control type="label">
+                        <aligny>center</aligny>
+                        <top>630</top>
+                        <left>32</left>
+                        <height>75</height>
+                        <width>590</width>
+                        <animation effect="rotate" end="90" start="0" condition="true" center="20,650">Conditional</animation>
+                        <label>$INFO[ListItem.Label]</label>
+                        <align>left</align>
+                    </control>
+                    <control type="label">
+                        <aligny>center</aligny>
+                        <top>630</top>
+                        <left>32</left>
+                        <height>75</height>
+                        <width>590</width>
+                        <animation effect="rotate" end="90" start="0" condition="true" center="20,650">Conditional</animation>
+                        <label>$INFO[ListItem.Label]</label>
+                        <align>left</align>
+                        <textcolor>grey</textcolor>
+                        <visible>Skin.HasSetting(darken_watched) + Integer.IsGreater(ListItem.Playcount,0)</visible>
+                    </control>
+                    <control type="image">
+                        <centerleft>50%</centerleft>
+                        <top>645</top>
+                        <height>36</height>
+                        <width>36</width>
+                        <texture background="true">$VAR[SetOverlayVar]</texture>
+                    </control>
+                    <control type="image">
+                        <centerleft>50%</centerleft>
+                        <top>50</top>
+                        <height>36</height>
+                        <width>36</width>
+                        <texture background="true">$VAR[WatchedOverlayVar]</texture>
+                    </control>
+                </control>
+            </itemlayout>
+            <focusedlayout height="700" width="1186">
+                <include content="listitem_background">
+                    <param name="container_id">503</param>
+                    <param name="active">false</param>
+                    <param name="top">5</param>
+                    <param name="height">690</param>
+                    <param name="width">1175</param>
+                </include>
+                <include>View_Gallery_Fanart</include>
+                <include>View_Gallery_Info</include>
+            </focusedlayout>
+        </control>
+    </include>
+
     <include name="view_503_content">
         <control type="group">
             <visible>Control.IsVisible(503)</visible>
@@ -42,16 +170,17 @@
             <include content="listitem_background">
                 <param name="container_id">503</param>
                 <param name="active">false</param>
-                <param name="left">373</param>
-                <param name="top">885</param>
-                <param name="height">190</param>
-                <param name="width">1175</param>
+                <param name="left">600</param>
+                <param name="top">830</param>
+                <param name="height">240</param>
+                <param name="width">948</param>
             </include>
             <control type="label">
                 <visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
-                <width>100%</width>
-                <height>140</height>
-                <top>890</top>
+                <left>600</left>
+                <width>940</width>
+                <height>200</height>
+                <top>850</top>
                 <align>center</align>
                 <aligny>center</aligny>
                 <font>regular60</font>
@@ -61,114 +190,83 @@
             <control type="image">
                 <visible>!String.IsEmpty(ListItem.Art(clearlogo))</visible>
                 <visible>!Container.Content(episodes)</visible>
-                <top>890</top>
+                <top>830</top>
+                <left>100</left>
                 <width>100%</width>
-                <height>140</height>
+                <height>200</height>
                 <aspectratio>keep</aspectratio>
                 <texture background="true" fallback="DefaultVideoFanart.png">$INFO[ListItem.Art(clearlogo)]</texture>
                 <fadetime>100</fadetime>
             </control>
             <control type="label">
                 <width>100%</width>
+                <left>100</left>
                 <height>45</height>
-                <bottom>10</bottom>
+                <bottom>15</bottom>
                 <align>center</align>
                 <aligny>center</aligny>
                 <font>font30_title</font>
                 <label>$INFO[ListItem.Year,(,)]</label>
                 <scroll>true</scroll>
             </control>
-        </control>    
-    </include> 
-    <include name="View_Gallery">
-        <control type="group">
-            <control type="wraplist" id="$PARAM[id]">
-                <top>0</top>
-                <left>-88</left>
-                <width>2736</width>
-                <height>700</height>
-                <onleft>$PARAM[id]</onleft>
-                <onright>$PARAM[id]</onright>
-                <ondown>5199</ondown>
-                <oninfo condition="String.IsEqual(ListItem.DBType,set)">ActivateWindow(1132)</oninfo>
-                <onup condition="!Skin.HasSetting(KioskMode)">9000</onup>
-                <pagecontrol>5199</pagecontrol>
-                <focusposition>5</focusposition>
-                <movement>4</movement>
-                <preloaditems>2</preloaditems>
-                <orientation>horizontal</orientation>
-                <viewtype label="Gallery">bigwide</viewtype>
-                <scrolltime tween="cubic" easing="out">500</scrolltime>
-                <visible>$PARAM[visible]</visible>
-                <itemlayout height="700" width="88">
-                    <control type="group">
-                        <left>0</left>
-                        <right>10</right>
-                        <include content="listitem_background">
-                            <param name="container_id">503</param>
-                            <param name="active">false</param>
-                            <param name="top">5</param>
-                            <param name="height">690</param>
-                        </include>
-                        <control type="image">
-                            <left>0</left>
-                            <right>0</right>
-                            <top>0</top>
-                            <bottom>0</bottom>
-                            <texture background="true">dialogs/back.png</texture>
-                        </control>
-                        <control type="label">
-                            <aligny>center</aligny>
-                            <top>630</top>
-                            <left>32</left>
-                            <height>75</height>
-                            <width>590</width>
-                            <animation effect="rotate" end="90" start="0" condition="true" center="20,650">Conditional</animation>
-                            <label>$INFO[ListItem.Label]</label>
-                            <align>left</align>
-                        </control>
-                        <control type="label">
-                            <aligny>center</aligny>
-                            <top>630</top>
-                            <left>32</left>
-                            <height>75</height>
-                            <width>590</width>
-                            <animation effect="rotate" end="90" start="0" condition="true" center="20,650">Conditional</animation>
-                            <label>$INFO[ListItem.Label]</label>
-                            <align>left</align>
-                            <textcolor>grey</textcolor>
-                            <visible>Skin.HasSetting(darken_watched) + Integer.IsGreater(ListItem.Playcount,0)</visible>
-                        </control>
-                        <control type="image">
-                            <centerleft>50%</centerleft>
-                            <top>645</top>
-                            <height>36</height>
-                            <width>36</width>
-                            <texture background="true">$VAR[SetOverlayVar]</texture>
-                        </control>
-                        <control type="image">
-                            <centerleft>50%</centerleft>
-                            <top>20</top>
-                            <height>36</height>
-                            <width>36</width>
-                            <texture background="true">$VAR[WatchedOverlayVar]</texture>
-                        </control>
-                    </control>
-                </itemlayout>
-                <focusedlayout height="700" width="1186">
-                    <include content="listitem_background">
-                        <param name="container_id">503</param>
-                        <param name="active">false</param>
-                        <param name="top">5</param>
-                        <param name="height">690</param>
-                        <param name="width">1175</param>
-                    </include>
-                    <include>View_Gallery_Fanart</include>
-                    <include>View_Gallery_Info</include>
-                </focusedlayout>
+            <control type="group">
+                <visible>Integer.IsEqual(ListItem.VideoResolution,1080) | Integer.IsEqual(ListItem.VideoResolution,720)</visible>
+                <top>740</top>
+                <left>380</left>
+                <control type="image">
+                    <width>235</width>
+                    <height>360</height>
+                    <aspectratio align="left" aligny="top">stretch</aspectratio>
+                    <texture colordiffuse="bluray">backgrounds/dvd_case.png</texture>
+                </control>
+                <control type="image">
+                    <top>23</top>
+                    <left>-90</left>
+                    <width>406</width>
+                    <height>20</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>icons/video/bluray.png</texture>
+                </control>
             </control>
-        </control>
+            <control type="group">
+                <visible>![Integer.IsEqual(ListItem.VideoResolution,1080) | Integer.IsEqual(ListItem.VideoResolution,720)] 
+                       + !String.IsEqual(ListItem.DBType, Set) + !String.IsEmpty(ListItem.DBType)</visible>
+                <top>740</top>
+                <left>380</left>
+                <control type="image">
+                    <width>235</width>
+                    <height>360</height>
+                    <aspectratio align="left" aligny="top">stretch</aspectratio>
+                    <texture colordiffuse="dvd">backgrounds/dvd_case.png</texture>
+                </control>
+                <control type="image">
+                    <top>23</top>
+                    <left>-90</left>
+                    <width>406</width>
+                    <height>20</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture>icons/video/dvd.png</texture>
+                </control>
+            </control>
+            <control type="image">
+                <top>790</top>
+                <left>398</left>
+                <width>187</width>
+                <height>280</height>
+                <aspectratio align="left" aligny="top">keep</aspectratio>
+                <texture background="true">$INFO[ListItem.Art(poster)]</texture>
+                <fadetime>100</fadetime>
+            </control>
+            <include content="mediaflags">
+                <param name="top" value="85" />
+                <param name="left" value="380" />
+                <param name="width" value="570" />
+                <param name="height" value="30" />
+                <param name="align" value="left" />
+            </include>
+        </control>    
     </include>
+
     <include name="View_Gallery_Fanart">
         <control type="group">
             <top>0</top>
@@ -180,20 +278,8 @@
                 <height>100%</height>
                 <texture background="true">dialogs/back.png</texture>
             </control>
-            <!--<control type="multiimage">
-                <left>10</left>
-                <right>10</right>
-                <top>10</top>
-                <bottom>10</bottom>
-                <fadetime>200</fadetime>
-                <aspectratio>stretch</aspectratio>
-                <imagepath background="true" fallback="DefaultVideoFanart.png">$VAR[InfoWidgetThumbVar]</imagepath>
-                <fadetime>300</fadetime>
-                <timeperimage>3000</timeperimage>
-                <randomize>true</randomize>
-                <visible>!Container.Content(episodes)</visible>
-            </control>-->
             <control type="image">
+                <visible>!Container.Content(episodes) + !String.IsEmpty(Listitem.DBType) + !String.IsEqual(Listitem.DBType, set)</visible>
                 <left>10</left>
                 <right>10</right>
                 <top>10</top>
@@ -204,9 +290,31 @@
                 <fadetime>300</fadetime>
                 <timeperimage>3000</timeperimage>
                 <randomize>true</randomize>
-                <visible>!Container.Content(episodes)</visible>
             </control>
             <control type="image">
+                <visible>!Container.Content(episodes) + String.IsEmpty(Listitem.DBType)</visible>
+                <top>50</top>
+                <left>300</left>
+                <width>600</width>
+                <height>600</height>
+                <fadetime>200</fadetime>
+                <aspectratio>stretch</aspectratio>
+                <texture background="true">$INFO[ListItem.Icon]</texture>
+                <fadetime>300</fadetime>
+            </control>
+            <control type="image">
+                <visible>String.IsEqual(Listitem.DBType,set)</visible>
+                <top>50</top>
+                <left>300</left>
+                <width>600</width>
+                <height>600</height>
+                <fadetime>200</fadetime>
+                <aspectratio>stretch</aspectratio>
+                <texture background="true">defaultfolder.png</texture>
+                <fadetime>300</fadetime>
+            </control>
+            <control type="image">
+                <visible>Container.Content(episodes) + !Integer.IsLess(ListItem.Playcount,1)</visible>
                 <left>10</left>
                 <right>10</right>
                 <top>10</top>
@@ -214,9 +322,9 @@
                 <fadetime>200</fadetime>
                 <aspectratio>stretch</aspectratio>
                 <texture background="true" fallback="DefaultVideoFanart.png">$INFO[ListItem.Art(thumb)]</texture>
-                <visible>Container.Content(episodes) + ![Integer.IsLess(ListItem.Playcount,1) + Container.Content(episodes)]</visible>
             </control>
             <control type="image">
+                <visible>Container.Content(episodes) + Integer.IsLess(ListItem.Playcount,1)</visible>
                 <left>10</left>
                 <right>10</right>
                 <top>10</top>
@@ -224,10 +332,10 @@
                 <fadetime>200</fadetime>
                 <aspectratio>stretch</aspectratio>
                 <texture background="true" fallback="DefaultVideoFanart.png">$INFO[ListItem.Art(fanart)]</texture>
-                <visible>Container.Content(episodes) + [Integer.IsLess(ListItem.Playcount,1) + Container.Content(episodes)]</visible>
             </control>
         </control>
     </include>
+
     <include name="View_Gallery_Info">
         <control type="group">
             <left>10</left>
@@ -235,21 +343,11 @@
             <bottom>15</bottom>
             <height>722</height>
             <control type="image">
-                <left>0</left>
-                <bottom>565</bottom>
-                <width>110</width>
-                <height>110</height>
-                <texture flipy="true">overlays/overlay-bg.png</texture>
-                <visible>ListItem.IsResumable | Listitem.IsCollection | ListItem.IsPlaying | Integer.IsGreater(ListItem.Playcount,0)</visible>
-<!--                 <visible>!String.StartsWith(Container.FolderPath,plugin://)</visible> -->
-            </control>
-            <control type="image">
                 <left>5</left>
                 <bottom>629</bottom>
                 <width>36</width>
                 <height>36</height>
                 <texture background="true">$VAR[WatchedOverlayVar]</texture>
-<!--                 <visible>!String.StartsWith(Container.FolderPath,plugin://)</visible> -->
             </control>
             <control type="image">
                 <bottom>5</bottom>
@@ -257,12 +355,6 @@
                 <width>64</width>
                 <height>64</height>
                 <texture background="true">$VAR[SetOverlayVar]</texture>
-            </control>
-            <control type="image">
-                <width>100%</width>
-                <height>45</height>
-                <bottom>-5</bottom>
-                <texture background="true">dialogs/back.png</texture>
             </control>
         </control>
     </include>

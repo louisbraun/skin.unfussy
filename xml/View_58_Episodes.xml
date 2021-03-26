@@ -10,7 +10,7 @@
                 <width>1920</width>
                 <height>1080</height>
                 <aspectratio>stretch</aspectratio>
-                <texture background="true">$INFO[ListItem.Art(tvshow.fanart)]</texture>
+                <texture background="true">$INFO[Container.Art(tvshow.fanart)]</texture>
             </control>
             <control type="image">
                 <top>70</top>
@@ -26,7 +26,7 @@
                 <width>500</width>
                 <height>200</height>
                 <aspectratio aligny="bottom">keep</aspectratio>
-                <texture background="true">$INFO[ListItem.Art(tvshow.clearlogo)]</texture>
+                <texture background="true">$INFO[Container.Art(tvshow.clearlogo)]</texture>
                 <animation effect="slide" end="1450" condition="Skin.HasSetting(alternatelayoutepisode)">Conditional</animation>
             </control>
             <control type="fixedlist" id="58">

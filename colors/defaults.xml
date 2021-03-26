@@ -21,4 +21,6 @@
 	<color name="red">FFFF0000</color>
 	<color name="green">FF00FF00</color>
 	<color name="blue">FF0000FF</color>
+    <color name="bluray">FF1293CD</color>
+    <color name="dvd">FF444444</color>
 </colors>

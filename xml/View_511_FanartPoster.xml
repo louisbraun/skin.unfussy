@@ -10,13 +10,22 @@
 			<visible>Control.IsVisible(511)</visible>
 		</control>
         <control type="image">
-            <visible>Control.IsVisible(511)</visible>
+            <visible>Control.IsVisible(511) + String.IsEmpty(Container.Art(fanart))</visible>
             <top>63</top>
             <width>1920</width>
             <height>1080</height>
             <aspectratio>stretch</aspectratio>
             <fadetime>200</fadetime>
             <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+        </control>
+        <control type="image">
+            <visible>Control.IsVisible(511) + !String.IsEmpty(Container.Art(fanart))</visible>
+            <top>63</top>
+            <width>1920</width>
+            <height>1080</height>
+            <aspectratio>stretch</aspectratio>
+            <fadetime>200</fadetime>
+            <texture background="true">$INFO[Container.Art(fanart)]</texture>
         </control>
 		<control type="group">
 			<description>Poster Viewtype</description>

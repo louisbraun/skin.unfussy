@@ -156,7 +156,7 @@
                         <width>406</width>
                         <height>615</height>
                         <aspectratio align="left" aligny="top">stretch</aspectratio>
-                        <texture colordiffuse="blue">backgrounds/dvd_case.png</texture>
+                        <texture colordiffuse="bluray">backgrounds/dvd_case.png</texture>
                     </control>
                     <control type="image">
                         <top>20</top>
@@ -175,7 +175,7 @@
                         <width>406</width>
                         <height>615</height>
                         <aspectratio align="left" aligny="top">stretch</aspectratio>
-                        <texture colordiffuse="backgrounddark">backgrounds/dvd_case.png</texture>
+                        <texture colordiffuse="dvd">backgrounds/dvd_case.png</texture>
                     </control>
                     <control type="image">
                         <visible>!String.IsEqual(Container(56).ListItem.DBType,set)</visible>
