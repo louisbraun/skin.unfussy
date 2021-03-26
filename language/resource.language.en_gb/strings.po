@@ -575,3 +575,7 @@ msgctxt "#31139"
 msgid "Vertical"
 msgstr ""
 
+msgctxt "#31140"
+msgid "No EPG available"
+msgstr ""
+

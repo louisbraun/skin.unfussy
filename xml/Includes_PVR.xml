@@ -3300,23 +3300,36 @@
                     <aspectratio>keep</aspectratio>
                     <texture>$INFO[ListItem.Icon]</texture>
                 </control>
+                <control type="group">
+                    <visible>!String.IsEmpty(ListItem.Property(now_title))</visible>
+                    <control type="label">
+                        <top>10</top>
+                        <left>210</left>
+                        <height>50</height>
+                        <right>140</right>
+                        <aligny>center</aligny>
+                        <font>regular30</font>
+                        <label>$INFO[ListItem.Property(now_title)]</label>
+                    </control>
+                    <control type="label">
+                        <top>55</top>
+                        <left>210</left>
+                        <height>34</height>
+                        <right>140</right>
+                        <aligny>center</aligny>
+                        <font>regular24</font>
+                        <label>$INFO[ListItem.Property(next_title)]</label>
+                    </control>
+                </control>
                 <control type="label">
-                    <top>10</top>
+                    <visible>String.IsEmpty(ListItem.Property(now_title))</visible>
+                    <top>30</top>
                     <left>210</left>
                     <height>50</height>
                     <right>140</right>
                     <aligny>center</aligny>
                     <font>regular30</font>
-                    <label>$INFO[ListItem.Property(now_title)]</label>
-                </control>
-                <control type="label">
-                    <top>55</top>
-                    <left>210</left>
-                    <height>34</height>
-                    <right>140</right>
-                    <aligny>center</aligny>
-                    <font>regular24</font>
-                    <label>$INFO[ListItem.Property(next_title)]</label>
+                    <label>$LOCALIZE[31140]</label>
                 </control>
             </control>
             <control type="group">
@@ -3329,59 +3342,75 @@
                     <aspectratio>keep</aspectratio>
                     <texture>$INFO[ListItem.Icon]</texture>
                 </control>
+                <control type="group">
+                    <visible>!String.IsEmpty(ListItem.Property(now_title))</visible>
+                    <control type="label">
+                        <top>10</top>
+                        <left>160</left>
+                        <height>50</height>
+                        <right>140</right>
+                        <aligny>center</aligny>
+                        <font>regular30</font>
+                        <label>$INFO[ListItem.Property(now_title)]</label>
+                    </control>
+                    <control type="label">
+                        <top>55</top>
+                        <left>160</left>
+                        <height>34</height>
+                        <right>140</right>
+                        <aligny>center</aligny>
+                        <font>regular24</font>
+                        <label>$INFO[ListItem.Property(next_title)]</label>
+                    </control>
+                </control>
                 <control type="label">
-                    <top>10</top>
+                    <visible>String.IsEmpty(ListItem.Property(now_title))</visible>
+                    <top>30</top>
                     <left>160</left>
                     <height>50</height>
                     <right>140</right>
                     <aligny>center</aligny>
                     <font>regular30</font>
-                    <label>$INFO[ListItem.Property(now_title)]</label>
+                    <label>$LOCALIZE[31140]</label>
+                </control>
+            </control>
+            <control type="group">
+                <visible>!String.IsEmpty(ListItem.Property(now_title))</visible>
+                <control type="progress">
+                    <visible>!$PARAM[active]</visible>
+                    <right>20</right>
+                    <top>20</top>
+                    <width>100</width>
+                    <height>12</height>
+                    <texturebg border="3">progress/texturebg_border_white.png</texturebg>
+                    <midtexture colordiffuse="active" border="5,3,5,3">progress/texturebg_white.png</midtexture>
+                    <info>ListItem.Property(progress)</info>
+                </control>
+                <control type="progress">
+                    <visible>$PARAM[active]</visible>
+                    <right>20</right>
+                    <top>20</top>
+                    <width>100</width>
+                    <height>12</height>
+                    <texturebg border="3">progress/texturebg_border_white.png</texturebg>
+                    <midtexture colordiffuse="backgrounddark" border="5,3,5,3">progress/texturebg_white.png</midtexture>
+                    <info>ListItem.Property(progress)</info>
                 </control>
                 <control type="label">
-                    <top>55</top>
-                    <left>160</left>
-                    <height>34</height>
-                    <right>140</right>
-                    <aligny>center</aligny>
-                    <font>regular24</font>
-                    <label>$INFO[ListItem.Property(next_title)]</label>
+                    <top>35</top>
+                    <right>20</right>
+                    <align>right</align>
+                    <font>regular16</font>
+                    <label>- $INFO[ListItem.Property(now_endtime)]</label>
                 </control>
-            </control>
-            <control type="progress">
-                <visible>!$PARAM[active]</visible>
-                <right>20</right>
-                <top>20</top>
-                <width>100</width>
-                <height>12</height>
-                <texturebg border="3">progress/texturebg_border_white.png</texturebg>
-                <midtexture colordiffuse="active" border="5,3,5,3">progress/texturebg_white.png</midtexture>
-                <info>ListItem.Property(progress)</info>
-            </control>
-            <control type="progress">
-                <visible>$PARAM[active]</visible>
-                <right>20</right>
-                <top>20</top>
-                <width>100</width>
-                <height>12</height>
-                <texturebg border="3">progress/texturebg_border_white.png</texturebg>
-                <midtexture colordiffuse="backgrounddark" border="5,3,5,3">progress/texturebg_white.png</midtexture>
-                <info>ListItem.Property(progress)</info>
-            </control>
-            <control type="label">
-                <top>35</top>
-                <right>20</right>
-                <align>right</align>
-                <font>regular16</font>
-                <label>- $INFO[ListItem.Property(now_endtime)]</label>
-            </control>
-            <control type="label">
-                <top>60</top>
-                <right>20</right>
-                <align>right</align>
-                <font>regular16</font>
-                <font>regular16</font>
-                <label>$INFO[ListItem.Property(next_starttime)] - $INFO[ListItem.Property(next_endtime)]</label>
+                <control type="label">
+                    <top>60</top>
+                    <right>20</right>
+                    <align>right</align>
+                    <font>regular16</font>
+                    <font>regular16</font>
+                    <label>$INFO[ListItem.Property(next_starttime)] - $INFO[ListItem.Property(next_endtime)]</label>
+                </control>
             </control>
             <include content="pvr_recording_indicator">
                 <param name="top">5</param>
