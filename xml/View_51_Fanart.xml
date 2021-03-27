@@ -60,9 +60,8 @@
                     <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
                 <control type="group">
-                    <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
                     <control type="image">
-                        <visible>Skin.HasSetting(darken_watched)</visible>
+                        <visible>Integer.IsGreater(ListItem.PlayCount,0) + Skin.HasSetting(darken_watched)</visible>
                         <top>6</top>
                         <left>1</left>
                         <width>116</width>
@@ -71,11 +70,18 @@
                         <texture colordiffuse="darkenposters">colors/white.png</texture>
                     </control>
                     <control type="image">
-                        <top>5</top>
-                        <right>5</right>
+                        <top>15</top>
+                        <right>10</right>
                         <width>32</width>
                         <height>32</height>
-                        <texture>overlays/$INFO[ListItem.Overlay]</texture>
+                        <texture background="true">$VAR[WatchedOverlayVar]</texture>
+                    </control>
+                    <control type="image">
+                        <top>130</top>
+                        <right>5</right>
+                        <width>40</width>
+                        <height>40</height>
+                        <texture background="true">$VAR[SetOverlayVar]</texture>
                     </control>
                 </control>
                 <control type="textbox">
@@ -126,9 +132,9 @@
                     <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
                 <control type="group">
-                    <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
+<!--                <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible> -->
                     <control type="image">
-                        <visible>Skin.HasSetting(darken_watched)</visible>
+                        <visible>Integer.IsGreater(ListItem.PlayCount,0) + Skin.HasSetting(darken_watched)</visible>
                         <top>6</top>
                         <left>1</left>
                         <width>183</width>
@@ -137,11 +143,19 @@
                         <texture colordiffuse="darkenposters">colors/white.png</texture>
                     </control>
                     <control type="image">
-                        <top>5</top>
-                        <right>5</right>
+                        <top>15</top>
+                        <right>10</right>
                         <width>32</width>
                         <height>32</height>
-                        <texture>overlays/$INFO[ListItem.Overlay]</texture>
+<!--                    <texture background="true">overlays/$INFO[ListItem.Overlay]</texture>-->
+                        <texture background="true">$VAR[WatchedOverlayVar]</texture>
+                    </control>
+                    <control type="image">
+                        <top>225</top>
+                        <right>5</right>
+                        <width>48</width>
+                        <height>48</height>
+                        <texture background="true">$VAR[SetOverlayVar]</texture>
                     </control>
                 </control>
                 <control type="textbox">
@@ -173,6 +187,18 @@
                     <texture background="true">$INFO[Container(51).ListItem.Art(fanart)]</texture>
                     <bordertexture colordiffuse="border">colors/white.png</bordertexture>
                     <bordersize>1</bordersize>
+                </control>
+                <control type="label">
+                    <visible>String.IsEqual(Container(51).ListItem.DBTYPE,tvshow)</visible>
+                    <left>480</left>
+                    <top>740</top>
+                    <width>720</width>
+                    <height>135</height>
+                    <align>right</align>
+                    <font>regular30</font>
+                    <textcolor>active</textcolor>
+                    <shadowcolor>black</shadowcolor>
+                    <label>$INFO[ListItem.Property(TotalSeasons),[COLOR white]$LOCALIZE[33054]:[/COLOR] , / ]$INFO[ListItem.Property(TotalEpisodes),[COLOR white]$LOCALIZE[36907]:[/COLOR] ,]$INFO[ListItem.Property(WatchedEpisodes), / [COLOR white]$LOCALIZE[16102]:[/COLOR] ,]</label>
                 </control>
                 <control type="group">
                     <right>20</right>
@@ -280,7 +306,7 @@
                     <width>116</width>
                     <height>30</height>
                     <aspectratio>keep</aspectratio>
-                    <texture>flags/cadre2.png</texture>
+                    <texture background="true">flags/cadre2.png</texture>
                 </control>
                 <control type="label">
                     <top>810</top>
@@ -322,7 +348,7 @@
         <control type="image">
             <width>167</width>
             <aspectratio>scale</aspectratio>
-            <texture>$INFO[ListItem.Art(poster)]</texture>
+            <texture background="true">$INFO[ListItem.Art(poster)]</texture>
             <bordertexture colordiffuse="border">colors/white.png</bordertexture>
             <bordersize>1</bordersize>
         </control>

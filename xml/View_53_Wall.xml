@@ -33,11 +33,8 @@
     </include>
 
     <include name="view_53_itemlayout">
-        <itemlayout condition="Container.Content(movies) | Container.Content(musicvideos)" width="268" height="435">
+        <itemlayout condition="Container.Content(movies) | Container.Content(musicvideos) | Container.Content(tvshows)" width="268" height="435">
             <include content="view_53_listitem_movies" />
-        </itemlayout>
-        <itemlayout condition="Container.Content(tvshows)" width="940" height="270">
-            <include content="view_53_listitem_tvshows" />
         </itemlayout>
         <itemlayout condition="Container.Content(addons)" width="313" height="450">
             <include content="view_53_listitem_addons" />
@@ -51,13 +48,8 @@
     </include>
 
     <include name="view_53_focusedlayout">
-        <focusedlayout condition="Container.Content(movies) | Container.Content(musicvideos)" width="268" height="435">
+        <focusedlayout condition="Container.Content(movies) | Container.Content(musicvideos) | Container.Content(tvshows)" width="268" height="435">
             <include content="view_53_listitem_movies">
-                <param name="active">true</param>
-            </include>
-        </focusedlayout>
-        <focusedlayout condition="Container.Content(tvshows)" width="940" height="270">
-            <include content="view_53_listitem_tvshows">
                 <param name="active">true</param>
             </include>
         </focusedlayout>
@@ -110,9 +102,9 @@
                     <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
                 <control type="group">
-                    <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
                     <control type="image">
                         <visible>Skin.HasSetting(darken_watched)</visible>
+                        <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
                         <top>11</top>
                         <left>1</left>
                         <width>250</width>
@@ -125,7 +117,14 @@
                         <right>20</right>
                         <width>32</width>
                         <height>32</height>
-                        <texture>overlays/$INFO[ListItem.Overlay]</texture>
+                        <texture background="true">$VAR[WatchedOverlayVar]</texture>
+                    </control>
+                    <control type="image">
+                        <top>345</top>
+                        <right>20</right>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture background="true">$VAR[SetOverlayVar]</texture>
                     </control>
                 </control>
                 <control type="image">
@@ -181,9 +180,9 @@
                     <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
                 </control>
                 <control type="group">
-                    <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
                     <control type="image">
                         <visible>Skin.HasSetting(darken_watched)</visible>
+                        <visible>Integer.IsGreater(ListItem.PlayCount,0)</visible>
                         <top>11</top>
                         <left>1</left>
                         <width>930</width>
@@ -196,8 +195,18 @@
                         <right>20</right>
                         <width>32</width>
                         <height>32</height>
-                        <texture>overlays/$INFO[ListItem.Overlay]</texture>
+                        <texture background="true">$VAR[WatchedOverlayVar]</texture>
                     </control>
+                    
+                    <control type="image">
+                        <visible>String.IsEqual(Container.Viewmode,53) + Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0)</visible>
+                        <top>15</top>
+                        <right>50</right>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture background="true">overlays/resume.png</texture>
+                    </control>
+                    
                 </control>
                 <control type="group">
                     <visible>String.IsEqual(ListItem.Label,..)</visible>
@@ -219,6 +228,7 @@
                         <label>$INFO[ListItem.Label]</label>
                     </control>
                 </control>
+                <!--### ToDo ###-->
                 <control type="label">
                     <visible>!String.IsEqual(ListItem.Label,..)</visible>
                     <top>190</top>

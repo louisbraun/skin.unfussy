@@ -76,7 +76,7 @@
                 <left>10</left>
                 <width>32</width>
                 <height>32</height>
-                <texture>overlays/$INFO[ListItem.Overlay]</texture>
+                <texture background="true">$VAR[WatchedOverlayVar]</texture>
             </control>
             <control type="label">
                 <visible>!String.IsEmpty(ListItem.Overlay)</visible>
@@ -101,6 +101,13 @@
                 <aligny>center</aligny>
                 <font>light30</font>
                 <label>$VAR[ListLabel2]</label>
+            </control>
+            <control type="image">
+                <top>23</top>
+                <left>1050</left>
+                <width>32</width>
+                <height>32</height>
+                <texture background="true">$VAR[SetOverlayVar]</texture>
             </control>
         </definition>
     </include>
@@ -218,6 +225,17 @@
                 <aspectratio>keep</aspectratio>
                 <texture background="true">$INFO[ListItem.Art(thumb)]</texture>
             </control>
+            <control type="label">
+                <visible>String.IsEqual(Container(52).ListItem.DBTYPE,tvshow)</visible>
+                <left>20</left>
+                <bottom>1</bottom>
+                <width>240</width>
+                <height>135</height>
+                <align>left</align>
+                <font>regular30</font>
+                <textcolor>active</textcolor>
+                <label>$INFO[ListItem.Property(TotalSeasons),[COLOR white]$LOCALIZE[33054]: [/COLOR]][CR]$INFO[ListItem.Property(TotalEpisodes),[COLOR white]$LOCALIZE[36907]: [/COLOR]][CR]$INFO[ListItem.Property(WatchedEpisodes),[COLOR white]$LOCALIZE[16102]: [/COLOR]]</label>
+            </control>
             <include content="mediaflags">
                 <param name="top" value="960" />
                 <param name="left" value="10" />
@@ -250,7 +268,7 @@
                 <width>116</width>
                 <height>30</height>
                 <aspectratio>keep</aspectratio>
-                <texture>flags/cadre2.png</texture>
+                <texture background="true">flags/cadre2.png</texture>
             </control>
             <control type="label">
                 <top>960</top>
@@ -477,7 +495,7 @@
                 <left>50</left>
                 <right>50</right>
                 <aspectratio>keep</aspectratio>
-                <texture>DefaultActor.png</texture>
+                <texture background="true">DefaultActor.png</texture>
             </control>
             <control type="image">
                 <top>155</top>
@@ -609,7 +627,7 @@
                     <visible>!String.IsEmpty(Container(52).ListItem.Art(clearlogo))</visible>
                     <height>120</height>
                     <aspectratio align="center" aligny="center">keep</aspectratio>
-                    <texture>$INFO[Container(52).ListItem.Art(clearlogo)]</texture>
+                    <texture background="true">$INFO[Container(52).ListItem.Art(clearlogo)]</texture>
                 </control>
                 <control type="label">
                     <height>35</height>
@@ -719,7 +737,7 @@
                 <width>566</width>
                 <height>500</height>
                 <aspectratio>scale</aspectratio>
-                <texture>backgrounds/cd_cover.jpg</texture>
+                <texture background="true">backgrounds/cd_cover.jpg</texture>
             </control>
             <control type="image">
                 <bottom>10</bottom>
@@ -727,7 +745,7 @@
                 <width>496</width>
                 <height>496</height>
                 <aspectratio>scale</aspectratio>
-                <texture>colors/black.png</texture>
+                <texture background="true">colors/black.png</texture>
             </control>
             <control type="image">
                 <bottom>10</bottom>
@@ -749,7 +767,7 @@
                     <top>10</top>
                     <height>150</height>
                     <aspectratio>keep</aspectratio>
-                    <texture>$INFO[Container(52).ListItem.Art(artist.clearlogo)]</texture>
+                    <texture background="true">$INFO[Container(52).ListItem.Art(artist.clearlogo)]</texture>
                 </control>
                 <control type="textbox">
                     <top>160</top>
@@ -923,7 +941,7 @@
                 <left>50</left>
                 <right>50</right>
                 <aspectratio>keep</aspectratio>
-                <texture>$VAR[View52ContentpanelDefault_Image]</texture>
+                <texture background="true">$VAR[View52ContentpanelDefault_Image]</texture>
             </control>
         </control>
     </include>
