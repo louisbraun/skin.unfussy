@@ -109,6 +109,9 @@ Because widgets are very individual per user, after Skin installation only some 
 ### Movies Fanart View
 [![Movies Fanart View](./resources/movies_fanart.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/movies_fanart.png)
 
+### Movies Gallery View
+[![Movies Gallery View](./resources/movies_gallery.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/movies_gallery.png)
+
 ### Movieset List View
 [![Movieset List View](./resources/movieset_list.png)](https://github.com/louisbraun/skin.unfussy/raw/master/resources/movieset_list.png)
 
